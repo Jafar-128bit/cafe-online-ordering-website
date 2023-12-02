@@ -1,0 +1,176 @@
+:root {
+    --color01: #3B3440;
+    --color02: #F2EBD5;
+    --color03: #F2C185;
+    --color04: #BF8F73;
+    --color05: #8C5954;
+    --color06: #000000;
+    --color07: #FFFFFF;
+    --color08: #0086ca;
+    --color09: #eaeaea;
+    --color10: rgba(0, 0, 0, 0.49);
+    --color11: rgba(255, 255, 255, 0.25);
+    --color12: #00bc00;
+    --color13: #bc0000;
+
+    --shadow_01: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    --shadow_02: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    --shadow_03: rgba(0, 0, 0, 0.45) 0 25px 20px -20px;
+
+    --mianWidth: 85vw;
+
+    --heightNavbar: 60px;
+    --heightcategories: 150px;
+
+    --top01: 15px;
+    --top02: calc(var(--top01) + var(--heightNavbar) + var(--top01) + var(--heightcategories));
+
+    --left: 15px;
+
+    --mainBorderRadius: 6px;
+
+    --gradientUpper: linear-gradient(0deg, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.8) 80%);
+    --gradientLower: linear-gradient(180deg, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.8) 80%);
+}
+
+.app {
+    background-image: url("./assets/background/cover_2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.separator-full {
+    background-color: #d4d4d4;
+    width: 100%;
+    height: 2px;
+}
+
+.separator-full-white-vertical {
+    background-color: var(--color07);
+
+    width: 2px;
+    height: 95%;
+
+    margin: 5px 0;
+    border-radius: 1px;
+}
+
+.separator-full-black-vertical {
+    background-color: var(--color06);
+
+    width: 2px;
+    height: 95%;
+
+    margin: 5px 0;
+    border-radius: 1px;
+}
+
+.separator-full-white-horizontal {
+    background-color: var(--color07);
+
+    width: 95%;
+    height: 3px;
+
+    margin: 5px 0;
+    border-radius: 1px;
+}
+
+.separator-full-black-horizontal {
+    background-color: var(--color06);
+
+    width: 95%;
+    height: 3px;
+
+    margin: 5px 0;
+    border-radius: 1px;
+}
+
+.closeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--color07);
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+
+    box-shadow: var(--shadow_01);
+
+    cursor: pointer;
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    z-index: 99;
+}
+
+.button {
+    background-color: var(--color07);
+    color: var(--color06);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: max-content;
+    height: max-content;
+
+    border: none;
+    border-radius: calc(35px / 2);
+    padding: 10px 15px;
+
+    box-shadow: var(--shadow_02);
+
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.darkGlass {
+    background-color: var(--color10);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    border: 1px solid var(--color11);
+
+    box-shadow: var(--shadow_01);
+}
+
+.whiteGlass {
+    background-color: var(--color11);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    border: 1px solid var(--color11);
+
+    box-shadow: var(--shadow_01);
+}
+
+.transparent-white-container {
+    background-color: transparent;
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    border: 1px solid var(--color07);
+    border-radius: var(--mainBorderRadius);
+
+    box-shadow: var(--shadow_01);
+}

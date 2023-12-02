@@ -1,0 +1,22 @@
+.locationMenu {
+    background-color: var(--color09);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 500px;
+    height: 400px;
+
+    border-radius: 10px;
+
+    position: absolute;
+    top: calc(50vh - 400px / 2);
+    right: calc(50vw - 500px / 2);
+
+    box-shadow: var(--shadow_03);
+}
+
+.hideLocationMenu {
+    display: none;
+}

@@ -1,0 +1,119 @@
+.cartMenu {
+    background-color: var(--color01);
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    width: 35vw;
+    height: 75vh;
+
+    transition: all 0.15s ease-in-out;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 99;
+}
+
+.cartMenuHide {
+    display: none;
+}
+
+.cartMenuOpen {
+    display: flex;
+}
+
+.cartMenu__title {
+    color: var(--color02);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 90%;
+    height: 5%;
+
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cartMenu__productList {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 10px;
+    place-items: center;
+
+    width: 90%;
+    height: 80%;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.cartMenu__productList::-webkit-scrollbar {
+    display: none;
+}
+
+.cartMenu__productList__emptyMessage {
+    color: var(--color02);
+
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.cartMenu__subTotal {
+    color: var(--color02);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    width: 90%;
+    height: 5%;
+}
+
+.cartMenu__subTotal__subtext {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cartMenu__btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+
+    width: 90%;
+    height: 10%;
+}
+
+.cartMenu__btn > button {
+    background-color: var(--color02);
+    color: var(--color01);
+
+    border: none;
+    outline: none;
+    border-radius: calc(16px + 10px);
+
+    padding: 10px 15px;
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+.cartMenu__btn > button:hover {
+    text-decoration: underline;
+}
