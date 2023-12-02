@@ -7,7 +7,7 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import {toggleCategories} from '../../store/slices/menuSlice';
 import {changeCategory} from "../../store/slices/categoriesSlices";
 
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 const renderProductCards = (category) => {
