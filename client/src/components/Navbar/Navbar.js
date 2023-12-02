@@ -26,7 +26,6 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const accountMenuState = useSelector(state => state.menuState);
     const {
-        zIndex,
         accountState,
     } = accountMenuState;
     const cartData = useSelector((state) => state.cartItems);

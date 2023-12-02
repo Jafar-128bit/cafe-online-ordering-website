@@ -60,11 +60,11 @@ import smoothiesSymbol from "../assets/images/symbol/smoothies-Icon.jpg";
 import snacksSymbol from "../assets/images/symbol/snacks-Icon.jpg";
 import taeSymbol from "../assets/images/symbol/chai-Icon.jpg";
 /* Home Titles Data */
-import video01 from "../assets/videos/video (1).mp4";
-import video02 from "../assets/videos/video (2).mp4";
-import video03 from "../assets/videos/video (3).mp4";
-import video04 from "../assets/videos/video (4).mp4";
-import video05 from "../assets/videos/video (5).mp4";
+// import video01 from "../assets/videos/video (1).mp4";
+// import video02 from "../assets/videos/video (2).mp4";
+// import video03 from "../assets/videos/video (3).mp4";
+// import video04 from "../assets/videos/video (4).mp4";
+// import video05 from "../assets/videos/video (5).mp4";
 
 export const cake = [
     {
