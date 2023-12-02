@@ -30,7 +30,7 @@ const List = () => {
     useEffect(() => {
         dispatch(toggleCategories({categoriesTab: true}));
         dispatch(changeCategory({selectedCategory: 0}));
-    }, [renderProductCards]);
+    }, [dispatch]);
 
     return (
         <section className="list whiteGlass">
