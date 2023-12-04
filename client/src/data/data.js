@@ -415,4 +415,6 @@ export const mediaData = [
         video: video05,
         heading: "Beyond coffee, we're a community hub. Join us in fostering connections, conversations, and shared experiences. At our cafe, every visitor becomes a valued member of our community",
     },
-]
+];
+
+export const topOrders = [chai[2], iceCream[0], snacks[3], sandwich[1], noodles[3]];

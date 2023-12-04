@@ -5,17 +5,9 @@ import {removeFromCart, updateCartItem} from "../../store/slices/cartSlices";
 
 const ProductCardList = ({id, productName, productImage, price, quantity}) => {
     const dispatch = useDispatch();
-
-    const isDecBtnDisable = {
-        cursor: quantity === 1 ? "not-allowed" : "pointer",
-    };
-    const isIncBtnDisable = {
-        cursor: quantity < 10 ? "pointer" : "not-allowed",
-    };
-
-    const handleRemove = () => {
-        dispatch(removeFromCart(id));
-    }
+    const isDecBtnDisable = {cursor: quantity === 1 ? "not-allowed" : "pointer",};
+    const isIncBtnDisable = {cursor: quantity < 10 ? "pointer" : "not-allowed",};
+    const handleRemove = () => dispatch(removeFromCart(id));
 
     const handleQuantity = (flag) => {
         if (flag === "dec" && quantity > 1) {

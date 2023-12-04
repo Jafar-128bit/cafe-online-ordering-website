@@ -1,13 +1,17 @@
 .categories {
+    background-color: var(--color02);
+
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     flex-direction: row;
 
-    width: 80vw;
-    height: 200px;
+    width: 100vw;
+    height: 230px;
 
-    margin-top: var(--top01);
+    margin-top: 0;
+
+    box-shadow: var(--shadow_03);
 
     z-index: 10;
 }
@@ -27,10 +31,12 @@
     height: 150px;
 
     box-shadow: var(--shadow_02);
+
+    transition: all 0.3s ease-in-out;
 }
 
 .categories__options:hover {
-
+    background-size: 120% 120%;
 }
 
 .categories__optionName {

@@ -5,7 +5,7 @@ import IconContainer from "../IconContainer/IconContainer";
 import cartIcon from "../../assets/icons/cartIcon.svg";
 import {useEffect, useState} from "react";
 
-const ProductCard = ({id, productName, productImage, price, quantity}) => {
+const ProductCard = ({id, productName, productImage, price}) => {
     const [buyBtn, setBuyBtn] = useState(false);
     const dispatch = useDispatch();
 
@@ -22,7 +22,7 @@ const ProductCard = ({id, productName, productImage, price, quantity}) => {
             productImage: productImage,
             productName: productName,
             price: price,
-            quantity: quantity,
+            quantity: 1,
         }));
         setBuyBtn(true);
     }

@@ -5,7 +5,7 @@ import {useDispatch} from "react-redux";
 import {motion} from "framer-motion";
 
 const productCard = {
-    hidden: {scale: 0.2, opacity: 0},
+    hidden: {scale: 0, opacity: 0,},
     visible: {
         scale: 1,
         opacity: 1,
@@ -13,12 +13,14 @@ const productCard = {
 };
 
 const categories = {
-    hidden: {opacity: 0},
+    hidden: {opacity: 0, y: -100},
     visible: {
         opacity: 1,
+        y: 0,
         transition: {
-            delayChildren: 0.25,
-            staggerChildren: 0.25,
+            duration: 0.2,
+            delayChildren: 0.3,
+            staggerChildren: 0.2,
         }
     }
 };
@@ -47,7 +49,7 @@ const CategoriesTab = () => {
     const dispatch = useDispatch();
     return (
         <motion.section
-            className="categories whiteGlass"
+            className="categories"
             variants={categories}
             initial="hidden"
             animate="visible"

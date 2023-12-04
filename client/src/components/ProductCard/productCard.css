@@ -40,11 +40,10 @@
 
     padding: 10px;
 
-    border-radius: 0 calc(52px / 2) calc(52px / 2) 0;
     box-shadow: var(--shadow_02);
 
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 800;
     letter-spacing: 2px;
     text-align: left;
 

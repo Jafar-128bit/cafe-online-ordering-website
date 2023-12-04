@@ -1,5 +1,6 @@
 import './navbar.css';
-import cartIcon from '../../assets/icons/cartIcon.svg';
+// import cartIcon from '../../assets/icons/cartIcon.svg';
+import cartIconDark from '../../assets/icons/cartIconDark.svg';
 
 import {toggleCartMenu, toggleAccountMenu} from '../../store/slices/menuSlice';
 
@@ -10,12 +11,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 
 const linkStyle = {
-    color: "var(--color07)",
+    color: "var(--color01)",
     textDecoration: "none",
     textTransform: "uppercase",
     padding: "3px",
     fontSize: "14px",
-    fontWeight: "400",
+    fontWeight: "800",
     letterSpacing: "2px",
     display: "flex",
     alignItems: "center",
@@ -41,7 +42,7 @@ const Navbar = () => {
         <nav className="navbar">
             <section className="navbar__section_01">
                 <NavLink to="/" style={({isActive}) => ({
-                    color: isActive ? "var(--color02)" : "var(--color07)",
+                    color: isActive ? "var(--color01)" : "var(--color05)",
                     textDecoration: "none",
                 })}>
                     <h1 className="navbar__section_01__logo">Campus'Cafe</h1>
@@ -78,7 +79,7 @@ const Navbar = () => {
                 >
                     <p className="navbar__section_03__cart__indicator">{quantity}</p>
                     <IconContainer
-                        src={cartIcon}
+                        src={cartIconDark}
                         alt="cart icon svg"
                         width={32}
                         height={32}

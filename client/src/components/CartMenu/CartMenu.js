@@ -24,7 +24,9 @@ const CartMenu = () => {
     }
 
     return (
-        <div className={`cartMenu ${cartMenuState ? "cartMenuOpen" : "cartMenuHide"}`}>
+        <div
+            className={`cartMenu ${cartMenuState ? "cartMenuOpen" : "cartMenuHide"}`}
+        >
             <button
                 type="button"
                 className="closeBtn"
