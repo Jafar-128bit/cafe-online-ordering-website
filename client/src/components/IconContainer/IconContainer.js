@@ -6,12 +6,14 @@ const IconContainer = ({
                            alt = "default Icon",
                            width = 26,
                            height = 26,
-                           background = true
+                           background = true,
+                           size = false,
+                           id = "",
                        }) => {
     return (
-        <div className="iconContainer" style={{
-            width: `${width}px`,
-            height: `${height}px`,
+        <div id={id} className="iconContainer" style={{
+            width: size ? "90%" : `${width}px`,
+            height: size ? "90%" : `${height}px`,
             backgroundColor: background ? "#F28705" : "transparent",
         }}>
             <img src={src} alt={alt}/>

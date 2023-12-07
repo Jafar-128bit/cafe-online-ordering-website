@@ -1,5 +1,5 @@
 .productCardSmall {
-    background-color: var(--color01);
+    background-color: var(--color1);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -12,7 +12,7 @@
     width: 170px;
     height: 170px;
 
-    border-radius: var(--mainBorderRadius);
+    border-radius: var(--borderRadius1);
     box-shadow: var(--shadow_03);
 
     overflow: hidden;
@@ -23,7 +23,7 @@
 }
 
 .productCardSmall__shade {
-    background-color: var(--color10);
+    background-color: var(--colorBlackTransparent);
 
     width: 100%;
     height: 100%;
@@ -36,8 +36,8 @@
 }
 
 .productCardSmall__productName {
-    background-color: var(--color02);
-    color: var(--color01);
+    background-color: var(--color3);
+    color: var(--color1);
 
     width: 100%;
     height: max-content;
@@ -56,8 +56,11 @@
 }
 
 .productCardSmall__addToCart {
-    background-color: var(--color12);
-    color: var(--color07);
+    background: var(--backgroundGradient07);
+    background-size: 400% 400%;
+    -webkit-animation: gradient 2s ease infinite;
+    animation: gradient 2s ease infinite;
+    color: var(--color3);
 
     width: 100%;
     height: max-content;
@@ -76,8 +79,8 @@
 }
 
 .productCardSmall__productPrice {
-    background-color: var(--color14);
-    color: var(--color01);
+    background-color: var(--elementColor);
+    color: var(--masterColor);
 
     display: flex;
     align-items: flex-end;

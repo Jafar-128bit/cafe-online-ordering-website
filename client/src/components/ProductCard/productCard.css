@@ -1,5 +1,5 @@
 .productCard {
-    background-color: var(--color02);
+    background-color: var(--color3);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -32,8 +32,8 @@
 }
 
 .productCard__productName {
-    background-color: var(--color03);
-    color: var(--color01);
+    background: var(--masterColor);
+    color: var(--colorBlack);
 
     width: 100%;
     height: max-content;
@@ -53,8 +53,12 @@
 }
 
 .productCard__productPrice {
-    background-color: var(--color01);
-    color: var(--color02);
+    background: var(--backgroundGradient07);
+    background-size: 400% 400%;
+    -webkit-animation: gradient 4s ease infinite;
+    animation: gradient 4s ease infinite;
+
+    color: var(--colorWhite);
 
     display: flex;
     align-items: center;
@@ -80,8 +84,8 @@
 }
 
 .productCard__addToCard {
-    background-color: var(--color05);
-    color: var(--color07);
+    background-color: var(--elementColor);
+    color: var(--colorWhite);
 
     display: flex;
     align-items: center;
@@ -98,20 +102,20 @@
     box-shadow: var(--shadow_02);
 
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 800;
     letter-spacing: 2px;
     text-transform: uppercase;
 
     cursor: pointer;
 
+    transition: all 0.2s ease-in-out;
+
     position: absolute;
     left: 30px;
-
-    transition: all 0.15s ease-in-out;
 }
 
 .productCard__addToCard:hover {
-    background-color: var(--color12);
+    background-color: var(--activeColor);
 }
 
 .productCard__addToCard__hide {

@@ -3,34 +3,30 @@ import {createSlice} from '@reduxjs/toolkit';
 const menuSlice = createSlice({
     name: 'menuState',
     initialState: {
-        zIndex: 0,
-        cartState: false,
-        locationState: false,
-        accountState: false,
-        categoriesTab: false,
+        paymentMenuState: {State: false, zIndex: 99},
+        cartState: {State: false, zIndex: 97},
+        searchMenuState: {State: false, zIndex: 95},
+        categoriesTabState: {State: false, zIndex: 93},
     },
     reducers: {
+        togglePaymentMenu: (state, action) => {
+            const {State} = action.payload;
+            state.paymentMenuState.State = State;
+        },
         toggleCartMenu: (state, action) => {
-            const {zIndex, cartState} = action.payload;
-            state.zIndex = zIndex;
-            state.cartState = cartState;
+            const {State} = action.payload;
+            state.cartState.State = State;
         },
-        toggleLocationMenu: (state, action) => {
-            const {zIndex, locationState} = action.payload;
-            state.zIndex = zIndex;
-            state.locationState = locationState;
-        },
-        toggleAccountMenu: (state, action) => {
-            const {zIndex, accountState} = action.payload;
-            state.zIndex = zIndex;
-            state.accountState = accountState;
+        toggleSearchMenu: (state, action) => {
+            const {State} = action.payload;
+            state.searchMenuState.State = State;
         },
         toggleCategories: (state, action) => {
-            const {categoriesTab} = action.payload;
-            state.categoriesTab = categoriesTab;
-        }
+            const {State} = action.payload;
+            state.categoriesTabState.State = State;
+        },
     }
 });
 
-export const {toggleCartMenu, toggleLocationMenu, toggleAccountMenu, toggleCategories} = menuSlice.actions;
+export const {toggleCartMenu, toggleSearchMenu, toggleCategories, togglePaymentMenu} = menuSlice.actions;
 export default menuSlice.reducer;

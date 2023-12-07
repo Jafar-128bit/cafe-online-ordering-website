@@ -1,5 +1,5 @@
 .categories {
-    background-color: var(--color02);
+    background: var(--backgroundGradient05);
 
     display: flex;
     align-items: center;
@@ -11,13 +11,13 @@
 
     margin-top: 0;
 
-    box-shadow: var(--shadow_03);
-
-    z-index: 10;
+    z-index: 80;
+    position: relative;
+    overflow: hidden;
 }
 
 .categories__options {
-    background-color: var(--color02);
+    background-color: var(--color3);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -30,9 +30,11 @@
     width: 150px;
     height: 150px;
 
-    box-shadow: var(--shadow_02);
+    box-shadow: var(--shadow_03);
 
     transition: all 0.3s ease-in-out;
+
+    z-index: 2;
 }
 
 .categories__options:hover {
@@ -41,7 +43,7 @@
 
 .categories__optionName {
     background-color: transparent;
-    color: var(--color07);
+    color: var(--color3);
 
     width: 100%;
     height: 100%;
@@ -60,5 +62,5 @@
 }
 
 .categories__optionName:hover {
-    background-color: var(--color10);
+    background-color: var(--colorBlackTransparent);
 }

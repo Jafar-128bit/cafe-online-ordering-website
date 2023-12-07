@@ -1,8 +1,11 @@
 import './categoriesTab.css';
+import categoriesTabCover from '../../assets/background/categoriesTabCover.png';
+
 import {menuList} from "../../data/data";
 import {changeCategory} from "../../store/slices/categoriesSlices";
 import {useDispatch} from "react-redux";
 import {motion} from "framer-motion";
+import ImageContainer from "../ImageContainer/ImageContainer";
 
 const productCard = {
     hidden: {scale: 0, opacity: 0,},
@@ -54,6 +57,13 @@ const CategoriesTab = () => {
             initial="hidden"
             animate="visible"
         >
+            <ImageContainer
+                src={categoriesTabCover}
+                height="100%"
+                alt="categories tab cover image"
+                position="absolute"
+                zIndex={0}
+            />
             {
                 menuList.map((value) => <Options
                         key={value.id}

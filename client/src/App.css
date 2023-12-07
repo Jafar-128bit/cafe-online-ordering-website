@@ -6,13 +6,38 @@
     --color05: #8C5954;
     --color06: #000000;
     --color07: #FFFFFF;
-    --color08: #0086ca;
+    --color08: rgb(0, 165, 255);
     --color09: #eaeaea;
     --color10: rgba(0, 0, 0, 0.35);
     --color11: rgba(255, 255, 255, 0.35);
     --color12: #00bc00;
     --color13: #bc0000;
     --color14: #ffaa00;
+    --color15: rgba(37, 171, 255, 0.5);
+
+    --color1: #3F4796;
+    --color2: #E8BE4E;
+    --color3: #F2F2EF;
+    --color4: #DB7567;
+    --color5: #8BD8FF;
+    --color6: #ff4747;
+
+    /* Light Colors */
+    --masterColor: #F2F2EF;
+    --baseColor: #00bc00;
+    --activeColor: #8BD8FF;
+    --elementColor: #E8BE4E;
+    --alertColor1: #00bc00;
+    --alertColor2: #ff4747;
+
+    --colorWhite: #FFFFFF;
+    --colorBlack: #000000;
+
+    --colorWhiteTransparent: rgba(255, 255, 255, 0.35);
+    --colorBlackTransparent: rgba(0, 0, 0, 0.35);
+
+    --color1Dark: #222553;
+
 
     --shadow_01: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     --shadow_02: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -28,10 +53,18 @@
 
     --left: 15px;
 
-    --mainBorderRadius: 6px;
+    --borderRadius1: 6px;
 
     --gradientUpper: linear-gradient(0deg, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.6) 95%);
     --gradientLower: linear-gradient(180deg, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.6) 95%);
+
+    --backgroundGradient01: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    --backgroundGradient02: linear-gradient(70.6deg, rgb(172, 30, 255) 0.3%, rgb(65, 35, 251) 55.8%, rgb(35, 251, 224) 105.1%);
+    --backgroundGradient03: linear-gradient(111.4deg, rgb(2, 255, 4) 18.4%, rgb(0, 232, 237) 100.2%);
+    --backgroundGradient04: radial-gradient(1173px at -3.5% -4.8%, rgb(255, 140, 16) 8.4%, rgb(255, 26, 26) 20.6%, rgb(0, 64, 249) 46.7%, rgb(131, 201, 8) 69.6%, rgb(255, 230, 28) 84.7%);
+    --backgroundGradient05: radial-gradient(circle, rgb(255, 249, 0) 0%, rgb(237, 194, 20) 100%);
+    --backgroundGradient06: linear-gradient(109.6deg, rgb(43, 1, 91) 13.4%, rgb(122, 2, 54) 100.2%);
+    --backgroundGradient07: linear-gradient(109.6deg, #76B900 13.4%, #00bc00 100.2%);
 }
 
 .app {
@@ -45,7 +78,7 @@
     justify-content: flex-start;
     flex-direction: column;
 
-    width: 100vw;
+    max-width: 1920px;
     height: 100vh;
 
     overflow: hidden;
@@ -80,7 +113,7 @@
 }
 
 .separator-full-white-horizontal {
-    background-color: var(--color07);
+    background-color: var(--color3);
 
     width: 95%;
     height: 3px;
@@ -90,7 +123,7 @@
 }
 
 .separator-full-black-horizontal {
-    background-color: var(--color06);
+    background-color: var(--color1);
 
     width: 95%;
     height: 3px;
@@ -119,7 +152,7 @@
     top: 10px;
     right: 10px;
 
-    z-index: 99;
+    z-index: 90;
 }
 
 .button {
@@ -145,22 +178,53 @@
 }
 
 .darkGlass {
-    background-color: var(--color10);
+    background-color: var(--colorBlackTransparent);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 
-    border: 0.5px solid var(--color10);
+    border: 0.5px solid var(--color11);
+    border-radius: var(--borderRadius1);
 
     box-shadow: var(--shadow_01);
 }
 
 .whiteGlass {
-    background-color: var(--color11);
+    background-color: var(--colorWhiteTransparent);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 
     border: 0.5px solid var(--color11);
-    border-radius: var(--mainBorderRadius);
+    border-radius: var(--borderRadius1);
 
     box-shadow: var(--shadow_01);
+}
+
+.backgroundGradientAnimation {
+    background-size: 400% 400%;
+    -webkit-animation: gradient 15s ease infinite;
+    animation: gradient 15s ease infinite;
+}
+
+@-webkit-keyframes gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
 }

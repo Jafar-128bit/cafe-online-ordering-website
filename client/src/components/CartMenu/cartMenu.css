@@ -1,5 +1,7 @@
 .cartMenu {
-    background-color: var(--color01);
+    background-color: var(--color3);
+
+    display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
@@ -7,14 +9,13 @@
     width: 35vw;
     height: 75vh;
 
+    border-radius: var(--borderRadius1);
+
     transition: all 0.15s ease-in-out;
 
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    z-index: 99;
+    top: calc((100vh - 75vh) / 2);
+    left: calc((100vw - 35vw) / 2);
 }
 
 .cartMenuHide {
@@ -26,7 +27,7 @@
 }
 
 .cartMenu__title {
-    color: var(--color02);
+    color: var(--color1);
 
     display: flex;
     align-items: center;
@@ -59,7 +60,7 @@
 }
 
 .cartMenu__productList__emptyMessage {
-    color: var(--color02);
+    color: var(--color1);
 
     font-size: 22px;
     font-weight: 300;
@@ -68,7 +69,7 @@
 }
 
 .cartMenu__subTotal {
-    color: var(--color02);
+    color: var(--color1);
 
     display: flex;
     align-items: center;
@@ -97,14 +98,21 @@
 }
 
 .cartMenu__btn > button {
-    background-color: var(--color02);
-    color: var(--color01);
+    background-color: var(--color4);
+    color: var(--color3);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 200px;
+    min-height: 20px;
 
     border: none;
     outline: none;
     border-radius: calc(16px + 10px);
 
-    padding: 10px 15px;
+    padding: 10px;
     margin: 0;
 
     font-size: 14px;
@@ -112,6 +120,36 @@
     text-transform: uppercase;
 
     cursor: pointer;
+}
+
+.cartMenu__btn__inActive {
+    background-color: var(--color1);
+    color: var(--color3);
+}
+
+.cartMenu__btn__active {
+    background: var(--backgroundGradient02);
+    background-size: 400% 400%;
+    -webkit-animation: gradient 15s ease infinite;
+    animation: gradient 15s ease infinite;
+    color: var(--color3);
+
+    cursor: not-allowed;
+}
+
+.cartMenu__btn > button > p {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 0 5px;
+    margin: 0;
+
+    text-transform: uppercase;
 }
 
 .cartMenu__btn > button:hover {

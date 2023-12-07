@@ -59,12 +59,6 @@ import sandwichSymbol from "../assets/images/symbol/snadwich-Icon.jpg";
 import smoothiesSymbol from "../assets/images/symbol/smoothies-Icon.jpg";
 import snacksSymbol from "../assets/images/symbol/snacks-Icon.jpg";
 import taeSymbol from "../assets/images/symbol/chai-Icon.jpg";
-/* Home Titles Data */
-import video01 from "../assets/videos/video_01.mp4";
-import video02 from "../assets/videos/video_02.mp4";
-import video03 from "../assets/videos/video_03.mp4";
-import video04 from "../assets/videos/video_04.mp4";
-import video05 from "../assets/videos/video_05.mp4";
 
 export const cake = [
     {
@@ -386,34 +380,6 @@ export const menuList = [
         id: 8,
         menuIcon: smoothiesSymbol,
         menuHeading: "Smoothies",
-    },
-];
-
-export const mediaData = [
-    {
-        id: 0,
-        video: video01,
-        heading: "Savor every sip and bite at our cafe, where each cup of coffee and dish is crafted with love and passion, ensuring a delightful experience for your taste buds",
-    },
-    {
-        id: 2,
-        video: video02,
-        heading: "Experience warmth beyond the brew - our cafe is a haven of hospitality. From the moment you step in, expect a friendly smile and service that makes you feel right at home",
-    },
-    {
-        id: 3,
-        video: video03,
-        heading: "Explore our virtual coffee haven! Navigate our website and online portals to discover our menu, place orders, and stay updated on the latest offerings. Your caffeine fix is just a click away",
-    },
-    {
-        id: 4,
-        video: video04,
-        heading: "More than a cafe, we're a space for friends to gather, laugh, and share moments. Our cozy ambiance and inviting atmosphere make it the perfect spot to create lasting memories with your favorite people",
-    },
-    {
-        id: 5,
-        video: video05,
-        heading: "Beyond coffee, we're a community hub. Join us in fostering connections, conversations, and shared experiences. At our cafe, every visitor becomes a valued member of our community",
     },
 ];
 

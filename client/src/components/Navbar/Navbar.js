@@ -1,53 +1,80 @@
 import './navbar.css';
-// import cartIcon from '../../assets/icons/cartIcon.svg';
-import cartIconDark from '../../assets/icons/cartIconDark.svg';
+import cartIcon from '../../assets/icons/cartIcon.svg';
+// import cartIconDark from '../../assets/icons/cartIconDark.svg';
+import searchIcon from '../../assets/icons/searchIcon.svg';
 
-import {toggleCartMenu, toggleAccountMenu} from '../../store/slices/menuSlice';
+import {toggleCartMenu, toggleSearchMenu} from '../../store/slices/menuSlice';
 
 import IconContainer from "../IconContainer/IconContainer";
-import SearchBar from "../SearchBar/SearchBar";
 import {NavLink} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+import {motion} from "framer-motion";
 
 const linkStyle = {
-    color: "var(--color01)",
+    color: "var(--masterColor)",
     textDecoration: "none",
     textTransform: "uppercase",
     padding: "3px",
-    fontSize: "14px",
-    fontWeight: "800",
-    letterSpacing: "2px",
+    fontSize: "18px",
+    fontWeight: "700",
+    letterSpacing: "1px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
 }
 
+const searchButtonAnimation = {
+    hide: {opacity: 0, scale: 0},
+    show: {opacity: 1, scale: 1.2},
+}
+
 const Navbar = () => {
     const dispatch = useDispatch();
-    const accountMenuState = useSelector(state => state.menuState);
-    const {
-        accountState,
-    } = accountMenuState;
     const cartData = useSelector((state) => state.cartItems);
     const [quantity, setQuantity] = useState(0);
+    const [isSearchIcon, setIsSearchIcon] = useState(false);
 
     useEffect(() => {
         setQuantity(cartData.map((value) => value.quantity).reduce((acc, cur) => {
             return acc + cur
         }, 0));
-    }, [cartData])
+    }, [cartData]);
+
+    const handleSearchMenu = () => {
+        dispatch(toggleSearchMenu({State: true}));
+    }
 
     return (
         <nav className="navbar">
             <section className="navbar__section_01">
                 <NavLink to="/" style={({isActive}) => ({
-                    color: isActive ? "var(--color01)" : "var(--color05)",
+                    color: isActive ? "var(--masterColor)" : "var(--masterColor)",
                     textDecoration: "none",
                 })}>
                     <h1 className="navbar__section_01__logo">Campus'Cafe</h1>
                 </NavLink>
-                <SearchBar/>
+                <button
+                    type="button"
+                    className="navbar__section_01__searchBtn"
+                    onMouseOver={() => setIsSearchIcon(true)}
+                    onMouseLeave={() => setIsSearchIcon(false)}
+                    onClick={handleSearchMenu}
+                >
+                    <IconContainer
+                        src={searchIcon}
+                        alt="search button"
+                        width={25}
+                        height={25}
+                        background={false}
+                    />
+                    <motion.div
+                        className="navbar__section_01__searchBtn__sudoElement"
+                        variants={searchButtonAnimation}
+                        animate={isSearchIcon ? 'show' : 'hide'}
+                        transition={{type: "spring", stiffness: 350, damping: 15, duration: 0.1}}
+                    />
+                </button>
             </section>
             <section className="navbar__section_02">
                 {/* Link 01 */}
@@ -58,28 +85,17 @@ const Navbar = () => {
                 <NavLink to="/menu" style={({isActive}) => ({...linkStyle})}>
                     Menu
                 </NavLink>
-                {/* Link 03 */}
-                <NavLink to="/favourite" style={({isActive}) => ({...linkStyle})}>
-                    Favourite
-                </NavLink>
             </section>
             <section className="navbar__section_03">
-                {/* Option 02 */}
-                <div className="navbar__section_03__accountMenu">
-                    <button type="button" className="navbar__section_03__accountMenu__btn"
-                            onClick={() => dispatch(toggleAccountMenu({zIndex: 95, accountState: !accountState}))}>
-                        ACCOUNT
-                    </button>
-                </div>
-                {/* Option 03 */}
+                {/* Option 01 */}
                 <button
                     type="button"
                     className="navbar__section_03__cartMenuBtn"
-                    onClick={() => dispatch(toggleCartMenu({zIndex: 99, cartState: true}))}
+                    onClick={() => dispatch(toggleCartMenu({State: true}))}
                 >
                     <p className="navbar__section_03__cart__indicator">{quantity}</p>
                     <IconContainer
-                        src={cartIconDark}
+                        src={cartIcon}
                         alt="cart icon svg"
                         width={32}
                         height={32}

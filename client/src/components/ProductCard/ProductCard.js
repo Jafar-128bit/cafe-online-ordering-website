@@ -1,14 +1,13 @@
-import './productCard.css';
 import {useDispatch, useSelector} from "react-redux";
 import {addToCart} from "../../store/slices/cartSlices";
-import IconContainer from "../IconContainer/IconContainer";
-import cartIcon from "../../assets/icons/cartIcon.svg";
 import {useEffect, useState} from "react";
+import ProductCardSmall from "./ProductCardSmall";
+import ProductCardSearchResult from "./ProductCardSearchResult";
+import ProductCardMain from "./ProductCardMain";
 
-const ProductCard = ({id, productName, productImage, price}) => {
+const ProductCard = ({id, productName, productImage, price, type = ""}) => {
     const [buyBtn, setBuyBtn] = useState(false);
     const dispatch = useDispatch();
-
     const cartData = useSelector((state) => state.cartItems);
 
     useEffect(() => {
@@ -26,25 +25,34 @@ const ProductCard = ({id, productName, productImage, price}) => {
         }));
         setBuyBtn(true);
     }
-    return (
-        <div className="productCard" style={{backgroundImage: `url(${productImage})`}}>
-            <p className="productCard__productName">{productName}</p>
-            <p className="productCard__productPrice">₹{price}</p>
-            <button
-                className={`productCard__addToCard ${buyBtn ? "productCard__addToCard__hide" : "productCard__addToCard__show"}`}
-                onClick={handleBuy}
-            >
-                <IconContainer
-                    src={cartIcon}
-                    alt="cart icon svg"
-                    width={32}
-                    height={32}
-                    background={false}
-                />
-                Buy
-            </button>
-        </div>
-    );
+
+    return <>
+        {type === "main" && <ProductCardMain
+            id={id}
+            productImage={productImage}
+            productName={productName}
+            price={price}
+            buyBtn={buyBtn}
+            handleBuy={handleBuy}
+        />}
+        {type === "small" && <ProductCardSmall
+            id={id}
+            productImage={productImage}
+            productName={productName}
+            price={price}
+            buyBtn={buyBtn}
+            handleBuy={handleBuy}
+        />}
+        {type === "searchList" &&
+        <ProductCardSearchResult
+            id={id}
+            productImage={productImage}
+            productName={productName}
+            price={price}
+            buyBtn={buyBtn}
+            handleBuy={handleBuy}
+        />}
+    </>
 }
 
 export default ProductCard;

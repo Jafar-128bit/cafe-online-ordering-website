@@ -33,7 +33,7 @@ const List = () => {
     const [dataIndex, setDataIndex] = useState(0);
 
     useEffect(() => {
-        dispatch(toggleCategories({categoriesTab: true}));
+        dispatch(toggleCategories({State: true}));
         dispatch(changeCategory({selectedCategory: 0}));
 
         setTimeout(() => {
@@ -52,7 +52,7 @@ const List = () => {
     }, [selectedCategory]);
 
     return (
-        <section className={isLoading ? `list` : `list list__background`}>
+        <section className="list">
             <div className="list__loading" style={{left: isLoading ? 0 : "-210px"}}>
                 <p className="list__loading__message">Loading</p>
                 <LoadingScreen
@@ -60,7 +60,7 @@ const List = () => {
                     height={30}
                     loadingThickness={4}
                     size="maxContent"
-                    color="var(--color01)"
+                    color="var(--masterColor)"
                 />
             </div>
             <section className="list__container">
@@ -78,7 +78,7 @@ const List = () => {
                             productName={value.productName}
                             productImage={value.productImage}
                             price={value.price}
-                            quantity={1}
+                            type="main"
                         />
                     ))}
                 </section>

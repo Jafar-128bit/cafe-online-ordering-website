@@ -1,15 +1,19 @@
 import './home.css';
+import instagramIcon from '../../assets/icons/instagramIcon.svg';
+import facebookIcon from '../../assets/icons/facebookIcon.svg';
+import twitterIcon from '../../assets/icons/twitterIcon.svg';
 
-import {mediaData, topOrders} from "../../data/data";
+import {topOrders} from "../../data/data";
 
 import {useDispatch} from "react-redux";
 import {useEffect, useState} from "react";
 import {motion} from "framer-motion";
 
 import {toggleCategories} from "../../store/slices/menuSlice";
-import VideoContainer from "../../components/VideoContainer/VideoContainer";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
-import ProductCardSmall from "../../components/ProductCard/ProductCardSmall";
+import IconContainer from "../../components/IconContainer/IconContainer";
+import {NavLink} from "react-router-dom";
+import ProductCard from "../../components/ProductCard/ProductCard";
 
 const topOrdersMotion = {
     hidden: {opacity: 0,},
@@ -25,65 +29,66 @@ const topOrdersMotion = {
 
 const Home = () => {
     const dispatch = useDispatch();
-    const [changeMedia, setChangeMedia] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        dispatch(toggleCategories({categoriesTab: false}));
+        dispatch(toggleCategories({State: false}));
 
         setTimeout(() => {
             setIsLoading(false);
         }, 2000);
-
-        const intervalId = setInterval(() => {
-            setTimeout(() => {
-                if (changeMedia >= 4) setChangeMedia(0);
-                else setChangeMedia(changeMedia + 1);
-            }, 9500);
-        }, 10000);
-
-        return () => clearInterval(intervalId);
-    }, [changeMedia, dispatch]);
+    }, [dispatch]);
 
     return (
         <section className="home">
             <section className="home__section-01">
-                <h1 className="home__section-01__title">Taste the Difference at Campus'Cafe</h1>
-                <article className="home__section-01__article">Welcome to Campus'Cafe, where we turn moments into
-                    memories through a menu crafted with passion. From rich coffees to refreshing smoothies,
-                    our offerings celebrate taste and quality. Indulge in tempting cakes, snacks, and sandwiches,
-                    curated for a elevated dining experience. Join us to discover the essence of cafe indulgence,
-                    and order online for flavors delivered to your space.
-                </article>
-                <div className="home__section-01__media">
-                    <div className="home__loadingScreen" style={{opacity: isLoading ? 1 : 0}}>
-                        <LoadingScreen size="full"/>
-                    </div>
-                    {mediaData.map((value) => {
-                        return <div
-                            key={value.id}
-                            className="home__section-01__media__container"
-                            style={{
-                                transform: `translateX(-${changeMedia}00%)`,
-                                opacity: isLoading ? 0 : 1,
-                            }}
-                        >
-                            <div className="home__section-01__media__video">
-                                <VideoContainer
-                                    video={value.video}
-                                    width="100%"
-                                    height="100%"
-                                    borderRadius="0"
-                                />
-                            </div>
-                            <div className="home__section-01__media__shade"/>
-                            <p className="home__section-01__media__heading">{value.heading}</p>
-                        </div>
-                    })}
+                <div className="home__section-01__info">
+                    <h2 className="home__section-01__subtitle">Taste the Difference at</h2>
+                    <h1 className="home__section-01__title">Campus'Cafe</h1>
+                    <article className="home__section-01__article">
+                        Campus’Cafe: moments, memories, and passion. Enjoy our
+                        delicious coffees, smoothies, cakes, snacks, and sandwiches.
+                        Experience the best of cafe indulgence,
+                        and order online for flavors at your doorstep.
+                    </article>
+                </div>
+                <div className="home__section-01__contactInfo">
+                    <section className="home__section-01__contactInfo__contact">
+                        <p>Contact Us</p>
+                        <p>+123 456 7890</p>
+                    </section>
+                    <section className="home__section-01__contactInfo__socialMediaLink">
+                        <NavLink to="/">
+                            <IconContainer
+                                src={instagramIcon}
+                                background={false}
+                                alt="instagram icon"
+                                width={30}
+                                height={30}
+                            />
+                        </NavLink>
+                        <NavLink to="/">
+                            <IconContainer
+                                src={twitterIcon}
+                                background={false}
+                                alt="instagram icon"
+                                width={30}
+                                height={30}
+                            />
+                        </NavLink>
+                        <NavLink to="/">
+                            <IconContainer
+                                src={facebookIcon}
+                                background={false}
+                                alt="instagram icon"
+                                width={30}
+                                height={30}
+                            />
+                        </NavLink>
+                    </section>
                 </div>
             </section>
-
-            <section className="home__section-02 whiteGlass">
+            <section className="home__section-02 darkGlass">
                 <div
                     className="home__loadingScreen"
                     style={{
@@ -91,8 +96,9 @@ const Home = () => {
                         zIndex: isLoading ? 2 : 0,
                     }}
                 >
-                    <LoadingScreen color="var(--color01)"/>
+                    <LoadingScreen/>
                 </div>
+
                 {!isLoading && <section
                     className="home__section-02__container"
                     style={{
@@ -108,12 +114,13 @@ const Home = () => {
                     >
                         <h4 className="home__section-02__container__topOrders__title">Top Orders</h4>
                         <div className="home__section-02__container__topOrders__productList">
-                            {topOrders.map((value) => <ProductCardSmall
+                            {topOrders.map((value) => <ProductCard
                                 key={value.id}
                                 id={value.id}
                                 productName={value.productName}
                                 productImage={value.productImage}
                                 price={value.price}
+                                type="small"
                             />)}
                         </div>
                     </motion.section>

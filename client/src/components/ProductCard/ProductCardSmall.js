@@ -1,8 +1,6 @@
 import './productCardSmall.css';
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {motion} from 'framer-motion';
-import {addToCart} from "../../store/slices/cartSlices";
-import {useDispatch, useSelector} from "react-redux";
 
 const productCardSmall = {
     hidden: {scale: 0, opacity: 0,},
@@ -21,27 +19,8 @@ const addToCartAnimation = {
     show: {x: 0}
 }
 
-const ProductCardSmall = ({id, productName, productImage, price}) => {
+const ProductCardSmall = ({id, productImage, productName, price, buyBtn, handleBuy}) => {
     const [onHover, setOnHover] = useState(true);
-    const [buyBtn, setBuyBtn] = useState(false);
-    const dispatch = useDispatch();
-    const cartData = useSelector((state) => state.cartItems);
-
-    useEffect(() => {
-        const isItemInCart = cartData.some((item) => item.id === id);
-        setBuyBtn(isItemInCart);
-    }, [cartData, id]);
-
-    const handleBuy = () => {
-        dispatch(addToCart({
-            id: id,
-            productImage: productImage,
-            productName: productName,
-            price: price,
-            quantity: 1,
-        }));
-        setBuyBtn(true);
-    }
 
     return (
         <motion.div
@@ -65,7 +44,7 @@ const ProductCardSmall = ({id, productName, productImage, price}) => {
                 animate={onHover && !buyBtn ? 'hide' : 'show'}
                 transition={{ease: "easeIn", duration: 0.1,}}
             >
-                {buyBtn ? 'Added' : 'Buy' }
+                {buyBtn ? 'Added' : 'Buy'}
             </motion.p>
             <motion.p
                 className="productCardSmall__productPrice"

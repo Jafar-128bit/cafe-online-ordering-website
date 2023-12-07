@@ -1,5 +1,5 @@
 .navbar {
-    background-color: var(--color02);
+    background-color: transparent;
 
     display: flex;
     align-items: center;
@@ -13,39 +13,67 @@
 }
 
 .navbar__section_01 {
+    background: var(--backgroundGradient07);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
 
-    width: 550px;
-    height: max-content;
+    width: max-content;
+    height: 100%;
 
-    padding: 0 5px;
+    padding: 0;
 
-    margin: 0 10px;
+    margin: 0;
 }
 
 .navbar__section_01__logo {
+    width: max-content;
+    height: 90%;
+
     margin: 10px 10px;
 
     font-size: 22px;
-    font-weight: 900;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-.navbar__section_01__location {
+.navbar__section_01__searchBtn {
+    background-color: transparent;
+
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    outline: none;
+    border-radius: 50%;
+
+    padding: 0;
+    margin: 0 10px;
 
     cursor: pointer;
+    position: relative;
 }
 
-.navbar__section_01__title {
-    color: white;
-    font-size: 12px;
-    font-weight: 400;
+.navbar__section_01__searchBtn__sudoElement {
+    background-color: var(--masterColor);
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    /*box-shadow: var(--shadow_01);*/
+
+    position: absolute;
+    z-index: 1;
 }
 
 .navbar__section_02 {
@@ -54,7 +82,7 @@
     justify-content: space-evenly;
     flex-direction: row;
 
-    width: 250px;
+    width: 150px;
     height: 60px;
 
     margin: 0 10px;
@@ -66,47 +94,10 @@
     justify-content: space-between;
     flex-direction: row;
 
-    width: 250px;
+    width: 150px;
     height: 60px;
 
     padding: 0 20px;
-}
-
-.navbar__section_03__accountMenu {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-
-    height: 100%;
-
-    position: relative;
-}
-
-.navbar__section_03__accountMenu__btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-
-    background-color: transparent;
-    color: var(--color01);
-
-    width: max-content;
-    height: 100%;
-
-    margin: 0 5px;
-    padding: 2px;
-    border: none;
-    outline: none;
-
-    font-size: 14px;
-    font-weight: 800;
-    letter-spacing: 2px;
-
-    cursor: pointer;
-
-    z-index: 2;
 }
 
 .navbar__section_03__cartMenuBtn {
@@ -115,7 +106,7 @@
     justify-content: space-between;
 
     background-color: transparent;
-    color: var(--color01);
+    color: var(--masterColor);
 
     width: max-content;
     height: 100%;
@@ -135,12 +126,12 @@
     align-items: center;
     justify-content: center;
 
-    color: var(--color01);
+    color: var(--masterColor);
 
     width: 16px;
     height: 16px;
 
-    border: 2px solid var(--color01);
+    border: 2px solid var(--masterColor);
     border-radius: 50%;
     padding: 5px;
     margin: 0 5px;

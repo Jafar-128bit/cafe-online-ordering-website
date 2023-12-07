@@ -8,6 +8,8 @@ const ImageContainer = ({
                             margin = "0",
                             src,
                             alt = "image",
+                            position = "unset",
+                            zIndex = null,
                         }) => {
     const style = {
         width: width,
@@ -15,6 +17,8 @@ const ImageContainer = ({
         borderRadius: borderRadius,
         boxShadow: boxShadow,
         margin: margin,
+        position: position,
+        zIndex: zIndex,
     }
     return (
         <div className="imageContainer" style={{...style}}>
