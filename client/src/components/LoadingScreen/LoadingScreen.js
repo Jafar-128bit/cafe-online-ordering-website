@@ -5,7 +5,7 @@ const LoadingScreen = ({
                            height = 50,
                            loadingThickness = 5,
                            size = "full",
-                           color = "var(--color07)"
+                           color = "var(--masterColor)"
                        }) => {
     const loadingStyle = {
         width: `${width}px`,
@@ -15,9 +15,9 @@ const LoadingScreen = ({
     }
 
     return (
-        <section className={`loading ${size}`}>
+        <div className={`loading ${size}`}>
             <div className="loading__outer" style={{...loadingStyle}}/>
-        </section>
+        </div>
     );
 }
 

@@ -15,6 +15,7 @@ function App() {
     const isCategoriesTab = useSelector((state) => state.menuState.categoriesTabState.State);
     return (
         <main className="app">
+            <div className="shade"/>
             <BrowserRouter>
                 <Navbar/>
                 {isCategoriesTab && <CategoriesTab/>}

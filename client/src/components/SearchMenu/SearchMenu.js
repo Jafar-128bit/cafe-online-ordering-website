@@ -15,7 +15,7 @@ import ProductCard from "../ProductCard/ProductCard";
 const searchData = [...cake, ...cold, ...iceCream, ...noodles, ...chai, ...snacks, ...sandwich, ...smoothies];
 
 const searchMenuAnimation = {
-    hide: {opacity: 1, x: -500},
+    hide: {opacity: 0, x: -500},
     show: {opacity: 1, x: 0}
 }
 
@@ -47,7 +47,7 @@ const SearchMenu = () => {
 
     return (
         <motion.aside
-            className="searchMenu darkGlass"
+            className="searchMenu darkGlass75"
             style={{zIndex: zIndex}}
             variants={searchMenuAnimation}
             animate={State ? 'show' : 'hide'}
@@ -69,7 +69,7 @@ const SearchMenu = () => {
                     </button>
                 </div>
             </section>
-            <section className="searchMenu__resultContainer">
+            <section className="searchMenu__resultContainer addScroll">
                 {productData.map((value) => <ProductCard
                     key={value.id}
                     id={value.id}

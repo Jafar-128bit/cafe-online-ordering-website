@@ -88,7 +88,7 @@ const Home = () => {
                     </section>
                 </div>
             </section>
-            <section className="home__section-02 darkGlass">
+            <section className="home__section-02">
                 <div
                     className="home__loadingScreen"
                     style={{

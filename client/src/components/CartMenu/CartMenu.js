@@ -8,20 +8,17 @@ import {motion} from "framer-motion";
 import IconContainer from "../IconContainer/IconContainer";
 import {toggleCartMenu, togglePaymentMenu} from "../../store/slices/menuSlice";
 import ProductCardList from "../ProductCard/ProductCardList";
-import LoadingScreen from "../LoadingScreen/LoadingScreen";
 
 const cartMenuAnimation = {
-    hide: {scale: 0, opacity: 0, transition: {duration: 0.15, ease: "easeOut"}},
-    show: {scale: 1, opacity: 1, transition: {duration: 0.15, ease: "easeIn"}},
+    hide: {x: 700},
+    show: {x: 0},
 }
 
 const CartMenu = () => {
     const dispatch = useDispatch();
     const [subTotal, setSubTotal] = useState(0);
-    // const [cartMenuOpen, setCartMenuOpen] = useState(false);
     const cartMenuState = useSelector((state) => state.menuState.cartState);
     const {State, zIndex} = cartMenuState;
-    const paymentMenuState = useSelector((state) => state.menuState.paymentMenuState.State);
     const cartData = useSelector((state) => state.cartItems);
 
     useEffect(() => {
@@ -32,18 +29,22 @@ const CartMenu = () => {
         dispatch(toggleCartMenu({State: false}));
         dispatch(togglePaymentMenu({State: false}));
     };
-    const handlePaymentOpen = () => dispatch(togglePaymentMenu({State: true}));
+    const handlePaymentOpen = () => {
+        dispatch(toggleCartMenu({State: false}));
+        dispatch(togglePaymentMenu({State: true}));
+    }
 
     return (
         <motion.div
-            className={`cartMenu ${State ? "cartMenuOpen" : "cartMenuHide"}`}
+            className="cartMenu darkGlass75"
             style={{zIndex: zIndex}}
             variants={cartMenuAnimation}
             animate={State ? 'show' : 'hide'}
+            transition={{type: "spring", stiffness: 300, damping: 25}}
         >
             <button
                 type="button"
-                className="closeBtn"
+                className="closeBtn cartMenu__closeBtn"
                 onClick={handleClose}
             >
                 <IconContainer
@@ -54,9 +55,10 @@ const CartMenu = () => {
                     background={false}
                 />
             </button>
-            <p className="cartMenu__title">CART MENU</p>
-            <div className="separator-full-black-horizontal"/>
-            <div className="cartMenu__productList"
+            <div className="cartMenu__title">
+                <p>BASKET</p>
+            </div>
+            <div className="cartMenu__productList addScroll"
                  style={{placeContent: `${cartData.length !== 0 ? "flex-start" : "center"}`}}>
                 {cartData.length !== 0 ? cartData.map((value) => <ProductCardList
                         key={value.id}
@@ -68,31 +70,17 @@ const CartMenu = () => {
                     />
                 ) : <p className="cartMenu__productList__emptyMessage">Cart is Empty</p>}
             </div>
-            <div className="separator-full-black-horizontal"/>
             <div className="cartMenu__subTotal">
                 <p className="cartMenu__subTotal__subtext">Subtotal</p>
                 <p className="cartMenu__subTotal__subtext">₹{subTotal}</p>
             </div>
-            <div className="separator-full-black-horizontal"/>
             <div className="cartMenu__btn">
                 <button type="button" onClick={handleClose}>Continue Shopping</button>
                 {cartData.length !== 0 && <button
                     type="button"
                     onClick={handlePaymentOpen}
-                    className={paymentMenuState ? "cartMenu__btn__active" : "cartMenu__btn__inActive"}
                 >
-                    {paymentMenuState ?
-                        <p>
-                            <LoadingScreen
-                                width={15}
-                                height={15}
-                                color="var(--color07)"
-                                loadingThickness={2}
-                                size="maxContent"
-                            />
-                            Processing...
-                        </p> : 'Proceed to Checkout'
-                    }
+                    Proceed to Payment
                 </button>}
             </div>
         </motion.div>

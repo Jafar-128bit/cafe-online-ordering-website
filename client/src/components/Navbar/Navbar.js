@@ -101,7 +101,7 @@ const Navbar = () => {
                         height={32}
                         background={false}
                     />
-                    CART
+                    BASKET
                 </button>
             </section>
         </nav>

@@ -3,22 +3,23 @@ import {createSlice} from '@reduxjs/toolkit';
 const paymentSlice = createSlice({
     name: "paymentProcessState",
     initialState: {
-        signInState: false,
-        userName: "",
-        contactNumber: "",
+        firstName: '',
+        lastName: '',
+        number: '',
+        email: '',
+        foodPack: false,
     },
     reducers: {
-        checkSignInState: (state, action) => {
-            const {signInState} = action.payload;
-            state.signInState = signInState;
-        },
         paymentInfoState: (state, action) => {
-            const {userName, contactNumber} = action.payload;
-            state.userName = userName;
-            state.contactNumber = contactNumber;
+            const {firstName, lastName, number, email, foodPack} = action.payload;
+            state.firstName = firstName;
+            state.lastName = lastName;
+            state.number = number;
+            state.email = email;
+            state.foodPack = foodPack;
         },
     }
 });
 
-export const {checkSignInState, paymentInfoState} = paymentSlice.actions;
+export const {paymentInfoState} = paymentSlice.actions;
 export default paymentSlice.reducer;
