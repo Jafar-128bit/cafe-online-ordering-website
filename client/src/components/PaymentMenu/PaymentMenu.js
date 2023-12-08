@@ -1,8 +1,8 @@
 import './paymentMenu.css';
 
-import {togglePaymentMenu} from "../../store/slices/menuSlice";
+import {togglePaymentMenu, toggleCartMenu} from "../../store/slices/menuSlice";
 import IconContainer from "../IconContainer/IconContainer";
-import closeIcon from "../../assets/icons/closeIcon.svg";
+import backIcon from "../../assets/icons/arrowBackIcon.svg";
 import eatIcon from "../../assets/icons/eatIcon.svg";
 import foodPackIcon from "../../assets/icons/packingIcon.svg";
 
@@ -16,37 +16,30 @@ const paymentMenuAnimation = {
     hide: {x: 700},
     show: {x: 0},
 }
-
 const paymentStageAnimation = {
     hide: {opacity: 0.5, scale: 0.80},
     show: {opacity: 1, scale: 1},
 }
-
 const inputErrorAnimation = {
     hide: {x: 300},
     show: {x: 0},
 }
-
 const iconAnimationIcon1 = {
     hide: {x: 50},
     show: {x: 0},
 }
-
 const iconAnimationIcon2 = {
     hide: {x: 50},
     show: {x: 0},
 }
-
 const optionsAnimation1 = {
     hide: {y: 50},
     show: {y: 0},
 }
-
 const optionsAnimation2 = {
     hide: {y: 50},
     show: {y: 0},
 }
-
 const slideAnimation = {
     current: {x: 0},
     next: {x: -550},
@@ -55,27 +48,23 @@ const slideAnimation = {
 const validate = (values = {}) => {
     const errors = {};
 
-    if (!values.firstName) {
-        errors.firstName = 'Required';
-    } else if (values.firstName.length > 15) {
+    if (!values.firstName) errors.firstName = 'Required';
+    else if (values.firstName.length > 15) {
         errors.firstName = 'Must be 15 characters or less';
     }
 
-    if (!values.lastName) {
-        errors.lastName = 'Required';
-    } else if (values.lastName.length > 15) {
+    if (!values.lastName) errors.lastName = 'Required';
+    else if (values.lastName.length > 15) {
         errors.lastName = 'Must be 15 characters or less';
     }
 
-    if (!values.number) {
-        errors.number = 'Required!';
-    } else if (values.number.length !== 10) {
+    if (!values.number) errors.number = 'Required!';
+    else if (values.number.length !== 10) {
         errors.number = !/^\d+$/.test(values.number) ? 'Invalid Phone Number!' : 'Phone number must be 10 characters!';
     }
 
-    if (!values.email) {
-        errors.email = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    if (!values.email) errors.email = 'Required';
+    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
         errors.email = 'Invalid email address';
     }
 
@@ -94,8 +83,23 @@ const PaymentMenu = () => {
     const [track, setTrack] = useState(0);
     const paymentMenuState = useSelector((state) => state.menuState.paymentMenuState);
     // const paymentData = useSelector((state => state.paymentInfoState));
+    const cartData = useSelector((state) => state.cartItems);
     const {State, zIndex} = paymentMenuState;
-    const handlePaymentClose = () => dispatch(togglePaymentMenu({State: false,}));
+    const handlePaymentClose = () => {
+        if (track === 0) {
+            dispatch(paymentInfoState({
+                email: "",
+                firstName: "",
+                foodPack: "",
+                lastName: "",
+                number: "",
+            }));
+            dispatch(togglePaymentMenu({State: false,}));
+            dispatch(toggleCartMenu({State: true,}));
+        } else if (track > 0) {
+            setTrack(track - 1);
+        }
+    }
     const formikPaymentInfo = useFormik({
         initialValues: {
             firstName: '',
@@ -157,7 +161,7 @@ const PaymentMenu = () => {
 
     return (
         <motion.div
-            className="paymentMenu darkGlass75"
+            className="paymentMenu darkGlass35"
             style={{zIndex: zIndex}}
             variants={paymentMenuAnimation}
             animate={State ? 'show' : 'hide'}
@@ -165,12 +169,12 @@ const PaymentMenu = () => {
         >
             <button type="button" className="closeBtn paymentMenu__closeBtn" onClick={handlePaymentClose}>
                 <IconContainer
-                    src={closeIcon}
+                    src={backIcon}
                     alt="close icon svg"
-                    width={30}
-                    height={30}
-                    background={false}
+                    width="15px"
+                    height="15px"
                 />
+                BACK
             </button>
             <div className="paymentMenu__processIndicator">
                 <motion.span
@@ -187,7 +191,7 @@ const PaymentMenu = () => {
                     animate={track === 1 ? 'show' : 'hide'}
                     transition={{duration: 0.15, ease: "easeInOut"}}
                 >
-                    Receipt
+                    Order Review
                 </motion.span>
                 <motion.span
                     className="paymentMenu__processIndicator__process"
@@ -195,7 +199,7 @@ const PaymentMenu = () => {
                     animate={track === 2 ? 'show' : 'hide'}
                     transition={{duration: 0.15, ease: "easeInOut"}}
                 >
-                    Checkout
+                    Place Order
                 </motion.span>
             </div>
 
@@ -236,22 +240,24 @@ const PaymentMenu = () => {
                             Pack the Food?
                             <motion.p
                                 className="isFoodPack__option"
+                                style={{backgroundColor: !formikPaymentInfo.values.foodPack && "var(--alertColor2)",}}
                                 variants={optionsAnimation1}
                                 animate={formikPaymentInfo.values.foodPack ? 'hide' : 'show'}
-                                transition={{type: "spring", stiffness: 300, damping: 20, duration: 0.1}}
+                                transition={{ease: "easeInOut", duration: 0.35}}
                             >No</motion.p>
                             <motion.p
                                 className="isFoodPack__option"
+                                style={{backgroundColor: formikPaymentInfo.values.foodPack && "var(--baseColor)",}}
                                 variants={optionsAnimation2}
                                 animate={formikPaymentInfo.values.foodPack ? 'show' : 'hide'}
-                                transition={{type: "spring", stiffness: 300, damping: 20, duration: 0.1}}
+                                transition={{ease: "easeInOut", duration: 0.35}}
                             >Yes
                             </motion.p>
                             <motion.div
                                 className="isFoodPack__icon"
                                 variants={iconAnimationIcon1}
                                 animate={formikPaymentInfo.values.foodPack ? 'hide' : 'show'}
-                                transition={{type: "spring", stiffness: 300, damping: 20, duration: 0.1}}
+                                transition={{ease: "easeInOut", duration: 0.35}}
                             >
                                 <IconContainer
                                     src={eatIcon}
@@ -265,7 +271,7 @@ const PaymentMenu = () => {
                                 className="isFoodPack__icon"
                                 variants={iconAnimationIcon2}
                                 animate={formikPaymentInfo.values.foodPack ? 'show' : 'hide'}
-                                transition={{type: "spring", stiffness: 300, damping: 20, duration: 0.1}}
+                                transition={{ease: "easeInOut", duration: 0.35}}
                             >
                                 <IconContainer
                                     src={foodPackIcon}
@@ -301,9 +307,39 @@ const PaymentMenu = () => {
                 >
                     <div className="paymentMenu__process2__heading">
                         <h3 className="paymentMenu__process2__title">CAMPUS'CAFE</h3>
-                        <h4 className="paymentMenu__process2__receiptNumber">RECEIPT NO. - #123456</h4>
+                        <h4 className="paymentMenu__process2__orderIdNumber">Your Order ID #MMDDXXXXX</h4>
                     </div>
                     <div className="paymentMenu__process2__itemList">
+                        <div className="paymentMenu__process2__itemList__tableHead">
+                            <table className="">
+                                <thead>
+                                <tr>
+                                    <th width="60">Sl. No.</th>
+                                    <th>Item Name</th>
+                                    <th width="85">Item Price</th>
+                                    <th width="25">Qty</th>
+                                    <th width="65">Total</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div className="paymentMenu__process2__itemList__tableItems addScroll">
+                            <table>
+                                <tbody>
+                                {cartData.map((value, index) => (
+                                    <tr key={value.id}>
+                                        <td width="60">{index + 1}</td>
+                                        <td>{value.productName}</td>
+                                        <td width="85">{value.price}</td>
+                                        <td width="25">{value.quantity}</td>
+                                        <td width="65">{value.price * value.quantity}</td>
+                                    </tr>
+                                ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div className="paymentMenu__process2__btnContainer">
 
                     </div>
                 </motion.section>

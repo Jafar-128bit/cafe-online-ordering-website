@@ -19,6 +19,19 @@
 
 .paymentMenu__closeBtn {
     background-color: transparent;
+    color: var(--colorWhite);
+
+    width: max-content;
+    height: max-content;
+
+    padding: 0 5px;
+
+    border-radius: 0;
+
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+
     box-shadow: none;
 }
 
@@ -84,12 +97,6 @@
     width: 90%;
     height: 70%;
     position: absolute;
-}
-
-.paymentMenu__process2 {
-    background-color: #8BD8FF;
-
-    height: 90%;
 }
 
 .paymentMenu__process1__inputContainer {
@@ -173,11 +180,11 @@
     justify-content: flex-start;
 
     max-height: 26px;
-    max-width: 350px;
+    max-width: 330px;
 
     padding: 10px 0 10px 10px;
 
-    border: 1px solid var(--baseColor);
+    border: 1px solid var(--neonGreen);
 
     cursor: pointer;
 
@@ -186,9 +193,18 @@
 }
 
 .isFoodPack__option {
-    position: absolute;
-    right: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    width: 50px;
+    height: 100%;
+
+    font-size: 18px;
+    font-weight: 300;
+
+    position: absolute;
+    right: 60px;
 }
 
 .isFoodPack__icon {
@@ -223,14 +239,129 @@
     position: relative;
 }
 
-.submitBtn__loadingIcon {
+.paymentMenu__process2 {
+    /*background-color: var(--colorWhiteTransparent35);*/
 
-    width: max-content;
-    height: max-content;
+    height: 95%;
 
-    border-radius: 50%;
-    padding: 6px;
+    /*box-shadow: var(--shadow_01);*/
+}
 
-    position: absolute;
+.paymentMenu__process2__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    width: 100%;
+    height: 10%;
+
+    padding: 0;
+    margin: 0;
+
+    border-bottom: 1px solid var(--colorBlackTransparent50);
+}
+
+.paymentMenu__process2__title {
+    background: var(--backgroundGradient07);
+    color: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 35%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0 15px;
+
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.paymentMenu__process2__orderIdNumber {
+    color: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 65%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0 0 0 10px;
+
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.paymentMenu__process2__itemList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 100%;
+    height: 75%;
+
+    margin: 0 0 0 0;
+    padding: 0;
+}
+
+.paymentMenu__process2__itemList__tableHead > table,
+.paymentMenu__process2__itemList__tableItems > table {
+    width: 100%;
+    height: 100%;
+
+    table-layout: fixed;
+}
+
+.paymentMenu__process2__itemList__tableHead {
+    background-color: var(--colorWhiteTransparent50);
+
+    height: 10%;
+
+    box-shadow: var(--shadow_03);
+}
+
+.paymentMenu__process2__itemList__tableItems {
+    height: 90%;
+
+    margin-top: 0;
+    border-bottom: 1px solid var(--colorWhiteTransparent50);
+
+    overflow-x: auto;
+}
+
+.paymentMenu__process2__itemList__tableHead > table th {
+    color: var(--colorWhite);
+
+    padding: 5px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.paymentMenu__process2__itemList__tableItems > table td {
+    color: var(--colorWhite);
+
+    padding: 10px 5px;
+
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.paymentMenu__process2__btnContainer {
+    width: 100%;
+    height: 15%;
 }
 

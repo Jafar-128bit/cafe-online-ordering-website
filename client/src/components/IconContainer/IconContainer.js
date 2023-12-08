@@ -4,17 +4,18 @@ import defaultIcon from '../../assets/icons/defaultIcon.svg';
 const IconContainer = ({
                            src = defaultIcon,
                            alt = "default Icon",
-                           width = 26,
-                           height = 26,
-                           background = true,
-                           size = false,
+                           width = "26px",
+                           height = "26px",
                            id = "",
+                           background = "",
+                           round = 0,
                        }) => {
     return (
         <div id={id} className="iconContainer" style={{
-            width: size ? "90%" : `${width}px`,
-            height: size ? "90%" : `${height}px`,
-            backgroundColor: background ? "#F28705" : "transparent",
+            width: width,
+            height: height,
+            background: background,
+            borderRadius: round ? "50%" : "0",
         }}>
             <img src={src} alt={alt}/>
         </div>

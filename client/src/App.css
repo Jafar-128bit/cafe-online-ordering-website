@@ -29,12 +29,10 @@
     --elementColor: #E8BE4E;
     --alertColor1: #00bc00;
     --alertColor2: #ff4747;
+    --neonGreen: #39ff14;
 
     --colorWhite: #FFFFFF;
     --colorBlack: #000000;
-
-    --colorWhiteTransparent: rgba(255, 255, 255, 0.35);
-    --colorBlackTransparent: rgba(0, 0, 0, 0.35);
 
     --colorWhiteTransparent75: rgba(255, 255, 255, 0.75);
     --colorWhiteTransparent50: rgba(255, 255, 255, 0.5);
@@ -101,46 +99,6 @@
     height: 100%;
     position: absolute;
     z-index: 0;
-}
-
-.separator-full-white-vertical {
-    background-color: var(--colorWhite);
-
-    width: 2px;
-    height: 95%;
-
-    margin: 5px 0;
-    border-radius: 1px;
-}
-
-.separator-full-black-vertical {
-    background-color: var(--colorBlack);
-
-    width: 2px;
-    height: 95%;
-
-    margin: 5px 0;
-    border-radius: 1px;
-}
-
-.separator-full-white-horizontal {
-    background-color: var(--colorWhite);
-
-    width: 95%;
-    height: 3px;
-
-    margin: 5px 0;
-    border-radius: 1px;
-}
-
-.separator-full-black-horizontal {
-    background-color: var(--colorBlack);
-
-    width: 95%;
-    height: 3px;
-
-    margin: 5px 0;
-    border-radius: 1px;
 }
 
 .closeBtn {
@@ -258,6 +216,22 @@
     background-size: 400% 400%;
     -webkit-animation: gradient 15s ease infinite;
     animation: gradient 15s ease infinite;
+}
+
+.iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2px;
+    z-index: 10;
+}
+
+.iconContainer > img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    object-position: center;
 }
 
 .addScroll::-webkit-scrollbar {

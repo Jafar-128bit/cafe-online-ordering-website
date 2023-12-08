@@ -80,7 +80,7 @@ const CartMenu = () => {
                     type="button"
                     onClick={handlePaymentOpen}
                 >
-                    Proceed to Payment
+                    Proceed to Checkout
                 </button>}
             </div>
         </motion.div>

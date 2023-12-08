@@ -13,9 +13,14 @@ import SearchMenu from "./components/SearchMenu/SearchMenu";
 
 function App() {
     const isCategoriesTab = useSelector((state) => state.menuState.categoriesTabState.State);
+    const paymentMenuState = useSelector((state) => state.menuState.paymentMenuState);
+    const {State, zIndex} = paymentMenuState;
     return (
         <main className="app">
-            <div className="shade"/>
+            <div className="shade" style={{
+                zIndex: State ? zIndex - 1 : 0,
+                backgroundColor: State && 'var(--colorBlackTransparent75)',
+            }}/>
             <BrowserRouter>
                 <Navbar/>
                 {isCategoriesTab && <CategoriesTab/>}
