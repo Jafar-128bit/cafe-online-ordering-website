@@ -4,6 +4,7 @@ import cartSlices from "./slices/cartSlices";
 import categoriesSlices from "./slices/categoriesSlices";
 import paymentSlice from "./slices/paymentSlice";
 import dataSlices from "./slices/dataSlices";
+import setCouponSlices from "./slices/setCouponSlices";
 
 const rootReducer = combineReducers({
     menuState: menuSlice,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     categoriesState: categoriesSlices,
     paymentInfoState: paymentSlice,
     filterDataState: dataSlices,
+    couponState: setCouponSlices,
 });
 
 export default rootReducer;

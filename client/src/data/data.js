@@ -62,31 +62,31 @@ import taeSymbol from "../assets/images/symbol/chai-Icon.jpg";
 
 export const cake = [
     {
-        id: 10,
+        id: 0,
         productImage: chocolateCake,
         productName: "Chocolate Cake",
         price: 400,
     },
     {
-        id: 11,
+        id: 1,
         productImage: butterCake,
         productName: "Butterscotch Cake",
         price: 350,
     },
     {
-        id: 12,
+        id: 2,
         productImage: mangoCake,
         productName: "Mango Cake",
         price: 350,
     },
     {
-        id: 13,
+        id: 3,
         productImage: pineCake,
         productName: "Pineapple Cake",
         price: 350,
     },
     {
-        id: 14,
+        id: 4,
         productImage: vanillaCake,
         productName: "Vanilla Cake",
         price: 300,
@@ -94,25 +94,25 @@ export const cake = [
 ];
 export const chai = [
     {
-        id: 20,
+        id: 5,
         productImage: greenTea,
         productName: "Green Tea",
         price: 20,
     },
     {
-        id: 21,
+        id: 6,
         productImage: lalTea,
         productName: "Lal Chai",
         price: 10,
     },
     {
-        id: 22,
+        id: 7,
         productImage: lemonTea,
         productName: "Lemon Tea",
         price: 20,
     },
     {
-        id: 23,
+        id: 8,
         productImage: masalaTea,
         productName: "Masala Chai",
         price: 30,
@@ -120,37 +120,37 @@ export const chai = [
 ];
 export const cold = [
     {
-        id: 30,
+        id: 9,
         productImage: cokeBottle,
         productName: "Coke Bottle",
         price: 20,
     },
     {
-        id: 31,
+        id: 10,
         productImage: cokeCan,
         productName: "Coke Can",
         price: 30,
     },
     {
-        id: 32,
+        id: 11,
         productImage: lemonCoke,
         productName: "Lemon Coke",
         price: 25,
     },
     {
-        id: 33,
+        id: 12,
         productImage: lemonJuice,
         productName: "Lemon Juice",
         price: 20,
     },
     {
-        id: 34,
+        id: 13,
         productImage: lemonWater,
         productName: "Lemon Water",
         price: 20,
     },
     {
-        id: 35,
+        id: 14,
         productImage: orangeJuice,
         productName: "Orange Juice",
         price: 30,
@@ -158,37 +158,37 @@ export const cold = [
 ];
 export const iceCream = [
     {
-        id: 40,
+        id: 15,
         productImage: butterScotchIceCream,
         productName: "Butterscotch",
         price: 40,
     },
     {
-        id: 41,
+        id: 16,
         productImage: chocoChipsIceCream,
         productName: "Choco-Chips",
         price: 40,
     },
     {
-        id: 42,
+        id: 17,
         productImage: chocolateIceCream,
         productName: "Chocolate",
         price: 40,
     },
     {
-        id: 43,
+        id: 18,
         productImage: strawberryIceCream,
         productName: "Strawberry",
         price: 30,
     },
     {
-        id: 44,
+        id: 19,
         productImage: vanillaIceCream,
         productName: "Vanilla",
         price: 30,
     },
     {
-        id: 45,
+        id: 20,
         productImage: whiteMilkIceCream,
         productName: "White-Milk",
         price: 30,
@@ -196,37 +196,37 @@ export const iceCream = [
 ];
 export const noodles = [
     {
-        id: 50,
+        id: 21,
         productImage: hakkaNoodles,
         productName: "Plain Hakka Noodles",
         price: 50,
     },
     {
-        id: 51,
+        id: 22,
         productImage: pastaNoodles,
         productName: "Red Sauce Spicy Pasta",
         price: 50,
     },
     {
-        id: 52,
+        id: 23,
         productImage: redNoodles,
         productName: "Red Hakka Noodles",
         price: 40,
     },
     {
-        id: 53,
+        id: 24,
         productImage: VegMaggiNoodles,
         productName: "Maggi",
         price: 30,
     },
     {
-        id: 54,
+        id: 25,
         productImage: VegSpicyNoodles,
         productName: "Veg Hakka Spicy",
         price: 50,
     },
     {
-        id: 55,
+        id: 26,
         productImage: warpNoodles,
         productName: "Omelette Maggi Wrap",
         price: 50,
@@ -234,37 +234,37 @@ export const noodles = [
 ];
 export const snacks = [
     {
-        id: 60,
+        id: 27,
         productImage: chipsSnacks,
         productName: "Chips",
         price: 20,
     },
     {
-        id: 61,
+        id: 28,
         productImage: frenchFriesSnacks,
         productName: "French Fries",
         price: 40,
     },
     {
-        id: 62,
+        id: 29,
         productImage: cookiesSnacks,
         productName: "Cookies",
         price: 20,
     },
     {
-        id: 63,
+        id: 30,
         productImage: eggToastSnacks,
         productName: "Egg Toast",
         price: 30,
     },
     {
-        id: 64,
+        id: 31,
         productImage: hotChocolateSnacks,
         productName: "Hot Chocolate",
         price: 30,
     },
     {
-        id: 65,
+        id: 32,
         productImage: toastAndOmeletteSnacks,
         productName: "Toast and Omelette",
         price: 30,
@@ -272,31 +272,31 @@ export const snacks = [
 ];
 export const sandwich = [
     {
-        id: 70,
+        id: 33,
         productImage: chickenBugger,
         productName: "Chicken Bugger",
         price: 40,
     },
     {
-        id: 71,
+        id: 34,
         productImage: eggSandwich,
         productName: "Egg Sandwich",
         price: 30,
     },
     {
-        id: 72,
+        id: 35,
         productImage: redChillSandwich,
         productName: "Red Chilli Sandwich",
         price: 35,
     },
     {
-        id: 73,
+        id: 36,
         productImage: rotiRoll,
         productName: "Roti Roll",
         price: 25,
     },
     {
-        id: 74,
+        id: 37,
         productImage: vegBugger,
         productName: "Veg Burger",
         price: 35,
@@ -304,37 +304,37 @@ export const sandwich = [
 ];
 export const smoothies = [
     {
-        id: 80,
+        id: 38,
         productImage: blueBerrySmoothies,
         productName: "Blubbery Smoothies",
         price: 40,
     },
     {
-        id: 81,
+        id: 39,
         productImage: butterScotchSmoothies,
         productName: "Butterscotch Smoothies",
         price: 30,
     },
     {
-        id: 82,
+        id: 40,
         productImage: dragonFruitSmoothies,
         productName: "Dragon Fruit Smoothies",
         price: 70,
     },
     {
-        id: 83,
+        id: 41,
         productImage: mangoSmoothies,
         productName: "Mango Smoothies",
         price: 50,
     },
     {
-        id: 84,
+        id: 42,
         productImage: strawberrySmoothies,
         productName: "Strawberry Smoothies",
         price: 60,
     },
     {
-        id: 85,
+        id: 43,
         productImage: watermelonSmoothies,
         productName: "Watermelon Smoothies",
         price: 40,
@@ -382,5 +382,38 @@ export const menuList = [
         menuHeading: "Smoothies",
     },
 ];
-
 export const topOrders = [chai[2], iceCream[0], snacks[3], sandwich[1], noodles[3]];
+
+export const couponList = [
+    {
+        id: 1,
+        discount: 10,
+        couponCode: "MRUJB9",
+        validProduct: [17, 18, 15, 28, 30, 27],
+    },
+    {
+        id: 2,
+        discount: 8,
+        couponCode: "NGHMQG",
+        validProduct: [9, 10, 12, 14],
+    },
+    {
+        id: 3,
+        discount: 30,
+        couponCode: "H4V7TR",
+        validProduct: [0, 2, 4],
+    },
+    {
+        id: 4,
+        discount: 20,
+        couponCode: "CVGG8Q",
+        validProduct: [38, 40, 42, 34, 33, 36],
+    },
+    {
+        id: 5,
+        discount: 5,
+        couponCode: "Q4R51G",
+        validProduct: [6, 7],
+    },
+];
+

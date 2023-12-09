@@ -35,7 +35,7 @@ const CartMenu = () => {
     }
 
     return (
-        <motion.div
+        <motion.aside
             className="cartMenu darkGlass75"
             style={{zIndex: zIndex}}
             variants={cartMenuAnimation}
@@ -83,7 +83,7 @@ const CartMenu = () => {
                     Proceed to Checkout
                 </button>}
             </div>
-        </motion.div>
+        </motion.aside>
     );
 }
 

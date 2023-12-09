@@ -1,16 +1,19 @@
+import {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {motion} from 'framer-motion';
+import {useFormik} from 'formik';
+import * as Yup from 'yup';
+
+import {toggleCartMenu, toggleCouponMenu, togglePaymentMenu} from '../../store/slices/menuSlice';
+import {paymentInfoState} from '../../store/slices/paymentSlice';
+import {couponList} from '../../data/data';
+
+import IconContainer from '../IconContainer/IconContainer';
+import backIcon from '../../assets/icons/arrowBackIcon.svg';
+import eatIcon from '../../assets/icons/eatIcon.svg';
+import foodPackIcon from '../../assets/icons/packingIcon.svg';
 import './paymentMenu.css';
 
-import {togglePaymentMenu, toggleCartMenu} from "../../store/slices/menuSlice";
-import IconContainer from "../IconContainer/IconContainer";
-import backIcon from "../../assets/icons/arrowBackIcon.svg";
-import eatIcon from "../../assets/icons/eatIcon.svg";
-import foodPackIcon from "../../assets/icons/packingIcon.svg";
-
-import {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {motion} from "framer-motion";
-import {useFormik} from "formik";
-import {paymentInfoState} from "../../store/slices/paymentSlice";
 
 const paymentMenuAnimation = {
     hide: {x: 700},
@@ -45,31 +48,24 @@ const slideAnimation = {
     next: {x: -550},
 }
 
-const validate = (values = {}) => {
-    const errors = {};
+const validationSchema = Yup.object().shape({
+    firstName: Yup.string()
+        .required('Required')
+        .min(3, 'Too Short!')
+        .max(15, 'Too Long!'),
+    lastName: Yup.string()
+        .required('Required')
+        .min(3, 'Too Short!')
+        .max(15, 'Too Long!'),
+    number: Yup.string()
+        .required('Required')
+        .matches(/^\d+$/, 'Invalid Phone Number')
+        .length(10, 'Must be 10 characters'),
+    email: Yup.string()
+        .required('Required')
+        .email('Invalid email address'),
+});
 
-    if (!values.firstName) errors.firstName = 'Required';
-    else if (values.firstName.length > 15) {
-        errors.firstName = 'Must be 15 characters or less';
-    }
-
-    if (!values.lastName) errors.lastName = 'Required';
-    else if (values.lastName.length > 15) {
-        errors.lastName = 'Must be 15 characters or less';
-    }
-
-    if (!values.number) errors.number = 'Required!';
-    else if (values.number.length !== 10) {
-        errors.number = !/^\d+$/.test(values.number) ? 'Invalid Phone Number!' : 'Phone number must be 10 characters!';
-    }
-
-    if (!values.email) errors.email = 'Required';
-    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid email address';
-    }
-
-    return errors;
-};
 
 const InputComponent = ({id, name, type, onChange, value, label}) => {
     return <>
@@ -79,12 +75,18 @@ const InputComponent = ({id, name, type, onChange, value, label}) => {
 }
 
 const PaymentMenu = () => {
+    const TAX_AND_SERVICE_FEE = 10;
+
     const dispatch = useDispatch();
     const [track, setTrack] = useState(0);
+    const [subTotal, setSubTotal] = useState(0);
+    const [discount, setDiscount] = useState(0);
     const paymentMenuState = useSelector((state) => state.menuState.paymentMenuState);
     // const paymentData = useSelector((state => state.paymentInfoState));
     const cartData = useSelector((state) => state.cartItems);
+    const couponId = useSelector(state => state.couponState);
     const {State, zIndex} = paymentMenuState;
+
     const handlePaymentClose = () => {
         if (track === 0) {
             dispatch(paymentInfoState({
@@ -94,12 +96,16 @@ const PaymentMenu = () => {
                 lastName: "",
                 number: "",
             }));
+            dispatch(toggleCouponMenu({State: false}));
             dispatch(togglePaymentMenu({State: false,}));
             dispatch(toggleCartMenu({State: true,}));
         } else if (track > 0) {
+            dispatch(toggleCouponMenu({State: false}));
             setTrack(track - 1);
         }
     }
+    const handleCouponMenuOpen = () => dispatch(toggleCouponMenu({State: true}));
+
     const formikPaymentInfo = useFormik({
         initialValues: {
             firstName: '',
@@ -108,13 +114,27 @@ const PaymentMenu = () => {
             email: '',
             foodPack: false,
         },
-        validate,
+        validationSchema: validationSchema,
         onSubmit: (values, {resetForm}) => {
             dispatch(paymentInfoState({...values}));
             resetForm();
             setTrack(1);
-        }
+        },
     });
+
+    useEffect(() => {
+        const selectedCoupons = couponList.filter(coupon => couponId.includes(coupon.id));
+        const filteredItems = cartData.filter(product => selectedCoupons.some(coupon => coupon.validProduct.includes(product.id)));
+        const totalDiscountPrice = filteredItems
+            .map(product => selectedCoupons
+                .reduce((discount, coupon) => coupon
+                    .validProduct
+                    .includes(product.id) ?
+                    discount + (product.price * coupon.discount) / 100 :
+                    discount, 0)).reduce((acc, cur) => acc + cur, 0);
+        couponId && setDiscount(totalDiscountPrice);
+        setSubTotal(cartData.map((value) => value.price * value.quantity).reduce((acc, cur) => acc + cur, 0));
+    }, [cartData, couponId]);
 
     const paymentInfoInput = [
         {
@@ -160,7 +180,7 @@ const PaymentMenu = () => {
     ];
 
     return (
-        <motion.div
+        <motion.aside
             className="paymentMenu darkGlass35"
             style={{zIndex: zIndex}}
             variants={paymentMenuAnimation}
@@ -204,6 +224,7 @@ const PaymentMenu = () => {
             </div>
 
             <div className="paymentMenu__processContainer">
+                {/* Process 01 */}
                 <motion.form
                     className="paymentMenu__process1"
                     onSubmit={formikPaymentInfo.handleSubmit}
@@ -298,7 +319,7 @@ const PaymentMenu = () => {
                         Submit
                     </button>
                 </motion.form>
-
+                {/* Process 02 */}
                 <motion.section
                     className="paymentMenu__process2"
                     variants={slideAnimation}
@@ -306,7 +327,6 @@ const PaymentMenu = () => {
                     transition={{duration: 0.15, ease: "easeInOut"}}
                 >
                     <div className="paymentMenu__process2__heading">
-                        <h3 className="paymentMenu__process2__title">CAMPUS'CAFE</h3>
                         <h4 className="paymentMenu__process2__orderIdNumber">Your Order ID #MMDDXXXXX</h4>
                     </div>
                     <div className="paymentMenu__process2__itemList">
@@ -339,12 +359,51 @@ const PaymentMenu = () => {
                             </table>
                         </div>
                     </div>
+                    <div className="paymentMenu__process2__priceDetails">
+                        <div className="paymentMenu__process2__priceDetails__info">
+                            <p>Subtotal</p>
+                            <p>₹{subTotal}</p>
+                        </div>
+                        <div className="paymentMenu__process2__priceDetails__info">
+                            <p>Apply Coupon</p>
+                            <button type="button" onClick={handleCouponMenuOpen}>
+                                All Coupons
+                            </button>
+                        </div>
+                        {couponId.length !== 0 && <div className="paymentMenu__process2__priceDetails__info">
+                            <p>Coupon Discounts</p>
+                            <p>-₹{discount}</p>
+                        </div>}
+                        <div className="paymentMenu__process2__priceDetails__info">
+                            <p>Tax and Service Fees</p>
+                            <p>+₹{TAX_AND_SERVICE_FEE}</p>
+                        </div>
+                        <div className="paymentMenu__process2__priceDetails__info">
+                            <p>Total Amount</p>
+                            <p>₹{subTotal + TAX_AND_SERVICE_FEE - discount}</p>
+                        </div>
+                    </div>
                     <div className="paymentMenu__process2__btnContainer">
-
+                        <button
+                            type="button"
+                            className="paymentMenu__process2__btnContainer__btnPay"
+                            onClick={() => setTrack(2)}
+                        >
+                            Pay
+                        </button>
                     </div>
                 </motion.section>
+                {/* Process 03 */}
+                <motion.div
+                    className="paymentMenu__process3"
+                    variants={slideAnimation}
+                    animate={track === 2 ? 'current' : 'next'}
+                    transition={{duration: 0.15, ease: "easeInOut"}}
+                >
+                    <h3>Under Development...</h3>
+                </motion.div>
             </div>
-        </motion.div>
+        </motion.aside>
     );
 }
 

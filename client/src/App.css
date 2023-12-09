@@ -48,6 +48,7 @@
     --shadow_01: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     --shadow_02: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     --shadow_03: rgba(0, 0, 0, 0.45) 0 25px 20px -20px;
+    --shadow_04: inset rgba(0, 0, 0, 0.16) 0px 3px 6px, inset rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
     --mianWidth: 85vw;
 
@@ -239,7 +240,7 @@
 }
 
 .addScroll::-webkit-scrollbar-track {
-    background-color: var(--colorWhiteTransparent);
+    background-color: var(--colorWhiteTransparent50);
 }
 
 .addScroll::-webkit-scrollbar-thumb {
@@ -249,6 +250,42 @@
 
 .addScroll::-webkit-scrollbar-thumb:hover {
     background-color: var(--baseColor);
+}
+
+.glowAnimation {
+    background: linear-gradient(
+            to left,
+            #ff5770,
+            #e4428d,
+            #c42da8,
+            #9e16c3,
+            #6501de,
+            #9e16c3,
+            #c42da8,
+            #e4428d,
+            #ff5770
+    );
+    background-size: 200% 200%;
+    animation: animateGlow 3s linear infinite;
+    filter: blur(15px);
+
+    height: 100%;
+    width: 100%;
+
+    transform: scale(0.97) translateZ(0);
+    position: absolute;
+    top: 15px;
+
+    z-index: 0;
+}
+
+@keyframes animateGlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
 }
 
 @-webkit-keyframes gradient {

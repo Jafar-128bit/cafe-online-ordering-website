@@ -10,6 +10,7 @@ import CategoriesTab from "./components/CategoriesTab/CategoriesTab";
 import List from "./pages/List/List";
 import PaymentMenu from "./components/PaymentMenu/PaymentMenu";
 import SearchMenu from "./components/SearchMenu/SearchMenu";
+import CouponMenu from "./components/CouponMenu/CouponMenu";
 
 function App() {
     const isCategoriesTab = useSelector((state) => state.menuState.categoriesTabState.State);
@@ -27,6 +28,7 @@ function App() {
                 <CartMenu/>
                 <PaymentMenu/>
                 <SearchMenu/>
+                <CouponMenu/>
                 <Routes>
                     <Route path={"/"} element={<Home/>}/>
                     <Route path={"/menu"} element={<List/>}/>

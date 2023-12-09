@@ -17,7 +17,7 @@
 }
 
 .categories__options {
-    background-color: var(--color3);
+    background-color: var(--colorWhite);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -43,7 +43,7 @@
 
 .categories__optionName {
     background-color: transparent;
-    color: var(--color3);
+    color: var(--colorWhite);
 
     width: 100%;
     height: 100%;
@@ -62,5 +62,5 @@
 }
 
 .categories__optionName:hover {
-    background-color: var(--colorBlackTransparent);
+    background-color: var(--colorBlackTransparent35);
 }
