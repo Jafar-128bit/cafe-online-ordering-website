@@ -8,7 +8,7 @@ const IconContainer = ({
                            height = "26px",
                            id = "",
                            background = "",
-                           round = 0,
+                           round = true,
                        }) => {
     return (
         <div id={id} className="iconContainer" style={{

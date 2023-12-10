@@ -8,7 +8,11 @@ const ProductCardMain = ({id, productImage, productName, price, buyBtn, handleBu
             <p className="productCard__productName">{productName}</p>
             <p className="productCard__productPrice">₹{price}</p>
             <button
-                className={`productCard__addToCard ${buyBtn ? "productCard__addToCard__hide" : "productCard__addToCard__show"}`}
+                className={
+                    `productCard__addToCard ${buyBtn ?
+                        "productCard__addToCard__hide"
+                        : "productCard__addToCard__show"}`
+                }
                 onClick={handleBuy}
             >
                 <IconContainer

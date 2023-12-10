@@ -20,7 +20,7 @@
 
 .productCardList__removeBtn {
     background-color: var(--colorWhite);
-    color: var(--color6);
+    color: var(--alertColor2);
 
     display: flex;
     align-items: center;
@@ -32,7 +32,7 @@
     padding: 5px;
     margin: 0;
 
-    border: 1px solid var(--color6);
+    border: 1px solid var(--alertColor2);
     border-left: none;
     border-radius: 0 5px 5px 0;
     box-shadow: var(--shadow_01);
@@ -51,7 +51,7 @@
 }
 
 .productCardList__removeBtn:hover {
-    background-color: var(--color6);
+    background-color: var(--alertColor2);
     color: var(--colorWhite);
 }
 
@@ -69,7 +69,7 @@
 }
 
 .productCardList__info__productName {
-    color: var(--color1Dark);
+    color: var(--colorBlack);
 
     display: flex;
     align-items: center;
@@ -98,7 +98,7 @@
 .productCardList__info__price__productPriceTotal {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
 
     width: 50%;
     height: 100%;
@@ -111,7 +111,7 @@
 
 .productCardList__info__price__productPrice {
     width: 30%;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
 }
 
@@ -132,7 +132,7 @@
 }
 
 .productCardList__QtyBtn__Quantity {
-    color: var(--color1Dark);
+    color: var(--colorBlack);
 
     display: flex;
     align-items: center;
@@ -141,15 +141,15 @@
     width: 30px;
     height: 30px;
 
-    border: 1px solid var(--color1Dark);
+    border: 1px solid var(--colorBlack);
 
     font-size: 18px;
     font-weight: 600;
 }
 
 .productCardList__QtyBtn__btn {
-    background-color: var(--color1Dark);
-    color: var(--color02);
+    background-color: var(--colorBlack);
+    color: var(--colorWhite);
 
     display: flex;
     align-items: center;
@@ -172,6 +172,6 @@
 }
 
 .productCardList__QtyBtn__btn:hover {
-    background-color: var(--color5);
-    color: var(--color1);
+    background-color: var(--baseColor);
+    color: var(--colorWhite);
 }

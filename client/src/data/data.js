@@ -387,19 +387,19 @@ export const topOrders = [chai[2], iceCream[0], snacks[3], sandwich[1], noodles[
 export const couponList = [
     {
         id: 1,
-        discount: 10,
+        discount: 15,
         couponCode: "MRUJB9",
         validProduct: [17, 18, 15, 28, 30, 27],
     },
     {
         id: 2,
-        discount: 8,
+        discount: 25,
         couponCode: "NGHMQG",
         validProduct: [9, 10, 12, 14],
     },
     {
         id: 3,
-        discount: 30,
+        discount: 35,
         couponCode: "H4V7TR",
         validProduct: [0, 2, 4],
     },
@@ -411,7 +411,7 @@ export const couponList = [
     },
     {
         id: 5,
-        discount: 5,
+        discount: 8,
         couponCode: "Q4R51G",
         validProduct: [6, 7],
     },

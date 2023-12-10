@@ -1,84 +1,241 @@
 .couponCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    width: 400px;
+    min-height: 200px;
+    max-height: 500px;
+
+    padding: 0;
+    margin: 0;
+
+    border-radius: var(--borderRadius1);
+
+    position: relative;
+}
+
+.couponCard__lower {
+
+}
+
+.couponCard__productList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    row-gap: 15px;
+    place-content: flex-start;
+    place-items: center;
+
+    width: 380px;
+    max-height: 300px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0;
+}
+
+.whiteGlass35 {
+    border-radius: 0;
+    border: none;
+}
+
+.couponCard__validProductCard {
+    background: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    width: 350px;
+    height: 70px;
+
+    padding: 0;
+    margin: 0;
+
+    border-radius: var(--borderRadius1);
+
+    box-shadow: var(--shadow_02);
+
+    overflow: hidden;
+}
+
+.validProductCard__productName {
+    color: var(--colorBlack);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 110px;
+    height: 100%;
+
+    padding: 0 0 0 10px;
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 400;
+
+    overflow: hidden;
+}
+
+.validProductCard__productPrice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    width: 150px;
+    height: 70px;
+
+    overflow: hidden;
+    position: relative;
+}
+
+.validProductCard__productPrice__price,
+.validProductCard__productPrice__discountedPrice {
+    background: transparent;
+
+    width: max-content;
+    height: max-content;
+
+    margin: 0;
+    padding: 0;
+}
+
+.validProductCard__productPrice__price {
+    color: var(--colorBlack);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.validProductCard__productPrice__price__crossIcon {
+    position: absolute;
+}
+
+.validProductCard__productPrice__discountedPrice {
+    color: var(--baseColor);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+
+    padding: 0 5px 0 0;
+
+    font-size: 22px;
+    font-weight: 500;
+    text-align: right;
+}
+
+.couponCard__upper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 100%;
+    min-height: 100px;
+
+    border: 1px solid var(--colorWhiteTransparent35);
+    border-radius: var(--borderRadius1);
+    box-shadow: var(--shadow_03);
+
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+}
+
+.couponCard__upper__inactive {
+    background: var(--couponCardBackgroundInActive);
+    background-size: 150% 150%;
+    color: var(--colorBlackTransparent35);
+}
+
+.couponCard__upper > h3 {
+    width: 90%;
+    height: max-content;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-align: center;
+    z-index: 2;
+}
+
+.couponCard__lower {
     background-color: var(--colorWhite);
 
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
 
-    min-width: 400px;
-    max-width: 400px;
+    min-width: 95%;
+    max-width: 95%;
+    min-height: 100px;
 
-    min-height: 200px;
-    max-height: 200px;
-
-    padding: 0;
-    margin: 0;
-
-    border: 1px solid var(--colorWhiteTransparent35);
-    border-radius: var(--borderRadius1);
-
-    overflow: hidden;
-    position: relative;
-}
-
-.couponCard__upper,
-.couponCard__lower {
-    width: 100%;
-    height: 50%;
+    border-radius: 0 0 var(--borderRadius1) var(--borderRadius1);
 
     z-index: 1;
-}
-
-.couponCard__upper {
-    background: var(--backgroundGradient02);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-shadow: var(--shadow_01);
 
     position: relative;
-    overflow: hidden;
-}
-
-.couponCard__upper > h3 {
-    color: var(--colorBlackTransparent35);
-
-    margin: 0;
-    padding: 0;
-
-    font-size: 112px;
-    font-weight: 900;
-    letter-spacing: 2px;
-
-    position: absolute;
-    bottom: -15px;
-    right: -20px;
-}
-
-.couponCard__lower {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
 }
 
 .couponCard__lower__title {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
 
     width: 60%;
-    height: 100%;
+    height: 80%;
 
     padding: 0 10px;
     margin: 0;
 
     font-size: 16px;
+    font-weight: 400;
+}
+
+.couponCard__lower__expandBtn {
+    background-color: var(--colorBlackTransparent35);
+    color: var(--colorWhite);
+
+    padding: 5px 10px;
+    margin: 0;
+
+    border: none;
+    outline: none;
+    border-radius: var(--borderRadius1);
+    box-shadow: var(--shadow_04);
+
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+}
+
+.couponCard__lower__expandBtn:hover {
+    background-color: var(--baseColor);
 }
 
 .couponCard__lower__info {
@@ -97,14 +254,15 @@
     justify-content: center;
 
     width: 100%;
-    height: 35%;
+    height: 45%;
 
     padding: 0;
     margin: 0;
 
     font-size: 18px;
     font-weight: 600;
-    letter-spacing: 2px;
+    text-align: center;
+    letter-spacing: 3px;
 }
 
 .couponCard__lower__applyCouponSlider {
@@ -113,7 +271,7 @@
     justify-content: center;
 
     width: 100%;
-    height: 65%;
+    height: 55%;
 
     position: relative;
 }
@@ -168,4 +326,13 @@
     top: -3px;
     left: -85px;
     z-index: 1;
+}
+
+.couponCard__lower__applyCouponSlider__notValidMsg {
+    color: var(--colorBlackTransparent50);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: not-allowed;
 }

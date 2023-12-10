@@ -7,12 +7,9 @@ import {useDispatch} from "react-redux";
 import {motion} from "framer-motion";
 import ImageContainer from "../ImageContainer/ImageContainer";
 
-const productCard = {
+const categoryCard = {
     hidden: {scale: 0, opacity: 0,},
-    visible: {
-        scale: 1,
-        opacity: 1,
-    }
+    visible: {scale: 1, opacity: 1,}
 };
 
 const categories = {
@@ -22,8 +19,9 @@ const categories = {
         y: 0,
         transition: {
             duration: 0.2,
-            delayChildren: 0.3,
-            staggerChildren: 0.2,
+            delayChildren: 0.1,
+            staggerChildren: 0.15,
+            type: "spring", stiffness: 300, damping: 15
         }
     }
 };
@@ -35,7 +33,8 @@ const Options = ({id, optionName, symbol, dispatch}) => {
             style={{
                 backgroundImage: `url(${symbol})`,
             }}
-            variants={productCard}
+            variants={categoryCard}
+            transition={{type: "spring", stiffness: 300, damping: 20}}
         >
             <button
                 type="button"
@@ -64,16 +63,30 @@ const CategoriesTab = () => {
                 position="absolute"
                 zIndex={0}
             />
-            {
-                menuList.map((value) => <Options
-                        key={value.id}
-                        id={value.id}
-                        symbol={value.menuIcon}
-                        optionName={value.menuHeading}
-                        dispatch={dispatch}
-                    />
-                )
-            }
+            <div className="categories__specialOption">
+                <motion.div
+                    className="specialOption01"
+                    variants={categoryCard}
+                >
+                </motion.div>
+                <motion.div
+                    className="specialOption02"
+                    variants={categoryCard}
+                >
+                </motion.div>
+            </div>
+            <div className="categories__optionContainer">
+                {
+                    menuList.map((value) => <Options
+                            key={value.id}
+                            id={value.id}
+                            symbol={value.menuIcon}
+                            optionName={value.menuHeading}
+                            dispatch={dispatch}
+                        />
+                    )
+                }
+            </div>
         </motion.section>
     );
 }

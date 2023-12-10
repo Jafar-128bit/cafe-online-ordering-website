@@ -86,7 +86,7 @@
 }
 
 .list__section__02__title {
-    color: var(--color3);
+    color: var(--colorWhite);
     width: 60%;
     height: max-content;
 
@@ -101,7 +101,6 @@
 
 .list__section__02__article {
     color: var(--colorWhite);
-
     width: 100%;
     height: max-content;
 
