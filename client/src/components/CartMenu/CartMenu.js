@@ -4,6 +4,7 @@ import closeIcon from '../../assets/icons/closeIcon.svg';
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {motion} from "framer-motion";
+import {useNavigate} from "react-router-dom";
 
 import IconContainer from "../IconContainer/IconContainer";
 import {toggleCartMenu, togglePaymentMenu} from "../../store/slices/menuSlice";
@@ -20,6 +21,7 @@ const CartMenu = () => {
     const cartMenuState = useSelector((state) => state.menuState.cartState);
     const {State, zIndex} = cartMenuState;
     const cartData = useSelector((state) => state.cartItems);
+    const goto = useNavigate();
 
     useEffect(() => {
         setSubTotal(cartData.map((value) => value.price * value.quantity).reduce((acc, cur) => acc + cur, 0));
@@ -60,9 +62,10 @@ const CartMenu = () => {
             </div>
             <div className="cartMenu__productList addScroll"
                  style={{placeContent: `${cartData.length !== 0 ? "flex-start" : "center"}`}}>
-                {cartData.length !== 0 ? cartData.map((value) => <ProductCardList
+                {cartData.length !== 0 ? cartData.map((value, index) => <ProductCardList
                         key={value.id}
                         id={value.id}
+                        index={index}
                         productName={value.productName}
                         productImage={value.productImage}
                         price={value.price}
@@ -75,7 +78,15 @@ const CartMenu = () => {
                 <p className="cartMenu__subTotal__subtext">₹{subTotal}</p>
             </div>
             <div className="cartMenu__btn">
-                <button type="button" onClick={handleClose}>Continue Shopping</button>
+                <button
+                    type="button"
+                    onClick={() => {
+                        handleClose();
+                        goto("/menu");
+                    }}
+                >
+                    Continue Shopping
+                </button>
                 {cartData.length !== 0 && <button
                     type="button"
                     onClick={handlePaymentOpen}

@@ -123,7 +123,7 @@
 }
 
 .validProductCard__productPrice__discountedPrice {
-    color: var(--baseColor);
+    color: var(--themeColor01);
 
     display: flex;
     align-items: center;
@@ -235,7 +235,7 @@
 }
 
 .couponCard__lower__expandBtn:hover {
-    background-color: var(--baseColor);
+    background-color: var(--themeColor01);
 }
 
 .couponCard__lower__info {
@@ -281,7 +281,7 @@
 }
 
 .couponCard__lower__applyCouponSlider > .sliderBase {
-    background-color: var(--alertColor2);
+    background-color: var(--color03);
     color: var(--colorWhite);
 
     display: flex;
@@ -307,7 +307,7 @@
 }
 
 .sliderCircle {
-    background-color: var(--baseColor);
+    background-color: var(--themeColor01);
 
     display: flex;
     align-items: center;

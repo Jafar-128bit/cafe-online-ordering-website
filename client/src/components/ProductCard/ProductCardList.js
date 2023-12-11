@@ -2,8 +2,21 @@ import './productCardList.css';
 import ImageContainer from "../ImageContainer/ImageContainer";
 import {useDispatch} from "react-redux";
 import {removeFromCart, updateCartItem} from "../../store/slices/cartSlices";
+import {motion} from "framer-motion";
 
-const ProductCardList = ({id, productName, productImage, price, quantity}) => {
+const ProductCardList = ({id, productName, productImage, price, quantity, index}) => {
+
+    const productCardAnimation = {
+        initial: {opacity: 0, x: 100},
+        animate: () => ({
+            opacity: 1,
+            x: 0,
+            transition: {
+                delay: 0.1 * index,
+            }
+        }),
+    }
+
     const dispatch = useDispatch();
     const isDecBtnDisable = {cursor: quantity === 1 ? "not-allowed" : "pointer",};
     const isIncBtnDisable = {cursor: quantity < 10 ? "pointer" : "not-allowed",};
@@ -36,7 +49,12 @@ const ProductCardList = ({id, productName, productImage, price, quantity}) => {
     }
 
     return (
-        <div className="productCardList">
+        <motion.div
+            className="productCardList"
+            variants={productCardAnimation}
+            initial="initial"
+            animate="animate"
+        >
             <ImageContainer
                 src={productImage}
                 alt={productName}
@@ -71,7 +89,7 @@ const ProductCardList = ({id, productName, productImage, price, quantity}) => {
                     -
                 </button>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

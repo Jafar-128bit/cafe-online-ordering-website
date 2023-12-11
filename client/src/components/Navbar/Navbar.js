@@ -12,7 +12,7 @@ import {useEffect, useState} from "react";
 import {motion, useAnimate} from "framer-motion";
 
 const linkStyle = {
-    color: "var(--masterColor)",
+    color: "var(--colorWhite)",
     textDecoration: "none",
     textTransform: "uppercase",
     padding: "3px",
@@ -78,7 +78,7 @@ const Navbar = () => {
         <nav className="navbar">
             <section className="navbar__section_01">
                 <NavLink to="/" style={({isActive}) => ({
-                    color: isActive ? "var(--masterColor)" : "var(--masterColor)",
+                    color: isActive ? "var(--neonGreen)" : "var(--colorWhite)",
                     textDecoration: "none",
                 })}>
                     <h1 className="navbar__section_01__logo">Campus'Cafe</h1>

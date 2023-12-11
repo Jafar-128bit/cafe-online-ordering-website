@@ -23,7 +23,7 @@
 }
 
 .searchMenu__searchBoxContainer {
-    background: var(--backgroundGradient07);
+    background: var(--backgroundGradient05);
 
     display: flex;
     align-items: center;
@@ -34,7 +34,7 @@
 }
 
 .searchBar {
-    background-color: var(--masterColor);
+    background-color: var(--colorWhite);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -58,7 +58,7 @@
     height: 70%;
 
     border: none;
-    border-bottom: 2px solid var(--baseColor);
+    border-bottom: 2px solid var(--themeColor01);
     outline: none;
 
     margin: 5px;
@@ -69,7 +69,7 @@
 }
 
 .searchBar__searchBtn {
-    background-color: var(--baseColor);
+    background-color: var(--themeColor01);
 
     display: flex;
     align-items: center;

@@ -39,7 +39,6 @@ const validProductCardAnimation = {
     show: {scale: 1, opacity: 1},
 }
 
-
 const discountPriceAnimation = {
     hidden: {opacity: 1, scale: 1},
     visible: {
@@ -61,7 +60,8 @@ const CouponCard = ({id, couponCode, discount, validProductIDs, isActive}) => {
         const isCouponId = couponId.some((couponId) => couponId === id);
         setApplyCoupon(isCouponId);
         setValidProducts([...validProductList]);
-    }, [couponId, id, validProductIDs]);
+        setShowProducts(false);
+    }, [couponId, id, validProductIDs, applyCoupon]);
 
     const handleApplyCoupon = (id) => {
         if (applyCoupon === false) dispatch(addCoupon(id));

@@ -16,34 +16,6 @@
     position: relative;
 }
 
-.list__loading {
-    background-color: var(--elementColor);
-
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-
-    width: 200px;
-    height: 70px;
-
-    border-radius: 0 100px 100px 0;
-
-    position: absolute;
-    top: 50px;
-
-    transition: all 0.3s ease-out;
-
-
-    z-index: 12;
-}
-
-.list__loading__message {
-    color: var(--colorWhite);
-    font-size: 16px;
-    font-weight: 600;
-}
-
-
 .list__container {
     display: flex;
     align-items: center;
@@ -87,14 +59,14 @@
 
 .list__section__02__title {
     color: var(--colorWhite);
-    width: 60%;
+    width: 80%;
     height: max-content;
 
     padding: 0 10px;
     margin: 0 0 10px 0;
 
-    font-size: 52px;
-    font-weight: 200;
+    font-size: 72px;
+    font-weight: 100;
     text-align: center;
     text-transform: uppercase;
 }
@@ -108,7 +80,7 @@
     margin: 0;
 
     font-size: 32px;
-    font-weight: 200;
+    font-weight: 100;
     text-align: justify;
 }
 

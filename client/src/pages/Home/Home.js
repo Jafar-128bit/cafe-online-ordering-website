@@ -6,11 +6,10 @@ import twitterIcon from '../../assets/icons/twitterIcon.svg';
 import {topOrders} from "../../data/data";
 
 import {useDispatch} from "react-redux";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {motion} from "framer-motion";
 
 import {toggleCategories} from "../../store/slices/menuSlice";
-import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import IconContainer from "../../components/IconContainer/IconContainer";
 import {NavLink} from "react-router-dom";
 import ProductCard from "../../components/ProductCard/ProductCard";
@@ -29,14 +28,9 @@ const topOrdersMotion = {
 
 const Home = () => {
     const dispatch = useDispatch();
-    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         dispatch(toggleCategories({State: false}));
-
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
     }, [dispatch]);
 
     return (
@@ -89,22 +83,7 @@ const Home = () => {
                 </div>
             </section>
             <section className="home__section-02">
-                <div
-                    className="home__loadingScreen"
-                    style={{
-                        opacity: isLoading ? 1 : 0,
-                        zIndex: isLoading ? 2 : 0,
-                    }}
-                >
-                    <LoadingScreen/>
-                </div>
-
-                {!isLoading && <section
-                    className="home__section-02__container"
-                    style={{
-                        zIndex: isLoading ? 0 : 2,
-                    }}
-                >
+                <section className="home__section-02__container">
                     <h2 className="home__section-02__title">Feed</h2>
                     <motion.section
                         className="home__section-02__container__topOrders"
@@ -125,7 +104,6 @@ const Home = () => {
                         </div>
                     </motion.section>
                 </section>
-                }
             </section>
         </section>
     )

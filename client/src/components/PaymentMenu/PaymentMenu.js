@@ -262,14 +262,14 @@ const PaymentMenu = () => {
                             Pack the Food?
                             <motion.p
                                 className="isFoodPack__option"
-                                style={{backgroundColor: !formikPaymentInfo.values.foodPack && "var(--alertColor2)",}}
+                                style={{backgroundColor: !formikPaymentInfo.values.foodPack && "var(--color03)",}}
                                 variants={optionsAnimation1}
                                 animate={formikPaymentInfo.values.foodPack ? 'hide' : 'show'}
                                 transition={{ease: "easeInOut", duration: 0.35}}
                             >No</motion.p>
                             <motion.p
                                 className="isFoodPack__option"
-                                style={{backgroundColor: formikPaymentInfo.values.foodPack && "var(--baseColor)",}}
+                                style={{backgroundColor: formikPaymentInfo.values.foodPack && "var(--color02)",}}
                                 variants={optionsAnimation2}
                                 animate={formikPaymentInfo.values.foodPack ? 'show' : 'hide'}
                                 transition={{ease: "easeInOut", duration: 0.35}}

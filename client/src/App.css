@@ -1,12 +1,15 @@
 :root {
     /* Light Colors */
-    --masterColor: #F2F2EF;
-    --baseColor: #00bc00;
-    --activeColor: #8BD8FF;
-    --elementColor: #E8BE4E;
-    --alertColor1: #00bc00;
-    --alertColor2: #ff4747;
+    --themeColor01: #00bc00;
+
+    --color01: #E8BE4E;
+    --color02: #00bc00;
+    --color03: #ff4747;
+
     --neonGreen: #39ff14;
+
+    --specialMenuContainer01: #ffa578;
+    --specialMenuContainer02: #0b0a32;
 
     --colorWhite: #FFFFFF;
     --colorBlack: #000000;
@@ -23,30 +26,17 @@
     --shadow_01: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     --shadow_02: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     --shadow_03: rgba(0, 0, 0, 0.45) 0 25px 20px -20px;
-    --shadow_04: inset rgba(0, 0, 0, 0.16) 0px 3px 6px, inset rgba(0, 0, 0, 0.23) 0px 3px 6px;
-
-    --mianWidth: 85vw;
-
-    --heightNavbar: 60px;
-    --heightcategories: 150px;
-
-    --top01: 15px;
-    --top02: calc(var(--top01) + var(--heightNavbar) + var(--top01) + var(--heightcategories));
-
-    --left: 15px;
+    --shadow_04: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    --shadow_05: rgb(38, 57, 77) 0px 20px 30px -10px;
 
     --borderRadius1: 6px;
 
-    --gradientUpper: linear-gradient(0deg, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.6) 95%);
-    --gradientLower: linear-gradient(180deg, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.6) 95%);
-
     --backgroundGradient01: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    --backgroundGradient02: linear-gradient(70.6deg, rgb(172, 30, 255) 0.3%, rgb(65, 35, 251) 55.8%, rgb(35, 251, 224) 105.1%);
-    --backgroundGradient03: linear-gradient(111.4deg, rgb(2, 255, 4) 18.4%, rgb(0, 232, 237) 100.2%);
-    --backgroundGradient04: radial-gradient(1173px at -3.5% -4.8%, rgb(255, 140, 16) 8.4%, rgb(255, 26, 26) 20.6%, rgb(0, 64, 249) 46.7%, rgb(131, 201, 8) 69.6%, rgb(255, 230, 28) 84.7%);
-    --backgroundGradient05: radial-gradient(circle, rgb(255, 249, 0) 0%, rgb(237, 194, 20) 100%);
-    --backgroundGradient06: linear-gradient(109.6deg, rgb(43, 1, 91) 13.4%, rgb(122, 2, 54) 100.2%);
-    --backgroundGradient07: linear-gradient(109.6deg, #76B900 13.4%, #00bc00 100.2%);
+    --backgroundGradient02: linear-gradient(111.4deg, rgb(2, 255, 4) 18.4%, rgb(0, 232, 237) 100.2%);
+    --backgroundGradient03: radial-gradient(circle, rgb(255, 249, 0) 0%, rgb(237, 194, 20) 100%);
+    --backgroundGradient04: linear-gradient(109.6deg, rgb(43, 1, 91) 13.4%, rgb(122, 2, 54) 100.2%);
+    --backgroundGradient05: linear-gradient(109.6deg, #76B900 13.4%, #00bc00 100.2%);
+    --backgroundGradient06: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
 
     --couponCardBackgroundLevel1: radial-gradient(circle at 10% 20%, rgb(3, 235, 255) 0%, rgb(152, 70, 242) 100.2%);
     --couponCardBackgroundLevel2: linear-gradient(to right, #f83600 0%, #f9d423 100%);
@@ -129,25 +119,6 @@
     right: 10px;
 
     z-index: 90;
-}
-
-.button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: max-content;
-    height: max-content;
-
-    border: none;
-    border-radius: calc(35px / 2);
-    padding: 10px 15px;
-
-    box-shadow: var(--shadow_02);
-
-    font-size: 12px;
-    letter-spacing: 1px;
-    cursor: pointer;
 }
 
 .darkGlass75 {
@@ -247,12 +218,12 @@
 }
 
 .addScroll::-webkit-scrollbar-thumb {
-    background-color: var(--masterColor);
+    background-color: var(--colorWhite);
     border-radius: calc(8px / 2);
 }
 
 .addScroll::-webkit-scrollbar-thumb:hover {
-    background-color: var(--baseColor);
+    background-color: var(--themeColor01);
 }
 
 .addScroll__horizontal::-webkit-scrollbar {
@@ -264,12 +235,12 @@
 }
 
 .addScroll__horizontal::-webkit-scrollbar-thumb {
-    background-color: var(--masterColor);
+    background-color: var(--colorWhite);
     border-radius: calc(8px / 2);
 }
 
 .addScroll__horizontal::-webkit-scrollbar-thumb:hover {
-    background-color: var(--baseColor);
+    background-color: var(--themeColor01);
 }
 
 @-webkit-keyframes gradient {

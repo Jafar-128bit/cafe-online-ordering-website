@@ -30,8 +30,8 @@ function App() {
                 <SearchMenu/>
                 <CouponMenu/>
                 <Routes>
-                    <Route path={"/"} element={<Home/>}/>
-                    <Route path={"/menu"} element={<List/>}/>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/menu/:type?/:menuId?" element={<List/>}/>
                 </Routes>
             </BrowserRouter>
         </main>

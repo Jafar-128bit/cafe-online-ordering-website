@@ -36,7 +36,7 @@
 }
 
 .paymentMenu__processIndicator {
-    background: var(--backgroundGradient07);
+    background: var(--backgroundGradient05);
 
     display: flex;
     align-items: center;
@@ -115,7 +115,7 @@
 
 .paymentMenu__process1__errorContainer {
     background-color: var(--colorWhite);
-    color: var(--alertColor2);
+    color: var(--color03);
 
     width: max-content;
     height: max-content;
@@ -163,7 +163,7 @@
     margin: 0;
 
     border: none;
-    border-bottom: 1px solid var(--baseColor);
+    border-bottom: 1px solid var(--themeColor01);
     outline: none;
 
     font-size: 18px;
@@ -214,7 +214,7 @@
 }
 
 .paymentMenu__process1__submitBtn {
-    background-color: var(--baseColor);
+    background-color: var(--themeColor01);
     color: var(--colorWhite);
 
     display: flex;
@@ -429,7 +429,7 @@
 }
 
 .paymentMenu__process2__btnContainer__btnPay {
-    background: var(--backgroundGradient03);
+    background: var(--backgroundGradient02);
     background-size: 200% 200%;
     -webkit-animation: gradient 8s ease infinite;
     animation: gradient 8s ease infinite;

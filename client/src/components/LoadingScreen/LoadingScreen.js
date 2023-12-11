@@ -5,7 +5,7 @@ const LoadingScreen = ({
                            height = 50,
                            loadingThickness = 5,
                            size = "full",
-                           color = "var(--masterColor)"
+                           color = "var(--colorWhite)"
                        }) => {
     const loadingStyle = {
         width: `${width}px`,

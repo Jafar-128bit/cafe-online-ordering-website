@@ -26,12 +26,13 @@ const ProductCardSmall = ({id, productImage, productName, price, buyBtn, handleB
         <motion.div
             className="productCardSmall"
             style={{backgroundImage: `url(${productImage})`,}}
-            onClick={handleBuy}
             variants={productCardSmall}
             transition={{type: "spring", stiffness: 300, damping: 20}}
         >
             <motion.p
                 className="productCardSmall__productName"
+                onMouseOver={() => setOnHover(false)}
+                onMouseLeave={() => setOnHover(true)}
                 variants={productNameAnimation}
                 animate={onHover ? 'hide' : 'show'}
                 transition={{ease: "easeIn", duration: 0.1,}}
@@ -40,6 +41,9 @@ const ProductCardSmall = ({id, productImage, productName, price, buyBtn, handleB
             </motion.p>
             <motion.p
                 className="productCardSmall__addToCart"
+                onMouseOver={() => setOnHover(false)}
+                onMouseLeave={() => setOnHover(true)}
+                onClick={handleBuy}
                 variants={addToCartAnimation}
                 animate={onHover && !buyBtn ? 'hide' : 'show'}
                 transition={{ease: "easeIn", duration: 0.1,}}

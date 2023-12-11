@@ -5,7 +5,7 @@ import ProductCardSmall from "./ProductCardSmall";
 import ProductCardSearchResult from "./ProductCardSearchResult";
 import ProductCardMain from "./ProductCardMain";
 
-const ProductCard = ({id, productName, productImage, price, type = ""}) => {
+const ProductCard = ({id, productName, productImage, price, type = "", index}) => {
     const [buyBtn, setBuyBtn] = useState(false);
     const dispatch = useDispatch();
     const cartData = useSelector((state) => state.cartItems);
@@ -34,6 +34,7 @@ const ProductCard = ({id, productName, productImage, price, type = ""}) => {
             price={price}
             buyBtn={buyBtn}
             handleBuy={handleBuy}
+            index={index}
         />}
         {type === "small" && <ProductCardSmall
             id={id}

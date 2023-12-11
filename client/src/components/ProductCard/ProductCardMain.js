@@ -2,9 +2,28 @@ import './productCard.css';
 import IconContainer from "../IconContainer/IconContainer";
 import cartIcon from "../../assets/icons/cartIcon.svg";
 
-const ProductCardMain = ({id, productImage, productName, price, buyBtn, handleBuy}) => {
+import {motion} from "framer-motion";
+
+const ProductCardMain = ({id, productImage, productName, price, buyBtn, handleBuy, index}) => {
+    const productCardAnimation = {
+        initial: {opacity: 0, scale: 0.85},
+        animate: () => ({
+            opacity: 1,
+            scale: 1,
+            transition: {
+                delay: 0.1 * index,
+            }
+        }),
+    }
+
     return (
-        <div className="productCard" style={{backgroundImage: `url(${productImage})`}}>
+        <motion.div
+            className="productCard"
+            style={{backgroundImage: `url(${productImage})`}}
+            variants={productCardAnimation}
+            initial="initial"
+            animate="animate"
+        >
             <p className="productCard__productName">{productName}</p>
             <p className="productCard__productPrice">₹{price}</p>
             <button
@@ -24,7 +43,7 @@ const ProductCardMain = ({id, productImage, productName, price, buyBtn, handleBu
                 />
                 Buy
             </button>
-        </div>
+        </motion.div>
     );
 }
 

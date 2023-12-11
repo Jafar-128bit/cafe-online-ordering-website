@@ -20,7 +20,7 @@
 
 .productCardList__removeBtn {
     background-color: var(--colorWhite);
-    color: var(--alertColor2);
+    color: var(--color03);
 
     display: flex;
     align-items: center;
@@ -32,7 +32,7 @@
     padding: 5px;
     margin: 0;
 
-    border: 1px solid var(--alertColor2);
+    border: 1px solid var(--color03);
     border-left: none;
     border-radius: 0 5px 5px 0;
     box-shadow: var(--shadow_01);
@@ -51,7 +51,7 @@
 }
 
 .productCardList__removeBtn:hover {
-    background-color: var(--alertColor2);
+    background-color: var(--color03);
     color: var(--colorWhite);
 }
 
@@ -172,6 +172,6 @@
 }
 
 .productCardList__QtyBtn__btn:hover {
-    background-color: var(--baseColor);
+    background-color: var(--themeColor01);
     color: var(--colorWhite);
 }

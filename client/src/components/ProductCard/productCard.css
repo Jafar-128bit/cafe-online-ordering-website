@@ -32,7 +32,7 @@
 }
 
 .productCard__productName {
-    background: var(--masterColor);
+    background: var(--colorWhite);
     color: var(--colorBlack);
 
     width: 100%;
@@ -53,7 +53,7 @@
 }
 
 .productCard__productPrice {
-    background: var(--backgroundGradient07);
+    background: var(--backgroundGradient05);
     background-size: 400% 400%;
     -webkit-animation: gradient 4s ease infinite;
     animation: gradient 4s ease infinite;
@@ -84,7 +84,7 @@
 }
 
 .productCard__addToCard {
-    background-color: var(--elementColor);
+    background-color: var(--color01);
     color: var(--colorWhite);
 
     display: flex;
@@ -115,7 +115,7 @@
 }
 
 .productCard__addToCard:hover {
-    background-color: var(--activeColor);
+    background-color: var(--themeColor01);
 }
 
 .productCard__addToCard__hide {

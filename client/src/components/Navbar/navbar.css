@@ -61,7 +61,7 @@
 }
 
 .navbar__section_01__searchBtn__sudoElement {
-    background: var(--backgroundGradient07);
+    background: var(--backgroundGradient05);
 
     width: 40px;
     height: 40px;
@@ -103,7 +103,7 @@
 .navbar__section_03__cartMenuBtn {
     background-color: transparent;
     /*background-color: #DB7567;*/
-    color: var(--masterColor);
+    color: var(--colorWhite);
 
     display: flex;
     align-items: center;

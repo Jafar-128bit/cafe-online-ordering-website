@@ -31,7 +31,7 @@
 }
 
 .cartMenu__title {
-    background: var(--backgroundGradient07);
+    background: var(--backgroundGradient05);
     color: var(--colorWhite);
 
     display: flex;
@@ -74,7 +74,7 @@
 }
 
 .cartMenu__subTotal {
-    background: var(--baseColor);
+    background: var(--themeColor01);
     color: var(--colorWhite);
 
     display: flex;
@@ -116,7 +116,7 @@
     min-width: 200px;
     min-height: 20px;
 
-    border: 1px solid var(--baseColor);
+    border: 1px solid var(--themeColor01);
     outline: none;
     border-radius: 0;
 
@@ -146,5 +146,5 @@
 }
 
 .cartMenu__btn > button:hover {
-    background-color: var(--baseColor);
+    background-color: var(--themeColor01);
 }
