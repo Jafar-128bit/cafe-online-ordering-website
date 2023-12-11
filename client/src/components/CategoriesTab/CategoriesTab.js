@@ -2,7 +2,6 @@ import './categoriesTab.css';
 import categoriesTabCover from '../../assets/background/categoriesTabCover.png';
 
 import {menuList} from "../../data/data";
-import {useDispatch} from "react-redux";
 import {motion} from "framer-motion";
 import ImageContainer from "../ImageContainer/ImageContainer";
 import {useState} from "react";
