@@ -1,70 +1,50 @@
 import './searchMenu.css';
+import './responsiveSearchMenu.css';
+
 import {useDispatch, useSelector} from "react-redux";
 import {motion} from 'framer-motion';
 import IconContainer from "../IconContainer/IconContainer";
-import closeIcon from "../../assets/icons/closeIcon.svg";
-import searchIcon from '../../assets/icons/searchIcon.svg';
+import closeLightIcon from "../../assets/icons/close_Light_Icon.svg";
+import searchLightIcon from '../../assets/icons/search2_Light_Icon.svg';
 import {toggleSearchMenu} from "../../store/slices/menuSlice";
-import {setData} from "../../store/slices/dataSlices";
-import {useState} from "react";
-import {
-    cake, cold, iceCream, noodles, chai, snacks, sandwich, smoothies,
-} from "../../data/data";
 import ProductCard from "../ProductCard/ProductCard";
-
-const searchData = [...cake, ...cold, ...iceCream, ...noodles, ...chai, ...snacks, ...sandwich, ...smoothies];
+import useSearchFilterOnChange from "../../hooks/useSearchFilterOnChange";
 
 const searchMenuAnimation = {
-    hide: {opacity: 0, x: -500},
-    show: {opacity: 1, x: 0}
+    hide: {opacity: 0, x: 0, display: "none"},
+    show: {opacity: 1, x: 478, display: "flex"}
 }
 
 const SearchMenu = () => {
+    const {inputValue, productData, handleFilteredData, handleDataClear} = useSearchFilterOnChange(1000);
+
     const dispatch = useDispatch();
-    const [inputValue, setInputValue] = useState('');
     const searchMenu = useSelector(state => state.menuState.searchMenuState);
     const {State, zIndex} = searchMenu;
-    const productData = useSelector(state => state.filterDataState);
-
     const handleClose = () => dispatch(toggleSearchMenu({State: false}));
-    const handleSetData = (data) => dispatch(setData(data));
-
-    const handleFilteredData = ((event) => {
-        const searchWord = event.target.value;
-        setInputValue(searchWord);
-        const newFilterData = searchData
-            .filter((value) => value
-                .productName
-                .toLowerCase()
-                .includes(searchWord.toLowerCase()));
-        searchWord === '' ? handleSetData([]) : handleSetData(newFilterData);
-    });
-
-    const handleDataClear = () => {
-        handleSetData([]);
-        setInputValue('');
-    }
 
     return (
         <motion.aside
-            className="searchMenu darkGlass75"
+            className="searchMenu whiteGlass50"
             style={{zIndex: zIndex}}
             variants={searchMenuAnimation}
             animate={State ? 'show' : 'hide'}
             transition={{type: "spring", stiffness: 300, damping: 25}}
         >
             <button type="button" className="closeBtn searchMenu__closeBtn" onClick={handleClose}>
-                <IconContainer src={closeIcon} alt="close icon svg" width={30} height={30} background={false}/>
+                <IconContainer src={closeLightIcon} alt="close icon svg" width={30} height={30} background={false}/>
             </button>
             <section className="searchMenu__searchBoxContainer">
                 <div className="searchBar">
                     <input type="text" placeholder="Search Here" value={inputValue} onChange={handleFilteredData}/>
                     <button type="button" className="searchBar__searchBtn" onClick={handleDataClear}>
                         <IconContainer
-                            src={inputValue.length === 0 ? searchIcon : closeIcon}
+                            src={inputValue.length === 0 ? searchLightIcon : closeLightIcon}
                             alt="Search Icon svg"
                             background={false}
                             size={true}
+                            width="70%"
+                            height="70%"
                         />
                     </button>
                 </div>

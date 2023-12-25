@@ -1,15 +1,22 @@
 .navbar {
-    background-color: transparent;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+    flex-shrink: 0;
 
     width: 100%;
-    height: 70px;
+    max-width: 1200px;
+    min-height: 70px;
+    max-height: 70px;
+
+    margin: 0;
+    padding: 0;
 
     z-index: 80;
+
+    position: relative;
+    top: 0;
 }
 
 .navbar__section_01 {
@@ -17,6 +24,7 @@
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+    flex-shrink: 0;
 
     width: max-content;
     height: 100%;
@@ -24,7 +32,8 @@
     padding: 0;
     margin: 0;
 
-    border-radius: 0 calc(70px / 2) calc(70px / 2) 0;
+    position: absolute;
+    left: 0;
 }
 
 .navbar__section_01__logo {
@@ -33,9 +42,9 @@
 
     margin: 10px 10px;
 
-    font-size: 22px;
-    font-weight: 400;
-    letter-spacing: 2px;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
@@ -60,9 +69,8 @@
     position: relative;
 }
 
-.navbar__section_01__searchBtn__sudoElement {
-    background: var(--backgroundGradient05);
-
+.navbar__section_01__searchBtn__sudoElement1,
+.navbar__section_01__searchBtn__sudoElement2 {
     width: 40px;
     height: 40px;
 
@@ -72,6 +80,14 @@
 
     position: absolute;
     z-index: 1;
+}
+
+.navbar__section_01__searchBtn__sudoElement1 {
+    background: var(--backgroundGradient05);
+}
+
+.navbar__section_01__searchBtn__sudoElement2 {
+    background: var(--colorBlack);
 }
 
 .navbar__section_02 {
@@ -84,6 +100,24 @@
     height: 60px;
 
     margin: 0 10px;
+
+    position: absolute;
+    left: calc((100% - 150px) / 2);
+}
+
+.navbar__section_02__line, .navbar__section_02__line__hide {
+    background-color: var(--themeColor01);
+
+    width: 30px;
+    height: 4px;
+
+    border-radius: calc(4px / 2);
+
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar__section_02__line__hide {
+    background-color: transparent;
 }
 
 .navbar__section_03 {
@@ -91,36 +125,31 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    flex-shrink: 0;
 
-    width: 200px;
+    width: 100px;
     height: 100%;
 
-    border-radius: calc(70px / 2) 0 0 calc(70px / 2);
-
     padding: 0 0;
+
+    position: absolute;
+    right: 0;
 }
 
 .navbar__section_03__cartMenuBtn {
     background-color: transparent;
-    /*background-color: #DB7567;*/
-    color: var(--colorWhite);
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-shrink: 0;
 
-    width: 85%;
+    width: max-content;
     height: 100%;
-
-    margin: 0;
-    padding: 0;
 
     border: none;
     outline: none;
-
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 2px;
+    padding: 0 10px;
 
     cursor: pointer;
     overflow: hidden;
@@ -130,6 +159,7 @@
 .iconContainer {
     width: 30px;
     height: 30px;
+    flex-shrink: 0;
 
     border-radius: 50%;
     z-index: 2;
@@ -138,26 +168,30 @@
 .navbar__icon2 {
     width: 15px;
     height: 15px;
+    flex-shrink: 0;
 
     border-radius: 50%;
 
     position: absolute;
     z-index: 1;
     top: -17px;
-    left: calc(15px / 2);
+    left: 13px;
 }
 
 .navbar__section_03__cart__indicator {
+    background: var(--backgroundGradient05);
+
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 
     color: var(--colorWhite);
 
     width: 16px;
     height: 16px;
 
-    border: 1px solid var(--neonGreen);
+    border-radius: 50%;
     padding: 5px;
     margin: 0 5px;
 

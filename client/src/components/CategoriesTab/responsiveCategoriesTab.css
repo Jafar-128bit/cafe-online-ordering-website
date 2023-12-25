@@ -1,0 +1,121 @@
+@media screen and (max-width: 1280px) {
+    .categories {
+        max-width: 1000px;
+        width: 100%;
+    }
+
+    .categories__optionContainerItems {
+        grid-template-columns: repeat(4, 220px);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .categories {
+        justify-content: flex-start;
+    }
+
+    .categories__HeadingContainer {
+
+        height: 20%;
+        min-height: 200px;
+    }
+
+    .categories__HeadingContainer > h3 {
+        width: 90%;
+
+        font-size: 26px;
+        font-weight: 100;
+    }
+
+    .specialOption01,
+    .specialOption02 {
+        width: 185px;
+        height: 185px;
+    }
+
+    .specialOption01__backgroundImage {
+        width: calc(600px * 0.841);
+        height: calc(600px * 0.841);
+    }
+
+    .specialOption01__container {
+        height: calc(80px * 0.841);
+    }
+
+    .specialOption01__container__title {
+        font-size: calc(64px * 0.841);
+    }
+
+    .title01 {
+        top: calc(-25px * 0.841);
+        left: calc(-5px * 0.841);
+    }
+
+    .title02 {
+        bottom: calc(-15px * 0.841);
+    }
+
+    .specialOption02__centerImage {
+        width: 185px;
+        height: 185px;
+    }
+
+    .specialOption02__sideImage {
+        width: calc(190px * 0.841);
+        height: calc(190px * 0.841);
+    }
+
+    .sideImage01 {
+        top: calc((-190px / 2) * 0.841);
+        left: calc((-190px / 2) * 0.841);
+    }
+
+    .sideImage02 {
+        top: calc((-190px / 2) * 0.841);
+        right: calc((-190px / 2) * 0.841);
+    }
+
+    .sideImage03 {
+        bottom: calc((-190px / 2) * 0.841);
+        left: calc((-190px / 2) * 0.841);
+    }
+
+    .sideImage04 {
+        bottom: calc((-190px / 2) * 0.841);
+        right: calc((-190px / 2) * 0.841);
+    }
+
+    .specialOption02__container {
+        height: calc(70px * 0.841);
+    }
+
+    .specialOption02__container__title01 {
+        font-size: calc(38px * 0.841);
+    }
+
+    .specialOption02__container__title02 {
+        font-size: calc(28px * 0.841);
+        letter-spacing: 2px;
+    }
+
+    .categories__optionContainerItems {
+        grid-template-columns: repeat(4, 185px);
+    }
+
+    .categories__options {
+        width: 185px;
+        height: 185px;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .categories__optionContainerItems {
+        grid-template-columns: repeat(3, 185px);
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .categories__optionContainerItems {
+        grid-template-columns: repeat(2, 185px);
+    }
+}

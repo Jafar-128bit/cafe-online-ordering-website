@@ -1,0 +1,21 @@
+@media screen and (max-width: 1280px) {
+    .couponMenu {
+        min-width: 537px;
+    }
+
+    .couponMenu__title > h1 {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .couponMenu {
+        min-width: 100vw;
+
+        border: none;
+    }
+
+    .couponMenu__title > h1 {
+        font-size: 30px;
+    }
+}

@@ -1,0 +1,218 @@
+.searchProductCard {
+    background: var(--colorWhite);
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+
+    width: 85%;
+    max-width: 400px;
+    min-width: 300px;
+
+    height: 150px;
+
+    margin: 0;
+    padding: 0;
+
+    border-radius: var(--borderRadius1);
+    box-shadow: var(--shadow_03);
+}
+
+.searchProductCard__section01 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 130px;
+    height: 130px;
+
+    margin: 10px 0 0 10px;
+    padding: 0;
+
+    border: none;
+    border-radius: var(--borderRadius1);
+
+    box-shadow: var(--shadow_01);
+
+    overflow: hidden;
+}
+
+.searchProductCard__section01 > img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.searchProductCard__section02 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: calc(100% - 130px + 20px);
+    height: calc(100% - 20px);
+
+    margin: 10px;
+}
+
+.searchProductCard__section02__infoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 100%;
+    height: 50%;
+}
+
+.searchProductCard__section02__infoContainer > p {
+    width: 100%;
+    height: max-content;
+
+    padding: 0;
+    margin: 0 0 5px 0;
+
+    text-transform: capitalize;
+}
+
+.searchProductCard__section02__productName {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.searchProductCard__section02__productPrice {
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.searchProductCard__section02__productPrice > small {
+    color: var(--themeColor01);
+
+    font-weight: 600;
+}
+
+.searchProductCard__section02__actionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    width: 100%;
+    height: 50%;
+}
+
+.searchProductCard__section02__notificationContainer {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    height: 100%;
+    width: 65%;
+
+    overflow: hidden;
+    position: relative;
+}
+
+.searchProductCard__section02__offerIndicator,
+.searchProductCard__section02__messageIndicator {
+    background: var(--backgroundGradient07);
+    background-size: 600% 600%;
+    -webkit-animation: gradient 6s ease-in infinite;
+    animation: gradient 6s ease-in infinite;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-shrink: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: var(--borderRadius1);
+
+    overflow: hidden;
+    position: absolute;
+}
+
+.searchProductCard__section02__offerIndicator__message,
+.searchProductCard__section02__message {
+    color: var(--colorWhite);
+
+    width: calc(100% - 10px);
+    height: max-content;
+
+    padding: 0 5px;
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.searchProductCard__section02__message {
+    color: var(--colorBlack);
+
+    width: 100%;
+
+    padding: 0;
+
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    font-style: italic;
+}
+
+.searchProductCard__section02__messageIndicator {
+    background: var(--colorWhite);
+}
+
+.searchProductCard__section02__btnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    width: 35%;
+}
+
+.searchProductCard__btnContainer__addToCartBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 40px;
+    height: 40px;
+
+    margin: 0;
+    padding: 0;
+
+    border: none;
+    outline: none;
+    border-radius: var(--borderRadius1);
+    box-shadow: var(--shadow_02);
+
+    cursor: pointer;
+
+    overflow: hidden;
+    position: relative;
+}
+
+.searchProductCard__btnContainer__addToCartBtn > img {
+    width: 65%;
+    height: 65%;
+
+    object-fit: contain;
+    object-position: center;
+
+    position: absolute;
+}
+

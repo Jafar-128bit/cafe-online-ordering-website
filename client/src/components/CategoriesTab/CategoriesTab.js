@@ -1,30 +1,12 @@
 import './categoriesTab.css';
-import categoriesTabCover from '../../assets/background/categoriesTabCover.png';
+import './responsiveCategoriesTab.css';
 
 import {menuList} from "../../data/data";
 import {motion} from "framer-motion";
-import ImageContainer from "../ImageContainer/ImageContainer";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-
-const categoryCard = {
-    hidden: {scale: 0, opacity: 0,},
-    visible: {scale: 1, opacity: 1,}
-};
-
-const categories = {
-    hidden: {opacity: 0, y: -100},
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.2,
-            delayChildren: 0.1,
-            staggerChildren: 0.15,
-            type: "spring", stiffness: 300, damping: 15
-        }
-    }
-};
+import {useDispatch} from "react-redux";
+import {toggleResetSpecialMenu, toggleSetSpecialMenu} from "../../store/slices/specialMenuSlices";
 
 const imageRotateAnimation = {
     initial: {rotate: 0},
@@ -41,26 +23,37 @@ const backgroundImageAnimation = {
         x: [0, 80, -80, 50, 0],
         y: [0, -50, 50, 0, 0],
         scale: [1, 1, 0.8, 0.65, 1],
-        transition: {ease: "easeOut", duration: 16, repeat: Infinity, repeatDelay: 0.5},
+        transition: {ease: "easeInOut", duration: 16, repeat: Infinity, repeatDelay: 0.5},
     }
 }
 
 
-const Options = ({id, optionName, symbol, goto}) => {
+const Options = ({id, optionName, symbol, goto, handleSelectSpecialMenu}) => {
+
+    const categoryCard = {
+        initial: {opacity: 0, scale: 0.85},
+        animate: () => ({
+            opacity: 1,
+            scale: 1,
+            transition: {delay: 0.1 * id, type: "spring", stiffness: 300, damping: 20}
+        }),
+    };
 
     return (
         <motion.section
             className="categories__options"
-            style={{
-                backgroundImage: `url(${symbol})`,
-            }}
+            style={{backgroundImage: `url(${symbol})`,}}
             variants={categoryCard}
-            transition={{type: "spring", stiffness: 300, damping: 20}}
+            initial="initial"
+            animate="animate"
         >
             <button
                 type="button"
                 className="categories__optionName"
-                onClick={() => goto(`/menu/normal/${id}`)}
+                onClick={() => {
+                    goto(`/menu/normalMenu/${id}`);
+                    handleSelectSpecialMenu("normal");
+                }}
             >
                 {optionName}
             </button>
@@ -68,12 +61,33 @@ const Options = ({id, optionName, symbol, goto}) => {
     );
 }
 
-const SpecialMenu = ({setTriggerSideImageAnimation, triggerSideImageAnimation, menuOption, goto}) => {
+const SpecialMenu = ({
+                         setTriggerSideImageAnimation,
+                         triggerSideImageAnimation,
+                         menuOption,
+                         handleSelectSpecialMenu,
+                         goto
+                     }) => {
+
+    const categoryCard = {
+        initial: {opacity: 0, scale: 0},
+        animate: () => ({
+            opacity: 1,
+            scale: 1,
+            transition: {delay: 0.2, type: "spring", stiffness: 300, damping: 20}
+        }),
+    };
+
     return (menuOption === 1 ?
             <motion.div
                 className="specialOption01"
-                onClick={() => goto("/menu/specialMenu/1")}
+                onClick={() => {
+                    handleSelectSpecialMenu("special", 1);
+                    goto("/menu/specialMenu/1");
+                }}
                 variants={categoryCard}
+                initial="initial"
+                animate="animate"
             >
                 <motion.div
                     className="specialOption01__backgroundImage"
@@ -88,8 +102,13 @@ const SpecialMenu = ({setTriggerSideImageAnimation, triggerSideImageAnimation, m
             </motion.div> :
             <motion.div
                 className="specialOption02"
-                onClick={() => goto("/menu/specialMenu/2")}
+                onClick={() => {
+                    handleSelectSpecialMenu("special", 2);
+                    goto("/menu/specialMenu/2");
+                }}
                 variants={categoryCard}
+                initial="initial"
+                animate="animate"
                 onMouseOver={() => setTriggerSideImageAnimation(true)}
                 onMouseLeave={() => setTriggerSideImageAnimation(false)}
             >
@@ -106,6 +125,7 @@ const SpecialMenu = ({setTriggerSideImageAnimation, triggerSideImageAnimation, m
                     {className: "sideImage04", x: 100, y: 100},
                 ].map((image, index) => (
                     <motion.div
+                        key={image.className}
                         className={image.className}
                         animate={triggerSideImageAnimation ?
                             {opacity: 0.75, x: 0, y: 0} :
@@ -130,49 +150,52 @@ const SpecialMenu = ({setTriggerSideImageAnimation, triggerSideImageAnimation, m
 
 const CategoriesTab = () => {
     const goto = useNavigate();
+    const dispatch = useDispatch();
     const [triggerSideImageAnimation, setTriggerSideImageAnimation] = useState(false);
 
+    const handleSelectSpecialMenu = (menuType = "normal", id) => {
+        if (menuType === "normal") dispatch(toggleResetSpecialMenu());
+        else dispatch(toggleSetSpecialMenu({specialMenu: id}));
+    }
+
     return (
-        <motion.section
-            className="categories"
-            variants={categories}
-            initial="hidden"
-            animate="visible"
-        >
-            <ImageContainer
-                src={categoriesTabCover}
-                height="100%"
-                alt="categories tab cover image"
-                position="absolute"
-                zIndex={0}
-            />
-            <div className="categories__specialOption">
-                <SpecialMenu
-                    setTriggerSideImageAnimation={setTriggerSideImageAnimation}
-                    triggerSideImageAnimation={triggerSideImageAnimation}
-                    menuOption={1}
-                    goto={goto}
-                />
-                <SpecialMenu
-                    setTriggerSideImageAnimation={setTriggerSideImageAnimation}
-                    triggerSideImageAnimation={triggerSideImageAnimation}
-                    menuOption={2}
-                    goto={goto}
-                />
+        <section className="categories">
+            <div className="categories__HeadingContainer">
+                <h3>EXPLORE OUR MENU AND DISCOVER A SYMPHONY OF TASTES</h3>
             </div>
             <div className="categories__optionContainer">
-                {
-                    menuList.map((value) => <Options
-                            key={value.id}
-                            id={value.id}
-                            symbol={value.menuIcon}
-                            optionName={value.menuHeading}
-                            goto={goto}
-                        />
-                    )
-                }
+                <div
+                    className="categories__optionContainerItems"
+                >
+                    <SpecialMenu
+                        setTriggerSideImageAnimation={setTriggerSideImageAnimation}
+                        triggerSideImageAnimation={triggerSideImageAnimation}
+                        menuOption={1}
+                        handleSelectSpecialMenu={handleSelectSpecialMenu}
+                        goto={goto}
+                    />
+                    <SpecialMenu
+                        setTriggerSideImageAnimation={setTriggerSideImageAnimation}
+                        triggerSideImageAnimation={triggerSideImageAnimation}
+                        menuOption={2}
+                        handleSelectSpecialMenu={handleSelectSpecialMenu}
+                        goto={goto}
+                    />
+
+                    {
+                        menuList.map((value) => <Options
+                                key={value.id}
+                                id={value.id}
+                                symbol={value.menuIcon}
+                                optionName={value.menuHeading}
+                                goto={goto}
+                                handleSelectSpecialMenu={handleSelectSpecialMenu}
+                            />
+                        )
+                    }
+                </div>
             </div>
-        </motion.section>
+        </section>
     );
 }
 

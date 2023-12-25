@@ -51,7 +51,7 @@ const discountPriceAnimation = {
 const CouponCard = ({id, couponCode, discount, validProductIDs, isActive}) => {
     const dispatch = useDispatch();
     const couponId = useSelector(state => state.couponState);
-    const [applyCoupon, setApplyCoupon] = useState(false);
+    const [applyCoupon, setApplyCoupon] = useState(true);
     const [showProducts, setShowProducts] = useState(false);
     const [validProducts, setValidProducts] = useState([]);
 
@@ -64,10 +64,13 @@ const CouponCard = ({id, couponCode, discount, validProductIDs, isActive}) => {
     }, [couponId, id, validProductIDs, applyCoupon]);
 
     const handleApplyCoupon = (id) => {
-        if (applyCoupon === false) dispatch(addCoupon(id));
-        else if (applyCoupon === true) dispatch(removeCoupon(id));
+        if (!applyCoupon) dispatch(addCoupon(id));
+        else if (applyCoupon) dispatch(removeCoupon(id));
     }
     const handleCardBackground = () => {
+
+        //FIXME: Make map of coupons levels
+
         if (discount < 10) return "cardTypeLevel1";
         else if (discount < 20) return "cardTypeLevel2";
         else if (discount < 30) return "cardTypeLevel3";
@@ -107,7 +110,7 @@ const CouponCard = ({id, couponCode, discount, validProductIDs, isActive}) => {
                         />
                         <p className="validProductCard__productName">{product.productName}</p>
                         <div className="validProductCard__productPrice">
-                            <p className="validProductCard__productPrice__price">
+                            <span className="validProductCard__productPrice__price">
                                 ₹{product.price}
                                 <div className="validProductCard__productPrice__price__crossIcon">
                                     <IconContainer
@@ -118,7 +121,7 @@ const CouponCard = ({id, couponCode, discount, validProductIDs, isActive}) => {
                                         round={true}
                                     />
                                 </div>
-                            </p>
+                            </span>
                             <motion.p
                                 className="validProductCard__productPrice__discountedPrice"
                                 variants={discountPriceAnimation}

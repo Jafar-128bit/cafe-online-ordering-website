@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\data",
+    "\\src\\hooks",
+    "\\src\\pages",
+    "\\src\\store"
+  ],
+  "SelectedNode": "\\src\\hooks\\useSearchFilterOnChange.js",
+  "PreviewInSolutionExplorer": false
+}

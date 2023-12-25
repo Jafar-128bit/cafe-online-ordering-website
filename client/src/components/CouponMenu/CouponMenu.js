@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 
 import "./couponMenu.css";
+import './responsiveCouponMenu.css';
+
 import categoriesTabCover from "../../assets/background/categoriesTabCover.png";
 import closeIcon from "../../assets/icons/closeIcon.svg";
 import { toggleCouponMenu } from "../../store/slices/menuSlice";
@@ -13,8 +15,8 @@ import CouponCard from "../CouponCard/CouponCard";
 
 
 const couponMenuAnimation = {
-    hide: {opacity: 0, x: -500},
-    show: {opacity: 1, x: 0}
+    hide: {opacity: 0, x: 0, display: "none"},
+    show: {opacity: 1, x: 478, display: "flex"}
 }
 
 const CouponMenu = () => {
@@ -46,7 +48,7 @@ const CouponMenu = () => {
             style={{zIndex: zIndex}}
             variants={couponMenuAnimation}
             animate={State ? 'show' : 'hide'}
-            transition={{type: "spring", stiffness: 300, damping: 25}}
+            transition={{ease: "linear", duration: 0.25}}
         >
             <button
                 type="button"
@@ -72,8 +74,11 @@ const CouponMenu = () => {
                 />
                 <h1>COUPONS</h1>
             </div>
-            <section className="couponMenu__couponList addScroll">
+            <section className="couponMenu__couponList noScroll" style={{
+                gridTemplateRows: `repeat(${couponList.length}, auto-fill)`
+            }}>
                 {validCoupon.map((value => <CouponCard
+                        key={value.id}
                         id={value.id}
                         couponCode={value.couponCode}
                         discount={value.discount}
@@ -82,6 +87,7 @@ const CouponMenu = () => {
                     />
                 ))}
                 {nonValidCoupon.map((value => <CouponCard
+                        key={value.id}
                         id={value.id}
                         couponCode={value.couponCode}
                         discount={value.discount}

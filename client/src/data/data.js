@@ -382,7 +382,7 @@ export const menuList = [
         menuHeading: "Smoothies",
     },
 ];
-export const topOrders = [chai[2], iceCream[0], snacks[3], sandwich[1], noodles[3]];
+export const topOrders = [chai[2], iceCream[0], snacks[3], sandwich[1], noodles[3], chai[0]];
 
 export const couponList = [
     {
@@ -415,5 +415,24 @@ export const couponList = [
         couponCode: "Q4R51G",
         validProduct: [6, 7],
     },
+];
+
+export const specialNotification = [
+    {id: 0, title: "offer", article: "", image: null},
+    {id: 1, title: "deal", article: "", image: null},
+    {id: 2, title: "special menu", article: "", image: null},
+    {id: 3, title: "coupon", article: "", image: null},
+    {id: 4, title: "discount", article: "", image: null},
+]
+
+export const specialMessage = [
+    {id: 0, message: `Indulge in the Unmatched Flavors of Culinary Craftsmanship`,},
+    {id: 1, message: `Experience Gastronomic Delight with Our Signature Culinary Creations`,},
+    {id: 2, message: `Savor Every Morsel of Our Exquisite and Unaltered Culinary Artistry`,},
+    {id: 3, message: `Elevate Your Palate with the Pure and Authentic Essence of Our Dishes`,},
+    {id: 4, message: `Embark on a Journey of Taste with Our Unadulterated Culinary Offerings`,},
+    {id: 5, message: `Immerse Yourself in the Authenticity of Our Culinary Masterpieces`,},
+    {id: 6, message: `Treat Your Taste Buds to the Purity and Perfection of Our Culinary Delights`,},
+    {id: 7, message: `Discover the True Essence of Flavor with Our Unaltered Culinary Wonders`,},
 ];
 

@@ -1,0 +1,168 @@
+.payment {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-shrink: 0;
+
+    width: 100vw;
+    max-width: 1280px;
+
+    height: 100vh;
+
+    margin: 0;
+    z-index: 1;
+
+    position: relative;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.backBtn {
+    background: var(--colorWhite);
+    color: var(--colorBlack);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    width: max-content;
+    height: 32px;
+
+    border: none;
+    outline: none;
+    border-radius: var(--borderRadius1);
+    box-shadow: var(--shadow_02);
+
+    padding: 5px 5px;
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+
+    cursor: pointer;
+
+    z-index: 2;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.backBtn > img {
+    width: 14px;
+    height: 14px;
+
+    margin: 0 5px 0 0;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+.payment__processIndicator {
+    background: var(--backgroundGradient05);
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    flex-direction: row;
+
+    width: 100%;
+    max-width: 900px;
+    height: 150px;
+
+    overflow: hidden;
+    position: relative;
+}
+
+.payment__processIndicator__process {
+    background: var(--colorWhite);
+    background-size: 200% 200%;
+    -webkit-animation: gradient 12s ease infinite;
+    animation: gradient 12s ease infinite;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-shrink: 0;
+
+    width: 130px;
+    height: 50px;
+
+    border-radius: var(--borderRadius2) var(--borderRadius2) 0 0;
+    box-shadow: var(--shadow_02);
+
+    z-index: 2;
+}
+
+.payment__processIndicator__process > p {
+    color: var(--colorBlack);
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.payment__processIndicator__process__iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 35px;
+    height: 35px;
+
+    overflow: hidden;
+}
+
+.payment__processIndicator__process__iconContainer > img {
+    width: 80%;
+    height: 80%;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+.payment__processContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    width: 100%;
+    max-width: 900px;
+    height: calc(100% - 150px);
+
+    position: relative;
+}
+
+.payment__loadingScreen {
+    background: var(--colorWhiteTransparent35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 900px;
+    height: calc(100% - 150px);
+
+    overflow: hidden;
+    z-index: 10;
+    position: absolute;
+    top: 150px;
+}
+
+.payment__process {
+    flex-shrink: 0;
+
+    width: calc(95% - 40px);
+    height: calc(100% - 40px);
+
+    position: absolute;
+}

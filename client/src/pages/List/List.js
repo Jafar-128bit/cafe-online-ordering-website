@@ -1,44 +1,32 @@
 import './list.css';
-import {
-    cake, cold, iceCream, noodles, chai, snacks, sandwich, smoothies,
-} from "../../data/data";
+import './responsiveList.css';
 
-import {toggleCategories} from '../../store/slices/menuSlice';
+import {toggleCategories, toggleMenuBar, toggleNavbar} from '../../store/slices/menuSlice';
 
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import {useParams} from "react-router-dom";
-import MenuIndex from "./MenuIndex";
-import ProductList from "./ProductList";
-
-const renderProductCards = (category) => {
-    const dataMap = {
-        0: [],
-        1: cake,
-        2: cold,
-        3: iceCream,
-        4: noodles,
-        5: chai,
-        6: snacks,
-        7: sandwich,
-        8: smoothies,
-    };
-    return dataMap[category];
-};
+import {Outlet} from "react-router-dom";
+// import ProductList from "./ProductList";
+import {toggleResetSpecialMenu} from "../../store/slices/specialMenuSlices";
 
 const List = () => {
     const dispatch = useDispatch();
-    let params = useParams();
-    const {menuId, type} = params;
 
     useEffect(() => {
         dispatch(toggleCategories({State: true}));
+        dispatch(toggleResetSpecialMenu());
+        dispatch(toggleMenuBar({State: true}));
+        dispatch(toggleNavbar({State: true}));
     }, [dispatch]);
 
     return (
         <section className="list">
-            {!type && <MenuIndex/>}
-            {type === "normal" && <ProductList productData={renderProductCards(menuId)}/>}
+            <div className="list__title">
+                <h1>Menu</h1>
+            </div>
+            <div className="list__routeContainer">
+                <Outlet/>
+            </div>
         </section>
     );
 }

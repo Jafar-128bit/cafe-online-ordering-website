@@ -1,0 +1,210 @@
+.process02 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.payment__process2__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    width: 100%;
+    height: 5%;
+    min-height: 20px;
+    max-height: 25px;
+
+    padding: 0;
+    margin: 0;
+}
+
+.payment__process2__orderIdNumber {
+    color: var(--colorBlack);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.payment__process2__itemList {
+    background: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    width: 100%;
+    height: 45%;
+
+    min-height: 370px;
+    max-height: 400px;
+
+    margin: 15px 0 0 0;
+    padding: 0;
+
+    border-radius: var(--borderRadius1);
+    box-shadow: var(--shadow_02);
+
+    overflow: hidden;
+}
+
+.payment__process2__itemList__tableHead > table,
+.payment__process2__itemList__tableItems > table {
+    width: 100%;
+    height: 100%;
+
+    table-layout: fixed;
+}
+
+.payment__process2__itemList__tableHead {
+    background-color: var(--colorBlackTransparent75);
+
+    height: 10%;
+}
+
+.payment__process2__itemList__tableHead > table th {
+    color: var(--colorWhite);
+
+    padding: 5px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.payment__process2__itemList__tableItems {
+    height: max-content;
+    margin-top: 0;
+    overflow-x: auto;
+}
+
+.payment__process2__itemList__tableItems > table > tbody td {
+    color: var(--colorBlack);
+
+    padding: 10px 5px;
+
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.payment__process2__priceDetails {
+    background: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-shrink: 0;
+
+    width: 100%;
+    height: 20%;
+
+    min-height: 150px;
+    max-height: 350px;
+
+    margin: 25px 0 0 0;
+
+    border-radius: var(--borderRadius1);
+    box-shadow: var(--shadow_02);
+}
+
+.payment__process2__priceDetails__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    width: 90%;
+    height: max-content;
+
+    margin: 0;
+    padding: 0;
+
+    border: none;
+}
+
+.payment__process2__priceDetails__info > p {
+    color: var(--colorBlack);
+
+    width: max-content;
+    height: max-content;
+
+    margin: 0 0 5px 0;
+    padding: 5px;
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.payment__process2__btnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+
+    width: 100%;
+    height: 10%;
+
+    min-height: 70px;
+    max-height: 100px;
+}
+
+.payment__process2__btnContainer__btnPay {
+    width: 120px;
+    height: 40px;
+
+    padding: 0;
+    margin: 0 10px;
+
+    border-radius: calc(40px / 2);
+    outline: none;
+
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
+
+    cursor: pointer;
+}
+
+.payment__process2__btnContainer__btnPay {
+    background: var(--backgroundGradient01);
+
+    color: var(--colorWhite);
+    border: none;
+
+    box-shadow: var(--shadow_06);
+}
+
+@media screen and (max-width: 900px) {
+    .payment__process2__itemList__tableItems > table > tbody td {
+        color: var(--colorBlack);
+
+        height: max-content;
+
+        padding: 10px 5px;
+
+        font-size: 12px;
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle;
+    }
+}

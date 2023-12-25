@@ -1,5 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 
+//TODO: Serializer and Deserializer
+
 const cartSlice = createSlice({
     name: 'cartItems',
     initialState: [],

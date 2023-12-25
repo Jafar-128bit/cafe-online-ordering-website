@@ -22,7 +22,6 @@
     justify-content: center;
 
     border-radius: 50%;
-    box-shadow: var(--shadow_02);
 
     animation: spin 1s ease-in-out infinite;
 }

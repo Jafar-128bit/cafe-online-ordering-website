@@ -1,23 +1,21 @@
 import './home.css';
-import instagramIcon from '../../assets/icons/instagramIcon.svg';
-import facebookIcon from '../../assets/icons/facebookIcon.svg';
-import twitterIcon from '../../assets/icons/twitterIcon.svg';
+import './responsiveHome.css';
 
-import {topOrders} from "../../data/data";
+import {topOrders, specialNotification} from "../../data/data";
 
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 import {motion} from "framer-motion";
 
-import {toggleCategories} from "../../store/slices/menuSlice";
-import IconContainer from "../../components/IconContainer/IconContainer";
-import {NavLink} from "react-router-dom";
+import {toggleCategories, toggleMenuBar} from "../../store/slices/menuSlice";
 import ProductCard from "../../components/ProductCard/ProductCard";
+import {toggleResetSpecialMenu} from "../../store/slices/specialMenuSlices";
 
-const topOrdersMotion = {
-    hidden: {opacity: 0,},
+
+const feedSectionAnimation = {
+    hidden: {opacity: 0, x: 100,},
     visible: {
-        opacity: 1,
+        opacity: 1, x: 0,
         transition: {
             duration: 0.2,
             delayChildren: 0.1,
@@ -26,81 +24,77 @@ const topOrdersMotion = {
     }
 };
 
+const feedSubsectionAnimation = {
+    initial: {opacity: 0, scale: 0.85},
+    animate: () => ({
+        opacity: 1,
+        scale: 1,
+    }),
+};
+
 const Home = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(toggleCategories({State: false}));
+        dispatch(toggleResetSpecialMenu());
+        dispatch(toggleMenuBar({State: true}));
     }, [dispatch]);
 
     return (
         <section className="home">
             <section className="home__section-01">
-                <div className="home__section-01__info">
+                <section className="home__section-01__info">
                     <h2 className="home__section-01__subtitle">Taste the Difference at</h2>
                     <h1 className="home__section-01__title">Campus'Cafe</h1>
-                    <article className="home__section-01__article">
-                        Campus’Cafe: moments, memories, and passion. Enjoy our
-                        delicious coffees, smoothies, cakes, snacks, and sandwiches.
-                        Experience the best of cafe indulgence,
-                        and order online for flavors at your doorstep.
-                    </article>
-                </div>
-                <div className="home__section-01__contactInfo">
-                    <section className="home__section-01__contactInfo__contact">
-                        <p>Contact Us</p>
-                        <p>+123 456 7890</p>
-                    </section>
-                    <section className="home__section-01__contactInfo__socialMediaLink">
-                        <NavLink to="/">
-                            <IconContainer
-                                src={instagramIcon}
-                                background={false}
-                                alt="instagram icon"
-                                width={30}
-                                height={30}
-                            />
-                        </NavLink>
-                        <NavLink to="/">
-                            <IconContainer
-                                src={twitterIcon}
-                                background={false}
-                                alt="instagram icon"
-                                width={30}
-                                height={30}
-                            />
-                        </NavLink>
-                        <NavLink to="/">
-                            <IconContainer
-                                src={facebookIcon}
-                                background={false}
-                                alt="instagram icon"
-                                width={30}
-                                height={30}
-                            />
-                        </NavLink>
-                    </section>
-                </div>
+                </section>
             </section>
             <section className="home__section-02">
                 <section className="home__section-02__container">
-                    <h2 className="home__section-02__title">Feed</h2>
                     <motion.section
                         className="home__section-02__container__topOrders"
-                        variants={topOrdersMotion}
+                        variants={feedSectionAnimation}
                         initial="hidden"
                         animate="visible"
                     >
-                        <h4 className="home__section-02__container__topOrders__title">Top Orders</h4>
-                        <div className="home__section-02__container__topOrders__productList">
-                            {topOrders.map((value) => <ProductCard
+                        <h4 className="home__section-02__container__title">Top 6 Orders</h4>
+                        <div
+                            className="home__section-02__container__topOrders__productList noScroll"
+                        >
+                            {topOrders.map((value, index) => <ProductCard
                                 key={value.id}
                                 id={value.id}
                                 productName={value.productName}
                                 productImage={value.productImage}
                                 price={value.price}
+                                index={index}
                                 type="small"
                             />)}
+                        </div>
+                    </motion.section>
+                    <motion.section
+                        className="home__section-02__container__specialSection"
+                        variants={feedSectionAnimation}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        <h2 className="home__section-02__container__title">Today's Special</h2>
+                        <div
+                            className="home__section-02__container__specialSection__list noScroll"
+                            style={{
+                                gridTemplateColumns: `repeat(${specialNotification.length}, 280px)`
+                            }}
+                        >
+                            {specialNotification.map((value, index) => <motion.div
+                                className="home__section-02__container__specialSection__listItems"
+                                key={value.id}
+                                variants={feedSubsectionAnimation}
+                                initial="initial"
+                                animate="animate"
+                                transition={{delay: 0.3 * index}}
+                            >
+                                <h4>{value.title}</h4>
+                            </motion.div>)}
                         </div>
                     </motion.section>
                 </section>
