@@ -5,12 +5,10 @@ import { motion } from "framer-motion";
 import "./couponMenu.css";
 import './responsiveCouponMenu.css';
 
-import categoriesTabCover from "../../assets/background/categoriesTabCover.png";
 import closeIcon from "../../assets/icons/closeIcon.svg";
 import { toggleCouponMenu } from "../../store/slices/menuSlice";
 import { couponList } from "../../data/data";
 import IconContainer from "../IconContainer/IconContainer";
-import ImageContainer from "../ImageContainer/ImageContainer";
 import CouponCard from "../CouponCard/CouponCard";
 
 
@@ -64,14 +62,6 @@ const CouponMenu = () => {
                 />
             </button>
             <div className="couponMenu__title">
-                <ImageContainer
-                    src={categoriesTabCover}
-                    width="max-content"
-                    height="15%"
-                    alt="categories tab cover image"
-                    position="absolute"
-                    zIndex={0}
-                />
                 <h1>COUPONS</h1>
             </div>
             <section className="couponMenu__couponList noScroll" style={{
