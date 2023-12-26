@@ -9,6 +9,8 @@ import {useEffect} from "react";
 import {motion} from "framer-motion";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import useSearchFilterOnChange from "../../hooks/useSearchFilterOnChange";
+import {setData} from "../../store/slices/dataSlices";
+import {useDispatch} from "react-redux";
 
 const searchIconAnimation = {
     hide: {x: 0},
@@ -16,11 +18,12 @@ const searchIconAnimation = {
 }
 
 const SearchPage = () => {
+    const dispatch = useDispatch();
     const {inputValue, productData, handleFilteredData, handleDataClear} = useSearchFilterOnChange(1000);
 
     useEffect(() => {
-        handleDataClear();
-    }, [handleDataClear]);
+        dispatch(setData([]));
+    },[dispatch]);
 
     return (
         <section className="searchPage">
