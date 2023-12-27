@@ -10,8 +10,7 @@
     height: 100%;
 
     overflow: hidden;
-    /*overflow-x: hidden;*/
-    /*overflow-y: auto;*/
+    overflow-y: auto;
 }
 
 .searchPage__section01,
@@ -29,6 +28,10 @@
     height: 100px;
 }
 
+.searchPage__section01 {
+    display: none;
+}
+
 .searchPage__section01 > h1 {
     color: var(--colorWhite);
 
@@ -39,9 +42,14 @@
 }
 
 .searchPage__section02 {
-    background: var(--colorWhite);
+    background: unset;
 
-    max-width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+
+    max-width: 1280px;
     height: 80px;
 }
 
@@ -56,7 +64,9 @@
     max-width: 360px;
     height: 60%;
 
-    border: 2px solid #006B8DFF;
+    margin: 0 0 0 20px;
+
+    border: 1px solid var(--colorBlack);
     border-radius: calc((80px * 0.6) / 2);
 
     overflow: hidden;
@@ -123,14 +133,21 @@
     justify-content: unset;
 
     display: grid;
-    grid-template-rows: repeat(auto-fill, 150px);
+    grid-template-columns: repeat(3, 340px);
     row-gap: 20px;
+    column-gap: 20px;
     place-items: center;
+    place-content: flex-start;
 
-    height: calc(100% - 100px - 80px - 40px - 65px);
+    width: max-content;
+    height: calc(100% - 80px - 40px);
 
-    padding: 20px 0;
+    padding: 20px 20px;
 
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.searchPage__section03::-webkit-scrollbar {
+    display: none;
 }

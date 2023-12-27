@@ -56,6 +56,10 @@
         max-height: max-content;
     }
 
+    .home__section-01 {
+        height: 400px;
+    }
+
     .home__section-02 {
         margin: 0 0 80px 0;
     }

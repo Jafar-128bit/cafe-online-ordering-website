@@ -1,0 +1,40 @@
+.notificationMenu {
+    background: var(--colorWhite);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+
+
+    width: 380px;
+    height: 280px;
+
+    border-radius: var(--borderRadius2);
+    box-shadow: var(--shadow_02);
+
+    overflow: hidden;
+    overflow-y: auto;
+
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+
+.notificationMenu__title {
+    background: var(--color06);
+    color: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+
+    width: calc(100% - 10px);
+    height: 22px;
+
+    margin: 0;
+    padding: 10px 0 10px 10px;
+
+    font-size: 18px;
+    font-weight: 200;
+}

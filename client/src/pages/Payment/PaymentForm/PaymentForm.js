@@ -2,6 +2,8 @@ import './paymentForm.css';
 
 import eat__Dark__Icon from '../../../assets/icons/eat__Dark__Icon.svg';
 import foodPack__Dark__Icon from '../../../assets/icons/packing__Dark__Icon.svg';
+// import infoDarkIcon from "../../../assets/icons/info__Dark__Icon.svg";
+import infoLightIcon from "../../../assets/icons/info__Light__Icon.svg";
 
 import * as Yup from "yup";
 import {useFormik} from "formik";
@@ -28,7 +30,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const inputBorderAnimation = {
-    hide: {border: "2px solid var(--themeColor01)"},
+    hide: {border: "2px solid var(--colorBlack)"},
     show: {border: "2px solid var(--color03)"}
 }
 
@@ -47,7 +49,7 @@ const toggleFoodPackTextAnimation = {
     yes: {x: -30},
 }
 
-const PaymentForm = ({setTrack, setIsLoading}) => {
+const PaymentForm = ({processIconAnimation, handleBack}) => {
     const dispatch = useDispatch();
     const formikPaymentInfo = useFormik({
         initialValues: {
@@ -59,12 +61,7 @@ const PaymentForm = ({setTrack, setIsLoading}) => {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            setIsLoading(true);
-            setTimeout(() => {
-                dispatch(paymentInfoState({...values}));
-                setTrack(1);
-                setIsLoading(false);
-            }, 2000);
+            dispatch(paymentInfoState({...values}));
         },
     });
 
@@ -137,7 +134,17 @@ const PaymentForm = ({setTrack, setIsLoading}) => {
     ]
 
     return (
-        <div className="payment__process">
+        <div className="payment__processContainer">
+            <div className="payment__process__title">
+                <h2>Payment Info</h2>
+                <motion.img
+                    src={infoLightIcon}
+                    alt="paymentInfo"
+                    variants={processIconAnimation}
+                    initial="initial"
+                    animate="animate"
+                />
+            </div>
             <form className="payment__process1__formContainer" onSubmit={formikPaymentInfo.handleSubmit}>
                 <section className="payment__process1__formInputContainer">
                     {
@@ -211,6 +218,7 @@ const PaymentForm = ({setTrack, setIsLoading}) => {
                         </div>)}
                 </section>
                 <section className="payment__process1__formSubmitBtn">
+                    <button type="button" onClick={handleBack}>Cancel</button>
                     <button type="submit">Submit</button>
                 </section>
             </form>

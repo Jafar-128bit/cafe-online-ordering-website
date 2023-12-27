@@ -9,7 +9,7 @@ import {useEffect, useState} from "react";
 import {removeFromCart} from "../../store/slices/cartSlices";
 import {couponList} from "../../data/data";
 import useAmount from "../../hooks/useAmount";
-import {toggleCategories, toggleCouponMenu, toggleMenuBar, toggleNavbar} from "../../store/slices/menuSlice";
+import {toggleCouponMenu, toggleMenuBar, toggleNavbar} from "../../store/slices/menuSlice";
 import {useFormik} from 'formik';
 import * as Yup from "yup";
 import {addCoupon} from "../../store/slices/setCouponSlices";
@@ -103,22 +103,21 @@ const Cart = () => {
     const navigate = useNavigate();
     const [scope, animate] = useAnimate();
     const cartData = useSelector((state) => state.cartItems);
-    const couponId = useSelector(state => state.couponState);
+    const couponData = useSelector(state => state.couponState);
 
-    const {discount, subTotal} = useAmount(cartData, couponId, couponList);
+    const {discount, subTotal} = useAmount(cartData, couponData, couponList);
 
     const [itemToRemove, setItemToRemove] = useState(null);
     const [togglePopMessage, setTogglePopMessage] = useState(false);
     const [isCouponValid, setIsCouponValid] = useState("ideal");
 
     const handleCouponMenuOpen = () => dispatch(toggleCouponMenu({State: true}));
-    const handleApplyCoupon = (id) => dispatch(addCoupon(id));
+    const handleApplyCoupon = (selfCouponData = {}) => dispatch(addCoupon(selfCouponData));
 
     useEffect(() => {
-        dispatch(toggleCategories({State: false}));
         dispatch(toggleMenuBar({State: true}));
         dispatch(toggleNavbar({State: false}));
-    }, [cartData, couponId, discount, subTotal, dispatch]);
+    }, [cartData, couponData, discount, subTotal, dispatch]);
 
     const formikCouponCode = useFormik({
         initialValues: {
@@ -128,25 +127,26 @@ const Cart = () => {
         onSubmit: (values, {resetForm}) => {
             //TODO: Tyring to mimicking the process of applying coupon change.
             setIsCouponValid("checking");
+            const getCouponByCode = couponList
+                .find((coupon) => formikCouponCode
+                    .values
+                    .code
+                    .toUpperCase() === coupon.couponCode.toUpperCase()
+                );
 
             setTimeout(() => {
-                const getCouponByCode = couponList
-                    .find((coupon) => formikCouponCode
-                        .values
-                        .code
-                        .toUpperCase() === coupon.couponCode
-                    );
-
-                if (
-                    getCouponByCode && getCouponByCode
-                        .validProduct
-                        .some(productId => cartData
-                            .map(items => items.id)
-                            .includes(productId))
-                ) {
-                    setIsCouponValid("valid");
-                    handleApplyCoupon(getCouponByCode.id);
-                } else setIsCouponValid("inValid");
+                if (getCouponByCode && getCouponByCode.type === "on-Product") {
+                    if (getCouponByCode.validProduct
+                        .some(productId => cartData.map(items => items.id).includes(productId))) {
+                        setIsCouponValid("valid");
+                        handleApplyCoupon(getCouponByCode);
+                    } else setIsCouponValid("inValid");
+                } else if (getCouponByCode && getCouponByCode.type === "on-Purchase") {
+                    if (getCouponByCode.purchaseLimit >= subTotal) {
+                        if (couponData.some(coupon => getCouponByCode.type === coupon.type)) setIsCouponValid("inValid");
+                        else handleApplyCoupon(getCouponByCode);
+                    } else setIsCouponValid("inValid");
+                }
             }, 3000);
 
             setTimeout(() => {
@@ -171,25 +171,27 @@ const Cart = () => {
                 <h1 className="cart__section01__title">Your Basket</h1>
             </section>
 
-            <section
-                className="cart__section02 noScroll"
-                ref={scope}
-            >
-                {cartData.length !== 0 ? cartData.map((value, index) => <CartProductCard
-                        key={value.id}
-                        id={value.id}
-                        index={index}
-                        productName={value.productName}
-                        productImage={value.productImage}
-                        productPrice={value.price}
-                        productQuantity={value.quantity}
-                        dispatch={dispatch}
-                        setItemToRemove={setItemToRemove}
-                        setTogglePopMessage={setTogglePopMessage}
-                        animate={animate}
-                    />
-                ) : <p className="cart__section02__emptyMessage">Cart is Empty</p>}
-            </section>
+            {
+                cartData.length !== 0 ? <section
+                    className="cart__section02 noScroll"
+                    ref={scope}
+                >
+                    {cartData.map((value, index) => <CartProductCard
+                            key={value.id}
+                            id={value.id}
+                            index={index}
+                            productName={value.productName}
+                            productImage={value.productImage}
+                            productPrice={value.price}
+                            productQuantity={value.quantity}
+                            dispatch={dispatch}
+                            setItemToRemove={setItemToRemove}
+                            setTogglePopMessage={setTogglePopMessage}
+                            animate={animate}
+                        />
+                    )}
+                </section> : <p className="cart__section02__emptyMessage">Cart is Empty</p>
+            }
             {
                 cartData.length !== 0 &&
                 <section className="cart__section03">

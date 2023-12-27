@@ -7,15 +7,14 @@
     flex-direction: row;
     flex-shrink: 0;
 
-    width: 80%;
-    max-width: 450px;
-    height: 90px;
+    width: 400px;
+    height: 120px;
 
     margin: 0;
     padding: 0;
 
     border: none;
-    border-radius: calc(90px / 2) var(--borderRadius1) var(--borderRadius1) calc(90px / 2);
+    border-radius: calc(120px / 2) var(--borderRadius2) var(--borderRadius2) calc(120px / 2);
     box-shadow: var(--shadow_03);
 
     opacity: 0;
@@ -30,8 +29,8 @@
 
     flex-shrink: 0;
 
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 120px;
 
     border-radius: 50%;
     box-shadow: var(--shadow_05);
@@ -56,7 +55,7 @@
     flex-direction: column;
     flex-shrink: 0;
 
-    width: calc(100% - 105px);
+    width: calc(100% - 130px);
     height: 80%;
 
     opacity: 0;
@@ -70,7 +69,7 @@
     padding: 0;
     margin: 0;
 
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
     text-align: left;
     text-transform: capitalize;
@@ -82,7 +81,7 @@
     padding: 0;
     margin: 0;
 
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 500;
     text-align: left;
     text-transform: capitalize;
@@ -94,7 +93,7 @@
     padding: 0;
     margin: 0;
 
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
     text-align: left;
     text-transform: capitalize;
@@ -105,9 +104,7 @@
 }
 
 .cart__productInfo__section03 {
-    background: var(--backgroundGradient07);
-    background-size: 200% 100%;
-    background-position: center;
+    background: var(--color03);
 
     display: flex;
     align-items: center;
@@ -115,10 +112,10 @@
     flex-direction: column;
     flex-shrink: 0;
 
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 100px;
 
-    border-radius: calc(30px / 2);
+    border-radius: calc(35px / 2);
     box-shadow: var(--shadow_02);
 
     opacity: 0;
@@ -136,8 +133,8 @@
     justify-content: center;
     flex-shrink: 0;
 
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
 
     border: none;
     outline: none;

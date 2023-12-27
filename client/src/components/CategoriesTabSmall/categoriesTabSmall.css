@@ -1,20 +1,65 @@
 .categoriesTabSmall {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     flex-direction: row;
     flex-shrink: 0;
 
     width: 90%;
-    height: 60px;
+    max-width: 1020px;
+    height: max-content;
 
     margin: 0;
-    padding: 0;
-
-    overflow: hidden;
-    overflow-x: auto;
+    padding: 10px 0;
 
     z-index: 3;
+
+    overflow: hidden;
+    position: relative;
+}
+
+.categoriesTabSmall__collapseBtn {
+    background: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    margin: 0 0 0 0;
+    padding: 0;
+
+    border: none;
+    outline: none;
+    border-radius: var(--borderRadius2);
+    box-shadow: var(--shadow_01);
+
+    cursor: pointer;
+
+    z-index: 5;
+}
+
+.categoriesTabSmall__collapseBtn > img {
+    width: 70%;
+    height: 70%;
+
+    transform: rotate(90deg);
+}
+
+.categoriesTabSmall__categoriesList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    flex-shrink: 0;
+
+    width: calc(100% - 50px - 10px);
+    height: 50px;
+
+    padding: 5px 0;
+
+    overflow: hidden;
 }
 
 .categoriesTabSmall__optionContainer {
@@ -26,12 +71,11 @@
     flex-direction: row;
     flex-shrink: 0;
 
-    width: max-content;
-    max-width: 240px;
+    width: 120px;
     height: 40px;
 
     padding: 0;
-    margin: 0 10px 0 0;
+    margin: 5px 10px 5px 0;
 
     border: none;
     outline: none;
@@ -44,58 +88,17 @@
     overflow: hidden;
 }
 
-.specialMenu01 {
-    background: var(--backgroundGradient01);
-    background-size: 200% 200%;
-    -webkit-animation: gradient 2s ease infinite;
-    animation: gradient 2s ease infinite;
-}
-
-.specialMenu02 {
-    background: var(--backgroundGradient01);
-    background-size: 200% 200%;
-    -webkit-animation: gradient 2s ease infinite;
-    animation: gradient 2s ease infinite;
-}
-
-.specialMenu01 > p,
-.specialMenu02 > p {
-    color: var(--colorWhite);
-}
-
-.categoriesTabSmall__optionContainer__imageContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 40px;
-    height: 40px;
-
-    margin: 0;
-    padding: 0;
-
-    overflow: hidden;
-}
-
-.categoriesTabSmall__optionContainer__imageContainer > img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center;
-}
-
 .categoriesTabSmall__optionContainer__optionName {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: max-content;
+    width: calc(100% - 20px);
     height: 100%;
 
     margin: 0;
     padding: 0 10px;
 
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 400;
 }

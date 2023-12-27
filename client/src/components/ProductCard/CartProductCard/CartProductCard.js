@@ -1,10 +1,12 @@
-import'./cartProductCard.css';
+import './cartProductCard.css';
+import './mediaQueryCartProductCard.css';
 
 import {useEffect} from "react";
 import {motion, stagger} from "framer-motion";
 import {updateCartItem} from "../../../store/slices/cartSlices";
 import addLightIcon from "../../../assets/icons/add_Light_Icon.svg";
 import removeLightIcon from "../../../assets/icons/remove_Light_Icon.svg";
+import closeLightIcon from "../../../assets/icons/close_Light_Icon.svg";
 
 const CartProductCard = ({
                              id,
@@ -30,7 +32,7 @@ const CartProductCard = ({
         );
 
         animate(".cart__productInfo__section03",
-            {opacity: 1, scale: 1, height: "72px"},
+            {opacity: 1,},
             {duration: 0.25, delay: 0.3}
         );
     });
@@ -98,7 +100,7 @@ const CartProductCard = ({
                     className="cart__productInfo__section03__qtyBtn animateQtyComponents"
                     onClick={() => handleQuantity("dec")}
                 >
-                    <img src={removeLightIcon} alt="icon remove" height="20px"/>
+                    <img src={productQuantity < 2 ? closeLightIcon : removeLightIcon} alt="icon remove" height="20px"/>
                 </motion.button>
             </motion.section>
         </motion.div>

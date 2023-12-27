@@ -1,0 +1,11 @@
+@media screen and (max-width: 900px) {
+    .notificationMenu {
+        display: none;
+
+        width: 90%;
+        height: 200px;
+
+        top: 25px;
+        right: unset;
+    }
+}

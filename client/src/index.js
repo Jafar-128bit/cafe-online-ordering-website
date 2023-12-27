@@ -22,9 +22,11 @@ const List = loadable(() => import('./pages/List/List'));
 const Payment = loadable(() => import('./pages/Payment/Payment'));
 const SearchPage = loadable(() => import('./pages/SearchPage/SearchPage'));
 
+const allItems = [...cake, ...cold, ...iceCream, ...noodles, ...chai, ...snacks, ...sandwich, ...smoothies,];
+
 const renderProductCards = (category) => {
     const dataMap = {
-        0: [],
+        0: allItems,
         1: cake,
         2: cold,
         3: iceCream,
@@ -65,11 +67,16 @@ const appRoute = createBrowserRouter([
                     },
                     {
                         path: ":type/:id",
-                        element: <ProductList/>,
+                        element: <ProductList type="main"/>,
                         loader: ({params}) => {
                             if (params.type === "normalMenu") return renderProductCards(params.id);
+                            else if (params.type === "all" && params.id === "0") return renderProductCards(0);
                             else if (params.type === "specialMenu") return [];
                         },
+                    },
+                    {
+                        path: "offer/?:couponId",
+                        element: <ProductList type="offer"/>,
                     },
                 ]
             },

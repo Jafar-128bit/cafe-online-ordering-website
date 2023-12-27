@@ -1,31 +1,29 @@
 import './paymentReview.css';
 import {useSelector} from "react-redux";
+import {motion} from "framer-motion";
 import useAmount from "../../../hooks/useAmount";
 import {couponList} from "../../../data/data";
+// import reviewDarkIcon from "../../../assets/icons/review__Dark__Icon.svg";
+import reviewLightIcon from "../../../assets/icons/review__Light__Icon.svg";
 
-const PaymentReview = ({setTrack, setIsLoading}) => {
+const PaymentReview = ({processIconAnimation}) => {
 
     const cartData = useSelector((state) => state.cartItems);
-    const couponId = useSelector(state => state.couponState);
-    const {discount, subTotal} = useAmount(cartData, couponId, couponList);
-
-    const handlePay = (flag = "") => {
-        setIsLoading(true);
-        if (flag === "cash") {
-            setTimeout(() => {
-                setTrack(2);
-                setIsLoading(false);
-            }, 1000);
-        } else if (flag === "online") {
-            setTimeout(() => {
-                setTrack(2);
-                setIsLoading(false);
-            }, 1000);
-        }
-    };
+    const couponData = useSelector(state => state.couponState);
+    const {discount, subTotal} = useAmount(cartData, couponData, couponList);
 
     return (
-        <div className="payment__process process02">
+        <div className="payment__processContainer">
+            <div className="payment__process__title">
+                <h2>Payment Review</h2>
+                <motion.img
+                    src={reviewLightIcon}
+                    alt="paymentInfo"
+                    variants={processIconAnimation}
+                    initial="initial"
+                    animate="animate"
+                />
+            </div>
             <div className="payment__process2__heading">
                 <h4 className="payment__process2__orderIdNumber">Your Order ID #MMDDXXXXX</h4>
             </div>
@@ -64,7 +62,7 @@ const PaymentReview = ({setTrack, setIsLoading}) => {
                     <p>Subtotal</p>
                     <p>₹{subTotal}</p>
                 </div>
-                {couponId.length !== 0 && <div className="payment__process2__priceDetails__info">
+                {couponData.length !== 0 && <div className="payment__process2__priceDetails__info">
                     <p>Coupon Discounts</p>
                     <p>-₹{discount}</p>
                 </div>}
@@ -74,22 +72,6 @@ const PaymentReview = ({setTrack, setIsLoading}) => {
                 <div className="payment__process2__priceDetails__info">
                     <p>Total Amount</p><p>₹{subTotal + 10 - discount}</p>
                 </div>
-            </div>
-            <div className="payment__process2__btnContainer">
-                <button
-                    type="button"
-                    className="payment__process2__btnContainer__btnPay"
-                    onClick={() => handlePay("cash")}
-                >
-                    Pay Cash
-                </button>
-                <button
-                    type="button"
-                    className="payment__process2__btnContainer__btnPay"
-                    onClick={() => handlePay("online")}
-                >
-                    Pay Online
-                </button>
             </div>
         </div>
     );

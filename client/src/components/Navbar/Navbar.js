@@ -1,161 +1,141 @@
 import './navbar.css';
 import './responsiveNavbar.css';
 
-import cartIcon from '../../assets/icons/basketIcon.svg';
-import foodIcon from '../../assets/icons/foodIcon.svg';
-import searchLightIcon from '../../assets/icons/search2_Light_Icon.svg';
+import cartLightIcon from '../../assets/icons/cart_Light_Icon.svg';
+import arrowLightIcon from '../../assets/icons/arrowBack_Light_Icon.svg';
 
-import {toggleSearchMenu} from '../../store/slices/menuSlice';
+import {toggleNotificationMenu} from "../../store/slices/menuSlice";
+// import {toggleSendNotification, toggleRemoveNotification} from "../../store/slices/notificationMenuSlices";
 
-import IconContainer from "../IconContainer/IconContainer";
 import {NavLink, useLocation} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {motion} from "framer-motion";
 
 const linkStyle = {
+    color: "var(--color06)",
     textDecoration: "none",
     textTransform: "uppercase",
     padding: "3px",
     margin: "0 10px",
-    fontSize: "18px",
+    fontSize: "16px",
     fontWeight: "700",
-    letterSpacing: "1px",
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center",
     flexDirection: "column",
 }
 
-const searchButtonAnimation = {
-    hide: {opacity: 0, scale: 0},
-    show: {opacity: 1, scale: 1.1},
-}
-
 const basketIconAnimation = {
-    initial: {rotate: 0, y: 0},
+    initial: {x: 0},
     animate: {
-        rotate: [0, 0, 10, -5, 0, 0,],
-        y: [0, 0, 5, 3, 0, 0,],
-        transition: {ease: "easeIn", duration: 1,},
+        x: [0, 5, -5, 3, -3, 1, -1, 0],
+        transition: {ease: "easeIn", duration: 0.5,},
     },
 }
 
-const foodIconAnimation = {
-    initial: {y: 0, opacity: 0},
-    animate: {
-        opacity: [1, 1, 0, 0, 0, 0],
-        y: [10, 50, 50, 50, 0, 0],
-        transition: {ease: "easeIn", duration: 1,},
-    },
+const navbarLinkHideAnimation = {
+    hide: {y: -70, opacity: 0},
+    show: {y: 0, opacity: 1},
+    transition: {ease: "easeIn", duration: 0.1}
+}
+
+const arrowRotateIconAnimation = {
+    hide: {rotate: 180},
+    show: {rotate: 0},
+    transition: {ease: "easeIn", duration: 0.25}
 }
 
 const Navbar = () => {
     const dispatch = useDispatch();
     const locationName = useLocation().pathname.split("/")[1];
     const cartData = useSelector((state) => state.cartItems);
+    const notificationMenuState = useSelector(state => state.menuState.notificationMenuState);
+    const {State} = notificationMenuState;
     const [quantity, setQuantity] = useState(0);
-    const [isSearchIcon, setIsSearchIcon] = useState(false);
     const [iconAnimate, setIconAnimate] = useState(false);
     const [isLink, setIsLink] = useState(null);
+    const [isNavbarHide, setNavbarHide] = useState(true);
+
+    const handleNotificationMenu = () => dispatch(toggleNotificationMenu({State: !State}));
 
     useEffect(() => {
         setQuantity(cartData.map((value) => value.quantity).reduce((acc, cur) => acc + cur, 0));
         setIconAnimate(true);
         setTimeout(() => {
-            setIconAnimate(false)
-        }, 1050);
+            setIconAnimate(false);
+        }, 500);
 
         if (locationName === "") setIsLink(0);
         if (locationName === "menu") setIsLink(1);
         if (locationName === "cart") setIsLink(2);
+        if (locationName === "search") setIsLink(3);
 
     }, [cartData, locationName]);
 
-    const handleSearchMenu = () => dispatch(toggleSearchMenu({State: true}));
+    useEffect(() => {
+        setTimeout(() => {
+            setNavbarHide(false);
+        }, 500);
+    }, []);
 
     return (
         <nav className="navbar">
             <section className="navbar__section_01">
-                <NavLink to="/" style={({isActive}) => ({
-                    color: "var(--colorBlack)",
-                    textDecoration: "none",
-                })}>
-                    <h1 className="navbar__section_01__logo">Campus'Cafe</h1>
-                </NavLink>
-                <button
+                <motion.button
                     type="button"
-                    className="navbar__section_01__searchBtn"
-                    onMouseOver={() => setIsSearchIcon(true)}
-                    onMouseLeave={() => setIsSearchIcon(false)}
-                    onClick={handleSearchMenu}
+                    className="navbar__section_01__autoHideIcon"
+                    onClick={() => setNavbarHide(!isNavbarHide)}
+                    variants={arrowRotateIconAnimation}
+                    animate={isNavbarHide ? "show" : "hide"}
+                    transition="transition"
                 >
-                    <IconContainer
-                        src={searchLightIcon}
-                        alt="search button"
-                        width={25}
-                        height={25}
-                        background={false}
-                    />
-                    <motion.div
-                        className="navbar__section_01__searchBtn__sudoElement1"
-                        variants={searchButtonAnimation}
-                        animate={isSearchIcon ? 'show' : 'hide'}
-                        transition={{type: "spring", stiffness: 350, damping: 25, duration: 0.1}}
-                    />
-                    <motion.div
-                        className="navbar__section_01__searchBtn__sudoElement2"
-                        variants={searchButtonAnimation}
-                        animate={isSearchIcon ? 'hide' : 'show'}
-                        transition={{type: "spring", stiffness: 350, damping: 25, duration: 0.1}}
-                    />
-                </button>
+                    <img src={arrowLightIcon} alt="arrow light icon"/>
+                </motion.button>
             </section>
-            <section className="navbar__section_02">
+            <motion.section
+                className="navbar__section_02"
+                variants={navbarLinkHideAnimation}
+                animate={isNavbarHide ? "show" : "hide"}
+                transition="transition"
+            >
                 {/* Link 01 */}
-                <NavLink to="/" style={({isActive}) => ({
-                    color: isActive ? "var(--themeColor01)" : "var(--colorBlack)",
-                    ...linkStyle
-                })} onClick={() => setIsLink(0)}>
+                <NavLink to="/" style={{...linkStyle}} onClick={() => setIsLink(0)}>
                     Home
                     <div className={isLink === 0 ? `navbar__section_02__line` : `navbar__section_02__line__hide`}/>
                 </NavLink>
                 {/* Link 02 */}
-                <NavLink to="/menu" style={({isActive}) => ({
-                    color: isActive ? "var(--themeColor01)" : "var(--colorBlack)",
-                    ...linkStyle
-                })} onClick={() => setIsLink(1)}>
+                <NavLink to="/menu" style={{...linkStyle}} onClick={() => setIsLink(1)}>
                     Menu
                     <div className={isLink === 1 ? `navbar__section_02__line` : `navbar__section_02__line__hide`}/>
                 </NavLink>
                 {/* Link 03 */}
-                <NavLink to="/cart" style={({isActive}) => ({
-                    color: isActive ? "var(--themeColor01)" : "var(--colorBlack)",
-                    ...linkStyle
-                })} onClick={() => setIsLink(2)}>
+                <NavLink to="/cart" style={{...linkStyle}} onClick={() => setIsLink(2)}>
                     Cart
                     <div className={isLink === 2 ? `navbar__section_02__line` : `navbar__section_02__line__hide`}/>
                 </NavLink>
-            </section>
-            <section className="navbar__section_03">
+                {/* Link 04 */}
+                <NavLink to="/search" style={{...linkStyle}} onClick={() => setIsLink(3)}>
+                    Search
+                    <div className={isLink === 3 ? `navbar__section_02__line` : `navbar__section_02__line__hide`}/>
+                </NavLink>
+            </motion.section>
+            <section
+                className="navbar__section_03"
+            >
                 {/* Option 01 */}
                 <button
                     type="button"
                     className="navbar__section_03__cartMenuBtn"
+                    onClick={handleNotificationMenu}
                 >
                     <motion.div
-                        className="iconContainer navbar__icon1"
+                        className="iconContainer"
                         variants={basketIconAnimation}
                         animate={iconAnimate ? "animate" : "initial"}
+                        transition="transition"
                     >
-                        <img src={cartIcon} alt="cart icon"/>
-                    </motion.div>
-                    <motion.div
-                        className="iconContainer navbar__icon2"
-                        variants={foodIconAnimation}
-                        animate={iconAnimate ? "animate" : "initial"}
-                    >
-                        <img src={foodIcon} alt="food icon"/>
+                        <img src={cartLightIcon} alt="cart icon"/>
                     </motion.div>
                     <p className="navbar__section_03__cart__indicator">{quantity}</p>
                 </button>

@@ -22,13 +22,6 @@
 }
 
 .home__section-01 {
-    /*background-image: url("../../assets/background/cover03.jpg");*/
-    /*background-size: cover;*/
-    /*background-repeat: no-repeat;*/
-    /*background-position: center;*/
-
-    background-color: var(--colorWhite);
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -36,13 +29,18 @@
     flex-shrink: 0;
 
     width: 100%;
-    height: 300px;
+    height: 600px;
 
     position: relative;
     overflow: hidden;
 }
 
 .home__section-01__info {
+    /*background-image: url("../../assets/background/banner01.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
+    /*background-size: cover;*/
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,82 +110,4 @@
 
     width: 100%;
     height: 100%;
-}
-
-.home__section-02__container__topOrders,
-.home__section-02__container__specialSection {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    width: 100%;
-    height: max-content;
-
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-}
-
-.home__section-02__container__title {
-    color: var(--colorBlack);
-
-    width: 100%;
-    height: 25px;
-
-    padding: 0 0 0 0;
-    margin: 20px 0 20px 0;
-
-    font-size: 22px;
-    font-weight: 700;
-}
-
-.home__section-02__container__topOrders__productList {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    column-gap: 20px;
-    place-items: center;
-    place-content: flex-start;
-
-    width: calc(100% - 50px);
-    min-height: 270px;
-    height: max-content;
-
-    padding: 25px;
-
-    overflow-x: auto;
-}
-
-.home__section-02__container__specialSection__list {
-    display: grid;
-    column-gap: 20px;
-    place-items: center;
-    place-content: flex-start;
-    flex-shrink: 0;
-
-    width: calc(100% - 50px);
-    height: 210px;
-
-    margin: 0;
-    padding: 25px;
-
-    overflow-x: auto;
-}
-
-.home__section-02__container__specialSection__listItems {
-    background: var(--backgroundGradient01);
-    color: var(--colorBlack);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-
-    width: 280px;
-    height: 200px;
-
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-
-    border-radius: var(--borderRadius1);
-    box-shadow: var(--shadow_02);
 }

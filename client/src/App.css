@@ -7,6 +7,8 @@
     --color03: #fd5757;
     --color04: #e0e0e0;
     --color05: #058bb8;
+    --color06: #352F44;
+    --color07: #FAF0E6;
 
     --neonGreen: #39ff14;
 
@@ -43,7 +45,7 @@
     --backgroundGradient05: linear-gradient(109.6deg, #76B900 13.4%, #00bc00 100.2%);
     --backgroundGradient06: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
     --backgroundGradient07: linear-gradient(to right, #f83600 0%, #f9d423 100%);
-    --backgroundGradient08: radial-gradient(circle at 10% 20%, rgb(0, 107, 141) 0%, rgb(0, 69, 91) 90%);
+    --backgroundGradient08: radial-gradient(circle at 10% 20%, rgb(0, 107, 141) 0%, rgb(0, 49, 62) 90%);
     --backgroundGradient09: radial-gradient(926px at 2.7% 11%, rgb(17, 29, 94) 0%, rgb(178, 31, 102) 90%);
 
     --couponCardBackgroundLevel1: radial-gradient(circle at 10% 20%, rgb(3, 235, 255) 0%, rgb(152, 70, 242) 100.2%);
@@ -55,7 +57,12 @@
 }
 
 .app {
-    background: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+    background-image: url("./assets/background/backgroundWhite.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 200% 200%;
+    -webkit-animation: gradient 8s ease infinite;
+    animation: gradient 8s ease infinite;
 
     display: flex;
     align-items: center;

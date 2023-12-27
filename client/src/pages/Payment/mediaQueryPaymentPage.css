@@ -1,0 +1,34 @@
+@media screen and (max-width: 1280px) {
+
+}
+
+@media screen and (max-width: 900px) {
+    .payment {
+        justify-content: flex-start;
+        flex-direction: column;
+
+        height: 100vh;
+    }
+
+    .payment__processContainer {
+        width: 95%;
+        max-width: 900px;
+
+        height: max-content;
+
+        margin: 20px 0 0 0;
+    }
+
+    .payment__process2__heading {
+        max-height: 10%;
+        min-height: 10%;
+    }
+}
+
+@media screen and (max-width: 590px) {
+
+}
+
+@media screen and (max-width: 300px) {
+
+}

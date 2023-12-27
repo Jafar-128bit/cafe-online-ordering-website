@@ -449,7 +449,7 @@
 }
 
 .cart__subtotal__totalAmount {
-    background: var(--backgroundGradient07);
+    background: var(--color03);
 
     display: flex;
     align-items: center;

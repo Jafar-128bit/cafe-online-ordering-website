@@ -1,7 +1,7 @@
 import './list.css';
 import './responsiveList.css';
 
-import {toggleCategories, toggleMenuBar, toggleNavbar} from '../../store/slices/menuSlice';
+import {toggleMenuBar, toggleNavbar} from '../../store/slices/menuSlice';
 
 import React, {useEffect} from "react";
 import {useDispatch} from "react-redux";
@@ -13,7 +13,6 @@ const List = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(toggleCategories({State: true}));
         dispatch(toggleResetSpecialMenu());
         dispatch(toggleMenuBar({State: true}));
         dispatch(toggleNavbar({State: true}));

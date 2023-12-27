@@ -48,6 +48,35 @@
     overflow-y: auto;
 }
 
+.list__productCardContainer__backBtnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+
+    width: 90%;
+    max-width: 1020px;
+    height: 60px;
+}
+
+.list__productCardContainer__backBtnContainer > button {
+    background: var(--color07);
+    color: var(--color06);
+
+    width: 150px;
+    height: 40px;
+
+    border: none;
+    outline: none;
+    border-radius: var(--borderRadius1);
+    box-shadow: var(--shadow_02);
+
+    font-size: 18px;
+    font-weight: 400;
+
+    cursor: pointer;
+}
+
 .list__productCardList {
     display: grid;
     grid-template-columns: repeat(4, 240px);

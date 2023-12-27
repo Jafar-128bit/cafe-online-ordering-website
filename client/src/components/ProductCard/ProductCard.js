@@ -7,24 +7,24 @@ import TopProductCard from "./TopProductCard/TopProductCard";
 import SearchProductCard from "./SearchProductCard/SearchProductCard";
 
 import {couponList, specialMessage} from "../../data/data";
-import {addCoupon, removeCoupon} from "../../store/slices/setCouponSlices";
 
 const ProductCard = ({id, productName, productImage, price, type = "", index}) => {
     const [buyBtn, setBuyBtn] = useState(false);
     const [isDiscount, setIsDiscount] = useState(false);
     const [discount, setDiscount] = useState(0);
-    const [couponId, setCouponId] = useState(null);
     const dispatch = useDispatch();
     const cartData = useSelector((state) => state.cartItems);
 
     useEffect(() => {
         const isItemInCart = cartData.some((item) => item.id === id);
-        const isItemInDiscount = couponList.map(coupon => coupon.validProduct).some(itemId => itemId.includes(id));
-        const couponDiscountValue = couponList.find(coupon => coupon.validProduct.includes(id))?.discount || null;
-        const couponIdValue = couponList.find(coupon => coupon.validProduct.includes(id))?.id || null;
+        const isItemInDiscount = couponList
+            .filter(coupon => coupon.type === "on-Product")
+            .map(coupon => coupon.validProduct)
+            .some(itemId => itemId.includes(id));
+        const couponDiscountValue = couponList.filter(coupon => coupon.type === "on-Product")
+            .find(coupon => coupon.validProduct.includes(id))?.discount || null;
 
         setDiscount(couponDiscountValue);
-        setCouponId(couponIdValue);
         setBuyBtn(isItemInCart);
         setIsDiscount(isItemInDiscount);
     }, [cartData, id]);
@@ -58,11 +58,9 @@ const ProductCard = ({id, productName, productImage, price, type = "", index}) =
                 price: price,
                 quantity: 1,
             }));
-            dispatch(addCoupon(couponId));
             setBuyBtn(true);
         } else if (buyBtn) {
             dispatch(removeFromCart(id));
-            dispatch(removeCoupon(couponId));
             setBuyBtn(false);
         }
     }

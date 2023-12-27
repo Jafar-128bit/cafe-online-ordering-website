@@ -1,4 +1,6 @@
 .couponMenu {
+    background: var(--colorWhite);
+
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -25,10 +27,10 @@
 }
 
 .couponMenu__title {
-    background: var(--backgroundGradient01);
-    background-size: 200% 200%;
-    -webkit-animation: gradient 8s ease infinite;
-    animation: gradient 8s ease infinite;
+    background: var(--backgroundGradient06);
+    background-size: 400% 400%;
+    -webkit-animation: gradient 6s ease infinite;
+    animation: gradient 6s ease infinite;
 
     color: var(--colorWhite);
 
@@ -37,11 +39,11 @@
     justify-content: center;
 
     width: 100%;
-    min-height: 15%;
+    height: 150px;
 }
 
 .couponMenu__title > h1 {
-    color: var(--colorWhite);
+    color: var(--color06);
 
     font-size: 40px;
     font-weight: 800;
@@ -52,33 +54,16 @@
 }
 
 .couponMenu__couponList {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    gap: 20px;
-
-    width: 100%;
-    max-height: 85%;
-
-    margin: 0;
-    padding: 25px 0;
-
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.couponMenu__couponList {
     display: grid;
     row-gap: 20px;
     place-content: flex-start;
     place-items: center;
 
     width: max-content;
-    max-height: max-content;
+    height: 100%;
 
-    margin: 25px 0;
-    padding: 0 10px;
+    margin: 0 0;
+    padding: 15px 0;
 
     overflow-x: hidden;
     overflow-y: auto;
