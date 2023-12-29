@@ -1,5 +1,4 @@
 .notificationMenu {
-    /*background: var(--colorWhite);*/
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -22,15 +21,12 @@
 }
 
 .notificationMenu__closeBtn {
-    background: var(--color06);
-    color: var(--colorWhite);
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 34px;
-    height: 34px;
+    width: 31px;
+    height: 31px;
 
     border: none;
     outline: none;
@@ -53,9 +49,6 @@
 }
 
 .notificationMenu__title {
-    background: var(--color06);
-    color: var(--colorWhite);
-
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -90,8 +83,6 @@
 
 .cartInfoCard__title,
 .couponInfoCard__title {
-    color: var(--color06);
-
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -109,8 +100,6 @@
 }
 
 .cartInfoCard__cartItems {
-    background: var(--colorWhite);
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -144,8 +133,6 @@
 }
 
 .cartInfoCard__cartItems > span {
-    background: var(--color06);
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -162,8 +149,6 @@
 }
 
 .cartInfoCard__cartItems > span > p {
-    color: var(--colorWhite);
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -186,9 +171,6 @@
 }
 
 .cartInfoCard__basketLinkBtn {
-    background: var(--color06);
-    color: var(--colorWhite);
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -214,9 +196,6 @@
 }
 
 .cartInfoCard__cartEmptyMessage {
-    background: var(--colorWhite);
-    color: var(--color06);
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -251,8 +230,6 @@
 }
 
 .couponInfoCard__details {
-    background: var(--colorWhite);
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -269,8 +246,6 @@
 }
 
 .couponInfoCard__details__discount {
-    background: var(--color06);
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -284,8 +259,6 @@
 }
 
 .couponInfoCard__details__discount > p {
-    color: var(--colorWhite);
-
     width: max-content;
     height: max-content;
 
@@ -365,9 +338,6 @@
 }
 
 .couponInfoCard__details__couponCode > p {
-    background: var(--color07);
-    color: var(--color06);
-
     flex-shrink: 0;
 
     width: max-content;
@@ -385,9 +355,6 @@
 }
 
 .couponInfoCard__details__couponCode > button {
-    background: var(--color06);
-    color: var(--colorWhite);
-
     display: flex;
     align-items: center;
     justify-content: center;

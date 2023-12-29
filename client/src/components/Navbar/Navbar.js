@@ -1,11 +1,17 @@
 import './navbar.css';
+import './lightModeStyle.css';
+import './darkModeStyle.css';
 import './responsiveNavbar.css';
 
 import cartDarkIcon from '../../assets/icons/cart_Dark_Icon.svg';
+import cartLightIcon from '../../assets/icons/cart_Light_Icon.svg';
 import arrowDarkIcon from '../../assets/icons/arrowBack_Dark_Icon.svg';
+import arrowLightIcon from '../../assets/icons/arrowBack_Light_Icon.svg';
+import notificationDarkIcon from "../../assets/icons/notifications__Dark__Icon.svg";
+import notificationLightIcon from "../../assets/icons/notifications__Light__Icon.svg";
+
 import nightModeDarkIcon from "../../assets/icons/nightMode__Dark__Icon.svg"
 import lightModeLightIcon from "../../assets/icons/lightMode__Light__Icon.svg";
-import notificationDarkIcon from "../../assets/icons/notifications__Dark__Icon.svg";
 
 import {toggleNotificationMenu} from "../../store/slices/menuSlice";
 // import {toggleSendNotification, toggleRemoveNotification} from "../../store/slices/notificationMenuSlices";
@@ -15,20 +21,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {motion} from "framer-motion";
 import {toggleThemeMode} from "../../store/slices/themeSwitchSlices";
-
-const linkStyle = {
-    color: "var(--color06)",
-    textDecoration: "none",
-    textTransform: "uppercase",
-    padding: "3px",
-    margin: "0 10px",
-    fontSize: "16px",
-    fontWeight: "700",
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "center",
-    flexDirection: "column",
-}
 
 const basketIconAnimation = {
     initial: {x: 0},
@@ -81,7 +73,7 @@ const Navbar = ({themeMode}) => {
     }
 
     const handleSwitch = () => {
-        if (themeMode.theme === "light") dispatch(toggleThemeMode({theme: "dark"}));
+        if (themeMode === "light") dispatch(toggleThemeMode({theme: "dark"}));
         else dispatch(toggleThemeMode({theme: "light"}));
     }
 
@@ -109,8 +101,22 @@ const Navbar = ({themeMode}) => {
             setTimeout(() => {
                 setRingNotificationIcon(true);
             }, 500);
-        }, 5000);
+        }, 15000);
     }, []);
+
+    const linkStyle = {
+        color: themeMode === "dark" ? "var(--color07)" : "var(--color06)",
+        textDecoration: "none",
+        textTransform: "uppercase",
+        padding: "3px",
+        margin: "0 10px",
+        fontSize: "16px",
+        fontWeight: "700",
+        display: "flex",
+        alignItems: "flex-start",
+        justifyContent: "center",
+        flexDirection: "column",
+    }
 
     return (
         <nav className="navbar">
@@ -123,11 +129,16 @@ const Navbar = ({themeMode}) => {
                     animate={isNavbarHide ? "show" : "hide"}
                     transition="transition"
                 >
-                    <img src={arrowDarkIcon} alt="arrow light icon"/>
+                    <img src={themeMode === "dark" ? arrowLightIcon : arrowDarkIcon} alt="arrow light icon"/>
                 </motion.button>
             </section>
             <motion.section
-                className="navbar__section_02"
+                className={
+                    `navbar__section_02
+                    ${themeMode === "dark"
+                        ? "navbar__section_02__dark"
+                        : "navbar__section_02__light"}`
+                }
                 variants={navbarLinkHideAnimation}
                 animate={isNavbarHide ? "show" : "hide"}
                 transition="transition"
@@ -165,7 +176,7 @@ const Navbar = ({themeMode}) => {
                     initial="initial"
                     animate={isRingNotificationIcon ? "animate" : ""}
                 >
-                    <img src={notificationDarkIcon} alt="cart icon"/>
+                    <img src={themeMode === "dark" ? notificationLightIcon : notificationDarkIcon} alt="cart icon"/>
                 </motion.button>
                 {/* Option 02 */}
                 <button
@@ -179,9 +190,13 @@ const Navbar = ({themeMode}) => {
                         animate={iconAnimate ? "animate" : "initial"}
                         transition="transition"
                     >
-                        <img src={cartDarkIcon} alt="cart icon"/>
+                        <img src={themeMode === "dark" ? cartLightIcon : cartDarkIcon} alt="cart icon"/>
                     </motion.div>
-                    <p className="navbar__section_03__cart__indicator">{quantity}</p>
+                    <p className={`navbar__section_03__cart__indicator ${
+                        themeMode === "dark"
+                            ? "navbar__section_03__cart__indicator__dark"
+                            : "navbar__section_03__cart__indicator__light"
+                    }`}>{quantity}</p>
                 </button>
                 {/* Option 03 */}
                 <button
@@ -192,39 +207,39 @@ const Navbar = ({themeMode}) => {
                     <motion.div
                         className="themeSwitcherBackgroundNightMode"
                         initial={{opacity: 0}}
-                        animate={themeMode.theme === "light" ? {opacity: 0} : {opacity: 1}}
+                        animate={themeMode === "light" ? {opacity: 0} : {opacity: 1}}
                         transition={{duration: 0.25}}
                     />
                     <motion.div
                         className="themeSwitcherBackgroundLightMode"
                         initial={{opacity: 1}}
-                        animate={themeMode.theme === "dark" ? {opacity: 0} : {opacity: 1}}
+                        animate={themeMode === "dark" ? {opacity: 0} : {opacity: 1}}
                         transition={{duration: 0.25}}
                     />
                     <motion.div
                         className={
                             `navbar__section_03__themeSwitcher__nobe ${
-                                themeMode.theme === "dark"
+                                themeMode === "dark"
                                     ? "themeSwitcherBackgroundLightMode"
                                     : "themeSwitcherBackgroundNightMode"
                             }`
                         }
                         initial={{x: 0}}
-                        animate={themeMode.theme === "dark" ? {x: 30, rotate: 180} : {x: 0, rotate: 0}}
+                        animate={themeMode === "dark" ? {x: 30, rotate: 180} : {x: 0, rotate: 0}}
                         transition={{ease: "easeOut", duration: 0.25}}
                     >
                         <motion.img
                             src={lightModeLightIcon}
                             alt="mode icon"
                             initial={{opacity: 1}}
-                            animate={themeMode.theme === "light" ? {opacity: 1} : {opacity: 0}}
+                            animate={themeMode === "light" ? {opacity: 1} : {opacity: 0}}
                             transition={{duration: 0.25}}
                         />
                         <motion.img
                             src={nightModeDarkIcon}
                             alt="mode icon"
                             initial={{opacity: 0}}
-                            animate={themeMode.theme === "dark" ? {opacity: 1} : {opacity: 0}}
+                            animate={themeMode === "dark" ? {opacity: 1} : {opacity: 0}}
                             transition={{duration: 0.25}}
                         />
                     </motion.div>

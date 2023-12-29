@@ -6,17 +6,23 @@ import cartRemoveLightIcon from "../../../assets/icons/cart_remove_Light_Icon.sv
 
 import {motion} from 'framer-motion';
 
-const productCardSmall = {
-    hidden: {scale: 0, opacity: 0,},
-    visible: {scale: 1, opacity: 1,},
-};
-
 const TopProductCard = ({productImage, productName, price, buyBtn, handleBuy, rank, isDiscount, discount}) => {
+
+    const productCardSmall = {
+        hidden: {scale: 0, opacity: 0,},
+        animate: () => ({
+            scale: 1,
+            opacity: 1,
+            transition: {delay: 0.1 * rank,}
+        }),
+    };
 
     return (
         <motion.div
             className="topProductCard"
             variants={productCardSmall}
+            initial="hidden"
+            animate="animate"
             transition={{type: "spring", stiffness: 300, damping: 20}}
         >
             <div className="topProductCard__imageContainer">

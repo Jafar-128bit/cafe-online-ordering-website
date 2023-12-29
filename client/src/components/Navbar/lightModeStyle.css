@@ -1,0 +1,8 @@
+.navbar__section_02__light {
+    background: var(--colorWhite);
+}
+
+.navbar__section_03__cart__indicator__light {
+    background: var(--color03);
+    color: var(--colorWhite);
+}

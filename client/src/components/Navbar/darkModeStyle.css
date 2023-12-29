@@ -1,0 +1,8 @@
+.navbar__section_02__dark {
+    background: var(--color06);
+}
+
+.navbar__section_03__cart__indicator__dark {
+    background: var(--colorWhite);
+    color: var(--color03);
+}

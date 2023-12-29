@@ -39,12 +39,6 @@
 }
 
 .categories__HeadingContainer > h3 {
-    color: var(--colorBlack);
-
-    background-size: 400% 400%;
-    -webkit-animation: gradient 5s ease infinite;
-    animation: gradient 5s ease infinite;
-
     width: 90%;
 
     font-size: 52px;

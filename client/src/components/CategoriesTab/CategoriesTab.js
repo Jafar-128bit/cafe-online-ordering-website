@@ -1,11 +1,13 @@
 import './categoriesTab.css';
+import './darkModeStyle.css';
+import './lightModeStyle.css';
 import './responsiveCategoriesTab.css';
 
 import {menuList} from "../../data/data";
 import {motion} from "framer-motion";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {toggleResetSpecialMenu, toggleSetSpecialMenu} from "../../store/slices/specialMenuSlices";
 
 const imageRotateAnimation = {
@@ -153,6 +155,9 @@ const CategoriesTab = () => {
     const dispatch = useDispatch();
     const [triggerSideImageAnimation, setTriggerSideImageAnimation] = useState(false);
 
+    const themeMode = useSelector(state => state.themeSwitchSlices);
+    const {theme} = themeMode;
+
     const handleSelectSpecialMenu = (menuType = "normal", id) => {
         if (menuType === "normal") dispatch(toggleResetSpecialMenu());
         else dispatch(toggleSetSpecialMenu({specialMenu: id}));
@@ -160,7 +165,14 @@ const CategoriesTab = () => {
 
     return (
         <section className="categories">
-            <div className="categories__HeadingContainer">
+            <div className={
+                `categories__HeadingContainer 
+                ${
+                    theme === "dark"
+                        ? "categories__HeadingContainer__dark"
+                        : "categories__HeadingContainer__light"
+                }`
+            }>
                 <h3>EXPLORE OUR MENU AND DISCOVER A SYMPHONY OF TASTES</h3>
             </div>
             <div className="categories__optionContainer">

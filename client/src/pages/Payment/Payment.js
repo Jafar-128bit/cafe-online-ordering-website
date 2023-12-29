@@ -3,13 +3,13 @@ import './mediaQueryPaymentPage.css';
 
 import {useNavigate} from "react-router-dom";
 
-import backIconDark from "../../assets/icons/arrowBack_Dark_Icon.svg";
+// import backIconDark from "../../assets/icons/arrowBack_Dark_Icon.svg";
 // import backIconLight from "../../assets/icons/arrowBack_Light_Icon.svg";
 
 import {useDispatch} from "react-redux";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {paymentInfoState} from "../../store/slices/paymentSlice";
-import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
+// import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import PaymentForm from "./PaymentForm/PaymentForm";
 import PaymentReview from "./PaymentReview/PaymentReview";
 import {toggleMenuBar} from "../../store/slices/menuSlice";
@@ -23,10 +23,10 @@ const processIconAnimation = {
     }
 }
 
-const LoadingScreenToggleAnimation = {
-    hide: {opacity: 0, zIndex: -1},
-    show: {opacity: 1, zIndex: 10},
-}
+// const LoadingScreenToggleAnimation = {
+//     hide: {opacity: 0, zIndex: -1},
+//     show: {opacity: 1, zIndex: 10},
+// }
 
 const Payment = () => {
     const navigate = useNavigate();

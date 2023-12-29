@@ -1,7 +1,10 @@
 import './notificationMenu.css';
+import './lightModeStyle.css';
+import './darkModeStyle.css';
 import './mediaQueryNotificationMenu.css';
 
 import closeLightIcon from "../../assets/icons/close_Light_Icon.svg"
+import closeDarkIcon from "../../assets/icons/close_Dark_Icon.svg"
 
 import {toggleNotificationMenu} from "../../store/slices/menuSlice";
 import {cake, cold, iceCream, noodles, chai, snacks, sandwich, smoothies} from '../../data/data';
@@ -16,13 +19,29 @@ import {setData} from "../../store/slices/dataSlices";
 
 const allItems = [...cake, ...cold, ...iceCream, ...noodles, ...chai, ...snacks, ...sandwich, ...smoothies,];
 
-const CartInfoCard = ({quantity, subTotal, navigate, closeNotificationMenu}) => {
+const CartInfoCard = ({quantity, subTotal, navigate, closeNotificationMenu, themeMode}) => {
     return (
         <div className="cartInfoCard">
-            <h4 className="cartInfoCard__title">Basket info</h4>
+            <h4
+                className={
+                    `cartInfoCard__title 
+                    ${themeMode === "dark"
+                        ? "cartInfoCard__title__dark"
+                        : "cartInfoCard__title__light"}`
+                }
+            >
+                Basket info
+            </h4>
             {
                 quantity !== 0 &&
-                <div className="cartInfoCard__cartItems">
+                <div
+                    className={
+                        `cartInfoCard__cartItems 
+                        ${themeMode === "dark"
+                            ? "cartInfoCard__cartItems__dark"
+                            : "cartInfoCard__cartItems__light"}`
+                    }
+                >
                     <p>Your basket is brimming with a delightful assortment of total</p>
                     <span>
                     <p>{quantity > 10 ? quantity : `0${quantity}`}</p>
@@ -32,7 +51,14 @@ const CartInfoCard = ({quantity, subTotal, navigate, closeNotificationMenu}) => 
             }
             {
                 quantity !== 0 &&
-                <div className="cartInfoCard__cartItems">
+                <div
+                    className={
+                        `cartInfoCard__cartItems 
+                        ${themeMode === "dark"
+                            ? "cartInfoCard__cartItems__dark"
+                            : "cartInfoCard__cartItems__light"}`
+                    }
+                >
                     <p>With {quantity} items in your basket, your subtotal is a delightful</p>
                     <span>
                     <p><small>₹</small>{subTotal > 10 ? subTotal : `0${subTotal}`}</p>
@@ -42,7 +68,14 @@ const CartInfoCard = ({quantity, subTotal, navigate, closeNotificationMenu}) => 
             }
             {
                 quantity === 0 &&
-                <p className="cartInfoCard__cartEmptyMessage">
+                <p
+                    className={
+                        `cartInfoCard__cartEmptyMessage 
+                        ${themeMode === "dark"
+                            ? "cartInfoCard__cartEmptyMessage__dark"
+                            : "cartInfoCard__cartEmptyMessage__light"}`
+                    }
+                >
                     Start your culinary adventure! Your basket is brimming
                     with tempting delights, and your subtotal is
                     ready to be discovered. Begin your feast now!
@@ -50,7 +83,12 @@ const CartInfoCard = ({quantity, subTotal, navigate, closeNotificationMenu}) => 
             }
             <button
                 type="button"
-                className="cartInfoCard__basketLinkBtn"
+                className={
+                    `cartInfoCard__basketLinkBtn 
+                    ${themeMode === "dark"
+                        ? "cartInfoCard__basketLinkBtn__dark"
+                        : "cartInfoCard__basketLinkBtn__light"}`
+                }
                 onClick={() => {
                     closeNotificationMenu();
                     navigate(`${quantity > 0 ? "/cart" : "/menu"}`);
@@ -70,7 +108,8 @@ const CouponInfoCard = ({
                             purchaseLimit,
                             closeNotificationMenu,
                             navigate,
-                            dispatch
+                            dispatch,
+                            themeMode
                         }) => {
     const [validProducts, setValidProducts] = useState([]);
 
@@ -92,13 +131,34 @@ const CouponInfoCard = ({
     }
 
     return (
-        <div className="couponInfoCard__details">
-            <div className="couponInfoCard__details__discount">
+        <div
+            className={
+                `couponInfoCard__details 
+                ${themeMode === "dark"
+                    ? "couponInfoCard__details__dark"
+                    : "couponInfoCard__details__light"}`
+            }
+        >
+            <div
+                className={
+                    `couponInfoCard__details__discount 
+                    ${themeMode === "dark"
+                        ? "couponInfoCard__details__discount__dark"
+                        : "couponInfoCard__details__discount__light"}`
+                }
+            >
                 <p>{discount}%</p>
                 <p>OFF</p>
             </div>
             <div className="couponInfoCard__details__Info">
-                <div className="couponInfoCard__details__message">
+                <div
+                    className={
+                        `couponInfoCard__details__message 
+                        ${themeMode === "dark"
+                            ? "couponInfoCard__details__message__dark"
+                            : "couponInfoCard__details__message__light"}`
+                    }
+                >
                     {couponType === "on-Product" &&
                     <p>Unlock a delightful {discount}% off – a delightful treat for your basket items awaits!</p>}
                     {
@@ -109,7 +169,14 @@ const CouponInfoCard = ({
                         </p>
                     }
                 </div>
-                <div className="couponInfoCard__details__couponCode">
+                <div
+                    className={
+                        `couponInfoCard__details__couponCode 
+                        ${themeMode === "dark"
+                            ? "couponInfoCard__details__couponCode__dark"
+                            : "couponInfoCard__details__couponCode__light"}`
+                    }
+                >
                     <p>{couponCode}</p>
                     <button type="button" onClick={handleBtn}>
                         {couponType === "on-Product" ? "Explore Products!" : "Shop More!"}
@@ -120,7 +187,7 @@ const CouponInfoCard = ({
     );
 }
 
-const NotificationMenu = () => {
+const NotificationMenu = ({themeMode}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [quantity, setQuantity] = useState(0);
@@ -145,32 +212,64 @@ const NotificationMenu = () => {
                 generatedCouponId.some(id => id === coupon.id)
                 && calculateTimeDifference(coupon.endDate, true));
             setCouponRandomData([...generatedCouponData]);
-        }, 5000);
+        }, 15000);
     }, []);
 
     return (
         <motion.div
-            className="notificationMenu whiteGlass50 noScroll" style={{zIndex: zIndex}}
+            className={
+                `notificationMenu noScroll
+                ${themeMode === "dark" ? "notificationMenu__dark" : "whiteGlass50"}`
+            }
+            style={{zIndex: zIndex}}
             initial={{opacity: 0, y: 0}}
             animate={State ? {opacity: 1, y: 0} : {opacity: 0, y: -420}}
             transition={{ease: "easeOut", duration: 0.3}}
         >
-            <button type="button" className="notificationMenu__closeBtn" onClick={handleCloseNotificationMenu}>
-                <img src={closeLightIcon} alt="close icon btn"/>
+            <button
+                type="button"
+                className={
+                    `notificationMenu__closeBtn 
+                    ${themeMode === "dark"
+                        ? "notificationMenu__closeBtn__dark"
+                        : "notificationMenu__closeBtn__light"}`
+                }
+                onClick={handleCloseNotificationMenu}>
+                <img src={themeMode === "dark" ? closeDarkIcon : closeLightIcon} alt="close icon btn"/>
             </button>
-            <h3 className="notificationMenu__title">Info Area</h3>
+            <h3
+                className={`notificationMenu__title 
+                ${themeMode === "dark"
+                    ? "notificationMenu__title__dark"
+                    : "notificationMenu__title__light"
+                }`}
+            >
+                Info Area
+            </h3>
             <CartInfoCard
+                themeMode={themeMode}
                 quantity={quantity}
                 subTotal={subTotal}
                 navigate={navigate}
                 closeNotificationMenu={handleCloseNotificationMenu}
             />
             <div className="couponInfoCard">
-                <h4 className="couponInfoCard__title">Available Coupons</h4>
+                <h4
+                    className={
+                        `couponInfoCard__title 
+                        ${themeMode === "dark" 
+                            ? "couponInfoCard__title__dark" 
+                            : "couponInfoCard__title__light"}`
+                    }
+                >
+                    Available Coupons
+                </h4>
                 {
+
                     couponRandomData.map((value, index) => <CouponInfoCard
                         key={value.id + index}
                         index={index}
+                        themeMode={themeMode}
                         couponCode={value.couponCode}
                         discount={value.discount}
                         couponType={value.type}
