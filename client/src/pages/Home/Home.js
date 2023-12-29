@@ -2,7 +2,7 @@ import './home.css';
 import './responsiveHome.css';
 import {topOrders} from "../../data/data";
 
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 
 import {toggleMenuBar} from "../../store/slices/menuSlice";
