@@ -14,6 +14,7 @@ import {useFormik} from 'formik';
 import * as Yup from "yup";
 import {addCoupon} from "../../store/slices/setCouponSlices";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
+import {calculateTimeDifference} from "../../util/utils";
 
 const CartProductCard = loadable(() => import("../../components/ProductCard/CartProductCard/CartProductCard"));
 
@@ -133,9 +134,9 @@ const Cart = () => {
                     .code
                     .toUpperCase() === coupon.couponCode.toUpperCase()
                 );
-
             setTimeout(() => {
-                if (getCouponByCode && getCouponByCode.type === "on-Product") {
+                if (!calculateTimeDifference(getCouponByCode.endDate, true)) setIsCouponValid("inValid");
+                else if (getCouponByCode && getCouponByCode.type === "on-Product") {
                     if (getCouponByCode.validProduct
                         .some(productId => cartData.map(items => items.id).includes(productId))) {
                         setIsCouponValid("valid");
@@ -176,6 +177,7 @@ const Cart = () => {
                     className="cart__section02 noScroll"
                     ref={scope}
                 >
+                    <p className="cart__section02__message">Item List</p>
                     {cartData.map((value, index) => <CartProductCard
                             key={value.id}
                             id={value.id}
@@ -190,7 +192,7 @@ const Cart = () => {
                             animate={animate}
                         />
                     )}
-                </section> : <p className="cart__section02__emptyMessage">Cart is Empty</p>
+                </section> : <p className="cart__section02__message">Cart is Empty</p>
             }
             {
                 cartData.length !== 0 &&

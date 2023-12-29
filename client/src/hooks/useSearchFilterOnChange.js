@@ -1,6 +1,6 @@
 import {cake, chai, cold, iceCream, noodles, sandwich, smoothies, snacks} from "../data/data";
 
-import {setData} from "../store/slices/dataSlices";
+import {setData, clearData} from "../store/slices/dataSlices";
 
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
@@ -13,13 +13,11 @@ const useSearchFilterOnChange = (delay = 0) => {
     const [inputValue, setInputValue] = useState('');
     const productData = useSelector(state => state.filterDataState);
 
-    const handleSetData = data => dispatch(setData(data));
-
     const debouncedHandleFilteredData = debounce(searchWord => {
             const newFilterData = searchData.filter(value =>
                 value.productName.toLowerCase().includes(searchWord.toLowerCase())
             );
-            searchWord === '' ? handleSetData([]) : handleSetData(newFilterData);
+            searchWord === '' ? dispatch(clearData()) : dispatch(setData(newFilterData));
         }, delay);
 
     const handleFilteredData = event => {
@@ -29,7 +27,7 @@ const useSearchFilterOnChange = (delay = 0) => {
     };
 
     const handleDataClear = () => {
-        handleSetData([]);
+        dispatch(clearData());
         setInputValue('');
     };
 

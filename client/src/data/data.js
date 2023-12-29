@@ -384,13 +384,15 @@ export const menuList = [
 ];
 export const topOrders = [chai[2], iceCream[0], snacks[3], sandwich[1], noodles[3], smoothies[0]];
 
+//2023-12-28-16-11-00
+
 export const couponList = [
     {
         id: 1,
         discount: 15,
         couponCode: "MRUJB9",
         type: "on-Product",
-        couponTimeLimit: {timeLimit: "D10", startingDate: "", startingTime: ""},
+        endDate: "2024-01-02-01-00-00",
         validProduct: [17, 18, 15, 28, 30, 27],
         isHide: false,
     },
@@ -399,7 +401,7 @@ export const couponList = [
         discount: 25,
         couponCode: "NGHMQG",
         type: "on-Product",
-        couponTimeLimit: {timeLimit: "D5", startingDate: "", startingTime: ""},
+        endDate: "2024-01-03-01-00-00",
         validProduct: [9, 10, 12, 14],
         isHide: false,
     },
@@ -408,7 +410,7 @@ export const couponList = [
         discount: 35,
         couponCode: "H4V7TR",
         type: "on-Product",
-        couponTimeLimit: {timeLimit: "H5", startingDate: "", startingTime: ""},
+        endDate: "2024-01-03-01-00-00",
         validProduct: [0, 2, 4],
         isHide: false,
     },
@@ -417,7 +419,7 @@ export const couponList = [
         discount: 20,
         couponCode: "CVGG8Q",
         type: "on-Product",
-        couponTimeLimit: {timeLimit: "D3", startingDate: "", startingTime: ""},
+        endDate: "2024-01-01-01-00-00",
         validProduct: [38, 40, 42, 34, 33, 36],
         isHide: false,
     },
@@ -426,7 +428,7 @@ export const couponList = [
         discount: 8,
         couponCode: "Q4R51G",
         type: "on-Product",
-        couponTimeLimit: {timeLimit: "D12", startingDate: "", startingTime: ""},
+        endDate: "2024-01-02-01-00-00",
         validProduct: [6, 7],
         isHide: false,
     },
@@ -435,7 +437,7 @@ export const couponList = [
         discount: 30,
         couponCode: "3000DC",
         type: "on-Purchase",
-        couponTimeLimit: {timeLimit: "H1", startingDate: "", startingTime: ""},
+        endDate: "2024-01-01-01-00-00",
         purchaseLimit: 3000,
         isHide: false,
     },
@@ -444,19 +446,11 @@ export const couponList = [
         discount: 20,
         couponCode: "2500XO",
         type: "on-Purchase",
-        couponTimeLimit: {timeLimit: "D30", startingDate: "", startingTime: ""},
+        endDate: "2024-01-10-01-00-00",
         purchaseLimit: 2500,
         isHide: false,
     },
 ];
-
-export const specialNotification = [
-    {id: 0, title: "offer", article: "", image: null},
-    {id: 1, title: "deal", article: "", image: null},
-    {id: 2, title: "special menu", article: "", image: null},
-    {id: 3, title: "coupon", article: "", image: null},
-    {id: 4, title: "discount", article: "", image: null},
-]
 
 export const specialMessage = [
     {id: 0, message: `Indulge in the Unmatched Flavors of Culinary Craftsmanship`,},

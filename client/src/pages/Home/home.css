@@ -54,7 +54,7 @@
 }
 
 .home__section-01__subtitle {
-    color: var(--colorBlack);
+    color: var(--color06);
 
     width: 90%;
     height: max-content;
@@ -69,7 +69,7 @@
 }
 
 .home__section-01__title {
-    color: var(--themeColor01);
+    color: var(--color06);
 
     display: flex;
     align-items: center;

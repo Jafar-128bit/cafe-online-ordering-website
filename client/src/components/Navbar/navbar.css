@@ -1,18 +1,18 @@
 .navbar {
-
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: row;
     flex-shrink: 0;
 
-    width: 570px;
+    width: 100%;
+    max-width: 1280px;
     height: 70px;
 
     margin: 0;
     padding: 0;
 
-    z-index: 80;
+    z-index: 89;
 
     position: relative;
     top: 0;
@@ -28,9 +28,12 @@
 
     padding: 0;
     margin: 0;
+
+    position: absolute;
+    left: 0;
 }
 
-.navbar__section_01__autoHideIcon {
+.navbar__section_01__hideIconButton {
     background: transparent;
 
     display: flex;
@@ -48,7 +51,8 @@
 
     overflow: hidden;
 }
-.navbar__section_01__autoHideIcon > img {
+
+.navbar__section_01__hideIconButton > img {
     width: 70%;
     height: 70%;
 
@@ -74,7 +78,8 @@
     border-radius: var(--borderRadius2);
     box-shadow: var(--shadow_02);
 
-    position: relative;
+    position: absolute;
+    left: calc((100% - 430px) / 2);
 }
 
 .navbar__section_02__line, .navbar__section_02__line__hide {
@@ -101,30 +106,60 @@
 .navbar__section_03 {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: row;
     flex-shrink: 0;
 
-    width: 60px;
+    width: 190px;
     height: 60px;
 
     padding: 0 0;
+    position: absolute;
+    right: 0;
 }
+
+.navbar__section_03__notificationMenuBtn {
+    background-color: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    outline: none;
+    padding: 0;
+
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+.navbar__section_03__notificationMenuBtn > img {
+    width: 60%;
+    height: 60%;
+
+    object-fit: contain;
+    object-position: center;
+}
+
 
 .navbar__section_03__cartMenuBtn {
     background-color: transparent;
 
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-shrink: 0;
 
-    width: max-content;
+    width: 50px;
     height: 50px;
 
     border: none;
     outline: none;
-    padding: 0 10px;
+    padding: 0;
 
     cursor: pointer;
     overflow: hidden;
@@ -158,8 +193,8 @@
 
     color: var(--colorWhite);
 
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
 
     border-radius: 50%;
     padding: 5px;
@@ -173,6 +208,70 @@
     z-index: 10;
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 52%;
+    transform: translateX(-52%);
+}
+
+.navbar__section_03__themeSwitcher {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 60px;
+    height: 30px;
+
+    border: none;
+    outline: none;
+    padding: 0;
+
+    border-radius: calc(30px / 2);
+    box-shadow: var(--shadow_02);
+
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+.themeSwitcherBackgroundLightMode {
+    background: var(--backgroundGradient03);
+
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+}
+
+.themeSwitcherBackgroundNightMode {
+    background: var(--backgroundGradient09);
+
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+}
+
+.navbar__section_03__themeSwitcher__nobe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    padding: 0;
+    margin: 0;
+
+    border-radius: 50%;
+
+    position: absolute;
+    left: 3px;
+}
+
+.navbar__section_03__themeSwitcher__nobe > img {
+    width: 70%;
+    height: 70%;
+
+    position: absolute;
 }

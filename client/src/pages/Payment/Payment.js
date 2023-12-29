@@ -23,14 +23,6 @@ const processIconAnimation = {
     }
 }
 
-const backBtnIconAnimation = {
-    initial: {x: 0},
-    animate: {
-        x: [0, 2, -2, 2, -2, 0],
-        transition: {ease: "easeInOut", duration: 3, repeat: Infinity, repeatDelay: 0},
-    }
-}
-
 const LoadingScreenToggleAnimation = {
     hide: {opacity: 0, zIndex: -1},
     show: {opacity: 1, zIndex: 10},

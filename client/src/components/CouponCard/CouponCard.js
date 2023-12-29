@@ -8,14 +8,17 @@ import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {addCoupon, removeCoupon} from '../../store/slices/setCouponSlices';
 import {cake, cold, iceCream, noodles, chai, snacks, sandwich, smoothies} from '../../data/data';
+import {setData} from "../../store/slices/dataSlices";
+import useTimeDifference from "../../hooks/useTimeDifference";
+import {calculateTimeDifference} from "../../util/utils";
 
 const allItems = [...cake, ...cold, ...iceCream, ...noodles, ...chai, ...snacks, ...sandwich, ...smoothies,];
 
 const hourGlassAnimation = {
     initial: {rotate: 0,},
     animate: {
-        rotate: [0, 180, 360],
-        transition: {ease: "linear", duration: 0.9, repeat: Infinity, repeatDelay: 0},
+        rotate: [0, -45, 45, 0],
+        transition: {ease: "linear", duration: 1, repeat: Infinity, repeatDelay: 0},
     }
 }
 
@@ -26,7 +29,7 @@ const CouponCard = ({
                         couponType,
                         validProductIDs,
                         purchaseLimit,
-                        couponTimeLimit,
+                        endDate,
                         isHide,
                         selfCouponData
                     }) => {
@@ -35,8 +38,10 @@ const CouponCard = ({
     const couponData = useSelector(state => state.couponState);
     const [applyCoupon, setApplyCoupon] = useState(true);
     const [validProducts, setValidProducts] = useState([]);
+    const [deleteCoupon, setDeleteCoupon] = useState(true);
 
-    console.log(validProducts);
+    const checkValidity = calculateTimeDifference(endDate, true);
+    const timerData = useTimeDifference(endDate);
 
     useEffect(() => {
         const validProductList = allItems.filter(products => validProductIDs?.includes(products.id));
@@ -45,17 +50,27 @@ const CouponCard = ({
         setValidProducts([...validProductList]);
     }, [couponData, id, validProductIDs, applyCoupon]);
 
+    useEffect(() => {
+        const validate = calculateTimeDifference(endDate, true);
+        if (!validate) {
+            setTimeout(() => {
+                setDeleteCoupon(false);
+            }, 2000);
+        }
+    }, [endDate]);
+
     const handleApplyCoupon = () => {
         if (!applyCoupon) dispatch(addCoupon(selfCouponData));
         else if (applyCoupon) dispatch(removeCoupon(selfCouponData));
     }
 
     const handleShowProducts = () => {
-        navigate(`menu/offer/${couponCode}`);
+        dispatch(setData(validProducts));
+        navigate(`/menu/offerProducts`);
     }
 
     return (
-        <div
+        <motion.div
             className={
                 `couponCard ${
                     couponType === "on-Product"
@@ -64,7 +79,20 @@ const CouponCard = ({
                 }`
             }
             style={{display: isHide ? "none" : "flex"}}
+            initial={{x: 0,}}
+            animate={deleteCoupon
+                ? {x: 0,}
+                : {x: -375,}}
         >
+            < motion.div
+                className="couponCard__Shade"
+                initial={{opacity: 0, zIndex: -1}}
+                animate={
+                    !checkValidity
+                        ? {opacity: 0.75, zIndex: 11}
+                        : {opacity: 0, zIndex: -1}
+                }
+            />
             <section className="couponCard__section01">
                 <section
                     className={
@@ -86,30 +114,45 @@ const CouponCard = ({
                 }
             </section>
             <section className="couponCard__section02">
-                <p className="couponCard__section02__title">Valid For</p>
+                <p className="couponCard__section02__title">{checkValidity ? "Valid For" : "Expired"}</p>
                 <div className="couponCard__section02__validity">
-                    <div className="couponCard__section02__validity__validTimer">
-                        <p>DD</p>:<p>HH</p>:<p>MM</p>:<p>SS</p>
-                    </div>
-                    <motion.div
-                        className="couponCard__section02__validity__icon"
-                        variants={hourGlassAnimation}
-                        initial="initial"
-                        animate="animate"
-                    >
-                        <img src={hourGlassDarkIcon} alt="hour glass icon"/>
-                    </motion.div>
+                    {
+                        checkValidity &&
+                        <div className="couponCard__section02__validity__validTimer">
+                            <p>{timerData.days < 10 ? `0${timerData.days}` : timerData.days}</p>:
+                            <p>{timerData.hours < 10 ? `0${timerData.hours}` : timerData.hours}</p>:
+                            <p>{timerData.minutes < 10 ? `0${timerData.minutes}` : timerData.minutes}</p>:
+                            <p>{timerData.seconds < 10 ? `0${timerData.seconds}` : timerData.seconds}</p>
+                        </div>
+                    }
+                    {
+                        checkValidity &&
+                        <motion.div
+                            className="couponCard__section02__validity__icon"
+                            variants={hourGlassAnimation}
+                            initial="initial"
+                            animate="animate"
+                        >
+                            <img src={hourGlassDarkIcon} alt="hour glass icon"/>
+                        </motion.div>
+                    }
+                    {
+                        !checkValidity && <p>Time Over!</p>
+                    }
                 </div>
                 <div className="couponCard__section02__messageContainer">
                     {
-                        couponType === "on-Product" &&
+                        (checkValidity && couponType === "on-Product") &&
                         <p>Unlock <strong>{discount}%</strong> discount on your basket items</p>
                     }
                     {
-                        couponType === "on-Purchase" &&
+                        (checkValidity && couponType === "on-Purchase") &&
                         <p>Unlock <strong>{discount}%</strong> discount on
                             purchase more than <strong>₹{purchaseLimit}</strong>
                         </p>
+                    }
+                    {
+                        !checkValidity && <p>No Offer!</p>
                     }
                 </div>
                 <div className="couponCard__section02__btnContainer">
@@ -129,7 +172,7 @@ const CouponCard = ({
                     </button>
                 </div>
             </section>
-        </div>
+        </motion.div>
     );
 }
 

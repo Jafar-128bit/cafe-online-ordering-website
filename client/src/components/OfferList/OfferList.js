@@ -57,7 +57,9 @@ const OfferList = ({offerTitle, offerListData = [{}], type = "product"}) => {
                     bannerHeading={data.bannerHeading}
                     bannerImage={data.bannerImage}
                     bannerMessage={data.bannerMessage}
-                />
+                />;
+            default:
+                return <></>
         }
     }
 
@@ -79,7 +81,7 @@ const OfferList = ({offerTitle, offerListData = [{}], type = "product"}) => {
                     }`
                 }
             >
-                {offerListData.map((data, index) => <Element data={data} index={index}/>)}
+                {offerListData.map((data, index) => <Element key={index} data={data} index={index}/>)}
             </div>
         </motion.section>
     );

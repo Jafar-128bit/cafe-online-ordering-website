@@ -6,7 +6,7 @@ import rootReducer from './reducers';
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['menuState', 'cartItems', 'paymentInfoState'],
+    whitelist: ['menuState', 'cartItems', 'paymentInfoState', 'themeSwitchSlices'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

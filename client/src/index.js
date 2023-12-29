@@ -70,12 +70,11 @@ const appRoute = createBrowserRouter([
                         element: <ProductList type="main"/>,
                         loader: ({params}) => {
                             if (params.type === "normalMenu") return renderProductCards(params.id);
-                            else if (params.type === "all" && params.id === "0") return renderProductCards(0);
                             else if (params.type === "specialMenu") return [];
                         },
                     },
                     {
-                        path: "offer/?:couponId",
+                        path: "offerProducts",
                         element: <ProductList type="offer"/>,
                     },
                 ]

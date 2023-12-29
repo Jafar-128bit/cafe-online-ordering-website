@@ -47,13 +47,6 @@
     --backgroundGradient07: linear-gradient(to right, #f83600 0%, #f9d423 100%);
     --backgroundGradient08: radial-gradient(circle at 10% 20%, rgb(0, 107, 141) 0%, rgb(0, 49, 62) 90%);
     --backgroundGradient09: radial-gradient(926px at 2.7% 11%, rgb(17, 29, 94) 0%, rgb(178, 31, 102) 90%);
-
-    --couponCardBackgroundLevel1: radial-gradient(circle at 10% 20%, rgb(3, 235, 255) 0%, rgb(152, 70, 242) 100.2%);
-    --couponCardBackgroundLevel2: linear-gradient(to right, #f83600 0%, #f9d423 100%);
-    --couponCardBackgroundLevel3: linear-gradient(90.4deg, rgb(248, 52, 246) 0.6%, rgb(152, 38, 252) 90%);
-    --couponCardBackgroundLevel4: radial-gradient(circle at 10% 20%, rgb(69, 86, 102) 0%, rgb(34, 34, 34) 90%);
-    --couponCardBackgroundLevel5: radial-gradient(circle at 10% 20%, rgb(69, 86, 102) 0%, rgb(34, 34, 34) 90%);
-    --couponCardBackgroundInActive: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
 }
 
 .app {
@@ -76,29 +69,15 @@
     position: relative;
 }
 
-.cardTypeLevel1 {
-    background: var(--couponCardBackgroundLevel1);
-    color: var(--colorWhiteTransparent35);
-}
+.shade {
+    display: none;
+    background-color: var(--colorBlackTransparent35);
 
-.cardTypeLevel2 {
-    background: var(--couponCardBackgroundLevel2);
-    color: var(--colorWhiteTransparent35);
-}
+    width: 100%;
+    height: 100%;
 
-.cardTypeLevel3 {
-    background: var(--couponCardBackgroundLevel3);
-    color: var(--colorWhiteTransparent35);
-}
-
-.cardTypeLevel4 {
-    background: var(--couponCardBackgroundLevel4);
-    color: #c0c0c0;
-}
-
-.cardTypeLevel5 {
-    background: var(--couponCardBackgroundLevel5);
-    color: #ffd700;
+    overflow: hidden;
+    position: absolute;
 }
 
 .closeBtn {
@@ -175,7 +154,7 @@
     border: 0.5px solid var(--colorWhiteTransparent35);
     border-radius: var(--borderRadius1);
 
-    box-shadow: var(--shadow_01);
+    box-shadow: var(--shadow_03);
 }
 
 .whiteGlass35 {
@@ -187,12 +166,6 @@
     border-radius: var(--borderRadius1);
 
     box-shadow: var(--shadow_01);
-}
-
-.backgroundGradientAnimation {
-    background-size: 400% 400%;
-    -webkit-animation: gradient 15s ease infinite;
-    animation: gradient 15s ease infinite;
 }
 
 .iconContainer {
@@ -270,5 +243,11 @@
     }
     100% {
         background-position: 0 50%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .shade {
+        display: block;
     }
 }

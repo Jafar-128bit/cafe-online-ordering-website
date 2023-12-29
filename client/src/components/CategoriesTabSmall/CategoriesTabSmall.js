@@ -33,6 +33,7 @@ const CategoriesTabSmall = () => {
             >
                 {menuList.map((option, index) =>
                     <motion.button
+                        key={option.id}
                         className="categoriesTabSmall__optionContainer"
                         onClick={() => handleNavigate(`/menu/normalMenu/${option.id}`)}
                         initial={{opacity: 0, scale: 0.85}}

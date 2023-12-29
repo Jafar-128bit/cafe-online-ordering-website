@@ -9,19 +9,6 @@
 }
 
 @media screen and (max-width: 900px) {
-    .list__title {
-        background: var(--backgroundGradient08);
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        flex-shrink: 0;
-
-        width: 100%;
-        height: 100px;
-    }
-
     .list__title > h1 {
         color: var(--colorWhite);
 
@@ -34,7 +21,7 @@
     }
 
     .list__routeContainer {
-        height: calc(100% - 100px - 70px);
+        height: calc(100% - 70px);
     }
 
     .list__productCardList {
