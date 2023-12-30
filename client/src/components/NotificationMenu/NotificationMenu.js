@@ -187,7 +187,7 @@ const CouponInfoCard = ({
     );
 }
 
-const NotificationMenu = ({themeMode}) => {
+const NotificationMenu = ({theme}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [quantity, setQuantity] = useState(0);
@@ -219,27 +219,27 @@ const NotificationMenu = ({themeMode}) => {
         <motion.div
             className={
                 `notificationMenu noScroll
-                ${themeMode === "dark" ? "notificationMenu__dark" : "whiteGlass50"}`
+                ${theme === "dark" ? "darkGlass50" : "whiteGlass50"}`
             }
             style={{zIndex: zIndex}}
             initial={{opacity: 0, y: 0}}
-            animate={State ? {opacity: 1, y: 0} : {opacity: 0, y: -420}}
+            animate={State ? {opacity: 1, y: 0} : {opacity: 0, y: -450}}
             transition={{ease: "easeOut", duration: 0.3}}
         >
             <button
                 type="button"
                 className={
                     `notificationMenu__closeBtn 
-                    ${themeMode === "dark"
+                    ${theme === "dark"
                         ? "notificationMenu__closeBtn__dark"
                         : "notificationMenu__closeBtn__light"}`
                 }
                 onClick={handleCloseNotificationMenu}>
-                <img src={themeMode === "dark" ? closeDarkIcon : closeLightIcon} alt="close icon btn"/>
+                <img src={theme === "dark" ? closeDarkIcon : closeLightIcon} alt="close icon btn"/>
             </button>
             <h3
                 className={`notificationMenu__title 
-                ${themeMode === "dark"
+                ${theme === "dark"
                     ? "notificationMenu__title__dark"
                     : "notificationMenu__title__light"
                 }`}
@@ -247,7 +247,7 @@ const NotificationMenu = ({themeMode}) => {
                 Info Area
             </h3>
             <CartInfoCard
-                themeMode={themeMode}
+                themeMode={theme}
                 quantity={quantity}
                 subTotal={subTotal}
                 navigate={navigate}
@@ -257,7 +257,7 @@ const NotificationMenu = ({themeMode}) => {
                 <h4
                     className={
                         `couponInfoCard__title 
-                        ${themeMode === "dark" 
+                        ${theme === "dark" 
                             ? "couponInfoCard__title__dark" 
                             : "couponInfoCard__title__light"}`
                     }
@@ -269,7 +269,7 @@ const NotificationMenu = ({themeMode}) => {
                     couponRandomData.map((value, index) => <CouponInfoCard
                         key={value.id + index}
                         index={index}
-                        themeMode={themeMode}
+                        themeMode={theme}
                         couponCode={value.couponCode}
                         discount={value.discount}
                         couponType={value.type}

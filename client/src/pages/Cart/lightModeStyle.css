@@ -1,0 +1,66 @@
+.cart__shade__light {
+    background: var(--colorWhiteTransparent35);
+}
+
+.cart__removeItemPopup__light {
+    background: var(--colorWhite);
+}
+
+.cart__removeItemCard__message__light {
+    background: var(--color03);
+    color: var(--colorWhite);
+}
+
+.cart__removeItemInfo__imageContainer__light {
+    background: var(--colorBlack);
+}
+
+.cart__removeItemInfo__name__light {
+    color: var(--colorBlack);
+}
+
+.cart__removeItemInfo__price__light {
+    color: var(--colorBlack);
+}
+
+.cart__removeItemBtn__light {
+    background: var(--color03);
+    color: var(--colorWhite);
+}
+
+.cart__section01__title__light {
+    color: var(--color06);
+}
+
+.cart__section02__message__dark {
+    color: var(--colorBlack);
+}
+
+.cart__section03__info__couponTitle__light {
+    color: var(--colorBlack);
+}
+
+.cart__section03__info__couponMenuBtn__light {
+    color: var(--colorBlack);
+}
+
+.cart__section03__info__couponInput__light > input {
+    border-bottom: 1px solid var(--colorBlack);
+}
+
+.cart__section03__info__couponInput__light > button {
+    background: var(--backgroundGradient03);
+    color: var(--colorBlack);
+}
+
+.cart__section03__subtotal__title__light {
+    color: var(--colorBlack);
+}
+
+.cart__section03__subtotal__amount__container__light {
+    background: var(--colorWhite);
+}
+
+.cart__section03__subtotal__amount__light > p {
+    color: var(--colorBlack);
+}

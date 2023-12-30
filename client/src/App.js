@@ -1,7 +1,6 @@
 import './App.css';
 
 import lightModeBackground from "./assets/background/backgroundWhite.jpg";
-import DarkModeBackground from "./assets/background/backgroundDark.jpg";
 
 import Navbar from "./components/Navbar/Navbar";
 import CouponMenu from "./components/CouponMenu/CouponMenu";
@@ -16,28 +15,30 @@ function App() {
 
     const menuBarState = useSelector((state) => state.menuState.menuBarState);
     const notificationMenuState = useSelector(state => state.menuState.notificationMenuState);
+    const couponMenu = useSelector(state => state.menuState.couponMenuState);
     const themeMode = useSelector(state => state.themeSwitchSlices);
     const {theme} = themeMode;
-    const {State, zIndex} = notificationMenuState;
 
     return (
         <main className="app" style={{
-            backgroundImage: theme === "light" ? `url(${lightModeBackground})` : `url(${DarkModeBackground})`
+            background: theme === "light" ? `url(${lightModeBackground})` : `var(--color08)`
         }}>
             <motion.div
                 className="shade whiteGlass50"
                 style={{
-                    zIndex: State ? zIndex - 1 : 0,
+                    zIndex: (notificationMenuState.State || couponMenu.State)
+                        ? couponMenu.zIndex - 1
+                        : 0,
                 }}
-                animate={State ? {opacity: 1} : {opacity: 0}}
+                animate={(notificationMenuState.State || couponMenu.State) ? {opacity: 1} : {opacity: 0}}
                 transition={{ease: "easeOut", duration: 0.25}}
             />
 
-            <NotificationMenu themeMode={theme}/>
-            <Navbar themeMode={theme}/>
-            <CouponMenu themeMode={theme}/>
+            <NotificationMenu theme={theme}/>
+            <Navbar theme={theme}/>
+            <CouponMenu theme={theme}/>
             <Outlet/>
-            {menuBarState.State && <Menubar themeMode={theme}/>}
+            {menuBarState.State && <Menubar theme={theme}/>}
         </main>
     );
 }

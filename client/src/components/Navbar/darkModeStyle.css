@@ -1,8 +1,12 @@
+.navbar__section_01__hideIconButton__dark > p {
+    color: var(--colorWhite);
+}
+
 .navbar__section_02__dark {
     background: var(--color06);
 }
 
 .navbar__section_03__cart__indicator__dark {
     background: var(--colorWhite);
-    color: var(--color03);
+    color: var(--colorBlack);
 }

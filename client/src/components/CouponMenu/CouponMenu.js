@@ -6,6 +6,9 @@ import "./couponMenu.css";
 import './responsiveCouponMenu.css';
 
 import closeLightIcon from "../../assets/icons/close_Light_Icon.svg";
+import closeDarkIcon from "../../assets/icons/close_Dark_Icon.svg";
+
+
 import {toggleCouponMenu} from "../../store/slices/menuSlice";
 import {couponList} from "../../data/data";
 import CouponCard from "../CouponCard/CouponCard";
@@ -14,17 +17,17 @@ import {calculateTimeDifference} from "../../util/utils";
 
 
 const couponMenuAnimation = {
-    hide: {opacity: 0, x: 0, display: "none"},
-    show: {opacity: 1, x: 478, display: "flex"}
+    hide: {opacity: 0, y: 0},
+    show: {opacity: 1, y: 690}
 }
 
-const CouponMenu = () => {
+const CouponMenu = ({theme}) => {
     const dispatch = useDispatch();
     const [validCoupon, setValidCoupon] = useState([]);
     const [inValidCoupon, setInValidCoupon] = useState([]);
     const [subtotal, setSubtotal] = useState([]);
-    const couponMenu = useSelector(state => state.menuState.couponMenuState);
     const cartData = useSelector((state) => state.cartItems);
+    const couponMenu = useSelector(state => state.menuState.couponMenuState);
     const {State, zIndex} = couponMenu;
 
     const handleClose = () => dispatch(toggleCouponMenu({State: false}));
@@ -55,21 +58,21 @@ const CouponMenu = () => {
 
     return (
         <motion.aside
-            className="couponMenu whiteGlass75"
-            style={{zIndex: zIndex - 1}}
+            className={`couponMenu ${theme === "dark" ? "darkGlass35" : "whiteGlass75"}`}
+            style={{zIndex: zIndex}}
             variants={couponMenuAnimation}
             animate={State ? 'show' : 'hide'}
-            transition={{ease: "linear", duration: 0.25}}
+            transition={{ease: "easeOut", duration: 0.3}}
         >
             <button
                 type="button"
                 className="closeBtn couponMenu__closeBtn"
                 onClick={handleClose}
             >
-                <img src={closeLightIcon} alt="close icon"/>
+                <img src={theme === "dark" ? closeLightIcon : closeDarkIcon} alt="close icon"/>
             </button>
             <div className="couponMenu__title">
-                <h1>COUPONS</h1>
+                <h1 style={{color: theme === "dark" ? "var(--colorWhite)" : "var(--color06)"}}>COUPONS</h1>
             </div>
             <section className="couponMenu__couponList noScroll" style={{
                 gridTemplateRows: `repeat(${couponList.length}, auto-fill)`

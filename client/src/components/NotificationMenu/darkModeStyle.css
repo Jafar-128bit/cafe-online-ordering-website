@@ -1,7 +1,3 @@
-.notificationMenu__dark {
-    background: var(--color06);
-}
-
 .notificationMenu__closeBtn__dark {
     background: var(--colorWhite);
     color: var(--color06);

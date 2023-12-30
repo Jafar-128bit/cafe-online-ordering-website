@@ -1,4 +1,6 @@
 import './cartProductCard.css';
+import './darkModeStyle.css';
+import './lightModeStyle.css';
 import './mediaQueryCartProductCard.css';
 
 import {useEffect} from "react";
@@ -18,6 +20,7 @@ const CartProductCard = ({
                              setItemToRemove,
                              setTogglePopMessage,
                              animate,
+                             theme
                          }) => {
 
     useEffect(() => {
@@ -68,13 +71,32 @@ const CartProductCard = ({
 
     return (
         <motion.div
-            className="cart__productInfo"
+            className={
+                `cart__productInfo 
+                ${theme === "dark"
+                    ? "cart__productInfo__dark"
+                    : "cart__productInfo__light"}`
+            }
         >
-            <section className="cart__productInfo__section01">
+            <section
+                className={
+                    `cart__productInfo__section01 
+                    ${theme === "dark"
+                        ? "cart__productInfo__section01__dark"
+                        : "cart__productInfo__section01__light"}`
+                }
+            >
                 <img src={productImage} alt={productName} width="50px"/>
             </section>
 
-            <section className="cart__productInfo__section02">
+            <section
+                className={
+                    `cart__productInfo__section02 
+                    ${theme === "dark"
+                        ? "cart__productInfo__section02__dark"
+                        : "cart__productInfo__section02__light"}`
+                }
+            >
                 <p className="cart__productInfo__section02__name">{productName}</p>
                 <p className="cart__productInfo__section02__price">
                     Price ₹ {productPrice}

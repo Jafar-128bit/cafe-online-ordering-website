@@ -1,0 +1,21 @@
+.topProductCard__light {
+    background-color: var(--colorWhite);
+}
+
+.topProductCard__infoContainer__light > p {
+    color: var(--colorBlack);
+}
+
+.topProductCard__infoContainer__addToCartBtn__light {
+    background: var(--colorBlack);
+}
+
+.topProductCard__offerIndicator__light {
+    background: var(--backgroundGradient07);
+
+}
+
+.topProductCard__offerIndicator__message__light {
+    color: var(--colorWhite);
+}
+

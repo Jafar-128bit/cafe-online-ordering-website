@@ -1,4 +1,6 @@
 import './mainProductCard.css'
+import './darkModeStyle.css';
+import './lightModeStyle.css';
 import './mediaQueryMainProductCard.css';
 import {motion} from "framer-motion";
 import {specialMessage} from "../../../data/data";
@@ -15,7 +17,8 @@ const MainProductCard = ({
                              isDiscount,
                              discount,
                              indexNumber,
-                             message
+                             message,
+                             theme
                          }) => {
 
     const productCardAnimation = {
@@ -29,7 +32,12 @@ const MainProductCard = ({
 
     return (
         <motion.div
-            className="mainProductCard"
+            className={
+                `mainProductCard 
+                ${theme === "dark"
+                    ? "mainProductCard__dark"
+                    : "mainProductCard__light"}`
+            }
             variants={productCardAnimation}
             initial="initial"
             animate="animate"
@@ -38,7 +46,14 @@ const MainProductCard = ({
                 <img src={productImage} alt={productName}/>
             </section>
             <section className="mainProductCard__productInfoContainer">
-                <div className="mainProductCard__productInfo">
+                <div
+                    className={
+                        `mainProductCard__productInfo 
+                        ${theme === "dark"
+                            ? "mainProductCard__productInfo__dark"
+                            : "mainProductCard__productInfo__light"}`
+                    }
+                >
                     <h2>{productName}</h2>
                     <p><small>₹</small>{price}</p>
                 </div>
@@ -60,7 +75,12 @@ const MainProductCard = ({
                             animate={{x: 0}}
                         >
                             <motion.p
-                                className="mainProductCard__messageContainer__message"
+                                className={
+                                    `mainProductCard__messageContainer__message 
+                                    ${theme === "dark"
+                                        ? "mainProductCard__messageContainer__message__dark"
+                                        : "mainProductCard__messageContainer__message__light"}`
+                                }
                                 initial={{opacity: 0}}
                                 animate={message ? {opacity: 1} : {opacity: 0}}
                             >

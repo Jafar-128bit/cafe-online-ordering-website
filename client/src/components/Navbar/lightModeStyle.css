@@ -1,3 +1,7 @@
+.navbar__section_01__hideIconButton__light > p {
+    color: var(--colorBlack);
+}
+
 .navbar__section_02__light {
     background: var(--colorWhite);
 }

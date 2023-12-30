@@ -9,6 +9,7 @@
     --color05: #058bb8;
     --color06: #352F44;
     --color07: #FAF0E6;
+    --color08: #3F3D3DFF;
 
     --neonGreen: #39ff14;
 
@@ -47,14 +48,16 @@
     --backgroundGradient07: linear-gradient(to right, #f83600 0%, #f9d423 100%);
     --backgroundGradient08: radial-gradient(circle at 10% 20%, rgb(0, 107, 141) 0%, rgb(0, 49, 62) 90%);
     --backgroundGradient09: radial-gradient(926px at 2.7% 11%, rgb(17, 29, 94) 0%, rgb(178, 31, 102) 90%);
+    --backgroundGradient10: linear-gradient(109.6deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(63, 61, 61) 78.9%);
 }
 
 .app {
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 200% 200%;
-    -webkit-animation: gradient 8s ease infinite;
-    animation: gradient 8s ease infinite;
+    background-size: cover;
+    /*background-size: 200% 200%;*/
+    /*-webkit-animation: gradient 8s ease infinite;*/
+    /*animation: gradient 8s ease infinite;*/
 
     display: flex;
     align-items: center;

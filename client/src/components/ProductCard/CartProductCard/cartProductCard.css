@@ -1,6 +1,4 @@
 .cart__productInfo {
-    background: var(--colorWhite);
-
     display: flex;
     align-items: center;
     justify-content: space-between;

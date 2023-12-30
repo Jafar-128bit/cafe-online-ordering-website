@@ -1,4 +1,6 @@
 import "./cart.css";
+import "./lightModeStyle.css";
+import "./darkModeStyle.css";
 import './responsiveCart.css';
 
 import {useNavigate} from "react-router-dom";
@@ -9,7 +11,7 @@ import {useEffect, useState} from "react";
 import {removeFromCart} from "../../store/slices/cartSlices";
 import {couponList} from "../../data/data";
 import useAmount from "../../hooks/useAmount";
-import {toggleCouponMenu, toggleMenuBar, toggleNavbar} from "../../store/slices/menuSlice";
+import {toggleCouponMenu, toggleMenuBar, toggleNavbar, toggleNotificationMenu} from "../../store/slices/menuSlice";
 import {useFormik} from 'formik';
 import * as Yup from "yup";
 import {addCoupon} from "../../store/slices/setCouponSlices";
@@ -45,7 +47,7 @@ const couponValidationSchema = Yup.object().shape({
         .max(6, 'Too Long'),
 });
 
-const RemovePopUpCard = ({itemToRemove, dispatch, togglePopMessage, setTogglePopMessage, setItemToRemove}) => {
+const RemovePopUpCard = ({itemToRemove, dispatch, togglePopMessage, setTogglePopMessage, setItemToRemove, theme}) => {
     const handleRemove = (flag = false) => {
         if (flag) {
             dispatch(removeFromCart(itemToRemove.id));
@@ -59,27 +61,52 @@ const RemovePopUpCard = ({itemToRemove, dispatch, togglePopMessage, setTogglePop
 
     return (
         <motion.section
-            className="cart__shade"
+            className={`cart__shade ${theme === "dark" ? "cart__shade__dark" : "cart__shade__light"}`}
             variants={shadeAnimation}
             animate={togglePopMessage ? "show" : "hide"}
         >
 
             <motion.div
-                className="cart__removeItemPopup"
+                className={
+                    `cart__removeItemPopup 
+                    ${theme === "dark"
+                        ? "cart__removeItemPopup__dark"
+                        : "cart__removeItemPopup__light"}`
+                }
                 variants={cartPopupRemoveAnimation}
                 animate={togglePopMessage ? "show" : "hide"}
                 transition={{duration: 0.15, delay: 0.2}}
             >
-                <h4 className="cart__removeItemCard__message">
+                <h4 className={
+                    `cart__removeItemCard__message 
+                    ${theme === "dark"
+                        ? "cart__removeItemCard__message__dark"
+                        : "cart__removeItemCard__message__light"}`
+                }>
                     Do you want to remove this item?
                 </h4>
                 <div className="cart__removeItemInfo">
-                    <div className="cart__removeItemInfo__imageContainer">
+                    <div className={
+                        `cart__removeItemInfo__imageContainer 
+                        ${theme === "dark"
+                            ? "cart__removeItemInfo__imageContainer__dark"
+                            : "cart__removeItemInfo__imageContainer__light"}`
+                    }>
                         <img src={itemToRemove?.productImage} alt={itemToRemove?.productName} width="70px"/>
                     </div>
                     <div className="cart__removeItemInfo__priceAndNameContainer">
-                        <p className="cart__removeItemInfo__name">{itemToRemove?.productName}</p>
-                        <p className="cart__removeItemInfo__price">Price ₹ {itemToRemove?.price} only!</p>
+                        <p className={
+                            `cart__removeItemInfo__name 
+                            ${theme === "dark"
+                                ? "cart__removeItemInfo__name__dark"
+                                : "cart__removeItemInfo__name__light"}`
+                        }>{itemToRemove?.productName}</p>
+                        <p className={
+                            `cart__removeItemInfo__price 
+                            ${theme === "dark"
+                                ? "cart__removeItemInfo__price__dark"
+                                : "cart__removeItemInfo__price__light"}`
+                        }>Price ₹ {itemToRemove?.price} only!</p>
                     </div>
                 </div>
             </motion.div>
@@ -90,9 +117,28 @@ const RemovePopUpCard = ({itemToRemove, dispatch, togglePopMessage, setTogglePop
                 animate={togglePopMessage ? "show" : "hide"}
                 transition={{duration: 0.15, delay: 0.2 * 2}}
             >
-                <button className="cart__removeItemBtn" type="button" onClick={() => handleRemove(true)}>Remove!
+                <button
+                    className={
+                        `cart__removeItemBtn ${theme === "dark"
+                            ? "cart__removeItemBtn__dark"
+                            : "cart__removeItemBtn__light"}`
+                    }
+                    type="button"
+                    onClick={() => handleRemove(true)}
+                >
+                    Remove!
                 </button>
-                <button className="cart__removeItemBtn" type="button" onClick={() => handleRemove(false)}>Don't</button>
+                <button
+                    className={
+                        `cart__removeItemBtn ${theme === "dark"
+                            ? "cart__removeItemBtn__dark"
+                            : "cart__removeItemBtn__light"}`
+                    }
+                    type="button"
+                    onClick={() => handleRemove(false)}
+                >
+                    Don't
+                </button>
             </motion.div>
 
         </motion.section>
@@ -105,6 +151,8 @@ const Cart = () => {
     const [scope, animate] = useAnimate();
     const cartData = useSelector((state) => state.cartItems);
     const couponData = useSelector(state => state.couponState);
+    const themeMode = useSelector(state => state.themeSwitchSlices);
+    const {theme} = themeMode;
 
     const {discount, subTotal} = useAmount(cartData, couponData, couponList);
 
@@ -112,7 +160,10 @@ const Cart = () => {
     const [togglePopMessage, setTogglePopMessage] = useState(false);
     const [isCouponValid, setIsCouponValid] = useState("ideal");
 
-    const handleCouponMenuOpen = () => dispatch(toggleCouponMenu({State: true}));
+    const handleCouponMenuOpen = () => {
+        dispatch(toggleNotificationMenu({State: false}));
+        dispatch(toggleCouponMenu({State: true}));
+    }
     const handleApplyCoupon = (selfCouponData = {}) => dispatch(addCoupon(selfCouponData));
 
     useEffect(() => {
@@ -167,9 +218,19 @@ const Cart = () => {
                 togglePopMessage={togglePopMessage}
                 setTogglePopMessage={setTogglePopMessage}
                 setItemToRemove={setItemToRemove}
+                theme={theme}
             />
             <section className="cart__section01">
-                <h1 className="cart__section01__title">Your Basket</h1>
+                <h1
+                    className={
+                        `cart__section01__title 
+                        ${theme === "dark"
+                            ? "cart__section01__title__dark"
+                            : "cart__section01__title__light"}`
+                    }
+                >
+                    Your Basket
+                </h1>
             </section>
 
             {
@@ -177,7 +238,16 @@ const Cart = () => {
                     className="cart__section02 noScroll"
                     ref={scope}
                 >
-                    <p className="cart__section02__message">Item List</p>
+                    <p
+                        className={
+                            `cart__section02__message 
+                            ${theme === "dark"
+                                ? "cart__section02__message__dark"
+                                : "cart__section02__message__light"}`
+                        }
+                    >
+                        Item List
+                    </p>
                     {cartData.map((value, index) => <CartProductCard
                             key={value.id}
                             id={value.id}
@@ -190,18 +260,42 @@ const Cart = () => {
                             setItemToRemove={setItemToRemove}
                             setTogglePopMessage={setTogglePopMessage}
                             animate={animate}
+                            theme={theme}
                         />
                     )}
-                </section> : <p className="cart__section02__message">Cart is Empty</p>
+                </section> : <p
+                    className={
+                        `cart__section02__message 
+                            ${theme === "dark"
+                            ? "cart__section02__message__dark"
+                            : "cart__section02__message__light"}`
+                    }
+                >
+                    Cart is Empty
+                </p>
             }
             {
                 cartData.length !== 0 &&
                 <section className="cart__section03">
                     <div className="cart__section03__info__couponOption">
                         <div className="cart__section03__info__couponOption__heading">
-                            <p className="cart__section03__info__couponTitle">Apply Coupon</p>
+                            <p
+                                className={
+                                    `cart__section03__info__couponTitle 
+                                    ${theme === "dark"
+                                        ? "cart__section03__info__couponTitle__dark"
+                                        : "cart__section03__info__couponTitle__light"}`
+                                }
+                            >
+                                Apply Coupon
+                            </p>
                             <button
-                                className="cart__section03__info__couponMenuBtn"
+                                className={
+                                    `cart__section03__info__couponMenuBtn 
+                                    ${theme === "dark"
+                                        ? "cart__section03__info__couponMenuBtn__dark"
+                                        : "cart__section03__info__couponMenuBtn__light"}`
+                                }
                                 type="button"
                                 onClick={handleCouponMenuOpen}
                             >
@@ -209,7 +303,12 @@ const Cart = () => {
                             </button>
                         </div>
                         <form
-                            className="cart__section03__info__couponInput"
+                            className={
+                                `cart__section03__info__couponInput 
+                                ${theme === "dark"
+                                    ? "cart__section03__info__couponInput__dark"
+                                    : "cart__section03__info__couponInput__light"}`
+                            }
                             onSubmit={formikCouponCode.handleSubmit}
                         >
                             <input
@@ -248,18 +347,62 @@ const Cart = () => {
                         </form>
                     </div>
                     <div className="cart__section03__subtotal">
-                        <p className="cart__section03__subtotal__title">Total Bill</p>
-                        <div className="cart__section03__subtotal__amount__container">
-                            <div className="cart__section03__subtotal__amount">
+                        <p
+                            className={
+                                `cart__section03__subtotal__title 
+                                 ${theme === "dark"
+                                    ? "cart__section03__subtotal__title__dark"
+                                    : "cart__section03__subtotal__title__light"}`
+                            }
+                        >
+                            Total Bill
+                        </p>
+                        <div
+                            className={
+                                `cart__section03__subtotal__amount__container 
+                                ${theme === "dark"
+                                    ? "cart__section03__subtotal__amount__container__dark"
+                                    : "cart__section03__subtotal__amount__container__light"}`
+                            }
+                        >
+                            <div
+                                className={
+                                    `cart__section03__subtotal__amount 
+                                    ${theme === "dark"
+                                        ? "cart__section03__subtotal__amount__dark"
+                                        : "cart__section03__subtotal__amount__light"}`
+                                }
+                            >
                                 <p>Subtotal</p><p>₹{subTotal}</p>
                             </div>
-                            <div className="cart__section03__subtotal__amount">
+                            <div
+                                className={
+                                    `cart__section03__subtotal__amount 
+                                    ${theme === "dark"
+                                        ? "cart__section03__subtotal__amount__dark"
+                                        : "cart__section03__subtotal__amount__light"}`
+                                }
+                            >
                                 <p>Coupon Discounts</p><p>-₹{discount}</p>
                             </div>
-                            <div className="cart__section03__subtotal__amount">
+                            <div
+                                className={
+                                    `cart__section03__subtotal__amount 
+                                    ${theme === "dark"
+                                        ? "cart__section03__subtotal__amount__dark"
+                                        : "cart__section03__subtotal__amount__light"}`
+                                }
+                            >
                                 <p>Tax and Service Fees</p><p>+₹{Math.floor(subTotal * 0.015)}</p>
                             </div>
-                            <div className="cart__section03__subtotal__amount">
+                            <div
+                                className={
+                                    `cart__section03__subtotal__amount 
+                                    ${theme === "dark"
+                                        ? "cart__section03__subtotal__amount__dark"
+                                        : "cart__section03__subtotal__amount__light"}`
+                                }
+                            >
                                 <p>Total Amount</p><p>₹{subTotal + 10 - discount}</p>
                             </div>
                         </div>

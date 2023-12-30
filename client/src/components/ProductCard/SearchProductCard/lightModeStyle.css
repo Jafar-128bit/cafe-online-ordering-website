@@ -1,0 +1,11 @@
+.searchProductCard__light {
+    background: var(--colorWhite);
+}
+
+.searchProductCard__section02__infoContainer__light > p {
+    color: var(--colorBlack);
+}
+
+.searchProductCard__section02__message__light {
+    color: var(--colorBlack);
+}

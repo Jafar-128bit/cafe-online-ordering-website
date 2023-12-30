@@ -1,0 +1,66 @@
+.cart__shade__dark {
+    background: var(--colorBlackTransparent35);
+}
+
+.cart__removeItemPopup__dark {
+    background: var(--color06);
+}
+
+.cart__removeItemCard__message__dark {
+    background: var(--color03);
+    color: var(--colorWhite);
+}
+
+.cart__removeItemInfo__imageContainer__dark {
+    background: var(--colorWhite);
+}
+
+.cart__removeItemInfo__name__dark {
+    color: var(--colorWhite);
+}
+
+.cart__removeItemInfo__price__dark {
+    color: var(--colorWhite);
+}
+
+.cart__removeItemBtn__dark {
+    background: var(--color03);
+    color: var(--colorWhite);
+}
+
+.cart__section01__title__dark {
+    color: var(--colorWhite);
+}
+
+.cart__section02__message__dark {
+    color: var(--colorWhite);
+}
+
+.cart__section03__info__couponTitle__dark {
+    color: var(--colorWhite);
+}
+
+.cart__section03__info__couponMenuBtn__dark {
+    color: var(--colorWhite);
+}
+
+.cart__section03__info__couponInput__dark > input {
+    border-bottom: 1px solid var(--colorWhite);
+}
+
+.cart__section03__info__couponInput__dark > button {
+    background: var(--color06);
+    color: var(--colorWhite);
+}
+
+.cart__section03__subtotal__title__dark {
+    color: var(--colorWhite);
+}
+
+.cart__section03__subtotal__amount__container__dark {
+    background: var(--color06);
+}
+
+.cart__section03__subtotal__amount__dark > p {
+    color: var(--colorWhite);
+}

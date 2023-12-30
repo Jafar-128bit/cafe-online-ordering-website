@@ -1,6 +1,4 @@
 .searchProductCard {
-    background: var(--colorWhite);
-
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -30,7 +28,6 @@
 
     border: none;
     border-radius: var(--borderRadius1);
-
     box-shadow: var(--shadow_01);
 
     overflow: hidden;
@@ -155,8 +152,6 @@
 }
 
 .searchProductCard__section02__message {
-    color: var(--colorBlack);
-
     width: 100%;
 
     padding: 0;
@@ -168,7 +163,7 @@
 }
 
 .searchProductCard__section02__messageIndicator {
-    background: var(--colorWhite);
+    background: unset;
 }
 
 .searchProductCard__section02__btnContainer {

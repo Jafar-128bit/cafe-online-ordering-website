@@ -7,8 +7,7 @@ import {menuList} from "../../data/data";
 import {motion} from "framer-motion";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {toggleResetSpecialMenu, toggleSetSpecialMenu} from "../../store/slices/specialMenuSlices";
+import {useSelector} from "react-redux";
 
 const imageRotateAnimation = {
     initial: {rotate: 0},
@@ -30,7 +29,7 @@ const backgroundImageAnimation = {
 }
 
 
-const Options = ({id, optionName, symbol, goto, handleSelectSpecialMenu}) => {
+const Options = ({id, optionName, symbol, goto}) => {
 
     const categoryCard = {
         initial: {opacity: 0, scale: 0.85},
@@ -54,7 +53,6 @@ const Options = ({id, optionName, symbol, goto, handleSelectSpecialMenu}) => {
                 className="categories__optionName"
                 onClick={() => {
                     goto(`/menu/normalMenu/${id}`);
-                    handleSelectSpecialMenu("normal");
                 }}
             >
                 {optionName}
@@ -67,8 +65,8 @@ const SpecialMenu = ({
                          setTriggerSideImageAnimation,
                          triggerSideImageAnimation,
                          menuOption,
-                         handleSelectSpecialMenu,
-                         goto
+                         goto,
+                         isLock = true
                      }) => {
 
     const categoryCard = {
@@ -84,8 +82,7 @@ const SpecialMenu = ({
             <motion.div
                 className="specialOption01"
                 onClick={() => {
-                    handleSelectSpecialMenu("special", 1);
-                    goto("/menu/specialMenu/1");
+                    goto("/menu")
                 }}
                 variants={categoryCard}
                 initial="initial"
@@ -97,16 +94,21 @@ const SpecialMenu = ({
                     initial="initial"
                     animate="animate"
                 />
-                <div className="specialOption01__container">
-                    <p className="specialOption01__container__title title01">Cafe</p>
-                    <p className="specialOption01__container__title title02">Special</p>
-                </div>
+                {
+                    !isLock
+                        ? <div className="specialOption01__container">
+                            <p className="specialOption01__container__title title01">Cafe</p>
+                            <p className="specialOption01__container__title title02">Special</p>
+                        </div>
+                        : <div className="specialOption01__container">
+                            <p className="specialOption__container__lockedMessage">MENU IS LOCKED</p>
+                        </div>
+                }
             </motion.div> :
             <motion.div
                 className="specialOption02"
                 onClick={() => {
-                    handleSelectSpecialMenu("special", 2);
-                    goto("/menu/specialMenu/2");
+                    goto("/menu")
                 }}
                 variants={categoryCard}
                 initial="initial"
@@ -142,26 +144,26 @@ const SpecialMenu = ({
                         />
                     </motion.div>
                 ))}
-                <div className="specialOption02__container">
-                    <p className="specialOption02__container__title01">Sacred</p>
-                    <p className="specialOption02__container__title02">Menu</p>
-                </div>
+                {
+                    !isLock
+                        ? <div className="specialOption02__container">
+                            <p className="specialOption02__container__title01">Sacred</p>
+                            <p className="specialOption02__container__title02">Menu</p>
+                        </div>
+                        : <div className="specialOption02__container">
+                            <p className="specialOption__container__lockedMessage">MENU IS LOCKED!</p>
+                        </div>
+                }
             </motion.div>
     );
 }
 
 const CategoriesTab = () => {
     const goto = useNavigate();
-    const dispatch = useDispatch();
     const [triggerSideImageAnimation, setTriggerSideImageAnimation] = useState(false);
 
     const themeMode = useSelector(state => state.themeSwitchSlices);
     const {theme} = themeMode;
-
-    const handleSelectSpecialMenu = (menuType = "normal", id) => {
-        if (menuType === "normal") dispatch(toggleResetSpecialMenu());
-        else dispatch(toggleSetSpecialMenu({specialMenu: id}));
-    }
 
     return (
         <section className="categories">
@@ -183,14 +185,12 @@ const CategoriesTab = () => {
                         setTriggerSideImageAnimation={setTriggerSideImageAnimation}
                         triggerSideImageAnimation={triggerSideImageAnimation}
                         menuOption={1}
-                        handleSelectSpecialMenu={handleSelectSpecialMenu}
                         goto={goto}
                     />
                     <SpecialMenu
                         setTriggerSideImageAnimation={setTriggerSideImageAnimation}
                         triggerSideImageAnimation={triggerSideImageAnimation}
                         menuOption={2}
-                        handleSelectSpecialMenu={handleSelectSpecialMenu}
                         goto={goto}
                     />
 
@@ -201,7 +201,6 @@ const CategoriesTab = () => {
                                 symbol={value.menuIcon}
                                 optionName={value.menuHeading}
                                 goto={goto}
-                                handleSelectSpecialMenu={handleSelectSpecialMenu}
                             />
                         )
                     }

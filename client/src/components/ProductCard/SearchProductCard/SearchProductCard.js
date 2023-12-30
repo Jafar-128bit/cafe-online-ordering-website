@@ -1,4 +1,6 @@
 import './searchProductCard.css';
+import './darkModeStyle.css';
+import './lightModeStyle.css';
 import './mediaQuerySearchProductCard.css';
 
 import {specialMessage} from '../../../data/data';
@@ -7,16 +9,41 @@ import {motion} from "framer-motion";
 import cartAddLightIcon from "../../../assets/icons/cart_add_Light_Icon.svg";
 import cartRemoveLightIcon from "../../../assets/icons/cart_remove_Light_Icon.svg";
 
-const SearchProductCard = ({id, productImage, productName, price, buyBtn, handleBuy, discount, isDiscount, indexNumber, message}) => {
+const SearchProductCard = ({
+                               productImage,
+                               productName,
+                               price,
+                               buyBtn,
+                               handleBuy,
+                               discount,
+                               isDiscount,
+                               indexNumber,
+                               message,
+                               theme
+                           }) => {
 
     return (
-        <motion.div className="searchProductCard">
+        <motion.div
+            className={`
+                searchProductCard 
+                ${theme === "dark"
+                ? "searchProductCard__dark"
+                : "searchProductCard__light"}
+            `}
+        >
             <section className="searchProductCard__section01">
                 <img src={productImage} alt={productName}/>
             </section>
 
             <section className="searchProductCard__section02">
-                <div className="searchProductCard__section02__infoContainer">
+                <div
+                    className={`
+                        searchProductCard__section02__infoContainer 
+                        ${theme === "dark"
+                        ? "searchProductCard__section02__infoContainer__dark"
+                        : "searchProductCard__section02__infoContainer__light"}
+                    `}
+                >
                     <p className="searchProductCard__section02__productName">
                         {productName}
                     </p>
@@ -44,7 +71,12 @@ const SearchProductCard = ({id, productImage, productName, price, buyBtn, handle
                                 animate={{y: 0}}
                             >
                                 <motion.p
-                                    className="searchProductCard__section02__message"
+                                    className={
+                                        `searchProductCard__section02__message 
+                                        ${theme === "dark"
+                                            ? "searchProductCard__section02__message__dark"
+                                            : "searchProductCard__section02__message__light"}`
+                                    }
                                     initial={{opacity: 0}}
                                     animate={message ? {opacity: 1} : {opacity: 0}}
                                 >

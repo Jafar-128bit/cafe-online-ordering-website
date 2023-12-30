@@ -1,6 +1,4 @@
 .topProductCard {
-    background-color: var(--colorWhite);
-
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -56,8 +54,6 @@
 }
 
 .topProductCard__infoContainer > p {
-    color: var(--colorBlack);
-
     width: 100%;
     height: max-content;
 
@@ -76,8 +72,6 @@
 }
 
 .topProductCard__infoContainer__addToCartBtn {
-    background: var(--colorBlack);
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,7 +146,6 @@
 }
 
 .topProductCard__offerIndicator {
-    background: var(--backgroundGradient07);
     background-size: 600% 600%;
     -webkit-animation: gradient 6s ease-in infinite;
     animation: gradient 6s ease-in infinite;
@@ -176,8 +169,6 @@
 }
 
 .topProductCard__offerIndicator__message {
-    color: var(--colorWhite);
-
     width: 100%;
     height: max-content;
 

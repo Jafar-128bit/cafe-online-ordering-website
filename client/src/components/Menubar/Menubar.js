@@ -34,25 +34,25 @@ const Menubar = () => {
         {
             id: 1,
             optionName: "Home",
-            optionIcon: location === "/" ? homeDarkIcon : homeLightIcon,
+            optionIcon: location === "/" ? homeLightIcon : homeDarkIcon,
             goto: ""
         },
         {
             id: 2,
             optionName: "Menu",
-            optionIcon: location.split("/")[1] === "menu" ? menuDarkIcon : menuLightIcon,
+            optionIcon: location.split("/")[1] === "menu" ? menuLightIcon : menuDarkIcon,
             goto: "menu"
         },
         {
             id: 3,
             optionName: "Basket",
-            optionIcon: location.split("/")[1] === "cart" ? cartDarkIcon : cartLightIcon,
+            optionIcon: location.split("/")[1] === "cart" ? cartLightIcon : cartDarkIcon,
             goto: "cart"
         },
         {
             id: 4,
             optionName: "Search",
-            optionIcon: location.split("/")[1] === "search" ? searchDarkIcon : searchLightIcon,
+            optionIcon: location.split("/")[1] === "search" ? searchLightIcon : searchDarkIcon,
             goto: "search"
         },
     ];
@@ -69,7 +69,7 @@ const Menubar = () => {
                     to={`/${option.goto}`}
                     key={option.id}
                     style={({isActive}) => ({
-                        color: isActive ? "var(--colorBlack)" : "var(--colorWhite)",
+                        color: isActive ? "var(--colorWhite)" : "var(--colorBlack)",
                         fontWeight: isActive ? "800" : "300",
                         textDecoration: "none",
                     })}

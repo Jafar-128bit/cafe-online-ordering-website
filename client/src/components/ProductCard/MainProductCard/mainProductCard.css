@@ -1,6 +1,4 @@
 .mainProductCard {
-    background: var(--colorWhite);
-
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -141,8 +139,6 @@
 }
 
 .mainProductCard__messageContainer__message {
-    color: var(--colorBlack);
-
     width: 90%;
     height: max-content;
 

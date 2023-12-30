@@ -1,0 +1,15 @@
+.mainProductCard__dark {
+    background: var(--color06);
+}
+
+.mainProductCard__productInfo__dark > h2 {
+    color: var(--colorWhite);
+}
+
+.mainProductCard__productInfo__dark > p {
+    color: var(--colorWhite);
+}
+
+.mainProductCard__messageContainer__message__dark {
+    color: var(--colorWhite);
+}

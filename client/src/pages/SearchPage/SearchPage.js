@@ -1,16 +1,19 @@
 import './searchPage.css';
+import './lightModeStyle.css';
+import './darkModeStyle.css';
 import './mediaQuerySearchPage.css';
 
-// import searchDarkIcon from "../../assets/icons/search_Dark_Icon.svg";
 import search2LightIcon from "../../assets/icons/search2_Light_Icon.svg";
+import search2DarkIcon from "../../assets/icons/search2_Dark_Icon.svg";
 import closeLightIcon from "../../assets/icons/close_Light_Icon.svg";
+import closeDarkIcon from "../../assets/icons/close_Dark_Icon.svg";
 
 import {useEffect} from "react";
 import {motion} from "framer-motion";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import useSearchFilterOnChange from "../../hooks/useSearchFilterOnChange";
 import {setData} from "../../store/slices/dataSlices";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 const searchIconAnimation = {
     hide: {x: 0},
@@ -20,18 +23,24 @@ const searchIconAnimation = {
 const SearchPage = () => {
     const dispatch = useDispatch();
     const {inputValue, productData, handleFilteredData, handleDataClear} = useSearchFilterOnChange(1000);
+    const themeMode = useSelector(state => state.themeSwitchSlices);
+    const {theme} = themeMode;
 
     useEffect(() => {
         dispatch(setData([]));
-    },[dispatch]);
+    }, [dispatch]);
 
     return (
         <section className="searchPage">
-            <section className="searchPage__section01">
-                <h1>Search Here</h1>
-            </section>
             <section className="searchPage__section02">
-                <div className="searchPage__searchBar">
+                <div
+                    className={
+                        `searchPage__searchBar 
+                        ${theme === "dark"
+                            ? "searchPage__searchBar__dark"
+                            : "searchPage__searchBar__light"}`
+                    }
+                >
                     <input
                         type="text"
                         placeholder="Search here..."
@@ -42,13 +51,13 @@ const SearchPage = () => {
                         <motion.img
                             variants={searchIconAnimation}
                             animate={inputValue.length === 0 ? "hide" : "show"}
-                            src={search2LightIcon}
+                            src={theme === "dark" ? search2LightIcon : search2DarkIcon}
                             alt="search icon"
                         />
                         <motion.img
                             variants={searchIconAnimation}
                             animate={inputValue.length !== 0 ? "hide" : "show"}
-                            src={closeLightIcon}
+                            src={theme === "dark" ? closeLightIcon : closeDarkIcon}
                             alt="search icon"
                         />
                     </button>

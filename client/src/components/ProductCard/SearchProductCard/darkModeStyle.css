@@ -1,0 +1,15 @@
+.searchProductCard__dark {
+    background: var(--color06);
+}
+
+.searchProductCard__section02__infoContainer__dark > p {
+    color: var(--colorWhite);
+}
+
+.searchProductCard__section02__message__dark {
+    color: var(--colorWhite);
+}
+
+.searchProductCard__section02__messageIndicator__dark {
+    background: var(--colorBlack);
+}

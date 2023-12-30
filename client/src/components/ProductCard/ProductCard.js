@@ -14,6 +14,8 @@ const ProductCard = ({id, productName, productImage, price, type = "", index}) =
     const [discount, setDiscount] = useState(0);
     const dispatch = useDispatch();
     const cartData = useSelector((state) => state.cartItems);
+    const themeMode = useSelector(state => state.themeSwitchSlices);
+    const {theme} = themeMode;
 
     useEffect(() => {
         const isItemInCart = cartData.some((item) => item.id === id);
@@ -68,6 +70,7 @@ const ProductCard = ({id, productName, productImage, price, type = "", index}) =
     return <>
         {type === "main" && <MainProductCard
             id={id}
+            theme={theme}
             productImage={productImage}
             productName={productName}
             price={price}
@@ -80,6 +83,7 @@ const ProductCard = ({id, productName, productImage, price, type = "", index}) =
             message={message}
         />}
         {type === "small" && <TopProductCard
+            theme={theme}
             productImage={productImage}
             productName={productName}
             price={price}
@@ -91,6 +95,7 @@ const ProductCard = ({id, productName, productImage, price, type = "", index}) =
         />}
         {type === "searchList" && <SearchProductCard
             id={id}
+            theme={theme}
             productImage={productImage}
             productName={productName}
             price={price}

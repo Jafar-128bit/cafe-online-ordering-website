@@ -1,0 +1,11 @@
+.categoriesTabSmall__collapseBtn__light {
+    background: var(--colorWhite);
+}
+
+.categoriesTabSmall__optionContainer__light {
+    background: var(--colorWhite);
+}
+
+.categoriesTabSmall__optionContainer__optionName__light {
+    color: var(--colorBlack);
+}

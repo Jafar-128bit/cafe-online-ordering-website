@@ -10,6 +10,7 @@ import {useFormik} from "formik";
 import {paymentInfoState} from "../../../store/slices/paymentSlice";
 import {useDispatch} from "react-redux";
 import {motion} from "framer-motion";
+import {useNavigate} from 'react-router-dom';
 
 const validationSchema = Yup.object().shape({
     firstName: Yup.string()
@@ -51,6 +52,7 @@ const toggleFoodPackTextAnimation = {
 
 const PaymentForm = ({processIconAnimation, handleBack}) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const formikPaymentInfo = useFormik({
         initialValues: {
             firstName: '',
@@ -62,6 +64,7 @@ const PaymentForm = ({processIconAnimation, handleBack}) => {
         validationSchema: validationSchema,
         onSubmit: (values) => {
             dispatch(paymentInfoState({...values}));
+            navigate("/checkout");
         },
     });
 

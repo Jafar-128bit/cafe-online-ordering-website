@@ -13,11 +13,8 @@
     overflow-y: auto;
 }
 
-.searchPage__section01,
 .searchPage__section03,
 .searchPage__section02 {
-    background: var(--backgroundGradient08);
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,19 +23,6 @@
     width: 100%;
     max-width: 1280px;
     height: 100px;
-}
-
-.searchPage__section01 {
-    display: none;
-}
-
-.searchPage__section01 > h1 {
-    color: var(--colorWhite);
-
-    font-size: 22px;
-    font-weight: 300;
-    letter-spacing: 1px;
-    text-transform: uppercase;
 }
 
 .searchPage__section02 {
@@ -100,6 +84,8 @@
     border: none;
     outline: none;
 
+    cursor: pointer;
+
     overflow: hidden;
     position: relative;
 }
@@ -127,8 +113,6 @@
 }
 
 .searchPage__section03 {
-    background: unset;
-
     align-items: unset;
     justify-content: unset;
 

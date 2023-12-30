@@ -59,6 +59,9 @@ import sandwichSymbol from "../assets/images/symbol/snadwich-Icon.jpg";
 import smoothiesSymbol from "../assets/images/symbol/smoothies-Icon.jpg";
 import snacksSymbol from "../assets/images/symbol/snacks-Icon.jpg";
 import taeSymbol from "../assets/images/symbol/chai-Icon.jpg";
+/* Banner List */
+import bannerLargeImage from "../assets/background/bannerLargeType.jpg";
+import bannerMediumImage from "../assets/background/bannerMediumType.jpg";
 
 export const cake = [
     {
@@ -340,6 +343,30 @@ export const smoothies = [
         price: 40,
     },
 ];
+
+export const topOrders = [chai[2], iceCream[0], snacks[3], sandwich[1], noodles[3], smoothies[0]];
+
+export const bannerData = [
+    {
+        id: 0,
+        bannerImage: bannerMediumImage,
+        bannerTitle: "New-Year's Special",
+        discount: 20,
+        bannerEndTime: "2024-01-06-12-00-00",
+        bannerType: "medium",
+        bannerLink: "/menu"
+    },
+    {
+        id: 2,
+        bannerImage: bannerLargeImage,
+        bannerTitle: "Winter-Cafe",
+        discount: 20,
+        bannerEndTime: "2024-01-15-12-00-00",
+        bannerType: "large",
+        bannerLink: "/menu"
+    },
+];
+
 export const menuList = [
     {
         id: 1,
@@ -382,10 +409,8 @@ export const menuList = [
         menuHeading: "Smoothies",
     },
 ];
-export const topOrders = [chai[2], iceCream[0], snacks[3], sandwich[1], noodles[3], smoothies[0]];
 
 //2023-12-28-16-11-00
-
 export const couponList = [
     {
         id: 1,
@@ -451,7 +476,6 @@ export const couponList = [
         isHide: false,
     },
 ];
-
 export const specialMessage = [
     {id: 0, message: `Indulge in the Unmatched Flavors of Culinary Craftsmanship`,},
     {id: 1, message: `Experience Gastronomic Delight with Our Signature Culinary Creations`,},

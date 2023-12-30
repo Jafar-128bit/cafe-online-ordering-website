@@ -1,0 +1,11 @@
+.cart__productInfo__light {
+    background: var(--colorWhite);
+}
+
+.cart__productInfo__section01__light {
+    background: var(--colorWhite);
+}
+
+.cart__productInfo__section02__light {
+    color: var(--colorBlack);
+}
