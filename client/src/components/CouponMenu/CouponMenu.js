@@ -72,7 +72,7 @@ const CouponMenu = ({theme}) => {
                 <img src={theme === "dark" ? closeLightIcon : closeDarkIcon} alt="close icon"/>
             </button>
             <div className="couponMenu__title">
-                <h1 style={{color: theme === "dark" ? "var(--colorWhite)" : "var(color02)"}}>COUPONS</h1>
+                <h1 style={{color: theme === "dark" ? "var(--colorWhite)" : "var(--color02)"}}>COUPONS</h1>
             </div>
             <section className="couponMenu__couponList noScroll" style={{
                 gridTemplateRows: `repeat(${couponList.length}, auto-fill)`
