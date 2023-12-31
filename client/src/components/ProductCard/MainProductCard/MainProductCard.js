@@ -119,7 +119,7 @@ const MainProductCard = ({
                     className="mainProductCard__addToCartBtn"
                     onClick={handleBuy}
                     style={{
-                        background: buyBtn ? "var(--color03)" : "var(--themeColor01)",
+                        background: buyBtn ? "var(--color03)" : "var(--color01)",
                     }}
                 >
                     {buyBtn ? "Remove" : "Buy"}

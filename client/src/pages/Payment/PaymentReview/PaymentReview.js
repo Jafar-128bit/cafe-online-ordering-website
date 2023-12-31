@@ -41,7 +41,7 @@ const PaymentReview = ({processIconAnimation}) => {
                         </thead>
                     </table>
                 </div>
-                <div className="payment__process2__itemList__tableItems addScroll">
+                <div className="payment__process2__itemList__tableItems">
                     <table>
                         <tbody>
                         {cartData.map((value, index) =>

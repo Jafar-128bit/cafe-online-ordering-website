@@ -1,0 +1,12 @@
+.menubar__light {
+    background: var(--colorWhite);
+}
+
+.menubar__option__cartQuantity__light {
+    background: var(--color03);
+    color: var(--colorWhite);
+}
+
+.menubar__option__sudoElement__light {
+    background: var(--color03);
+}

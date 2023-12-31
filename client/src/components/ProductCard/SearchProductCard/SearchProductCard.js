@@ -91,7 +91,7 @@ const SearchProductCard = ({
                             className="searchProductCard__btnContainer__addToCartBtn"
                             onClick={handleBuy}
                             style={{
-                                background: buyBtn ? "var(--color03)" : "var(--themeColor01)",
+                                background: buyBtn ? "var(--color03)" : "var(--color01)",
                             }}
                         >
                             <motion.img

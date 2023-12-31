@@ -1,15 +1,13 @@
 import './App.css';
 
-import lightModeBackground from "./assets/background/backgroundWhite.jpg";
+import {useSelector} from "react-redux";
+import {motion} from "framer-motion";
+import {Outlet} from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
 import CouponMenu from "./components/CouponMenu/CouponMenu";
 import Menubar from "./components/Menubar/Menubar";
-import React from "react";
 import NotificationMenu from "./components/NotificationMenu/NotificationMenu";
-import {useSelector} from "react-redux";
-import {motion} from "framer-motion";
-import {Outlet} from "react-router-dom";
 
 function App() {
 
@@ -20,9 +18,7 @@ function App() {
     const {theme} = themeMode;
 
     return (
-        <main className="app" style={{
-            background: theme === "light" ? `url(${lightModeBackground})` : `var(--color08)`
-        }}>
+        <main className={`app ${theme === "dark" ? "app__dark" : "app__light"}`}>
             <motion.div
                 className="shade whiteGlass50"
                 style={{

@@ -98,7 +98,7 @@ const Navbar = ({theme}) => {
     }, []);
 
     const linkStyle = {
-        color: theme === "dark" ? "var(--color07)" : "var(--color06)",
+        color: theme === "dark" ? "var(--color04)" : "var(--color02)",
         textDecoration: "none",
         textTransform: "uppercase",
         padding: "3px",

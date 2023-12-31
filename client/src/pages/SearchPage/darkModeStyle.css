@@ -3,5 +3,5 @@
 }
 
 .searchPage__searchBar__dark > button[type="button"] {
-    background: var(--color06);
+    background: var(--color02);
 }

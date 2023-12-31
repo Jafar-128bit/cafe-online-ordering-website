@@ -71,8 +71,6 @@
 }
 
 .searchPage__searchBar > button[type="button"] {
-    background: var(--backgroundGradient08);
-
     display: flex;
     align-items: center;
     justify-content: center;

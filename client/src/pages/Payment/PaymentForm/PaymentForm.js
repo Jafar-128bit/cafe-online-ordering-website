@@ -194,7 +194,7 @@ const PaymentForm = ({processIconAnimation, handleBack}) => {
                                 className="payment__process1__formInputs__toggleInput"
                                 style={{
                                     background: formikPaymentInfo.values.foodPack
-                                        ? "var(--themeColor01)" : "var(--color03)"
+                                        ? "var(--color01)" : "var(--color03)"
                                 }}
                             >
                                 <motion.p

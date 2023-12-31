@@ -125,7 +125,7 @@
 }
 
 .topProductCard__rankContainer > p {
-    background: var(--backgroundGradient06);
+    background: var(--backgroundGradient04);
     background-size: 600% 600%;
     -webkit-animation: gradient 4s ease infinite;
     animation: gradient 4s ease infinite;

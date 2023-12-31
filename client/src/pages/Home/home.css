@@ -8,7 +8,7 @@
     width: 100vw;
     max-width: 1920px;
     height: calc(100vh - 70px);
-    max-height: 1080px;
+
 
     padding: 0 0;
     margin: 0 0 15px 0;
@@ -273,7 +273,7 @@
 }
 
 .home__banner__discount {
-    background: var(--backgroundGradient06);
+    background: var(--backgroundGradient04);
 
     display: flex;
     align-items: center;
@@ -364,7 +364,7 @@
 
 .home__banner__linkBtn {
     background: var(--colorWhite);
-    color: var(--color06);
+    color: var(--color02);
 
     display: flex;
     align-items: center;

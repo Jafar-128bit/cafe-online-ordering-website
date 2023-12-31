@@ -1,0 +1,12 @@
+.menubar__dark {
+    background: var(--color02);
+}
+
+.menubar__option__cartQuantity__dark {
+    background: var(--colorWhite);
+    color: var(--color03);
+}
+
+.menubar__option__sudoElement__dark {
+    background: var(--color03);
+}

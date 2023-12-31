@@ -244,7 +244,7 @@
 }
 
 .themeSwitcherBackgroundLightMode {
-    background: var(--backgroundGradient03);
+    background: var(--backgroundGradient02);
 
     width: 100%;
     height: 100%;
@@ -253,7 +253,7 @@
 }
 
 .themeSwitcherBackgroundNightMode {
-    background: var(--backgroundGradient09);
+    background: var(--backgroundGradient08);
 
     width: 100%;
     height: 100%;

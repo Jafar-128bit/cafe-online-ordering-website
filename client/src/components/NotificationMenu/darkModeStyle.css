@@ -1,11 +1,11 @@
 .notificationMenu__closeBtn__dark {
     background: var(--colorWhite);
-    color: var(--color06);
+    color: var(--color02);
 }
 
 .notificationMenu__title__dark {
     background: var(--colorWhite);
-    color: var(--color06);
+    color: var(--color02);
 }
 
 .cartInfoCard__title__dark,
@@ -14,7 +14,7 @@
 }
 
 .cartInfoCard__cartItems__dark {
-    background: var(--color06);
+    background: var(--color02);
 }
 
 .cartInfoCard__cartItems__dark > p {
@@ -26,16 +26,16 @@
 }
 
 .cartInfoCard__cartItems__dark > span > p {
-    color: var(--color06);
+    color: var(--color02);
 }
 
 .cartInfoCard__basketLinkBtn__dark {
     background: var(--colorWhite);
-    color: var(--color06);
+    color: var(--color02);
 }
 
 .cartInfoCard__cartEmptyMessage__dark {
-    background: var(--color06);
+    background: var(--color02);
     color: var(--colorWhite);
 }
 
@@ -44,7 +44,7 @@
 }
 
 .couponInfoCard__details__dark {
-    background: var(--color06);
+    background: var(--color02);
 }
 
 .couponInfoCard__details__discount__dark {
@@ -56,15 +56,15 @@
 }
 
 .couponInfoCard__details__discount__dark > p {
-    color: var(--color06);
+    color: var(--color02);
 }
 
 .couponInfoCard__details__couponCode__dark > p {
     background: var(--colorBlack);
-    color: var(--color07);
+    color: var(--color04);
 }
 
 .couponInfoCard__details__couponCode__dark > button {
     background: var(--colorWhite);
-    color: var(--color06);
+    color: var(--color02);
 }

@@ -99,7 +99,7 @@
 }
 
 .mainProductCard__notificationContainer__message {
-    background: var(--backgroundGradient07);
+    background: var(--backgroundGradient06);
     background-size: 400% 400%;
     -webkit-animation: gradient 3s ease-in-out infinite;
     animation: gradient 3s ease-in-out infinite;

@@ -60,8 +60,8 @@
 }
 
 .list__productCardContainer__backBtnContainer > button {
-    background: var(--color07);
-    color: var(--color06);
+    background: var(--color04);
+    color: var(--color02);
 
     width: 150px;
     height: 40px;

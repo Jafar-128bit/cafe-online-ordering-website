@@ -1,5 +1,5 @@
 .topProductCard__dark {
-    background-color: var(--color06);
+    background-color: var(--color02);
 }
 
 .topProductCard__infoContainer__dark > p {
@@ -11,7 +11,7 @@
 }
 
 .topProductCard__offerIndicator__dark {
-    background: var(--backgroundGradient04);
+    background: var(--backgroundGradient03);
 }
 
 .topProductCard__offerIndicator__message__dark {

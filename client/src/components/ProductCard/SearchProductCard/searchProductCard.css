@@ -85,7 +85,7 @@
 }
 
 .searchProductCard__section02__productPrice > small {
-    color: var(--themeColor01);
+    color: var(--color01);
 
     font-weight: 600;
 }
@@ -116,7 +116,7 @@
 
 .searchProductCard__section02__offerIndicator,
 .searchProductCard__section02__messageIndicator {
-    background: var(--backgroundGradient07);
+    background: var(--backgroundGradient06);
     background-size: 600% 600%;
     -webkit-animation: gradient 6s ease-in infinite;
     animation: gradient 6s ease-in infinite;

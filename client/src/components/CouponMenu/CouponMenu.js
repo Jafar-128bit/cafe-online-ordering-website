@@ -66,13 +66,13 @@ const CouponMenu = ({theme}) => {
         >
             <button
                 type="button"
-                className="closeBtn couponMenu__closeBtn"
+                className="couponMenu__closeBtn"
                 onClick={handleClose}
             >
                 <img src={theme === "dark" ? closeLightIcon : closeDarkIcon} alt="close icon"/>
             </button>
             <div className="couponMenu__title">
-                <h1 style={{color: theme === "dark" ? "var(--colorWhite)" : "var(--color06)"}}>COUPONS</h1>
+                <h1 style={{color: theme === "dark" ? "var(--colorWhite)" : "var(color02)"}}>COUPONS</h1>
             </div>
             <section className="couponMenu__couponList noScroll" style={{
                 gridTemplateRows: `repeat(${couponList.length}, auto-fill)`

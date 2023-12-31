@@ -29,7 +29,7 @@
 }
 
 .cart__section01__title__light {
-    color: var(--color06);
+    color: var(--color02);
 }
 
 .cart__section02__message__dark {
@@ -49,7 +49,7 @@
 }
 
 .cart__section03__info__couponInput__light > button {
-    background: var(--backgroundGradient03);
+    background: var(--backgroundGradient02);
     color: var(--colorBlack);
 }
 

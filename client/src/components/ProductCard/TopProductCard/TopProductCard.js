@@ -55,7 +55,7 @@ const TopProductCard = ({productImage, productName, price, buyBtn, handleBuy, ra
                     `}
                     onClick={handleBuy}
                     style={{
-                        background: buyBtn ? "var(--color03)" : "var(--themeColor01)",
+                        background: buyBtn ? "var(--color03)" : "var(--color01)",
                     }}
                 >
                     <motion.img

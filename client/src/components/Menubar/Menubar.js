@@ -1,4 +1,6 @@
 import './menubar.css';
+import './darkModeStyle.css';
+import './lightModeStyle.css';
 
 import cartDarkIcon from "../../assets/icons/cart_Dark_Icon.svg";
 import homeDarkIcon from "../../assets/icons/home_Dark_Icon.svg";
@@ -25,6 +27,8 @@ const Menubar = () => {
     const [quantity, setQuantity] = useState(0);
     const menuBarState = useSelector((state) => state.menuState.menuBarState);
     const cartData = useSelector((state) => state.cartItems);
+    const themeMode = useSelector(state => state.themeSwitchSlices);
+    const {theme} = themeMode;
 
     useEffect(() => {
         setQuantity(cartData.map((value) => value.quantity).reduce((acc, cur) => acc + cur, 0));
@@ -34,32 +38,40 @@ const Menubar = () => {
         {
             id: 1,
             optionName: "Home",
-            optionIcon: location === "/" ? homeLightIcon : homeDarkIcon,
+            optionIcon: location === "/"
+                ? homeLightIcon
+                : theme === "dark" ? homeLightIcon : homeDarkIcon,
             goto: ""
         },
         {
             id: 2,
             optionName: "Menu",
-            optionIcon: location.split("/")[1] === "menu" ? menuLightIcon : menuDarkIcon,
+            optionIcon: location.split("/")[1] === "menu"
+                ? menuLightIcon
+                : theme === "dark" ? menuLightIcon : menuDarkIcon,
             goto: "menu"
         },
         {
             id: 3,
             optionName: "Basket",
-            optionIcon: location.split("/")[1] === "cart" ? cartLightIcon : cartDarkIcon,
+            optionIcon: location.split("/")[1] === "cart"
+                ? cartLightIcon
+                : theme === "dark" ? cartLightIcon : cartDarkIcon,
             goto: "cart"
         },
         {
             id: 4,
             optionName: "Search",
-            optionIcon: location.split("/")[1] === "search" ? searchLightIcon : searchDarkIcon,
+            optionIcon: location.split("/")[1] === "search"
+                ? searchLightIcon
+                : theme === "dark" ? searchLightIcon : searchDarkIcon,
             goto: "search"
         },
     ];
 
     return (
         <motion.nav
-            className="menubar"
+            className={`menubar ${theme === "dark" ? "menubar__dark" : "menubar__light"}`}
             variants={menuBarAnimation}
             animate={menuBarState.State ? "show" : "hide"}
             transition={{ease: "easeInOut", duration: 0.25}}
@@ -69,7 +81,7 @@ const Menubar = () => {
                     to={`/${option.goto}`}
                     key={option.id}
                     style={({isActive}) => ({
-                        color: isActive ? "var(--colorWhite)" : "var(--colorBlack)",
+                        color: isActive ? "var(--colorWhite)" : theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
                         fontWeight: isActive ? "800" : "300",
                         textDecoration: "none",
                     })}
@@ -80,7 +92,12 @@ const Menubar = () => {
                         transition={{type: "spring", stiffness: 350, damping: 25, duration: 0.1}}
                     >
                         <motion.div
-                            className="menubar__option__sudoElement"
+                            className={
+                                `menubar__option__sudoElement 
+                                ${theme === "dark"
+                                    ? "menubar__option__sudoElement__dark"
+                                    : "menubar__option__sudoElement__light"}`
+                            }
                             initial={{height: 0}}
                             animate={location.split("/")[1] === option.goto ? {height: "100%",} : {height: 0,}}
                             transition={{ease: "easeOut", duration: 0.15}}
@@ -94,7 +111,12 @@ const Menubar = () => {
                         {
                             option.optionName === "Basket" &&
                             <motion.p
-                                className="menubar__option__cartQuantity"
+                                className={
+                                    `menubar__option__cartQuantity 
+                                    ${theme === "dark"
+                                        ? "menubar__option__cartQuantity__dark"
+                                        : "menubar__option__cartQuantity__light"}`
+                                }
                                 initial={{y: -20}}
                                 animate={quantity > 0 ? {y: 0} : {y: -20}}
                             >

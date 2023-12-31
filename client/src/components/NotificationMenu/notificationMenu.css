@@ -270,7 +270,7 @@
 }
 
 .couponInfoCard__details__discount > p:nth-child(1) {
-    background: var(--backgroundGradient06);
+    background: var(--backgroundGradient04);
     background-size: 500% 500%;
     -webkit-animation: gradient 2s ease 2s infinite forwards;
     animation: gradient 2s ease 2s infinite forwards;

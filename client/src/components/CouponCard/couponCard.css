@@ -1,5 +1,5 @@
 .couponCard {
-    background: var(--color07);
+    background: var(--color04);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -37,7 +37,7 @@
 }
 
 .couponCard__section01 {
-    background: var(--color06);
+    background: var(--color02);
 
     display: flex;
     align-items: center;
@@ -81,7 +81,7 @@
 }
 
 .couponCard__section01__discountContainer > p:nth-child(2) {
-    background: var(--backgroundGradient06);
+    background: var(--backgroundGradient04);
     background-size: 500% 500%;
     -webkit-animation: gradient 2s ease 2s infinite forwards;
     animation: gradient 2s ease 2s infinite forwards;
@@ -120,7 +120,7 @@
 }
 
 .couponCard__section01__couponCodeContainer {
-    background: var(--backgroundGradient06);
+    background: var(--backgroundGradient04);
     background-size: 500% 500%;
     -webkit-animation: gradient 2s ease 2s infinite forwards;
     animation: gradient 2s ease 2s infinite forwards;
@@ -185,7 +185,7 @@
     width: 90%;
     height: 38px;
 
-    border: 2px solid var(--color06);
+    border: 2px solid var(--color02);
     border-radius: var(--borderRadius1);
 }
 
@@ -248,7 +248,7 @@
 }
 
 .couponCard__section02__messageContainer > p {
-    color: var(--color06);
+    color: var(--color02);
 
     padding: 0;
     margin: 0;
@@ -269,8 +269,8 @@
 }
 
 .couponCard__section02__btnContainer > button {
-    background: var(--color06);
-    color: var(--color07);
+    background: var(--color02);
+    color: var(--color04);
 
     width: max-content;
     height: 32px;
@@ -290,7 +290,7 @@
 }
 
 .couponCard__section02__couponCodeContainer {
-    background: var(--backgroundGradient06);
+    background: var(--backgroundGradient04);
     background-size: 500% 500%;
     -webkit-animation: gradient 2s ease 2s infinite forwards;
     animation: gradient 2s ease 2s infinite forwards;

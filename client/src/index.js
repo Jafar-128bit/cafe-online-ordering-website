@@ -1,19 +1,23 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
-import {
-    createBrowserRouter,
-    RouterProvider,
-} from "react-router-dom";
-import {Provider} from 'react-redux';
-import {PersistGate} from 'redux-persist/integration/react';
-import store, {persist} from './store/store';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import loadable from '@loadable/component';
-import './index.css';
+
+// Custom Components
+import CategoriesTab from "./components/CategoriesTab/CategoriesTab";
+import ProductList from "./pages/List/ProductList";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
-import CategoriesTab from "./components/CategoriesTab/CategoriesTab";
-import {cake, chai, cold, iceCream, noodles, sandwich, smoothies, snacks} from "./data/data";
-import ProductList from "./pages/List/ProductList";
+// Data
+import { cake, chai, cold, iceCream, noodles, sandwich, smoothies, snacks } from "./data/data";
+
+// Redux Store and Persistence
+import store, { persist } from './store/store';
+
+// Styles
+import './index.css';
 
 const App = loadable(() => import('./App'));
 const Home = loadable(() => import('./pages/Home/Home'));

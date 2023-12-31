@@ -3,7 +3,7 @@
 }
 
 .cart__removeItemPopup__dark {
-    background: var(--color06);
+    background: var(--color02);
 }
 
 .cart__removeItemCard__message__dark {
@@ -49,7 +49,7 @@
 }
 
 .cart__section03__info__couponInput__dark > button {
-    background: var(--color06);
+    background: var(--color02);
     color: var(--colorWhite);
 }
 
@@ -58,7 +58,7 @@
 }
 
 .cart__section03__subtotal__amount__container__dark {
-    background: var(--color06);
+    background: var(--color02);
 }
 
 .cart__section03__subtotal__amount__dark > p {

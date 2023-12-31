@@ -98,7 +98,7 @@
 }
 
 .cart__productInfo__section02__totalPrice > small {
-    color: var(--themeColor01);
+    color: var(--color01);
 }
 
 .cart__productInfo__section03 {

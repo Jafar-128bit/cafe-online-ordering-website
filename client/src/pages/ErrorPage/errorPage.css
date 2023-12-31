@@ -34,8 +34,8 @@
 }
 
 .errorPage > button[type="button"] {
-    background-color: var(--color06);
-    color: var(--color07);
+    background-color: var(--color02);
+    color: var(--color04);
 
     width: 200px;
     height: 100px;
