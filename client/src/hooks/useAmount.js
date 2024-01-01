@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 
-const useAmount = (cartData, couponData = [], couponList) => {
+const useAmount = (cartData, couponData, couponList) => {
     const [discount, setDiscount] = useState(0);
     const [subTotal, setSubTotal] = useState(0);
 

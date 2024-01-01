@@ -155,7 +155,7 @@ const Cart = () => {
     const couponData = useSelector(state => state.couponState);
     const themeMode = useSelector(state => state.themeSwitchSlices);
     const {theme} = themeMode;
-    const {discount, subTotal} = useAmount(cartData, couponList);
+    const {discount, subTotal} = useAmount(cartData, couponData, couponList);
 
     const [itemToRemove, setItemToRemove] = useState(null);
     const [togglePopMessage, setTogglePopMessage] = useState(false);
