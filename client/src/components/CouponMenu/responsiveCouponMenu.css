@@ -14,3 +14,23 @@
         font-size: 30px;
     }
 }
+
+
+@media screen and (max-width: 390px) {
+    .couponMenu {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+
+        width: 90%;
+        border: none;
+        height: 450px;
+
+        top: 20px;
+    }
+
+    .couponMenu__title > h1 {
+        font-size: 30px;
+    }
+}

@@ -1,0 +1,75 @@
+@media screen and (max-width: 390px) {
+    .couponCard {
+        width: 290px;
+    }
+
+    .couponCard__onProductType {
+        height: calc(225px * 0.8);
+    }
+
+    .couponCard__onPurchaseType {
+        height: calc(225px * 0.8);
+    }
+
+    .couponCard__section01__discountContainer > p:nth-child(1) {
+        padding: calc(10px * 0.8) 0;
+
+        font-size: calc(18px * 0.8);
+        letter-spacing: calc(6px * 0.8);
+    }
+
+    .couponCard__section01__discountContainer > p:nth-child(2) {
+        font-size: calc(52px * 0.8);
+    }
+
+    .couponCard__section01__discountContainer > p:nth-child(3) {
+        padding: calc(10px * 0.8) 0;
+
+        font-size: calc(22px * 0.8);
+        letter-spacing: calc(2px * 0.8);
+    }
+
+    .couponCard__section01__couponCodeContainer > p {
+        font-size: calc(18px * 0.8);
+        letter-spacing: calc(6px * 0.8);
+    }
+
+    .couponCard__section02__title {
+        padding: calc(10px * 0.8) 0;
+
+        font-size: calc(18px * 0.8);
+        letter-spacing: calc(3px * 0.8);
+    }
+
+    .couponCard__section02__validity__validTimer > p {
+        font-size: calc(16px * 0.8);
+    }
+
+    .couponCard__section02__messageContainer > p {
+        font-size: calc(16px * 0.8);
+    }
+
+    .couponCard__section02__btnContainer {
+        height: calc(50px * 0.8);
+    }
+
+    .couponCard__section02__btnContainer > button {
+        height: calc(32px * 0.8);
+
+        padding: 5px 5px;
+        margin: 0;
+
+        font-size: calc(14px * 0.8);
+    }
+
+    .couponCard__section02__couponCodeContainer {
+        width: calc(120px * 0.8);
+        height: calc(32px * 0.8);
+    }
+
+    .couponCard__section02__couponCodeContainer > p {
+        font-size: calc(14px * 0.8);
+        letter-spacing: calc(6px * 0.8);
+    }
+
+}

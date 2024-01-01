@@ -13,7 +13,7 @@ const setCouponSlices = createSlice({
             const couponCode = action.payload;
             return state.filter(coupon => coupon.id !== couponCode.id);
         },
-        clearCoupon: (state) => {
+        clearCoupon: () => {
             return [];
         },
     }

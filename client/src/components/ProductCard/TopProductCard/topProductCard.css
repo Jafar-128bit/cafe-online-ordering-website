@@ -97,12 +97,9 @@
     right: 5px;
 }
 
-.topProductCard__infoContainer__addToCartBtn > img {
-    width: 65%;
-    height: 65%;
-
-    object-fit: contain;
-    object-position: center;
+.topProductCard__infoContainer__addToCartBtn > div {
+    width: max-content;
+    height: max-content;
 
     position: absolute;
 }

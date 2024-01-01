@@ -55,6 +55,48 @@
     }
 }
 
-@media screen and (max-width: 590px) {
+@media screen and (max-width: 370px) {
+    .mainProductCard {
+        width: 155px;
+        height: 325px;
+    }
 
+    .mainProductCard__productImage {
+        width: 135px;
+        height: 135px;
+    }
+
+    .mainProductCard__productInfoContainer {
+        width: 135px;
+        height: 110px;
+    }
+
+    .mainProductCard__productInfo > h2 {
+        font-size: 12px;
+    }
+
+    .mainProductCard__productInfo > p {
+        font-size: 16px;
+    }
+
+    .mainProductCard__notificationContainer__message {
+        width: 135px;
+    }
+
+    .mainProductCard__notificationContainer__message > p {
+        font-size: 12px;
+    }
+
+    .mainProductCard__btnContainer {
+        width: 135px;
+    }
+
+    .mainProductCard__btnContainer__iconContainer {
+        left: 12.5px;
+    }
+
+    .mainProductCard__addToCartBtn {
+        width: 80px;
+        font-size: 12px;
+    }
 }

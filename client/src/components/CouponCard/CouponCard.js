@@ -1,4 +1,5 @@
 import './couponCard.css';
+import './mediaQueryCouponCard.css';
 
 import hourGlassDarkIcon from "../../assets/icons/hourGlass__Dark__Icon.svg";
 

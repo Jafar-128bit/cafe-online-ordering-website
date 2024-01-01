@@ -5,7 +5,7 @@ const menuSlice = createSlice({
     initialState: {
         notificationMenuState: {State: false, zIndex: 99},
         couponMenuState: {State: false, zIndex: 97},
-        menuBarState: {State: true},
+        menuBarState: {State: false},
         navbarState: {State: true},
     },
     reducers: {

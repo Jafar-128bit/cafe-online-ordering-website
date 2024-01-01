@@ -3,8 +3,7 @@ import './lightModeStyle.css';
 import './darkModeStyle.css';
 import './mediaQueryNotificationMenu.css';
 
-import closeLightIcon from "../../assets/icons/close_Light_Icon.svg"
-import closeDarkIcon from "../../assets/icons/close_Dark_Icon.svg"
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 import {toggleNotificationMenu} from "../../store/slices/menuSlice";
 import {cake, cold, iceCream, noodles, chai, snacks, sandwich, smoothies} from '../../data/data';
@@ -160,7 +159,7 @@ const CouponInfoCard = ({
                     }
                 >
                     {couponType === "on-Product" &&
-                    <p>Unlock a delightful {discount}% off – a delightful treat for your basket items awaits!</p>}
+                        <p>Unlock a delightful {discount}% off – a delightful treat for your basket items awaits!</p>}
                     {
                         couponType === "on-Purchase" &&
                         <p>
@@ -179,7 +178,7 @@ const CouponInfoCard = ({
                 >
                     <p>{couponCode}</p>
                     <button type="button" onClick={handleBtn}>
-                        {couponType === "on-Product" ? "Explore Products!" : "Shop More!"}
+                        {couponType === "on-Product" ? "Explore!" : "Shop More!"}
                     </button>
                 </div>
             </div>
@@ -235,7 +234,10 @@ const NotificationMenu = ({theme}) => {
                         : "notificationMenu__closeBtn__light"}`
                 }
                 onClick={handleCloseNotificationMenu}>
-                <img src={theme === "dark" ? closeDarkIcon : closeLightIcon} alt="close icon btn"/>
+                <CloseOutlinedIcon style={{
+                    color: theme === "dark" ? "var(--colorBlack)" : "var(--colorWhite)",
+                    fontSize: "21.7px",
+                }}/>
             </button>
             <h3
                 className={`notificationMenu__title 
@@ -257,8 +259,8 @@ const NotificationMenu = ({theme}) => {
                 <h4
                     className={
                         `couponInfoCard__title 
-                        ${theme === "dark" 
-                            ? "couponInfoCard__title__dark" 
+                        ${theme === "dark"
+                            ? "couponInfoCard__title__dark"
                             : "couponInfoCard__title__light"}`
                     }
                 >

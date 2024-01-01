@@ -7,8 +7,22 @@
     }
 
     .navbar__section_03 {
-        justify-content: space-between;
+        justify-content: center;
         width: 100%;
+    }
+
+    .navbar__section_03__notificationMenuBtn,
+    .navbar__section_03__openMenuBtn {
+       position: absolute;
+    }
+
+    .navbar__section_03__notificationMenuBtn {
+        left: 60px;
+    }
+
+    .navbar__section_03__openMenuBtn {
+        display: flex;
+        left: 10px;
     }
 
     .navbar__section_03__cartMenuBtn {
@@ -17,5 +31,7 @@
 
     .navbar__section_03__themeSwitcher {
         margin: 0 10px;
+        position: absolute;
+        right: 0;
     }
 }

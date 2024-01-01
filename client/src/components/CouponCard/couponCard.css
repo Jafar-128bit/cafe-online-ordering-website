@@ -1,5 +1,5 @@
 .couponCard {
-    background: var(--color04);
+    background: var(--colorWhite);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -270,7 +270,7 @@
 
 .couponCard__section02__btnContainer > button {
     background: var(--color02);
-    color: var(--color04);
+    color: var(--colorWhite);
 
     width: max-content;
     height: 32px;

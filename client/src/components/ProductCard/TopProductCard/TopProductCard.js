@@ -3,8 +3,8 @@ import './darkModeStyle.css';
 import './lightModeStyle.css';
 import './mediaQueryTopProductCard.css';
 
-import cartAddLightIcon from "../../../assets/icons/cart_add_Light_Icon.svg";
-import cartRemoveLightIcon from "../../../assets/icons/cart_remove_Light_Icon.svg";
+import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
+import RemoveShoppingCartOutlinedIcon from '@mui/icons-material/RemoveShoppingCartOutlined';
 
 import {motion} from 'framer-motion';
 
@@ -58,20 +58,24 @@ const TopProductCard = ({productImage, productName, price, buyBtn, handleBuy, ra
                         background: buyBtn ? "var(--color03)" : "var(--color01)",
                     }}
                 >
-                    <motion.img
-                        src={cartAddLightIcon}
-                        alt="addAndRemoveFromCartIcon"
+                    <motion.div
                         initial={{x: 0}}
                         animate={buyBtn ? {x: 40} : {x: 0}}
                         transition={{ease: "easeOut", duration: 0.5}}
-                    />
-                    <motion.img
-                        src={cartRemoveLightIcon}
-                        alt="addAndRemoveFromCartIcon"
+                    >
+                        <AddShoppingCartOutlinedIcon style={{
+                            color: "var(--colorWhite)",
+                        }}/>
+                    </motion.div>
+                    <motion.div
                         initial={{x: -40}}
                         animate={buyBtn ? {x: 0} : {x: -40}}
                         transition={{ease: "easeOut", duration: 0.5}}
-                    />
+                    >
+                        <RemoveShoppingCartOutlinedIcon style={{
+                            color: "var(--colorWhite)",
+                        }}/>
+                    </motion.div>
                 </button>
             </div>
             <div className="topProductCard__rankContainer">

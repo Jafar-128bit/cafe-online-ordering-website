@@ -18,7 +18,9 @@ import {addCoupon} from "../../store/slices/setCouponSlices";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import {calculateTimeDifference} from "../../util/utils";
 
-const CartProductCard = loadable(() => import("../../components/ProductCard/CartProductCard/CartProductCard"));
+const CartProductCard
+    = loadable(() =>
+    import("../../components/ProductCard/CartProductCard/CartProductCard"));
 
 const cartUIAnimation = {
     initial: {opacity: 0,},
@@ -153,8 +155,7 @@ const Cart = () => {
     const couponData = useSelector(state => state.couponState);
     const themeMode = useSelector(state => state.themeSwitchSlices);
     const {theme} = themeMode;
-
-    const {discount, subTotal} = useAmount(cartData, couponData, couponList);
+    const {discount, subTotal} = useAmount(cartData, couponList);
 
     const [itemToRemove, setItemToRemove] = useState(null);
     const [togglePopMessage, setTogglePopMessage] = useState(false);
@@ -167,8 +168,8 @@ const Cart = () => {
     const handleApplyCoupon = (selfCouponData = {}) => dispatch(addCoupon(selfCouponData));
 
     useEffect(() => {
-        dispatch(toggleMenuBar({State: true}));
         dispatch(toggleNavbar({State: false}));
+        dispatch(toggleMenuBar({State: false}));
     }, [cartData, couponData, discount, subTotal, dispatch]);
 
     const formikCouponCode = useFormik({
@@ -331,8 +332,8 @@ const Cart = () => {
                                 {
                                     formikCouponCode.errors.code ?
                                         formikCouponCode.errors.code : isCouponValid === "ideal" ?
-                                        "Apply" : isCouponValid === "checking" ?
-                                            "" : isCouponValid === "valid" ? "Valid" : "In Valid"
+                                            "Apply" : isCouponValid === "checking" ?
+                                                "" : isCouponValid === "valid" ? "Valid" : "In Valid"
                                 }
                                 {
                                     isCouponValid === "checking" &&

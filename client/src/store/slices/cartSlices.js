@@ -21,7 +21,7 @@ const cartSlice = createSlice({
                 state[itemIndex] = updatedItem;
             }
         },
-        clearCart: (state) => {
+        clearCart: () => {
             return [];
         }
     }

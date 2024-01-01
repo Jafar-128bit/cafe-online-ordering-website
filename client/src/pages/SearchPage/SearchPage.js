@@ -3,10 +3,8 @@ import './lightModeStyle.css';
 import './darkModeStyle.css';
 import './mediaQuerySearchPage.css';
 
-import search2LightIcon from "../../assets/icons/search2_Light_Icon.svg";
-import search2DarkIcon from "../../assets/icons/search2_Dark_Icon.svg";
-import closeLightIcon from "../../assets/icons/close_Light_Icon.svg";
-import closeDarkIcon from "../../assets/icons/close_Dark_Icon.svg";
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 import {useEffect} from "react";
 import {motion} from "framer-motion";
@@ -14,6 +12,7 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import useSearchFilterOnChange from "../../hooks/useSearchFilterOnChange";
 import {setData} from "../../store/slices/dataSlices";
 import {useDispatch, useSelector} from "react-redux";
+import {toggleMenuBar} from "../../store/slices/menuSlice";
 
 const searchIconAnimation = {
     hide: {x: 0},
@@ -28,10 +27,11 @@ const SearchPage = () => {
 
     useEffect(() => {
         dispatch(setData([]));
+        dispatch(toggleMenuBar({State: false}));
     }, [dispatch]);
 
     return (
-        <section className="searchPage">
+        <section className="searchPage noScroll">
             <section className="searchPage__section02">
                 <div
                     className={
@@ -48,18 +48,22 @@ const SearchPage = () => {
                         onChange={handleFilteredData}
                     />
                     <button type="button" onClick={handleDataClear}>
-                        <motion.img
+                        <motion.div
                             variants={searchIconAnimation}
                             animate={inputValue.length === 0 ? "hide" : "show"}
-                            src={theme === "dark" ? search2LightIcon : search2DarkIcon}
-                            alt="search icon"
-                        />
-                        <motion.img
+                        >
+                            <SearchOutlinedIcon style={{
+                                color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
+                            }}/>
+                        </motion.div>
+                        <motion.div
                             variants={searchIconAnimation}
                             animate={inputValue.length !== 0 ? "hide" : "show"}
-                            src={theme === "dark" ? closeLightIcon : closeDarkIcon}
-                            alt="search icon"
-                        />
+                        >
+                            <CloseOutlinedIcon style={{
+                                color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
+                            }}/>
+                        </motion.div>
                     </button>
                 </div>
             </section>

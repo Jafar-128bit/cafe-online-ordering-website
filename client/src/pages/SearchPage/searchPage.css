@@ -3,13 +3,19 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    flex-shrink: 1;
+    flex-shrink: 0;
 
-    width: 100%;
+    width: 100vw;
     max-width: 1280px;
-    height: 100%;
 
-    overflow: hidden;
+    height: calc(100vh - 70px);
+
+    margin: 0 0 0 0;
+
+    position: relative;
+    z-index: 1;
+
+    overflow-x: hidden;
     overflow-y: auto;
 }
 
@@ -88,13 +94,7 @@
     position: relative;
 }
 
-.searchPage__searchBar > button[type="button"] > img {
-    width: 60%;
-    height: 60%;
-
-    object-position: center;
-    object-fit: contain;
-
+.searchPage__searchBar > button[type="button"] > div {
     position: absolute;
 }
 

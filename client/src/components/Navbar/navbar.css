@@ -69,14 +69,6 @@
     text-align: center;
 }
 
-.navbar__section_01__hideIconButton > img {
-    width: 40%;
-    height: 40%;
-
-    object-fit: contain;
-    object-position: center;
-}
-
 
 .navbar__section_02 {
     display: flex;
@@ -84,7 +76,7 @@
     justify-content: space-evenly;
     flex-direction: row;
 
-    width: 430px;
+    width: 470px;
     height: 50px;
 
     margin: 0;
@@ -93,7 +85,7 @@
     box-shadow: var(--shadow_02);
 
     position: absolute;
-    left: calc((100% - 430px) / 2);
+    left: calc((100% - 470px) / 2);
 }
 
 .navbar__section_02__line, .navbar__section_02__line__hide {
@@ -124,7 +116,7 @@
     flex-direction: row;
     flex-shrink: 0;
 
-    width: 190px;
+    width: 180px;
     height: 60px;
 
     padding: 0 0;
@@ -132,7 +124,9 @@
     right: 0;
 }
 
-.navbar__section_03__notificationMenuBtn {
+.navbar__section_03__notificationMenuBtn,
+.navbar__section_03__openMenuBtn,
+.navbar__section_03__cartMenuBtn {
     background-color: transparent;
 
     display: flex;
@@ -140,7 +134,7 @@
     justify-content: center;
     flex-shrink: 0;
 
-    width: 50px;
+    width: 40px;
     height: 50px;
 
     border: none;
@@ -149,16 +143,11 @@
 
     cursor: pointer;
     overflow: hidden;
-    position: relative;
-}
-.navbar__section_03__notificationMenuBtn > img {
-    width: 60%;
-    height: 60%;
-
-    object-fit: contain;
-    object-position: center;
 }
 
+.navbar__section_03__openMenuBtn {
+    display: none;
+}
 
 .navbar__section_03__cartMenuBtn {
     background-color: transparent;
@@ -168,7 +157,7 @@
     justify-content: center;
     flex-shrink: 0;
 
-    width: 50px;
+    width: 40px;
     height: 50px;
 
     border: none;
@@ -180,21 +169,19 @@
     position: relative;
 }
 
-.iconContainer {
-    width: 40px;
-    height: 40px;
+.navbar__section_03__cartIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
+
+    width: max-content;
+    height: max-content;
 
     border-radius: 50%;
     z-index: 1;
-}
 
-.iconContainer > img {
-    width: 70%;
-    height: 70%;
-
-    object-fit: contain;
-    object-position: center;
+    position: absolute;
 }
 
 .navbar__section_03__cart__indicator {

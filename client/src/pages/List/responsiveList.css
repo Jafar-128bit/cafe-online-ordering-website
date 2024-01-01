@@ -9,6 +9,11 @@
 }
 
 @media screen and (max-width: 900px) {
+    .list {
+        width: 100vw;
+        max-width: 100%;
+    }
+
     .list__title > h1 {
         color: var(--colorWhite);
 
@@ -21,7 +26,7 @@
     }
 
     .list__routeContainer {
-        height: calc(100% - 70px);
+        height: 100%;
     }
 
     .list__productCardList {
@@ -35,8 +40,10 @@
     }
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 370px) {
     .list__productCardList {
-        grid-template-columns: repeat(2, 180px);
+        grid-template-columns: repeat(2, 155px);
+        column-gap: 15px;
+        row-gap: 15px;
     }
 }

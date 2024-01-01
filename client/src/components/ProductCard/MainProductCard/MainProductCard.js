@@ -4,8 +4,8 @@ import './lightModeStyle.css';
 import './mediaQueryMainProductCard.css';
 import {motion} from "framer-motion";
 import {specialMessage} from "../../../data/data";
-import cartAddLightIcon from "../../../assets/icons/cart_add_Light_Icon.svg";
-import cartRemoveLightIcon from "../../../assets/icons/cart_remove_Light_Icon.svg";
+import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import RemoveShoppingCartOutlinedIcon from "@mui/icons-material/RemoveShoppingCartOutlined";
 
 const MainProductCard = ({
                              index,
@@ -90,19 +90,16 @@ const MainProductCard = ({
                     }
                 </div>
             </section>
-            <section
-                className="mainProductCard__btnContainer"
-            >
+            <section className="mainProductCard__btnContainer">
                 <motion.div
                     className="mainProductCard__btnContainer__iconContainer"
                     initial={{x: 0}}
                     animate={buyBtn ? {x: -50} : {x: 0}}
                     transition={{ease: "easeOut", duration: 0.5}}
                 >
-                    <img
-                        src={cartAddLightIcon}
-                        alt="addAndRemoveFromCartIcon"
-                    />
+                    <AddShoppingCartOutlinedIcon style={{
+                        color: "var(--colorWhite)",
+                    }}/>
                 </motion.div>
                 <motion.div
                     className="mainProductCard__btnContainer__iconContainer"
@@ -110,10 +107,9 @@ const MainProductCard = ({
                     animate={buyBtn ? {x: 0} : {x: -50}}
                     transition={{ease: "easeOut", duration: 0.5}}
                 >
-                    <img
-                        src={cartRemoveLightIcon}
-                        alt="addAndRemoveFromCartIcon"
-                    />
+                    <RemoveShoppingCartOutlinedIcon style={{
+                        color: "var(--colorWhite)",
+                    }}/>
                 </motion.div>
                 <button
                     className="mainProductCard__addToCartBtn"

@@ -10,7 +10,7 @@ const PaymentReview = ({processIconAnimation}) => {
 
     const cartData = useSelector((state) => state.cartItems);
     const couponData = useSelector(state => state.couponState);
-    const {discount, subTotal} = useAmount(cartData, couponData, couponList);
+    const {discount, subTotal} = useAmount(cartData, couponList);
 
     return (
         <div className="payment__processContainer">

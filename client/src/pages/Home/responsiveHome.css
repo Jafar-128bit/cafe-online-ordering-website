@@ -1,8 +1,6 @@
 @media screen and (max-width: 1280px) {
     .home {
         width: 100vw;
-        min-height: calc(100vh - 70px);
-        max-height: max-content;
     }
 
     .home__section-01__info {
@@ -48,8 +46,6 @@
 @media screen and (max-width: 1000px) {
     .home {
         width: 100vw;
-        min-height: calc(100vh - 70px);
-        max-height: max-content;
     }
 
     .home__section-01 {
@@ -59,8 +55,6 @@
     .home__section-02 {
         max-width: 90%;
         width: 90%;
-
-        margin: 0 0 70px 0;
     }
 
     .home__section-01__info {

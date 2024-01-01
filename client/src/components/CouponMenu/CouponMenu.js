@@ -5,9 +5,7 @@ import {motion} from "framer-motion";
 import "./couponMenu.css";
 import './responsiveCouponMenu.css';
 
-import closeLightIcon from "../../assets/icons/close_Light_Icon.svg";
-import closeDarkIcon from "../../assets/icons/close_Dark_Icon.svg";
-
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 import {toggleCouponMenu} from "../../store/slices/menuSlice";
 import {couponList} from "../../data/data";
@@ -17,14 +15,13 @@ import {calculateTimeDifference} from "../../util/utils";
 
 
 const couponMenuAnimation = {
-    hide: {opacity: 0, y: 0},
-    show: {opacity: 1, y: 690}
+    hide: {opacity: 0, y: -680},
+    show: {opacity: 1, y: 0}
 }
 
 const CouponMenu = ({theme}) => {
     const dispatch = useDispatch();
     const [validCoupon, setValidCoupon] = useState([]);
-    const [inValidCoupon, setInValidCoupon] = useState([]);
     const [subtotal, setSubtotal] = useState([]);
     const cartData = useSelector((state) => state.cartItems);
     const couponMenu = useSelector(state => state.menuState.couponMenuState);
@@ -50,14 +47,11 @@ const CouponMenu = ({theme}) => {
             return [];
         };
 
-        const nonMatchingProductCoupons = couponList.filter(coupon => !calculateTimeDifference(coupon.endDate, true));
-
         setValidCoupon([...matchingOnProductCoupons, ...matchingOnPurchaseCoupons()]);
-        setInValidCoupon([...nonMatchingProductCoupons]);
     }, [cartData, subtotal, dispatch]);
 
     return (
-        <motion.aside
+        <motion.div
             className={`couponMenu ${theme === "dark" ? "darkGlass35" : "whiteGlass75"}`}
             style={{zIndex: zIndex}}
             variants={couponMenuAnimation}
@@ -69,7 +63,10 @@ const CouponMenu = ({theme}) => {
                 className="couponMenu__closeBtn"
                 onClick={handleClose}
             >
-                <img src={theme === "dark" ? closeLightIcon : closeDarkIcon} alt="close icon"/>
+                <CloseOutlinedIcon style={{
+                    color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
+                    fontSize: "30px"
+                }}/>
             </button>
             <div className="couponMenu__title">
                 <h1 style={{color: theme === "dark" ? "var(--colorWhite)" : "var(--color02)"}}>COUPONS</h1>
@@ -91,22 +88,8 @@ const CouponMenu = ({theme}) => {
                         selfCouponData={validCoupon[index]}
                     />
                 )}
-                {inValidCoupon.map((value, index) => <CouponCard
-                        key={value.id}
-                        id={value.id}
-                        index={index}
-                        couponCode={value.couponCode}
-                        discount={value.discount}
-                        couponType={value.type}
-                        validProductIDs={value?.validProduct}
-                        purchaseLimit={value?.purchaseLimit}
-                        endDate={value.endDate}
-                        isHide={value.isHide}
-                        selfCouponData={validCoupon[index]}
-                    />
-                )}
             </section>
-        </motion.aside>
+        </motion.div>
     );
 }
 

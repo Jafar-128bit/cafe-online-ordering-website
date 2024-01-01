@@ -198,12 +198,9 @@
     position: relative;
 }
 
-.searchProductCard__btnContainer__addToCartBtn > img {
+.searchProductCard__btnContainer__addToCartBtn > div {
     width: 65%;
     height: 65%;
-
-    object-fit: contain;
-    object-position: center;
 
     position: absolute;
 }

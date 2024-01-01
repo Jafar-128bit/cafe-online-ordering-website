@@ -3,7 +3,8 @@ import './darkModeStyle.css';
 import './lightModeStyle.css';
 import './responsiveHome.css';
 
-import arrowLightIcon from "../../assets/icons/arrowBack_Light_Icon.svg"
+import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
+import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 
 import {topOrders, bannerData} from "../../data/data";
 import ProductCard from "../../components/ProductCard/ProductCard";
@@ -22,7 +23,6 @@ const Banner = ({
                     bannerTitle,
                     discount,
                     bannerLink,
-                    bannerTheme = "light"
                 }) => {
     const [bannerSize, setBannerSize] = useState("");
     const navigate = useNavigate();
@@ -60,7 +60,9 @@ const Banner = ({
                         </div>
                     </div>
                 }
-                <button type="button" className="home__banner__linkBtn" onClick={() => navigate(bannerLink)}>Explore Now!</button>
+                <button type="button" className="home__banner__linkBtn" onClick={() => navigate(bannerLink)}>Explore
+                    Now!
+                </button>
             </div>
         </section>
     );
@@ -122,7 +124,11 @@ const SpecialProductList = ({feedTitle = "", feedData = [{}], theme}) => {
                     style={{opacity: isScroll === 1 ? 0.5 : 1}}
                     onClick={() => handleScrollClick(-1)}
                 >
-                    <img src={arrowLightIcon} alt="previous button"/>
+                    <ArrowBackIosOutlinedIcon style={{
+                        color: "var(--colorWhite)",
+                        fontSize: "30px"
+                    }}
+                    />
                 </button>
                 {feedData.map((value, index) => <ProductCard
                         key={value.id}
@@ -139,7 +145,11 @@ const SpecialProductList = ({feedTitle = "", feedData = [{}], theme}) => {
                     style={{opacity: isScroll === -1 ? 0.5 : 1}}
                     onClick={() => handleScrollClick(1)}
                 >
-                    <img src={arrowLightIcon} alt="next button"/>
+                    <ArrowForwardIosOutlinedIcon style={{
+                        color: "var(--colorWhite)",
+                        fontSize: "30px"
+                    }}
+                    />
                 </button>
             </div>
         </section>
@@ -152,7 +162,7 @@ const Home = () => {
     const {theme} = themeMode;
 
     useEffect(() => {
-        dispatch(toggleMenuBar({State: true}));
+        dispatch(toggleMenuBar({State: false}));
     }, [dispatch]);
 
     return (

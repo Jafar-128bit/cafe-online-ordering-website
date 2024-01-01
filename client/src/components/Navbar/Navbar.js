@@ -3,17 +3,14 @@ import './lightModeStyle.css';
 import './darkModeStyle.css';
 import './responsiveNavbar.css';
 
-import cartDarkIcon from '../../assets/icons/cart_Dark_Icon.svg';
-import cartLightIcon from '../../assets/icons/cart_Light_Icon.svg';
-import arrowDarkIcon from '../../assets/icons/arrowBack_Dark_Icon.svg';
-import arrowLightIcon from '../../assets/icons/arrowBack_Light_Icon.svg';
-import notificationDarkIcon from "../../assets/icons/notifications__Dark__Icon.svg";
-import notificationLightIcon from "../../assets/icons/notifications__Light__Icon.svg";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
+import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
+import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
+import ModeNightOutlinedIcon from '@mui/icons-material/ModeNightOutlined';
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
-import nightModeDarkIcon from "../../assets/icons/nightMode__Dark__Icon.svg"
-import lightModeLightIcon from "../../assets/icons/lightMode__Light__Icon.svg";
-
-import {toggleCouponMenu, toggleNotificationMenu} from "../../store/slices/menuSlice";
+import {toggleCouponMenu, toggleMenuBar, toggleNotificationMenu} from "../../store/slices/menuSlice";
 // import {toggleSendNotification, toggleRemoveNotification} from "../../store/slices/notificationMenuSlices";
 
 import {NavLink, useLocation, useNavigate} from 'react-router-dom';
@@ -40,7 +37,6 @@ const notificationIconAnimation = {
 const arrowIconAnimation = {
     hide: {y: -60},
     show: {y: 0},
-    transition: {ease: "easeIn", duration: 0.25}
 }
 
 const Navbar = ({theme}) => {
@@ -60,6 +56,8 @@ const Navbar = ({theme}) => {
         dispatch(toggleCouponMenu({State: false}));
         dispatch(toggleNotificationMenu({State: !State}));
     }
+
+    const handleOpenMenuBar = () => dispatch(toggleMenuBar({State: true}));
 
     const handleNavigation = () => {
         dispatch(toggleNotificationMenu({State: false}));
@@ -118,19 +116,16 @@ const Navbar = ({theme}) => {
                     type="button"
                     className={`
                     navbar__section_01__hideIconButton 
-                    ${theme === "dark" 
-                        ? "navbar__section_01__hideIconButton__dark" 
+                    ${theme === "dark"
+                        ? "navbar__section_01__hideIconButton__dark"
                         : "navbar__section_01__hideIconButton__light"}
                     `}
                     onClick={handleNavigation}
                     variants={arrowIconAnimation}
                     animate={isBackBtnHide ? "show" : "hide"}
-                    transition="transition"
+                    transition={{ease: "easeIn", duration: 0.25}}
                 >
-                    <img
-                        src={theme === "dark" ? arrowLightIcon : arrowDarkIcon}
-                        alt="arrow light icon"
-                    />
+                    <ArrowBackIosIcon style={{color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)"}}/>
                     <p>Go Back</p>
                 </motion.button>
             </section>
@@ -162,11 +157,27 @@ const Navbar = ({theme}) => {
                     Search
                     <div className={isLink === 3 ? `navbar__section_02__line` : `navbar__section_02__line__hide`}/>
                 </NavLink>
+                {/* Link 05 */}
+                <NavLink to="/event" style={{...linkStyle}} onClick={() => setIsLink(4)}>
+                    Event
+                    <div className={isLink === 4 ? `navbar__section_02__line` : `navbar__section_02__line__hide`}/>
+                </NavLink>
             </section>
             <section
                 className="navbar__section_03"
             >
                 {/* Option 01 */}
+                <motion.button
+                    type="button"
+                    className="navbar__section_03__openMenuBtn"
+                    onClick={handleOpenMenuBar}
+                >
+                    <MenuOutlinedIcon style={{
+                        color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
+                        fontSize: "35px"
+                    }}/>
+                </motion.button>
+                {/* Option 02 */}
                 <motion.button
                     type="button"
                     className="navbar__section_03__notificationMenuBtn"
@@ -175,21 +186,27 @@ const Navbar = ({theme}) => {
                     initial="initial"
                     animate={isRingNotificationIcon ? "animate" : ""}
                 >
-                    <img src={theme === "dark" ? notificationLightIcon : notificationDarkIcon} alt="cart icon"/>
+                    <NotificationsOutlinedIcon style={{
+                        color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
+                        fontSize: "35px"
+                    }}/>
                 </motion.button>
-                {/* Option 02 */}
+                {/* Option 03 */}
                 <button
                     type="button"
                     className="navbar__section_03__cartMenuBtn"
                     onClick={handleNotificationMenu}
                 >
                     <motion.div
-                        className="iconContainer"
+                        className="navbar__section_03__cartIcon"
                         variants={basketIconAnimation}
                         animate={iconAnimate ? "animate" : "initial"}
                         transition="transition"
                     >
-                        <img src={theme === "dark" ? cartLightIcon : cartDarkIcon} alt="cart icon"/>
+                        <ShoppingBasketOutlinedIcon style={{
+                            color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
+                            fontSize: "35px"
+                        }}/>
                     </motion.div>
                     <motion.p
                         className={`navbar__section_03__cart__indicator ${
@@ -202,7 +219,7 @@ const Navbar = ({theme}) => {
                         {quantity === 0 ? "1" : quantity}
                     </motion.p>
                 </button>
-                {/* Option 03 */}
+                {/* Option 04 */}
                 <button
                     type="button"
                     onClick={handleSwitch}
@@ -232,20 +249,19 @@ const Navbar = ({theme}) => {
                         animate={theme === "dark" ? {x: 30, rotate: 180} : {x: 0, rotate: 0}}
                         transition={{ease: "easeOut", duration: 0.25}}
                     >
-                        <motion.img
-                            src={lightModeLightIcon}
-                            alt="mode icon"
-                            initial={{opacity: 1}}
-                            animate={theme === "light" ? {opacity: 1} : {opacity: 0}}
-                            transition={{duration: 0.25}}
-                        />
-                        <motion.img
-                            src={nightModeDarkIcon}
-                            alt="mode icon"
-                            initial={{opacity: 0}}
-                            animate={theme === "dark" ? {opacity: 1} : {opacity: 0}}
-                            transition={{duration: 0.25}}
-                        />
+                        <WbSunnyOutlinedIcon style={{
+                            color: "var(--colorWhite)",
+                            fontSize: "14px",
+                            opacity: theme === "light" ? 1 : 0,
+                            position: "absolute",
+                        }}/>
+
+                        <ModeNightOutlinedIcon style={{
+                            color: "var(--colorBlack)",
+                            fontSize: "14px",
+                            opacity: theme === "dark" ? 1 : 0,
+                            position: "absolute",
+                        }}/>
                     </motion.div>
                 </button>
             </section>

@@ -6,8 +6,8 @@ import './mediaQuerySearchProductCard.css';
 import {specialMessage} from '../../../data/data';
 
 import {motion} from "framer-motion";
-import cartAddLightIcon from "../../../assets/icons/cart_add_Light_Icon.svg";
-import cartRemoveLightIcon from "../../../assets/icons/cart_remove_Light_Icon.svg";
+import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import RemoveShoppingCartOutlinedIcon from "@mui/icons-material/RemoveShoppingCartOutlined";
 
 const SearchProductCard = ({
                                productImage,
@@ -94,20 +94,25 @@ const SearchProductCard = ({
                                 background: buyBtn ? "var(--color03)" : "var(--color01)",
                             }}
                         >
-                            <motion.img
-                                src={cartAddLightIcon}
-                                alt="addAndRemoveFromCartIcon"
+
+                            <motion.div
                                 initial={{x: 0}}
                                 animate={buyBtn ? {x: 50} : {x: 0}}
                                 transition={{ease: "easeOut", duration: 0.5}}
-                            />
-                            <motion.img
-                                src={cartRemoveLightIcon}
-                                alt="addAndRemoveFromCartIcon"
+                            >
+                                <AddShoppingCartOutlinedIcon style={{
+                                    color: "var(--colorWhite)",
+                                }}/>
+                            </motion.div>
+                            <motion.div
                                 initial={{x: -40}}
                                 animate={buyBtn ? {x: 0} : {x: -40}}
                                 transition={{ease: "easeOut", duration: 0.5}}
-                            />
+                            >
+                                <RemoveShoppingCartOutlinedIcon style={{
+                                    color: "var(--colorWhite)",
+                                }}/>
+                            </motion.div>
                         </button>
                     </section>
 

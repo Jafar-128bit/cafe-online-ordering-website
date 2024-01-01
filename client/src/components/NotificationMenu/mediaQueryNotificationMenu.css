@@ -7,3 +7,28 @@
         right: unset;
     }
 }
+
+@media screen and (max-width: 390px) {
+    .notificationMenu {
+        width: 90%;
+    }
+
+    .couponInfoCard__details__message > p {
+        font-size: 12px;
+        letter-spacing: 0;
+    }
+
+    .couponInfoCard__details__couponCode > p {
+        padding: 5px;
+        margin: 0;
+
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .couponInfoCard__details__couponCode > button {
+        padding: 5px 5px;
+
+        font-size: 12px;
+    }
+}

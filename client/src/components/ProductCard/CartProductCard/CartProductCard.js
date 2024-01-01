@@ -3,12 +3,13 @@ import './darkModeStyle.css';
 import './lightModeStyle.css';
 import './mediaQueryCartProductCard.css';
 
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+
 import {useEffect} from "react";
 import {motion, stagger} from "framer-motion";
 import {updateCartItem} from "../../../store/slices/cartSlices";
-import addLightIcon from "../../../assets/icons/add_Light_Icon.svg";
-import removeLightIcon from "../../../assets/icons/remove_Light_Icon.svg";
-import closeLightIcon from "../../../assets/icons/close_Light_Icon.svg";
 
 const CartProductCard = ({
                              id,
@@ -112,7 +113,7 @@ const CartProductCard = ({
                     className="cart__productInfo__section03__qtyBtn animateQtyComponents"
                     onClick={() => handleQuantity("inc")}
                 >
-                    <img src={addLightIcon} alt="icon add" height="20px"/>
+                    <AddOutlinedIcon style={{color: "var(--colorWhite)"}}/>
                 </motion.button>
                 <motion.p className="cart__productInfo__section03__quantityCounter animateQtyComponents">
                     {productQuantity}
@@ -122,11 +123,14 @@ const CartProductCard = ({
                     className="cart__productInfo__section03__qtyBtn animateQtyComponents"
                     onClick={() => handleQuantity("dec")}
                 >
-                    <img src={productQuantity < 2 ? closeLightIcon : removeLightIcon} alt="icon remove" height="20px"/>
+                    {productQuantity < 2
+                        ? <CloseOutlinedIcon style={{color: "var(--colorWhite)"}}/>
+                        : <RemoveOutlinedIcon style={{color: "var(--colorWhite)"}}/>
+                    }
                 </motion.button>
             </motion.section>
         </motion.div>
     );
-};
+}
 
 export default CartProductCard;

@@ -13,6 +13,10 @@
 }
 
 @media screen and (max-width: 900px) {
+    .searchPage {
+        width: 100%;
+    }
+
     .searchPage__section02 {
         justify-content: center;
         z-index: 10;
@@ -26,7 +30,7 @@
         grid-template-columns: repeat(2, 400px);
 
         width: max-content;
-        height: calc(100% - 80px - 40px - 65px);
+        height: calc(100% - 80px - 40px);
     }
 }
 
@@ -35,7 +39,7 @@
         grid-template-columns: repeat(1, 400px);
 
         width: max-content;
-        height: calc(100% - 80px - 40px - 65px);
+        height: calc(100% - 80px - 40px);
     }
 }
 

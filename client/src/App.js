@@ -20,13 +20,15 @@ function App() {
     return (
         <main className={`app ${theme === "dark" ? "app__dark" : "app__light"}`}>
             <motion.div
-                className="shade whiteGlass50"
+                className={`shade ${theme === "dark" ? "darkGlass50" : "whiteGlass50"}`}
                 style={{
-                    zIndex: (notificationMenuState.State || couponMenu.State)
+                    zIndex: (notificationMenuState.State || couponMenu.State || menuBarState.State)
                         ? couponMenu.zIndex - 1
                         : 0,
                 }}
-                animate={(notificationMenuState.State || couponMenu.State) ? {opacity: 1} : {opacity: 0}}
+                animate={(notificationMenuState.State || couponMenu.State || menuBarState.State)
+                    ? {opacity: 1}
+                    : {opacity: 0}}
                 transition={{ease: "easeOut", duration: 0.25}}
             />
 
@@ -34,7 +36,7 @@ function App() {
             <Navbar theme={theme}/>
             <CouponMenu theme={theme}/>
             <Outlet/>
-            {menuBarState.State && <Menubar theme={theme}/>}
+            <Menubar theme={theme}/>
         </main>
     );
 }

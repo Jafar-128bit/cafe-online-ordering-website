@@ -6,12 +6,14 @@
     flex-shrink: 0;
 
     width: 100vw;
-    max-width: 1920px;
+    max-width: 1280px;
+
     height: calc(100vh - 70px);
 
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
 
-    padding: 0 0;
-    margin: 0 0 15px 0;
+    position: relative;
     z-index: 1;
 
     overflow-x: hidden;
@@ -89,8 +91,8 @@
     width: 1200px;
     max-height: max-content;
 
-    padding: 0 0 30px 0;
-    margin: 0 0;
+    padding: 0 0 20px 0;
+    margin: 0;
 
     z-index: 10;
 }
@@ -163,21 +165,6 @@
 
 .home__specialProductList__list__prevBtn {
     left: -50px;
-}
-
-.home__specialProductList__list__nextBtn > img,
-.home__specialProductList__list__prevBtn > img {
-    width: 65%;
-    height: 65%;
-
-    transform: rotate(180deg);
-
-    object-position: center;
-    object-fit: contain;
-}
-
-.home__specialProductList__list__prevBtn > img {
-    transform: rotate(0);
 }
 
 .home__banner {

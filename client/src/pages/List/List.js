@@ -11,7 +11,7 @@ const List = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(toggleMenuBar({State: true}));
+        dispatch(toggleMenuBar({State: false}));
         dispatch(toggleNavbar({State: true}));
     }, [dispatch]);
 

@@ -88,6 +88,11 @@ const appRoute = createBrowserRouter([
                 element: <SearchPage/>,
 
             },
+            {
+                path: "/event",
+                element: <SearchPage/>,
+
+            },
         ]
     },
 ]);

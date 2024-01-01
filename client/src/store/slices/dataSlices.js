@@ -8,7 +8,7 @@ const dataSlices = createSlice({
             state = action.payload;
             return state;
         },
-        clearData: (state) => {
+        clearData: () => {
             return [];
         }
     }
