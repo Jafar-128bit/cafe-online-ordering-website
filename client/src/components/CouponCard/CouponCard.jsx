@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom";
 import {motion} from 'framer-motion';
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {addCoupon, removeCoupon} from '../../store/slices/setCouponSlices';
+import {toggleAppliedCoupon} from '../../store/slices/setCouponSlices';
 import {cake, cold, iceCream, noodles, chai, snacks, sandwich, smoothies} from '../../data/data';
 import {setData} from "../../store/slices/dataSlices";
 import useTimeDifference from "../../hooks/useTimeDifference";
@@ -36,7 +36,7 @@ const CouponCard = ({
                     }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const couponData = useSelector(state => state.couponState);
+    const appliedCouponData = useSelector((state) => state.couponState.appliedCouponData);
     const [applyCoupon, setApplyCoupon] = useState(true);
     const [validProducts, setValidProducts] = useState([]);
     const [deleteCoupon, setDeleteCoupon] = useState(true);
@@ -46,10 +46,10 @@ const CouponCard = ({
 
     useEffect(() => {
         const validProductList = allItems.filter(products => validProductIDs?.includes(products.id));
-        const isCouponId = couponData.some((coupon) => coupon.id === id);
+        const isCouponId = appliedCouponData.some((coupon) => coupon.id === id);
         setApplyCoupon(isCouponId);
         setValidProducts([...validProductList]);
-    }, [couponData, id, validProductIDs, applyCoupon]);
+    }, [appliedCouponData, id, validProductIDs, applyCoupon]);
 
     useEffect(() => {
         const validate = calculateTimeDifference(endDate, true);
@@ -61,8 +61,8 @@ const CouponCard = ({
     }, [endDate]);
 
     const handleApplyCoupon = () => {
-        if (!applyCoupon) dispatch(addCoupon(selfCouponData));
-        else if (applyCoupon) dispatch(removeCoupon(selfCouponData));
+        if (!applyCoupon) dispatch(toggleAppliedCoupon({type: "ADD", appliedCouponData: selfCouponData}));
+        else if (applyCoupon) dispatch(toggleAppliedCoupon({type: "REMOVE", appliedCouponData: selfCouponData}));
     }
 
     const handleShowProducts = () => {
@@ -72,18 +72,12 @@ const CouponCard = ({
 
     return (
         <motion.div
-            className={
-                `couponCard ${
-                    couponType === "on-Product"
-                        ? "couponCard__onProductType"
-                        : "couponCard__onPurchaseType"
-                }`
-            }
+            className="couponCard"
             style={{display: isHide ? "none" : "flex"}}
             initial={{x: 0,}}
             animate={deleteCoupon
                 ? {x: 0,}
-                : {x: -375,}}
+                : {x: 0,}}
         >
             < motion.div
                 className="couponCard__Shade"

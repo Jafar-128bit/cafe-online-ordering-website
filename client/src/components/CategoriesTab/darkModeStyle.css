@@ -1,3 +1,27 @@
-.categories__HeadingContainer__dark > h3 {
+.categories__dark {
+    background: var(--color02);
+}
+
+.categories__HeadingContainer__dark > h1 {
+    color: var(--colorWhite);
+}
+
+.categories__HeadingContainer__dark > p {
+    color: var(--colorWhite);
+}
+
+.categories__searchBox__dark {
+    border: 1px solid var(--color04);
+}
+
+.categories__searchBox__dark > input {
+    color: var(--colorWhite);
+}
+
+.categories__searchBox__dark > button {
+    background-color: var(--color02);
+}
+
+.categories__options__title__dark {
     color: var(--colorWhite);
 }

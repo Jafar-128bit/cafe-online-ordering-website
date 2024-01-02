@@ -12,7 +12,6 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import useSearchFilterOnChange from "../../hooks/useSearchFilterOnChange";
 import {setData} from "../../store/slices/dataSlices";
 import {useDispatch, useSelector} from "react-redux";
-import {toggleMenuBar} from "../../store/slices/menuSlice";
 
 const searchIconAnimation = {
     hide: {x: 0},
@@ -27,7 +26,6 @@ const SearchPage = () => {
 
     useEffect(() => {
         dispatch(setData([]));
-        dispatch(toggleMenuBar({State: false}));
     }, [dispatch]);
 
     return (

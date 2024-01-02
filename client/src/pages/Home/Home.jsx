@@ -8,11 +8,10 @@ import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutl
 
 import {topOrders, bannerData} from "../../data/data";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import {toggleMenuBar} from "../../store/slices/menuSlice";
 import {calculateTimeDifference} from "../../util/utils";
 import useTimeDifference from "../../hooks/useTimeDifference";
 
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {useEffect, useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -157,13 +156,8 @@ const SpecialProductList = ({feedTitle = "", feedData = [{}], theme}) => {
 }
 
 const Home = () => {
-    const dispatch = useDispatch();
     const themeMode = useSelector(state => state.themeSwitchSlices);
     const {theme} = themeMode;
-
-    useEffect(() => {
-        dispatch(toggleMenuBar({State: false}));
-    }, [dispatch]);
 
     return (
         <section className="home">

@@ -5,7 +5,6 @@ import {motion} from "framer-motion";
 import {Outlet} from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
-import CouponMenu from "./components/CouponMenu/CouponMenu";
 import Menubar from "./components/Menubar/Menubar";
 import NotificationMenu from "./components/NotificationMenu/NotificationMenu";
 
@@ -34,7 +33,6 @@ function App() {
 
             <NotificationMenu theme={theme}/>
             <Navbar theme={theme}/>
-            <CouponMenu theme={theme}/>
             <Outlet/>
             <Menubar theme={theme}/>
         </main>

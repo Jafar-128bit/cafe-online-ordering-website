@@ -9,7 +9,7 @@ import reviewLightIcon from "../../../assets/icons/review__Light__Icon.svg";
 const PaymentReview = ({processIconAnimation}) => {
 
     const cartData = useSelector((state) => state.cartItems);
-    const couponData = useSelector(state => state.couponState);
+    const couponData = useSelector(state => state.couponState.appliedCouponData);
     const {discount, subTotal} = useAmount(cartData, couponData, couponList);
 
     return (

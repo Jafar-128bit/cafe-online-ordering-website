@@ -7,6 +7,7 @@
     flex-shrink: 0;
 
     width: 370px;
+    height: 225px;
 
     padding: 0;
     margin: 0;
@@ -26,14 +27,6 @@
     overflow: hidden;
     cursor: not-allowed;
     position: absolute;
-}
-
-.couponCard__onProductType {
-    height: 225px;
-}
-
-.couponCard__onPurchaseType {
-    height: 195px;
 }
 
 .couponCard__section01 {

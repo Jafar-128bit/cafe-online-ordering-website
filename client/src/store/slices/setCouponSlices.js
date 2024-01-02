@@ -1,23 +1,67 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const setCouponSlices = createSlice({
+const couponSlice = createSlice({
     name: "couponSlice",
-    initialState: [],
+    initialState: {
+        appliedCouponData: [],
+        validCouponData: [], // Add this line if validCouponData is part of your state
+    },
     reducers: {
-        addCoupon: (state, action) => {
-            const couponCode = action.payload;
-            !state.some((coupon) => coupon.type === couponCode.type && coupon.id === couponCode.id)
-            && state.push(couponCode);
+        toggleAppliedCoupon: (state, action) => {
+            const {type, appliedCouponData} = action.payload;
+            switch (type) {
+                case "ADD":
+                    const isCouponAlreadyApplied = state.appliedCouponData.some(
+                        (coupon) =>
+                            coupon.type === appliedCouponData.type &&
+                            coupon.id === appliedCouponData.id
+                    );
+
+                    if (!isCouponAlreadyApplied) {
+                        state.appliedCouponData.push(appliedCouponData);
+                    }
+                    break;
+
+                case "REMOVE":
+                    state.appliedCouponData = state.appliedCouponData.filter(
+                        (coupon) => coupon.id !== appliedCouponData.id
+                    );
+                    break;
+
+                default:
+                    break;
+            }
         },
-        removeCoupon: (state, action) => {
-            const couponCode = action.payload;
-            return state.filter(coupon => coupon.id !== couponCode.id);
+        toggleValidCoupon: (state, action) => {
+            const {type, validCouponData} = action.payload;
+            switch (type) {
+                case "ADD":
+                    const isCouponAlreadyApplied = state.validCouponData.some(
+                        (coupon) =>
+                            coupon.type === validCouponData.type &&
+                            coupon.id === validCouponData.id
+                    );
+
+                    if (!isCouponAlreadyApplied) {
+                        state.validCouponData.push(validCouponData);
+                    }
+                    break;
+
+                case "CLEAR":
+                    state.validCouponData = [];
+                    break;
+
+                default:
+                    break;
+            }
         },
-        clearCoupon: () => {
-            return [];
-        },
-    }
+        clearCoupon: (state) => state.appliedCouponData = [],
+    },
 });
 
-export const {addCoupon, removeCoupon, clearCoupon} = setCouponSlices.actions;
-export default setCouponSlices.reducer;
+export const {
+    toggleAppliedCoupon,
+    toggleValidCoupon,
+    clearCoupon
+} = couponSlice.actions;
+export default couponSlice.reducer;

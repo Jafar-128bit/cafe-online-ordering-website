@@ -1,4 +1,6 @@
 .navbar {
+    background: transparent;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,7 +78,7 @@
     justify-content: space-evenly;
     flex-direction: row;
 
-    width: 470px;
+    width: 380px;
     height: 50px;
 
     margin: 0;
@@ -85,7 +87,7 @@
     box-shadow: var(--shadow_02);
 
     position: absolute;
-    left: calc((100% - 470px) / 2);
+    left: calc((100% - 380px) / 2);
 }
 
 .navbar__section_02__line, .navbar__section_02__line__hide {

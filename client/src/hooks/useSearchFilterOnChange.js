@@ -4,12 +4,14 @@ import {setData, clearData} from "../store/slices/dataSlices";
 
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {useNavigate} from "react-router-dom";
 import debounce from 'lodash/debounce';
 
 const searchData = [...cake, ...cold, ...iceCream, ...noodles, ...chai, ...snacks, ...sandwich, ...smoothies];
 
 const useSearchFilterOnChange = (delay = 0) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [inputValue, setInputValue] = useState('');
     const productData = useSelector(state => state.filterDataState);
 
@@ -29,6 +31,7 @@ const useSearchFilterOnChange = (delay = 0) => {
     const handleDataClear = () => {
         dispatch(clearData());
         setInputValue('');
+        navigate(-1);
     };
 
     return {

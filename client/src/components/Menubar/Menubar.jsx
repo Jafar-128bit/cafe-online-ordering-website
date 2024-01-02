@@ -6,7 +6,6 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import RoofingOutlinedIcon from '@mui/icons-material/RoofingOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 
 import {useLocation, useNavigate} from "react-router-dom";
@@ -35,6 +34,10 @@ const Menubar = () => {
     }, [cartData]);
 
     const handleCloseMenuBar = () => dispatch(toggleMenuBar({State: false}));
+    const handleNavigate = (goto) => {
+        navigate(goto);
+        dispatch(toggleMenuBar({State: false}));
+    }
 
     const menuOptionsData = [
         {
@@ -78,19 +81,6 @@ const Menubar = () => {
         },
         {
             id: 4,
-            optionName: "Search",
-            optionIcon: location.split("/")[1] === "search"
-                ? <SearchOutlinedIcon style={{color: "var(--colorWhite)", zIndex: 5, fontSize: "30px"}}/> :
-                <SearchOutlinedIcon
-                    style={{
-                        color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
-                        fontSize: "32px"
-                    }}
-                />,
-            goto: "search"
-        },
-        {
-            id: 5,
             optionName: "Event",
             optionIcon: location.split("/")[1] === "event"
                 ? <CalendarMonthOutlinedIcon style={{color: "var(--colorWhite)", zIndex: 5, fontSize: "30px"}}/> :
@@ -126,7 +116,7 @@ const Menubar = () => {
                 {menuOptionsData.map((option) => <motion.div
                     key={option.id}
                     className="menubar__option"
-                    onClick={() => navigate(option.goto)}
+                    onClick={() => handleNavigate(option.goto)}
                     whileTap={{scale: 0.8,}}
                     transition={{type: "spring", stiffness: 350, damping: 25, duration: 0.1}}
                 >

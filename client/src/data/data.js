@@ -401,7 +401,7 @@ export const menuList = [
     {
         id: 7,
         menuIcon: sandwichSymbol,
-        menuHeading: "Sandwich and Burger",
+        menuHeading: "Sandwich & Burger",
     },
     {
         id: 8,

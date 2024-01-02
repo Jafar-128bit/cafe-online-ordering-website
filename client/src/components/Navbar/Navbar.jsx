@@ -10,7 +10,7 @@ import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 import ModeNightOutlinedIcon from '@mui/icons-material/ModeNightOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
-import {toggleCouponMenu, toggleMenuBar, toggleNotificationMenu} from "../../store/slices/menuSlice";
+import {toggleMenuBar, toggleNotificationMenu} from "../../store/slices/menuSlice";
 // import {toggleSendNotification, toggleRemoveNotification} from "../../store/slices/notificationMenuSlices";
 
 import {NavLink, useLocation, useNavigate} from 'react-router-dom';
@@ -53,7 +53,6 @@ const Navbar = ({theme}) => {
     const [isRingNotificationIcon, setRingNotificationIcon] = useState(false);
 
     const handleNotificationMenu = () => {
-        dispatch(toggleCouponMenu({State: false}));
         dispatch(toggleNotificationMenu({State: !State}));
     }
 
@@ -79,7 +78,7 @@ const Navbar = ({theme}) => {
         if (locationName === "") setIsLink(0);
         else if (locationName === "menu") setIsLink(1);
         else if (locationName === "cart") setIsLink(2);
-        else if (locationName === "search") setIsLink(3);
+        else if (locationName === "event") setIsLink(3);
 
         if (locationName === "") setBackBtnHide(false);
         else setBackBtnHide(true);
@@ -110,7 +109,7 @@ const Navbar = ({theme}) => {
     }
 
     return (
-        <nav className="navbar">
+        <nav className={`navbar ${theme === "dark" ? "navbar__dark" : "navbar__light"}`}>
             <section className="navbar__section_01">
                 <motion.button
                     type="button"
@@ -153,14 +152,9 @@ const Navbar = ({theme}) => {
                     <div className={isLink === 2 ? `navbar__section_02__line` : `navbar__section_02__line__hide`}/>
                 </NavLink>
                 {/* Link 04 */}
-                <NavLink to="/search" style={{...linkStyle}} onClick={() => setIsLink(3)}>
-                    Search
-                    <div className={isLink === 3 ? `navbar__section_02__line` : `navbar__section_02__line__hide`}/>
-                </NavLink>
-                {/* Link 05 */}
-                <NavLink to="/event" style={{...linkStyle}} onClick={() => setIsLink(4)}>
+                <NavLink to="/event" style={{...linkStyle}} onClick={() => setIsLink(3)}>
                     Event
-                    <div className={isLink === 4 ? `navbar__section_02__line` : `navbar__section_02__line__hide`}/>
+                    <div className={isLink === 3 ? `navbar__section_02__line` : `navbar__section_02__line__hide`}/>
                 </NavLink>
             </section>
             <section

@@ -10,3 +10,9 @@
     background: var(--color03);
     color: var(--colorWhite);
 }
+
+@media screen and (max-width: 700px) {
+    .navbar__light {
+        background: var(--colorWhite);
+    }
+}

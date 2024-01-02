@@ -4,23 +4,19 @@ import "./darkModeStyle.css";
 import './responsiveCart.css';
 
 import {useNavigate} from "react-router-dom";
-import loadable from '@loadable/component';
 import {useDispatch, useSelector} from "react-redux";
 import {useAnimate, motion} from "framer-motion";
 import {useEffect, useState} from "react";
 import {removeFromCart} from "../../store/slices/cartSlices";
 import {couponList} from "../../data/data";
 import useAmount from "../../hooks/useAmount";
-import {toggleCouponMenu, toggleMenuBar, toggleNavbar, toggleNotificationMenu} from "../../store/slices/menuSlice";
+import {toggleNavbar, toggleNotificationMenu} from "../../store/slices/menuSlice";
 import {useFormik} from 'formik';
 import * as Yup from "yup";
-import {addCoupon} from "../../store/slices/setCouponSlices";
+import {toggleAppliedCoupon} from "../../store/slices/setCouponSlices";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import {calculateTimeDifference} from "../../util/utils";
-
-const CartProductCard
-    = loadable(() =>
-    import("../../components/ProductCard/CartProductCard/CartProductCard"));
+import CartProductCard from "../../components/ProductCard/CartProductCard/CartProductCard";
 
 const cartUIAnimation = {
     initial: {opacity: 0,},
@@ -151,11 +147,12 @@ const Cart = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [scope, animate] = useAnimate();
+    const validCouponData = useSelector((state) => state.couponState.validCouponData[0]);
     const cartData = useSelector((state) => state.cartItems);
-    const couponData = useSelector(state => state.couponState);
+    const appliedCouponData = useSelector((state) => state.couponState.appliedCouponData);
     const themeMode = useSelector(state => state.themeSwitchSlices);
     const {theme} = themeMode;
-    const {discount, subTotal} = useAmount(cartData, couponData, couponList);
+    const {discount, subTotal} = useAmount(cartData, appliedCouponData, couponList);
 
     const [itemToRemove, setItemToRemove] = useState(null);
     const [togglePopMessage, setTogglePopMessage] = useState(false);
@@ -163,14 +160,16 @@ const Cart = () => {
 
     const handleCouponMenuOpen = () => {
         dispatch(toggleNotificationMenu({State: false}));
-        dispatch(toggleCouponMenu({State: true}));
+        navigate("/cart/coupon");
     }
-    const handleApplyCoupon = (selfCouponData = {}) => dispatch(addCoupon(selfCouponData));
+    const handleApplyCoupon = (selfCouponData = {}) => dispatch(toggleAppliedCoupon({
+        type: "ADD",
+        appliedCouponData: selfCouponData
+    }));
 
     useEffect(() => {
         dispatch(toggleNavbar({State: false}));
-        dispatch(toggleMenuBar({State: false}));
-    }, [cartData, couponData, discount, subTotal, dispatch]);
+    }, [cartData, appliedCouponData, discount, subTotal, dispatch]);
 
     const formikCouponCode = useFormik({
         initialValues: {
@@ -178,34 +177,58 @@ const Cart = () => {
         },
         validationSchema: couponValidationSchema,
         onSubmit: (values, {resetForm}) => {
-            //TODO: Tyring to mimicking the process of applying coupon change.
             setIsCouponValid("checking");
-            const getCouponByCode = couponList
-                .find((coupon) => formikCouponCode
-                    .values
-                    .code
-                    .toUpperCase() === coupon.couponCode.toUpperCase()
-                );
+
             setTimeout(() => {
-                if (!calculateTimeDifference(getCouponByCode.endDate, true)) setIsCouponValid("inValid");
-                else if (getCouponByCode && getCouponByCode.type === "on-Product") {
-                    if (getCouponByCode.validProduct
-                        .some(productId => cartData.map(items => items.id).includes(productId))) {
-                        setIsCouponValid("valid");
-                        handleApplyCoupon(getCouponByCode);
-                    } else setIsCouponValid("inValid");
-                } else if (getCouponByCode && getCouponByCode.type === "on-Purchase") {
-                    if (getCouponByCode.purchaseLimit >= subTotal) {
-                        if (couponData.some(coupon => getCouponByCode.type === coupon.type)) setIsCouponValid("inValid");
-                        else handleApplyCoupon(getCouponByCode);
-                    } else setIsCouponValid("inValid");
+                const getCouponByCode = validCouponData.find(
+                    (coupon) => formikCouponCode.values.code.toUpperCase() === coupon.couponCode.toUpperCase()
+                );
+
+                if (!getCouponByCode || !calculateTimeDifference(getCouponByCode.endDate, true)) {
+                    setIsCouponValid("inValid");
+                } else {
+                    switch (getCouponByCode.type) {
+                        case "on-Product":
+                            const hasValidProducts = getCouponByCode.validProduct.some(
+                                (productId) => cartData.some((item) => item.id === productId)
+                            );
+
+                            if (hasValidProducts) {
+                                setIsCouponValid("valid");
+                                handleApplyCoupon(getCouponByCode);
+                            } else {
+                                setIsCouponValid("inValid");
+                            }
+                            break;
+
+                        case "on-Purchase":
+                            if (getCouponByCode.purchaseLimit <= subTotal) {
+                                const isCouponAlreadyApplied = appliedCouponData.some(
+                                    (coupon) => getCouponByCode.type === coupon.type
+                                );
+
+                                if (!isCouponAlreadyApplied) {
+                                    setIsCouponValid("valid");
+                                    handleApplyCoupon(getCouponByCode);
+                                } else {
+                                    setIsCouponValid("inValid");
+                                }
+                            } else {
+                                setIsCouponValid("inValid");
+                            }
+                            break;
+
+                        default:
+                            setIsCouponValid("inValid");
+                            break;
+                    }
                 }
-            }, 3000);
+            }, 2000);
 
             setTimeout(() => {
                 setIsCouponValid("ideal");
                 resetForm();
-            }, 4000);
+            }, 2500);
         },
     });
 
@@ -221,18 +244,6 @@ const Cart = () => {
                 setItemToRemove={setItemToRemove}
                 theme={theme}
             />
-            <section className="cart__section01">
-                <h1
-                    className={
-                        `cart__section01__title 
-                        ${theme === "dark"
-                            ? "cart__section01__title__dark"
-                            : "cart__section01__title__light"}`
-                    }
-                >
-                    Your Basket
-                </h1>
-            </section>
 
             {
                 cartData.length !== 0 ? <section

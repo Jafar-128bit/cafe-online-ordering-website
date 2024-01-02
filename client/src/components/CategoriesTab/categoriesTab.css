@@ -1,51 +1,128 @@
 .categories {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-direction: column;
+    flex-shrink: 0;
 
     max-width: 1280px;
     width: 100%;
 
-    height: 100%;
+    height: 380px;
 
     margin-top: 0;
 
-    box-shadow: var(--shadow_03);
+    border-radius: var(--borderRadius1);
+    box-shadow: var(--shadow_01);
 
     z-index: 80;
     position: relative;
     overflow: hidden;
-    overflow-y: auto;
-}
-
-.categories::-webkit-scrollbar {
-    display: none;
 }
 
 .categories__HeadingContainer {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    flex-shrink: 0;
 
     width: 100%;
-    height: 20%;
-    min-height: 300px;
+    height: calc(100% - 140px - 10px - 85px);
 
-    margin: 0;
+    margin: 0 0 0 0;
+    padding: 0;
 
     overflow: hidden;
     position: relative;
 }
 
-.categories__HeadingContainer > h3 {
-    width: 90%;
+.categories__HeadingContainer > h1 {
+    width: 95%;
+    height: max-content;
 
-    font-size: 52px;
-    font-weight: 100;
+    padding: 0 0 0 0;
+    margin: 0;
+
+    font-size: 32px;
+    font-weight: 900;
     text-align: left;
+    text-transform: capitalize;
 
     z-index: 2;
+}
+
+.categories__HeadingContainer > p {
+    width: 95%;
+    height: max-content;
+
+    padding: 0 0 0 0;
+    margin: 10px 0 10px 0;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.categories__searchBoxContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: calc(100% - 20px);
+    height: 70px;
+
+    padding: 0 10px;
+    margin: 5px 0;
+}
+
+.categories__searchBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-shrink: 0;
+
+    width: 95%;
+    height: 50px;
+
+    border-radius: calc(50px / 2);
+
+    overflow: hidden;
+}
+
+.categories__searchBox > input {
+    background: transparent;
+
+    width: calc(100% - 40px - 10px - 10px - 5px);
+    height: 40px;
+
+    padding: 0 0 0 10px;
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    border: none;
+    outline: none;
+}
+
+.categories__searchBox > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    padding: 0;
+    margin: 0 5px 0 10px;
+
+    border: none;
+    outline: none;
+    border-radius: 50%;
+
+    cursor: pointer;
 }
 
 .categories__optionContainer {
@@ -55,7 +132,7 @@
     flex-shrink: 0;
 
     width: 100%;
-    height: max-content;
+    height: 140px;
 
     margin: 0;
     padding: 0;
@@ -63,63 +140,73 @@
 
 .categories__optionContainerItems {
     display: grid;
-    grid-template-columns: repeat(5, 220px);
-    column-gap: 20px;
-    row-gap: 20px;
+    column-gap: 10px;
+    row-gap: 10px;
     place-items: center;
     place-content: flex-start;
 
-    width: max-content;
-    height: 100%;
+    width: calc(100% - 20px);
+    height: 135px;
 
-    padding: 0 0 10px 0;
+    padding: 0 10px 0 10px;
     margin: 0;
 
     z-index: 2;
+    overflow: hidden;
+    overflow-x: auto;
 }
 
 .categories__options {
-    background-color: var(--colorWhite);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    flex-shrink: 0;
 
-    width: 220px;
-    height: 220px;
+    width: 110px;
+    height: 130px;
 
-    box-shadow: var(--shadow_02);
+    cursor: pointer;
 
     overflow: hidden;
 }
 
-.categories__options:hover {
-    background-size: 120% 120%;
+.categories__options__imageContainer {
+    background: var(--backgroundGradient01);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
 }
 
-.categories__optionName {
-    background-color: transparent;
-    color: var(--colorWhite);
+.categories__options__imageContainer > img {
+    width: 90%;
+    height: 90%;
+
+    border-radius: 50%;
+}
+
+.categories__options__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     width: 100%;
-    height: 100%;
+    height: 40px;
 
+    padding: 0;
     margin: 0;
-    padding: 5px;
-    border: none;
 
     font-size: 14px;
     font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-}
-
-.categories__optionName:hover {
-    background-color: var(--colorBlackTransparent35);
+    text-transform: capitalize;
+    text-align: center;
 }

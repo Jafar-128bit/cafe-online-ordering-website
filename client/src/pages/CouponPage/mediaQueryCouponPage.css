@@ -1,0 +1,20 @@
+@media screen and (max-width: 900px) {
+    .couponPage {
+        width: 90%;
+    }
+
+    .couponPage__backBtn {
+        display: flex;
+    }
+
+    .couponPage__couponList {
+        grid-template-columns: repeat(1, 370px);
+        place-content: center;
+        place-items: center;
+
+        width: max-content;
+        height: max-content;
+
+        padding: 30px 0;
+    }
+}

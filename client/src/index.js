@@ -1,52 +1,30 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import loadable from '@loadable/component';
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
 
-// Custom Components
-import CategoriesTab from "./components/CategoriesTab/CategoriesTab";
 import ProductList from "./pages/List/ProductList";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
-// Data
-import { cake, chai, cold, iceCream, noodles, sandwich, smoothies, snacks } from "./data/data";
+import store, {persist} from './store/store';
 
-// Redux Store and Persistence
-import store, { persist } from './store/store';
-
-// Styles
 import './index.css';
+import LoadingPage from "./pages/LoadingPage/LoadingPage";
+import CouponPage from "./pages/CouponPage/CouponPage";
 
-const App = loadable(() => import('./App'));
-const Home = loadable(() => import('./pages/Home/Home'));
-const Cart = loadable(() => import('./pages/Cart/Cart'));
-const List = loadable(() => import('./pages/List/List'));
-const Payment = loadable(() => import('./pages/Payment/Payment'));
-const SearchPage = loadable(() => import('./pages/SearchPage/SearchPage'));
-
-const allItems = [...cake, ...cold, ...iceCream, ...noodles, ...chai, ...snacks, ...sandwich, ...smoothies,];
-
-const renderProductCards = (category) => {
-    const dataMap = {
-        0: allItems,
-        1: cake,
-        2: cold,
-        3: iceCream,
-        4: noodles,
-        5: chai,
-        6: snacks,
-        7: sandwich,
-        8: smoothies,
-    };
-    return dataMap[category];
-};
+const App = lazy(() => import('./App'));
+const Home = lazy(() => import('./pages/Home/Home'));
+const List = lazy(() => import('./pages/List/List'));
+const Cart = lazy(() => import('./pages/Cart/Cart'));
+const Payment = lazy(() => import('./pages/Payment/Payment'));
+const SearchPage = lazy(() => import('./pages/SearchPage/SearchPage'));
+const Event = lazy(() => import('./pages/Event/Event'));
 
 const appRoute = createBrowserRouter([
     {
         path: "/",
-        element: (<App/>),
+        element: <Suspense fallback={<LoadingPage/>}><App/></Suspense>,
         errorElement: <ErrorPage/>,
         children: [
             {
@@ -62,24 +40,28 @@ const appRoute = createBrowserRouter([
                 element: <Payment/>,
             },
             {
+                path: "cart/coupon",
+                element: <CouponPage/>,
+            },
+            {
                 path: "menu",
-                element: <List/>,
+                element: <Suspense><List/></Suspense>,
                 children: [
                     {
                         path: "",
-                        element: <CategoriesTab/>
+                        element: <ProductList type="all"/>,
                     },
                     {
                         path: ":type/:id",
                         element: <ProductList type="main"/>,
-                        loader: ({params}) => {
-                            if (params.type === "normalMenu") return renderProductCards(params.id);
-                            else if (params.type === "specialMenu") return [];
-                        },
                     },
                     {
                         path: "offerProducts",
                         element: <ProductList type="offer"/>,
+                    },
+                    {
+                        path: "search",
+                        element: <ProductList type="search"/>,
                     },
                 ]
             },
@@ -90,7 +72,7 @@ const appRoute = createBrowserRouter([
             },
             {
                 path: "/event",
-                element: <SearchPage/>,
+                element: <Event/>,
 
             },
         ]

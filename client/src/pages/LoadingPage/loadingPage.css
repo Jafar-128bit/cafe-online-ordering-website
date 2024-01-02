@@ -1,0 +1,50 @@
+.loadingPage {
+    background-image: url("../../assets/background/backgroundWhite.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 100;
+    position: absolute;
+}
+
+.loadingPage__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 150px;
+    height: 150px;
+
+    border-radius: 50%;
+}
+
+.loadingPage__container > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 130px;
+    height: 130px;
+
+    border: 6px solid transparent;
+    border-bottom: 6px solid var(--colorWhite);
+    border-radius: 50%;
+
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

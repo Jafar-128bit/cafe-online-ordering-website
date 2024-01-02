@@ -23,12 +23,11 @@ const SearchProductCard = ({
                            }) => {
 
     return (
-        <motion.div
-            className={`
+        <div className={`
                 searchProductCard 
                 ${theme === "dark"
-                ? "searchProductCard__dark"
-                : "searchProductCard__light"}
+            ? "searchProductCard__dark"
+            : "searchProductCard__light"}
             `}
         >
             <section className="searchProductCard__section01">
@@ -118,7 +117,7 @@ const SearchProductCard = ({
 
                 </div>
             </section>
-        </motion.div>
+        </div>
     );
 }
 

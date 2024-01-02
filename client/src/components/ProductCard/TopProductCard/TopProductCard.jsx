@@ -11,10 +11,9 @@ import {motion} from 'framer-motion';
 const TopProductCard = ({productImage, productName, price, buyBtn, handleBuy, rank, isDiscount, discount, theme}) => {
 
     const productCardSmall = {
-        hidden: {scale: 0, opacity: 0,},
+        hidden: {opacity: 0, scale: 0.5,},
         animate: () => ({
-            scale: 1,
-            opacity: 1,
+            opacity: 1, scale: 1,
             transition: {delay: 0.1 * rank,}
         }),
     };
