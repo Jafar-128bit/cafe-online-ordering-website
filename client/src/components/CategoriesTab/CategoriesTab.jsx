@@ -3,15 +3,17 @@ import './darkModeStyle.css';
 import './lightModeStyle.css';
 import './responsiveCategoriesTab.css';
 
+import allFoodIcon from "../../assets/images/symbol/all-Icon.jpg";
+
 import {menuList} from "../../data/data";
 import {motion} from "framer-motion";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
-const Options = ({id, optionName, symbol, goto, theme}) => {
+const Options = ({id, optionName, symbol, goto, theme, locationId}) => {
 
     const categoryCard = {
         initial: {opacity: 0, scale: 0.85},
@@ -30,7 +32,12 @@ const Options = ({id, optionName, symbol, goto, theme}) => {
             animate="animate"
             onClick={() => goto(`normalMenu/${id}`)}
         >
-            <div className="categories__options__imageContainer">
+            <div
+                className={`categories__options__imageContainer 
+                ${parseInt(locationId) === id
+                    ? "selectedCategory"
+                    : "unselectedCategory"}`}
+            >
                 <img src={symbol} alt={optionName}/>
             </div>
             <h4
@@ -49,6 +56,7 @@ const Options = ({id, optionName, symbol, goto, theme}) => {
 
 const CategoriesTab = ({inputValue, handleFilteredData, handleDataClear}) => {
     const goto = useNavigate();
+    const locationId = useLocation().pathname.split("/")[3];
     const themeMode = useSelector(state => state.themeSwitchSlices);
     const {theme} = themeMode;
 
@@ -107,8 +115,13 @@ const CategoriesTab = ({inputValue, handleFilteredData, handleDataClear}) => {
                             className="categories__options"
                             onClick={() => goto(`/menu`)}
                         >
-                            <div className="categories__options__imageContainer">
-
+                            <div
+                                className={`categories__options__imageContainer
+                                ${locationId === undefined
+                                    ? "selectedCategory"
+                                    : "unselectedCategory"}`}
+                            >
+                                <img src={allFoodIcon} alt="all food icon"/>
                             </div>
                             <h4
                                 className={`
@@ -129,6 +142,7 @@ const CategoriesTab = ({inputValue, handleFilteredData, handleDataClear}) => {
                                 symbol={value.menuIcon}
                                 optionName={value.menuHeading}
                                 goto={goto}
+                                locationId={locationId}
                                 theme={theme}
                             />
                         )

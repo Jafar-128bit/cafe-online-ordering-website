@@ -1,0 +1,146 @@
+@media screen and (max-width: 1280px) {
+    .mainProductCard {
+        width: 200px;
+        height: 320px;
+    }
+
+    .mainProductCard__productImage {
+        width: 200px;
+        height: 200px;
+    }
+
+    .mainProductCard__productInfo {
+        width: 100%;
+        height: calc((100% - 200px) / 2);
+    }
+
+    .mainProductCard__productInfo > h2 {
+        font-size: 14px;
+    }
+
+    .price__big {
+        font-size: 22px;
+        font-weight: 800;
+    }
+
+    .price__small {
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .mainProductCard__btnContainer {
+        height: calc((100% - 200px) / 2);
+    }
+
+    .mainProductCard__addToCartBtn {
+        width: calc(100% - 15px);
+        height: calc(100% - 15px);
+
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .mainProductCard {
+        width: 190px;
+        height: 304px;
+    }
+
+    .mainProductCard__productImage {
+        width: 190px;
+        height: 190px;
+    }
+
+    .mainProductCard__messageContainer {
+        width: 40%;
+        height: 26px;
+    }
+
+    .mainProductCard__messageContainer > p {
+        font-size: 14px;
+    }
+
+    .mainProductCard__productInfo {
+        width: 100%;
+        height: calc((100% - 190px) / 2);
+    }
+
+    .mainProductCard__productInfo > h2 {
+        font-size: 12px;
+    }
+
+    .price__big {
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    .price__small {
+        font-size: 10px;
+        font-weight: 500;
+    }
+
+    .mainProductCard__btnContainer {
+        height: calc((100% - 190px) / 2);
+    }
+
+    .mainProductCard__addToCartBtn {
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .mainProductCard {
+        width: 150px;
+        height: 240px;
+    }
+
+    .mainProductCard__productImage {
+        width: 150px;
+        height: 150px;
+    }
+
+    .mainProductCard__messageContainer {
+        width: 40%;
+        height: 22px;
+    }
+
+    .mainProductCard__messageContainer > p {
+        font-size: 12px;
+    }
+
+    .mainProductCard__productInfo {
+        width: 100%;
+        height: calc((100% - 150px) / 2);
+    }
+
+    .mainProductCard__productInfo > h2 {
+        font-size: 12px;
+    }
+
+    .price__big {
+        font-size: 14px;
+        font-weight: 800;
+    }
+
+    .price__small {
+        font-size: 9px;
+        font-weight: 400;
+    }
+
+    .mainProductCard__btnContainer {
+        height: calc((100% - 150px) / 2);
+    }
+
+    .mainProductCard__addToCartBtn {
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+
+        font-size: 12px;
+        font-weight: 500;
+    }
+}

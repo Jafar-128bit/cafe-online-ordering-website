@@ -5,7 +5,7 @@ import {useNavigate, useOutletContext, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {clearData} from "../../store/slices/dataSlices";
-import {cake, chai, cold, iceCream, noodles, sandwich, smoothies, snacks} from "../../data/data";
+import {cake, chai, cold, iceCream, noodles, sandwich, smoothies, snacks, menuList} from "../../data/data";
 
 const allItems = [...cake, ...cold, ...iceCream, ...noodles, ...chai, ...snacks, ...sandwich, ...smoothies,];
 
@@ -31,6 +31,8 @@ const ProductList = ({type}) => {
     const productData = useOutletContext();
     const [itemData, setItemData] = useState(null);
     const couponData = useSelector(state => state.filterDataState);
+    const themeMode = useSelector(state => state.themeSwitchSlices);
+    const {theme} = themeMode;
 
     const handleGoBack = () => {
         dispatch(clearData());
@@ -38,9 +40,7 @@ const ProductList = ({type}) => {
     }
 
     useEffect(() => {
-        if (type === "all") {
-            setItemData(renderProductCards(0));
-        } else if (type === "main") {
+        if (type === "main") {
             setItemData(renderProductCards(param.id));
         } else if (type === "offer") {
             setItemData(couponData);
@@ -59,8 +59,38 @@ const ProductList = ({type}) => {
                     <button type="button" onClick={handleGoBack}>Back</button>
                 </div>
             }
+
+            {
+                type === "all" &&
+                menuList.map(
+                    menu =>
+                        <div key={menu.id} className="list__productCardList__categoryItemsList">
+                            <h3 className="list__productCardList__categoryName" style={{
+                                color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
+                                background: theme === "dark" ? "var(--colorBlackTransparent50)" : "var(--colorWhiteTransparent75)",
+                            }}>
+                                {menu.menuHeading}
+                            </h3>
+                            <div className="list__productCardList__itemsList" style={{
+                                padding: "0",
+                            }}>
+                                {renderProductCards(menu.id).map((value, index) => (
+                                    <ProductCard
+                                        key={value.id}
+                                        id={value.id}
+                                        index={index}
+                                        productName={value.productName}
+                                        productImage={value.productImage}
+                                        price={value.price}
+                                        type="gridView"
+                                    />))}
+                            </div>
+                        </div>
+                )
+            }
+
             <section className="list__productCardList noScroll">
-                {itemData && itemData.map((value, index) => (
+                {(itemData && type !== "all") && itemData.map((value, index) => (
                     <ProductCard
                         key={value.id}
                         id={value.id}
@@ -68,7 +98,7 @@ const ProductList = ({type}) => {
                         productName={value.productName}
                         productImage={value.productImage}
                         price={value.price}
-                        type="main"
+                        type="gridView"
                     />
 
                 ))}

@@ -10,6 +10,10 @@
     color: var(--colorBlack);
 }
 
-.mainProductCard__messageContainer__message__light {
+.mainProductCard__productInfo__productPrice__light {
     color: var(--colorBlack);
+}
+
+.price__small__light {
+    color: var(--colorBlackTransparent50);
 }

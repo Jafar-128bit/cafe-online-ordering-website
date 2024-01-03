@@ -136,7 +136,7 @@ const SpecialProductList = ({feedTitle = "", feedData = [{}], theme}) => {
                         productImage={value.productImage}
                         price={value.price}
                         index={index}
-                        type="small"
+                        type="gridView"
                     />
                 )}
                 <button

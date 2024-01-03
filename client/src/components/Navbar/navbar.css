@@ -78,20 +78,17 @@
     justify-content: space-evenly;
     flex-direction: row;
 
-    width: 380px;
+    width: 470px;
     height: 50px;
 
     margin: 0;
 
-    border-radius: var(--borderRadius2);
-    box-shadow: var(--shadow_02);
-
     position: absolute;
-    left: calc((100% - 380px) / 2);
+    left: calc((100% - 470px) / 2);
 }
 
 .navbar__section_02__line, .navbar__section_02__line__hide {
-    background: var(--backgroundGradient01);
+    background: var(--backgroundGradient10);
     background-size: 200% 200%;
     -webkit-animation: gradient 1s ease infinite;
     animation: gradient 1s ease infinite;

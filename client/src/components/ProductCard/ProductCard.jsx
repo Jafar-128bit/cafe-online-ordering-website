@@ -2,9 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addToCart, removeFromCart} from "../../store/slices/cartSlices";
 import {useEffect, useState} from "react";
 
-import MainProductCard from "./MainProductCard/MainProductCard";
-import TopProductCard from "./TopProductCard/TopProductCard";
-import SearchProductCard from "./SearchProductCard/SearchProductCard";
+import GridViewCard from "./GridViewCard/GridViewCard";
 
 import {couponList, specialMessage} from "../../data/data";
 
@@ -68,7 +66,7 @@ const ProductCard = ({id, productName, productImage, price, type = "", index}) =
     }
 
     return <>
-        {type === "main" && <MainProductCard
+        {type === "gridView" && <GridViewCard
             id={id}
             theme={theme}
             productImage={productImage}
@@ -77,30 +75,6 @@ const ProductCard = ({id, productName, productImage, price, type = "", index}) =
             buyBtn={buyBtn}
             handleBuy={handleBuy}
             index={index}
-            isDiscount={isDiscount}
-            discount={discount}
-            indexNumber={indexNumber}
-            message={message}
-        />}
-        {type === "small" && <TopProductCard
-            theme={theme}
-            productImage={productImage}
-            productName={productName}
-            price={price}
-            buyBtn={buyBtn}
-            handleBuy={handleBuy}
-            rank={index + 1}
-            isDiscount={isDiscount}
-            discount={discount}
-        />}
-        {type === "searchList" && <SearchProductCard
-            id={id}
-            theme={theme}
-            productImage={productImage}
-            productName={productName}
-            price={price}
-            buyBtn={buyBtn}
-            handleBuy={handleBuy}
             isDiscount={isDiscount}
             discount={discount}
             indexNumber={indexNumber}

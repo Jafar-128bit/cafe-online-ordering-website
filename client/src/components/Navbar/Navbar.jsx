@@ -109,7 +109,7 @@ const Navbar = ({theme}) => {
     }
 
     return (
-        <nav className={`navbar ${theme === "dark" ? "navbar__dark" : "navbar__light"}`}>
+        <nav className="navbar">
             <section className="navbar__section_01">
                 <motion.button
                     type="button"
@@ -129,12 +129,7 @@ const Navbar = ({theme}) => {
                 </motion.button>
             </section>
             <section
-                className={
-                    `navbar__section_02
-                    ${theme === "dark"
-                        ? "navbar__section_02__dark"
-                        : "navbar__section_02__light"}`
-                }
+                className="navbar__section_02"
             >
                 {/* Link 01 */}
                 <NavLink to="/" style={{...linkStyle}} onClick={() => setIsLink(0)}>
