@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 
 import GridViewCard from "./GridViewCard/GridViewCard";
 
-import {couponList, specialMessage} from "../../data/data";
+import {couponList} from "../../data/data";
 
 const ProductCard = ({id, productName, productImage, price, type = "", index}) => {
     const [buyBtn, setBuyBtn] = useState(false);
