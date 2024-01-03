@@ -520,14 +520,4 @@ export const couponList = [
         isHide: false,
     },
 ];
-export const specialMessage = [
-    {id: 0, message: `Indulge in the Unmatched Flavors of Culinary Craftsmanship`,},
-    {id: 1, message: `Experience Gastronomic Delight with Our Signature Culinary Creations`,},
-    {id: 2, message: `Savor Every Morsel of Our Exquisite and Unaltered Culinary Artistry`,},
-    {id: 3, message: `Elevate Your Palate with the Pure and Authentic Essence of Our Dishes`,},
-    {id: 4, message: `Embark on a Journey of Taste with Our Unadulterated Culinary Offerings`,},
-    {id: 5, message: `Immerse Yourself in the Authenticity of Our Culinary Masterpieces`,},
-    {id: 6, message: `Treat Your Taste Buds to the Purity and Perfection of Our Culinary Delights`,},
-    {id: 7, message: `Discover the True Essence of Flavor with Our Unaltered Culinary Wonders`,},
-];
 
