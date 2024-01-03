@@ -29,26 +29,6 @@ const ProductCard = ({id, productName, productImage, price, type = "", index}) =
         setIsDiscount(isItemInDiscount);
     }, [cartData, id]);
 
-    const [indexNumber, setIndexNumber] = useState(0);
-    const [message, setMessage] = useState(true);
-
-    useEffect(() => {
-        const randomIndexGenerator = (numberLimit) => {
-            if (typeof numberLimit !== 'number' || numberLimit <= 0) {
-                throw new Error('Invalid limit, Provide a positive number.');
-            }
-
-            setMessage(false);
-            setTimeout(() => {
-                setIndexNumber(Math.floor(Math.random() * numberLimit));
-                setMessage(true);
-            }, 500);
-        };
-
-        const intervalId = setInterval(() => randomIndexGenerator(specialMessage.length), 2500);
-        return () => clearInterval(intervalId);
-    }, []);
-
     const handleBuy = () => {
         if (!buyBtn) {
             dispatch(addToCart({
@@ -77,8 +57,6 @@ const ProductCard = ({id, productName, productImage, price, type = "", index}) =
             index={index}
             isDiscount={isDiscount}
             discount={discount}
-            indexNumber={indexNumber}
-            message={message}
         />}
     </>
 }

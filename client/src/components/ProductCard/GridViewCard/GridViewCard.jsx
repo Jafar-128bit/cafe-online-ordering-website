@@ -17,8 +17,6 @@ const GridViewCard = ({
                           handleBuy,
                           isDiscount,
                           discount,
-                          indexNumber,
-                          message,
                           theme
                       }) => {
 
