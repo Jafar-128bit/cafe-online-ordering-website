@@ -6,6 +6,7 @@ import dataSlices from "./slices/dataSlices";
 import setCouponSlices from "./slices/setCouponSlices";
 import notificationMenuSlices from "./slices/notificationMenuSlices";
 import themeSwitchSlices from "./slices/themeSwitchSlices";
+import popCardSlices from "./slices/popCardSlices";
 
 const rootReducer = combineReducers({
     menuState: menuSlice,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     couponState: setCouponSlices,
     notificationState: notificationMenuSlices,
     themeSwitchSlices: themeSwitchSlices,
+    popUpMenus: popCardSlices,
 });
 
 export default rootReducer;

@@ -14,7 +14,7 @@ const useAmount = (cartData, couponData, couponList) => {
                 .some((coupon) => coupon.validProduct.includes(product.id)))
             .map((product) => selectedCoupons
                 .reduce((discount, coupon) => coupon.validProduct && coupon.validProduct.includes(product.id)
-                    ? discount + Math.ceil(((product.price * product.quantity) * coupon.discount) / 100)
+                    ? discount + Math.ceil((product.totalPrice * coupon.discount) / 100)
                     : discount, 0))
             .reduce((acc, cur) => acc + cur, 0);
 
@@ -22,13 +22,13 @@ const useAmount = (cartData, couponData, couponList) => {
         // on purchase type
         const purchaseDiscount = selectedCoupons.filter((coupon) => coupon.type === 'on-Purchase')
             .reduce((acc, coupon) => {
-                const eligiblePurchase = cartData.reduce((total, product) => total + product.price * product.quantity, 0);
+                const eligiblePurchase = cartData.reduce((total, product) => total + product.totalPrice, 0);
                 return coupon.purchaseLimit && eligiblePurchase >= coupon.purchaseLimit
                     ? Math.ceil((eligiblePurchase * coupon.discount) / 100) : 0;
             }, 0);
 
         setDiscount(productDiscount + purchaseDiscount);
-        setSubTotal(cartData.map((value) => value.price * value.quantity).reduce((acc, cur) => acc + cur, 0));
+        setSubTotal(cartData.map((value) => value.totalPrice).reduce((acc, cur) => acc + cur, 0));
     }, [cartData, couponData, couponList]);
 
     return {discount, subTotal};

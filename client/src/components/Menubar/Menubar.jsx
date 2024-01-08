@@ -30,7 +30,7 @@ const Menubar = () => {
     const {theme} = themeMode;
 
     useEffect(() => {
-        setQuantity(cartData.map((value) => value.quantity).reduce((acc, cur) => acc + cur, 0));
+        setQuantity(cartData.map((value) => value.totalQuantity).reduce((acc, cur) => acc + cur, 0));
     }, [cartData]);
 
     const handleCloseMenuBar = () => dispatch(toggleMenuBar({State: false}));

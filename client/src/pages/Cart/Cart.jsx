@@ -3,11 +3,13 @@ import "./lightModeStyle.css";
 import "./darkModeStyle.css";
 import './responsiveCart.css';
 
+import emptyCartIconLight from "../../assets/icons/emptyCartIcon__Light__01.svg";
+import emptyCartIconDark from "../../assets/icons/emptyCartIcon__Dark__01.svg";
+
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {useAnimate, motion} from "framer-motion";
+import {motion} from "framer-motion";
 import {useEffect, useState} from "react";
-import {removeFromCart} from "../../store/slices/cartSlices";
 import {couponList} from "../../data/data";
 import useAmount from "../../hooks/useAmount";
 import {toggleNavbar, toggleNotificationMenu} from "../../store/slices/menuSlice";
@@ -17,21 +19,12 @@ import {toggleAppliedCoupon} from "../../store/slices/setCouponSlices";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import {calculateTimeDifference} from "../../util/utils";
 import CartProductCard from "../../components/ProductCard/CartProductCard/CartProductCard";
+import RemovePopUpCard from "../../components/RemoveCArtItemPop/RemoveCArtItemPop";
 
 const cartUIAnimation = {
     initial: {opacity: 0,},
     animate: {opacity: 1, transition: {ease: "easeOut", duration: 0.2,}}
 };
-
-const shadeAnimation = {
-    hide: {opacity: 0, display: "none"},
-    show: {opacity: 1, display: "flex"}
-}
-
-const cartPopupRemoveAnimation = {
-    hide: {opacity: 0, scale: 0},
-    show: {opacity: 1, scale: 1}
-}
 
 const couponApplyBtnAnimation = {
     show: {width: "80px", height: "32px", borderRadius: "var(--borderRadius1)"},
@@ -44,109 +37,9 @@ const couponValidationSchema = Yup.object().shape({
         .min(6, 'Too Short')
         .max(6, 'Too Long'),
 });
-
-const RemovePopUpCard = ({itemToRemove, dispatch, togglePopMessage, setTogglePopMessage, setItemToRemove, theme}) => {
-    const handleRemove = (flag = false) => {
-        if (flag) {
-            dispatch(removeFromCart(itemToRemove.id));
-            setItemToRemove(null);
-            setTogglePopMessage(false);
-        } else {
-            setItemToRemove(null);
-            setTogglePopMessage(false);
-        }
-    }
-
-    return (
-        <motion.section
-            className={`cart__shade ${theme === "dark" ? "cart__shade__dark" : "cart__shade__light"}`}
-            variants={shadeAnimation}
-            animate={togglePopMessage ? "show" : "hide"}
-        >
-
-            <motion.div
-                className={
-                    `cart__removeItemPopup 
-                    ${theme === "dark"
-                        ? "cart__removeItemPopup__dark"
-                        : "cart__removeItemPopup__light"}`
-                }
-                variants={cartPopupRemoveAnimation}
-                animate={togglePopMessage ? "show" : "hide"}
-                transition={{duration: 0.15, delay: 0.2}}
-            >
-                <h4 className={
-                    `cart__removeItemCard__message 
-                    ${theme === "dark"
-                        ? "cart__removeItemCard__message__dark"
-                        : "cart__removeItemCard__message__light"}`
-                }>
-                    Do you want to remove this item?
-                </h4>
-                <div className="cart__removeItemInfo">
-                    <div className={
-                        `cart__removeItemInfo__imageContainer 
-                        ${theme === "dark"
-                            ? "cart__removeItemInfo__imageContainer__dark"
-                            : "cart__removeItemInfo__imageContainer__light"}`
-                    }>
-                        <img src={itemToRemove?.productImage} alt={itemToRemove?.productName} width="70px"/>
-                    </div>
-                    <div className="cart__removeItemInfo__priceAndNameContainer">
-                        <p className={
-                            `cart__removeItemInfo__name 
-                            ${theme === "dark"
-                                ? "cart__removeItemInfo__name__dark"
-                                : "cart__removeItemInfo__name__light"}`
-                        }>{itemToRemove?.productName}</p>
-                        <p className={
-                            `cart__removeItemInfo__price 
-                            ${theme === "dark"
-                                ? "cart__removeItemInfo__price__dark"
-                                : "cart__removeItemInfo__price__light"}`
-                        }>Price ₹ {itemToRemove?.price} only!</p>
-                    </div>
-                </div>
-            </motion.div>
-
-            <motion.div
-                className="cart__removeItemBtnContainer"
-                variants={cartPopupRemoveAnimation}
-                animate={togglePopMessage ? "show" : "hide"}
-                transition={{duration: 0.15, delay: 0.2 * 2}}
-            >
-                <button
-                    className={
-                        `cart__removeItemBtn ${theme === "dark"
-                            ? "cart__removeItemBtn__dark"
-                            : "cart__removeItemBtn__light"}`
-                    }
-                    type="button"
-                    onClick={() => handleRemove(true)}
-                >
-                    Remove!
-                </button>
-                <button
-                    className={
-                        `cart__removeItemBtn ${theme === "dark"
-                            ? "cart__removeItemBtn__dark"
-                            : "cart__removeItemBtn__light"}`
-                    }
-                    type="button"
-                    onClick={() => handleRemove(false)}
-                >
-                    Don't
-                </button>
-            </motion.div>
-
-        </motion.section>
-    );
-};
-
 const Cart = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [scope, animate] = useAnimate();
     const validCouponData = useSelector((state) => state.couponState.validCouponData[0]);
     const cartData = useSelector((state) => state.cartItems);
     const appliedCouponData = useSelector((state) => state.couponState.appliedCouponData);
@@ -248,34 +141,26 @@ const Cart = () => {
             {
                 cartData.length !== 0 ? <section
                     className="cart__section02 noScroll"
-                    ref={scope}
                 >
-                    <p
-                        className={
-                            `cart__section02__message 
-                            ${theme === "dark"
-                                ? "cart__section02__message__dark"
-                                : "cart__section02__message__light"}`
-                        }
-                    >
-                        Item List
-                    </p>
                     {cartData.map((value, index) => <CartProductCard
                             key={value.id}
                             id={value.id}
                             index={index}
                             productName={value.productName}
                             productImage={value.productImage}
-                            productPrice={value.price}
-                            productQuantity={value.quantity}
+                            totalPrice={value.totalPrice}
+                            totalQuantity={value.totalQuantity}
+                            subCategories={value.subCategories}
+                            categories={value.categories}
+                            isCustomizable={value.isCustomizable}
+                            customizeOptions={value.customizeOptions}
                             dispatch={dispatch}
                             setItemToRemove={setItemToRemove}
                             setTogglePopMessage={setTogglePopMessage}
-                            animate={animate}
                             theme={theme}
                         />
                     )}
-                </section> : <p
+                </section> : <div
                     className={
                         `cart__section02__message 
                             ${theme === "dark"
@@ -283,8 +168,18 @@ const Cart = () => {
                             : "cart__section02__message__light"}`
                     }
                 >
-                    Cart is Empty
-                </p>
+                    <motion.div
+                        className="cart__section02__message__iconContainer"
+                        initial={{rotate: 0}}
+                        animate={{
+                            rotate: [0, 5, -5, 5, -5, 0],
+                            transition: {ease: "easeInOut", duration: 3, repeat: Infinity}
+                        }}
+                    >
+                        <img src={theme === "dark" ? emptyCartIconDark : emptyCartIconLight} alt="empty cart icon"/>
+                    </motion.div>
+                    <p>Cart is Empty</p>
+                </div>
             }
             {
                 cartData.length !== 0 &&

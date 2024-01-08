@@ -12,8 +12,11 @@ const GridViewCard = ({
                           index,
                           productImage,
                           productName,
-                          price,
+                          totalPrice,
+                          categoryName,
+                          isCustomizable,
                           buyBtn,
+                          handleOpenCustomizationMenu,
                           handleBuy,
                           isDiscount,
                           discount,
@@ -51,6 +54,16 @@ const GridViewCard = ({
                         <p>{isDiscount && `${discount}% Off`}</p>
                     </div>
                 }
+                {
+                    isCustomizable && categoryName !== "Cakes" && buyBtn &&
+                    <button
+                        type="button"
+                        className="mainProductCard__customizeOptionBtn"
+                        onClick={handleOpenCustomizationMenu}
+                    >
+                        Customize
+                    </button>
+                }
                 <img src={productImage} alt={productName}/>
             </section>
 
@@ -71,25 +84,9 @@ const GridViewCard = ({
                             : "mainProductCard__productInfo__productPrice__light"}`
                     }
                 >
-                    {
-                        isDiscount &&
-                        <p className="price__big">
-                            <small>₹ </small>
-                            {Math.floor(price - (price * discount) / 100)}
-                        </p>
-                    }
-                    <p
-                        className={
-                            isDiscount
-                                ? `price__small ${
-                                    theme === "dark"
-                                        ? "price__small__dark"
-                                        : "price__small__light"
-                                }` : "price__big"
-                        }
-                    >
-                        {isDiscount && "Actual Price "}
-                        <small>₹ </small>{price}
+                    <p>
+                        <small>Starts from ₹ </small>
+                        {totalPrice}
                     </p>
                 </div>
             </div>

@@ -200,8 +200,8 @@ const NotificationMenu = ({theme}) => {
     const handleCloseNotificationMenu = () => dispatch(toggleNotificationMenu({State: false}));
 
     useEffect(() => {
-        setQuantity(cartData.map((value) => value.quantity).reduce((acc, cur) => acc + cur, 0));
-        setSubTotal(cartData.map((value) => value.price * value.quantity).reduce((acc, cur) => acc + cur, 0));
+        setQuantity(cartData.map((value) => value.totalQuantity).reduce((acc, cur) => acc + cur, 0));
+        setSubTotal(cartData.map((value) => value.totalPrice).reduce((acc, cur) => acc + cur, 0));
     }, [dispatch, cartData]);
 
     useEffect(() => {

@@ -15,6 +15,8 @@
 
 @media screen and (max-width: 900px) {
     .cart {
+        height: calc(100vh - 80px);
+
         overflow-x: hidden;
         overflow-y: auto;
     }
@@ -44,9 +46,11 @@
     .cart__subtotal__totalAmount {
         box-shadow: var(--shadow_01);
 
+        width: 90%;
+
         position: fixed;
         z-index: 5;
-        bottom: 15px;
+        bottom: 20px;
     }
 }
 
@@ -54,7 +58,7 @@
     .cart__section02 {
         grid-template-columns: repeat(1, 1fr);
         column-gap: unset;
-        row-gap: 15px;
+        row-gap: 25px;
         place-items: center;
         place-content: flex-start;
 

@@ -14,21 +14,6 @@
     overflow: hidden;
 }
 
-.mainProductCard__productImage {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-
-    width: 240px;
-    height: 240px;
-
-    margin: 0 0 0 0;
-
-    overflow: hidden;
-    position: relative;
-}
-
 .mainProductCard__messageContainer {
     background: var(--backgroundGradient10);
     background-size: 200% 200%;
@@ -61,6 +46,47 @@
     font-size: 16px;
     font-weight: 700;
     text-transform: capitalize;
+}
+
+.mainProductCard__customizeOptionBtn {
+    background: var(--color06);
+    color: var(--colorWhite);
+
+    width: 90px;
+    height: 25px;
+
+    border: none;
+    outline: none;
+    border-radius: var(--borderRadius1);
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: center;
+
+    cursor: pointer;
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.mainProductCard__productImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 240px;
+    height: 240px;
+
+    margin: 0 0 0 0;
+
+    overflow: hidden;
+    position: relative;
 }
 
 .mainProductCard__productImage > img {
@@ -115,19 +141,12 @@
     padding: 0 0 0 0;
     margin: 0 0 0 0;
 
+    font-size: 24px;
+    font-weight: 800;
     text-align: left;
 }
 
 .mainProductCard__productInfo__productPrice > p > small {
-    color: var(--color01);
-}
-
-.price__big {
-    font-size: 24px;
-    font-weight: 800;
-}
-
-.price__small {
     font-size: 14px;
     font-weight: 500;
 }

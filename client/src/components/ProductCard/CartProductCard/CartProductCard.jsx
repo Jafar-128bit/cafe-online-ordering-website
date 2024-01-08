@@ -3,133 +3,130 @@ import './darkModeStyle.css';
 import './lightModeStyle.css';
 import './mediaQueryCartProductCard.css';
 
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-
-import {useEffect} from "react";
-import {motion, stagger} from "framer-motion";
-import {updateCartItem} from "../../../store/slices/cartSlices";
+import {togglePopUpCard} from "../../../store/slices/popCardSlices";
 
 const CartProductCard = ({
                              id,
                              productName,
                              productImage,
-                             productPrice,
-                             productQuantity,
+                             totalPrice,
+                             totalQuantity,
+                             subCategories,
+                             categories,
+                             isCustomizable,
+                             customizeOptions,
                              dispatch,
                              setItemToRemove,
                              setTogglePopMessage,
-                             animate,
                              theme
                          }) => {
+    const handleRemove = () => {
+        setItemToRemove({
+            id: id,
+            productName,
+            productImage,
+            price: totalPrice,
+        });
+        setTogglePopMessage(true);
+    }
 
-    useEffect(() => {
-        animate(".cart__productInfo",
-            {opacity: 1},
-            {duration: 0.2, delay: stagger(0.1, {startDelay: 0.1})}
-        );
+    const handleOpenCustomizationMenu = () => {
+        dispatch(togglePopUpCard({isPopUpOpen: true, popUpType: "orderCustomizationMenu", itemId: id}));
+    }
 
-        animate(".cart__productInfo__section02",
-            {opacity: 1},
-            {duration: 0.2},
-        );
-
-        animate(".cart__productInfo__section03",
-            {opacity: 1,},
-            {duration: 0.25, delay: 0.3}
-        );
-    });
-
-    const handleQuantity = (flag) => {
-        let newQuantity;
-
-        if (flag === "dec" && productQuantity === 1) {
-            setItemToRemove({
-                id: id,
-                productImage: productImage,
-                productName: productName,
-                price: productPrice,
-            });
-            setTogglePopMessage(true);
-        }
-
-        if (flag === "dec" && productQuantity > 1) newQuantity = productQuantity - 1;
-        else if (flag === "inc" && productQuantity < 10) newQuantity = productQuantity + 1;
-        else return;
-
-        dispatch(updateCartItem({
-            itemId: id,
-            updatedItem: {
-                id: id,
-                productImage: productImage,
-                productName: productName,
-                price: productPrice,
-                quantity: newQuantity,
-            }
-        }));
-    };
+    // className={` ${theme === "dark" ? "__dark" : "__light"}`}
 
     return (
-        <motion.div
-            className={
-                `cart__productInfo 
-                ${theme === "dark"
-                    ? "cart__productInfo__dark"
-                    : "cart__productInfo__light"}`
-            }
+        <div
+            className={`cart__productInfo 
+            ${theme === "dark" ? "cart__productInfo__dark" : "cart__productInfo__light"}`}
         >
-            <section
-                className={
-                    `cart__productInfo__section01 
-                    ${theme === "dark"
-                        ? "cart__productInfo__section01__dark"
-                        : "cart__productInfo__section01__light"}`
-                }
-            >
-                <img src={productImage} alt={productName} width="50px"/>
-            </section>
+            <section className="cart__productInfo__section01">
 
-            <section
-                className={
-                    `cart__productInfo__section02 
-                    ${theme === "dark"
-                        ? "cart__productInfo__section02__dark"
-                        : "cart__productInfo__section02__light"}`
-                }
-            >
-                <p className="cart__productInfo__section02__name">{productName}</p>
-                <p className="cart__productInfo__section02__price">
-                    Price ₹ {productPrice}
-                </p>
-                <p className="cart__productInfo__section02__totalPrice">
-                    Total <small>₹ </small>{productPrice * productQuantity}
-                </p>
-            </section>
+                <div className="cart__productInfo__section01__imageContainer">
+                    <img src={productImage} alt={productName}/>
+                </div>
 
-            <motion.section className="cart__productInfo__section03">
-                <motion.button
-                    type="button"
-                    className="cart__productInfo__section03__qtyBtn animateQtyComponents"
-                    onClick={() => handleQuantity("inc")}
-                >
-                    <AddOutlinedIcon style={{color: "var(--colorWhite)"}}/>
-                </motion.button>
-                <motion.p className="cart__productInfo__section03__quantityCounter animateQtyComponents">
-                    {productQuantity}
-                </motion.p>
-                <motion.button
-                    type="button"
-                    className="cart__productInfo__section03__qtyBtn animateQtyComponents"
-                    onClick={() => handleQuantity("dec")}
-                >
-                    {productQuantity < 2
-                        ? <CloseOutlinedIcon style={{color: "var(--colorWhite)"}}/>
-                        : <RemoveOutlinedIcon style={{color: "var(--colorWhite)"}}/>
+                <div
+                    className={`
+                    cart__productInfo__section01__infoContainer 
+                    ${theme === "dark"
+                        ? "cart__productInfo__section01__infoContainer__dark"
+                        : "cart__productInfo__section01__infoContainer__light"}`
                     }
-                </motion.button>
-            </motion.section>
-        </motion.div>
+                >
+                    <p
+                        className={`
+                        cart__productInfo__section01__infoContainer__productName 
+                        ${theme === "dark"
+                            ? "cart__productInfo__section01__infoContainer__productName__dark"
+                            : "cart__productInfo__section01__infoContainer__productName__light"}`
+                        }
+                    >
+                        {productName}
+                    </p>
+                    <div
+                        className={`
+                        cart__productInfo__section01__infoContainer__productPrice 
+                        ${theme === "dark"
+                            ? "cart__productInfo__section01__infoContainer__productPrice__dark"
+                            : "cart__productInfo__section01__infoContainer__productPrice__light"}`
+                        }
+                    >
+                        <p>₹{totalPrice}.00</p>
+                        <p><small>Total Quantity</small> {totalQuantity < 10 ? `0${totalQuantity}` : totalQuantity}</p>
+                    </div>
+                </div>
+
+            </section>
+            {
+                isCustomizable && categories !== "cakes" &&
+                <section className="cart__productInfo__section02">
+                    {
+                        subCategories.map((value, index) =>
+                            <div
+                                key={index + 1}
+                                className={`
+                                cart__productInfo__section02__optionContainer ${theme === "dark"
+                                    ? "cart__productInfo__section02__optionContainer__dark"
+                                    : "cart__productInfo__section02__optionContainer__light"}`
+                                }
+                                style={{height: `calc((95% / ${subCategories.length}) - 5px)`}}
+                            >
+                                <p>
+                                    {value.title}
+                                </p>
+                                <p>
+                                    Price
+                                    ₹{value.price * (customizeOptions[index].eatQuantity + customizeOptions[index].packQuantity)}.00
+                                </p>
+                                <p>
+                                    Quantity {customizeOptions[index].eatQuantity + customizeOptions[index].packQuantity}
+                                </p>
+                            </div>
+                        )}
+                </section>
+            }
+            <section className="cart__productInfo__section03">
+                {
+                    isCustomizable &&
+                    <button
+                        type="button"
+                        className="cart__productInfo__section03__btn"
+                        onClick={handleOpenCustomizationMenu}
+                    >
+                        Customize Your Order
+                    </button>
+                }
+                <button
+                    type="button"
+                    className="cart__productInfo__section03__btn closeType"
+                    onClick={handleRemove}
+                >
+                    Remove Your Order
+                </button>
+            </section>
+        </div>
     );
 }
 

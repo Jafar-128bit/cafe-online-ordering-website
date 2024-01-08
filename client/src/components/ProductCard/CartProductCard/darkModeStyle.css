@@ -2,10 +2,18 @@
     background: var(--color02);
 }
 
-.cart__productInfo__section01__dark {
-    background: var(--colorWhite);
+.cart__productInfo__section01__infoContainer__dark {
+    background: var(--colorBlackTransparent75);
 }
 
-.cart__productInfo__section02__dark {
+.cart__productInfo__section01__infoContainer__productName__dark {
+    color: var(--colorWhite);
+}
+
+.cart__productInfo__section01__infoContainer__productPrice__dark >  p {
+    color: var(--colorWhite);
+}
+
+.cart__productInfo__section02__optionContainer__dark > p {
     color: var(--colorWhite);
 }

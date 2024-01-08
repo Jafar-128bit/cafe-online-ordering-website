@@ -6,7 +6,6 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 
-import ProductList from "./pages/List/ProductList";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 import store, {persist} from './store/store';
@@ -22,6 +21,7 @@ const Cart = lazy(() => import('./pages/Cart/Cart'));
 const Payment = lazy(() => import('./pages/Payment/Payment'));
 const SearchPage = lazy(() => import('./pages/SearchPage/SearchPage'));
 const Event = lazy(() => import('./pages/Event/Event'));
+const ProductList = lazy(() => import('./pages/List/ProductList'));
 
 const appRoute = createBrowserRouter([
     {
@@ -47,23 +47,23 @@ const appRoute = createBrowserRouter([
             },
             {
                 path: "menu",
-                element: <Suspense fallback={<LoadingPage/>}><List/></Suspense>,
+                element: <List/>,
                 children: [
                     {
                         path: "",
-                        element: <ProductList type="all"/>,
+                        element: <Suspense fallback={<LoadingPage/>}><ProductList type="all"/></Suspense>,
                     },
                     {
                         path: ":type/:id",
-                        element: <ProductList type="main"/>,
+                        element: <Suspense fallback={<LoadingPage/>}><ProductList type="main"/></Suspense>,
                     },
                     {
                         path: "offerProducts",
-                        element: <ProductList type="offer"/>,
+                        element: <Suspense fallback={<LoadingPage/>}><ProductList type="offer"/></Suspense>,
                     },
                     {
                         path: "search",
-                        element: <ProductList type="search"/>,
+                        element: <Suspense fallback={<LoadingPage/>}><ProductList type="search"/></Suspense>,
                     },
                 ]
             },

@@ -81,7 +81,9 @@ const ProductList = ({type}) => {
                                         index={index}
                                         productName={value.productName}
                                         productImage={value.productImage}
-                                        price={value.price}
+                                        totalPrice={value.subCategories ? value.subCategories[0].price : value.actualPrice}
+                                        categoryName={value.categories}
+                                        isCustomizable={value.isCustomizable}
                                         type="gridView"
                                     />))}
                             </div>
@@ -97,7 +99,9 @@ const ProductList = ({type}) => {
                         index={index}
                         productName={value.productName}
                         productImage={value.productImage}
-                        price={value.price}
+                        totalPrice={value.subCategories ? value.subCategories[0].price : value.actualPrice}
+                        categoryName={value.categories}
+                        isCustomizable={value.isCustomizable}
                         type="gridView"
                     />
 

@@ -8,64 +8,9 @@ import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutl
 
 import {topOrders, bannerData} from "../../data/data";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import {calculateTimeDifference} from "../../util/utils";
-import useTimeDifference from "../../hooks/useTimeDifference";
 
 import {useSelector} from "react-redux";
 import {useEffect, useRef, useState} from "react";
-import {useNavigate} from "react-router-dom";
-
-const Banner = ({
-                    bannerImage,
-                    bannerEndTime,
-                    bannerType,
-                    bannerTitle,
-                    discount,
-                    bannerLink,
-                }) => {
-    const [bannerSize, setBannerSize] = useState("");
-    const navigate = useNavigate();
-
-    const checkValidity = calculateTimeDifference(bannerEndTime, true);
-    const timerData = useTimeDifference(bannerEndTime);
-
-    useEffect(() => {
-        setBannerSize(`bannerSize__${bannerType}`);
-    }, [bannerType]);
-
-    return (
-        <section
-            className={`home__banner ${bannerSize}`}
-            style={{backgroundImage: `url(${bannerImage})`}}
-        >
-            <div className="home__banner__details">
-                <h3 className="home__banner__title">{bannerTitle}</h3>
-                <div className="home__banner__message">
-                    <p>Explore the {bannerTitle} menu and enjoy the moment with us</p>
-                </div>
-                <div className="home__banner__discount">
-                    <p>{discount}%</p>
-                    <p>OFF</p>
-                </div>
-                {
-                    checkValidity &&
-                    <div className="home__banner__timer">
-                        <p>Limited Deal Hurry!</p>
-                        <div className="home__banner__timer__validTimer">
-                            <p>{timerData.days < 10 ? `0${timerData.days}` : timerData.days} days</p>
-                            <p>{timerData.hours < 10 ? `0${timerData.hours}` : timerData.hours} hr</p>
-                            <p>{timerData.minutes < 10 ? `0${timerData.minutes}` : timerData.minutes} m</p>
-                            <p>{timerData.seconds < 10 ? `0${timerData.seconds}` : timerData.seconds} s</p>
-                        </div>
-                    </div>
-                }
-                <button type="button" className="home__banner__linkBtn" onClick={() => navigate(bannerLink)}>Explore
-                    Now!
-                </button>
-            </div>
-        </section>
-    );
-};
 
 const SpecialProductList = ({feedTitle = "", feedData = [{}], theme}) => {
 
@@ -134,7 +79,9 @@ const SpecialProductList = ({feedTitle = "", feedData = [{}], theme}) => {
                         id={value.id}
                         productName={value.productName}
                         productImage={value.productImage}
-                        price={value.price}
+                        totalPrice={value.subCategories ? value.subCategories[0].price : value.totalPrice}
+                        categoryName={value.categories}
+                        isCustomizable={value.isCustomizable}
                         index={index}
                         type="gridView"
                     />
@@ -186,16 +133,6 @@ const Home = () => {
 
             <section className="home__section-02">
                 <SpecialProductList feedTitle="Top 6 Bestsellers" feedData={topOrders} theme={theme}/>
-                {bannerData.map(banner =>
-                    <Banner
-                        key={banner.id}
-                        bannerImage={banner.bannerImage}
-                        bannerEndTime={banner.bannerEndTime}
-                        bannerType={banner.bannerType}
-                        bannerTitle={banner.bannerTitle}
-                        discount={banner.discount}
-                        bannerLink={banner.bannerLink}
-                    />)}
             </section>
         </section>
     )

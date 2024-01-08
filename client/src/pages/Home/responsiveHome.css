@@ -83,68 +83,13 @@
         font-size: 24px;
     }
 
-    .bannerSize__medium {
-        width: 95%;
-        height: calc(420px * 0.8);
-    }
-
-    .bannerSize__large {
-        width: 95%;
-        height: calc(560px * 0.8);
-    }
-
-    .home__banner__title {
-        font-size: calc(32px * 0.7);
-    }
-
-    .home__banner__message,
-    .home__banner__discount {
-        height: calc(60px * 0.7);
-    }
-
-    .home__banner__message > p {
-       font-size: calc(18px * 0.7);
-        font-weight: 600;
-        letter-spacing: 1px;
-    }
-
-    .home__banner__discount {
-        height: calc(40px * 0.7);
-    }
-
-    .home__banner__discount > p {
-        font-size: calc(22px * 0.7);
-        font-weight: 800;
-        letter-spacing: 2px;
-    }
-
-    .home__banner__timer {
-        margin: calc(10px * 0.7) 0;
-    }
-
-    .home__banner__timer > p {
-        margin: 0 0 calc(10px * 0.7) 0;
-
-        font-size: calc(18px * 0.7);
-        letter-spacing: 0;
-    }
-
-    .home__banner__timer__validTimer > p {
-        font-size: calc(22px * 0.7);
-        letter-spacing: 1px;
-    }
-
-    .home__banner__linkBtn {
-        width: calc(120px * 0.7);
-        height: calc(30px * 0.7);
-
-        font-size: calc(14px * 0.7);
-        letter-spacing: 0;
-    }
-
 }
 
 @media screen and (max-width: 590px) {
+    .home__section-01 {
+        height: 350px;
+    }
+
 
     .home__section-02 {
         min-width: 100%;
@@ -168,67 +113,11 @@
         column-gap: 15px;
         row-gap: 15px;
 
-        width: calc(100% - 10px - 10px);
+        width: calc(100% - 10px - 40px);
 
-        padding: 10px;
+        padding: 10px 10px 10px 30px;
         margin: 0 0 0 0;
 
         overflow-x: unset;
-    }
-
-    .bannerSize__medium {
-        width: 95%;
-        height: calc(420px * 0.5);
-    }
-
-    .bannerSize__large {
-        width: 95%;
-        height: calc(560px * 0.4);
-    }
-
-    .home__banner__title {
-        font-size: calc(32px * 0.4);
-    }
-
-    .home__banner__message,
-    .home__banner__discount {
-        height: calc(60px * 0.35);
-    }
-
-    .home__banner__message > p {
-        font-size: calc(18px * 0.45);
-        font-weight: 400;
-        letter-spacing: 0;
-    }
-
-    .home__banner__discount > p {
-        font-size: calc(22px * 0.6);
-        font-weight: 800;
-        letter-spacing: 2px;
-    }
-
-    .home__banner__timer {
-        margin: calc(10px * 0.45) 0;
-    }
-
-    .home__banner__timer > p {
-        margin: 0 0 calc(10px * 0.45) 0;
-
-        font-size: calc(18px * 0.45);
-        letter-spacing: 0;
-    }
-
-    .home__banner__timer__validTimer > p {
-        font-size: calc(22px * 0.45);
-        letter-spacing: 0;
-        font-weight: 700;
-    }
-
-    .home__banner__linkBtn {
-        width: calc(120px * 0.6);
-        height: calc(30px * 0.6);
-
-        font-size: calc(14px * 0.6);
-        letter-spacing: 0;
     }
 }

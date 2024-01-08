@@ -68,41 +68,49 @@ export const menuList = [
         id: 1,
         menuIcon: cakeSymbol,
         menuHeading: "Cakes",
+        url: "cakes",
     },
     {
         id: 2,
         menuIcon: coldDrinkSymbol,
         menuHeading: "Cold Drinks",
+        url: "coldDrinks",
     },
     {
         id: 3,
         menuIcon: iceCreamSymbol,
         menuHeading: "Ice Creams",
+        url: "iceCreams",
     },
     {
         id: 4,
         menuIcon: noodlesSymbol,
         menuHeading: "Noodles",
+        url: "noodles",
     },
     {
         id: 5,
         menuIcon: taeSymbol,
         menuHeading: "Chai & Coffee",
+        url: "chaiAndCoffee",
     },
     {
         id: 6,
         menuIcon: snacksSymbol,
         menuHeading: "Snacks",
+        url: "snacks",
     },
     {
         id: 7,
         menuIcon: sandwichSymbol,
         menuHeading: "Sandwich & Burger",
+        url: "sandwichAndBurger",
     },
     {
         id: 8,
         menuIcon: smoothiesSymbol,
         menuHeading: "Smoothies",
+        url: "smoothies",
     },
 ];
 
@@ -111,36 +119,106 @@ export const cake = [
         id: 0,
         productImage: chocolateCake,
         productName: "Chocolate Cake",
-        price: 400,
-        categories: menuList[0].menuHeading,
+        actualPrice: 400,
+        totalPrice: 0,
+        totalQuantity: 0,
+        categories: menuList[0].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {
+                title: "Add Message or Name",
+                message: "",
+            },
+            {
+                title: "Add Candles",
+                candlesQuantity: 0,
+                price: 0.5,
+            },
+        ]
     },
     {
         id: 1,
         productImage: butterCake,
         productName: "Butterscotch Cake",
-        price: 350,
-        categories: menuList[0].menuHeading,
+        actualPrice: 350,
+        totalPrice: 0,
+        totalQuantity: 0,
+        categories: menuList[0].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {
+                title: "Add Message or Name",
+                message: "",
+            },
+            {
+                title: "Add Candles",
+                candlesQuantity: 0,
+                price: 0.5,
+            },
+        ]
     },
     {
         id: 2,
         productImage: mangoCake,
         productName: "Mango Cake",
-        price: 350,
-        categories: menuList[0].menuHeading,
+        actualPrice: 350,
+        totalPrice: 0,
+        totalQuantity: 0,
+        categories: menuList[0].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {
+                title: "Add Message or Name",
+                message: "",
+            },
+            {
+                title: "Add Candles",
+                candlesQuantity: 0,
+                price: 0.5,
+            },
+        ]
     },
     {
         id: 3,
         productImage: pineCake,
         productName: "Pineapple Cake",
-        price: 350,
-        categories: menuList[0].menuHeading,
+        actualPrice: 350,
+        totalPrice: 0,
+        totalQuantity: 0,
+        categories: menuList[0].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {
+                title: "Add Message or Name",
+                message: "",
+            },
+            {
+                title: "Add Candles",
+                candlesQuantity: 0,
+                price: 0.5,
+            },
+        ]
     },
     {
         id: 4,
         productImage: vanillaCake,
         productName: "Vanilla Cake",
-        price: 300,
-        categories: menuList[0].menuHeading,
+        actualPrice: 300,
+        totalPrice: 0,
+        totalQuantity: 0,
+        categories: menuList[0].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {
+                title: "Add Message or Name",
+                message: "",
+            },
+            {
+                title: "Add Candles",
+                candlesQuantity: 0,
+                price: 0.5,
+            },
+        ]
     },
 ];
 export const cold = [
@@ -148,87 +226,203 @@ export const cold = [
         id: 9,
         productImage: cokeBottle,
         productName: "Coke Bottle",
-        price: 20,
-        categories: menuList[1].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "450ML", price: 20,}
+        ],
+        totalQuantity: 0,
+        categories: menuList[1].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "450ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 10,
         productImage: cokeCan,
         productName: "Coke Can",
-        price: 30,
-        categories: menuList[1].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "250ML", price: 30,}
+        ],
+        totalQuantity: 0,
+        categories: menuList[1].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "250ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 11,
         productImage: lemonCoke,
         productName: "Lemon Coke",
-        price: 25,
-        categories: menuList[1].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 200ML", price: 25,},
+            {title: "Large 450ML", price: 55,}
+        ],
+        totalQuantity: 0,
+        categories: menuList[1].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "200ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "450ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 12,
         productImage: lemonJuice,
         productName: "Lemon Juice",
-        price: 20,
-        categories: menuList[1].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 200ML", price: 20,},
+            {title: "Large 450ML", price: 45,}
+        ],
+        totalQuantity: 0,
+        categories: menuList[1].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "200ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "450ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 13,
         productImage: lemonWater,
         productName: "Lemon Water",
-        price: 20,
-        categories: menuList[1].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 200ML", price: 20,},
+            {title: "Large 450ML", price: 45,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[1].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "200ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "450ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 14,
         productImage: orangeJuice,
         productName: "Orange Juice",
-        price: 30,
-        categories: "",
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 200ML", price: 30,},
+            {title: "Large 450ML", price: 65,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[1].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "200ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "450ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
 ];
 export const iceCream = [
     {
         id: 15,
         productImage: butterScotchIceCream,
-        productName: "Butterscotch",
-        price: 40,
-        categories: menuList[2].menuHeading,
+        productName: "Butterscotch Ice Cream",
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 90GM", price: 40,},
+            {title: "Large 150GM", price: 85,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[2].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "90GM", eatQuantity: 0, packQuantity: 0,},
+            {title: "150GM", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 16,
         productImage: chocoChipsIceCream,
-        productName: "Choco-Chips",
-        price: 40,
-        categories: menuList[2].menuHeading,
+        productName: "Choco-Chips Ice Cream",
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 90GM", price: 40,},
+            {title: "Large 150GM", price: 85,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[2].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "90GM", eatQuantity: 0, packQuantity: 0,},
+            {title: "150GM", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 17,
         productImage: chocolateIceCream,
-        productName: "Chocolate",
-        price: 40,
-        categories: menuList[2].menuHeading,
+        productName: "Chocolate Ice Cream",
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 90GM", price: 40,},
+            {title: "Large 150GM", price: 85,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[2].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "90GM", eatQuantity: 0, packQuantity: 0,},
+            {title: "150GM", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 18,
         productImage: strawberryIceCream,
-        productName: "Strawberry",
-        price: 30,
-        categories: menuList[2].menuHeading,
+        productName: "Strawberry Ice Cream",
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 90GM", price: 40,},
+            {title: "Large 150GM", price: 85,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[2].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "90GM", eatQuantity: 0, packQuantity: 0,},
+            {title: "150GM", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 19,
         productImage: vanillaIceCream,
-        productName: "Vanilla",
-        price: 30,
-        categories: menuList[2].menuHeading,
+        productName: "Vanilla Ice Cream",
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 90GM", price: 40,},
+            {title: "Large 150GM", price: 85,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[2].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "90GM", eatQuantity: 0, packQuantity: 0,},
+            {title: "150GM", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 20,
         productImage: whiteMilkIceCream,
-        productName: "White-Milk",
-        price: 30,
-        categories: menuList[2].menuHeading,
+        productName: "White-Milk Ice Cream",
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 90GM", price: 40,},
+            {title: "Large 150GM", price: 85,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[2].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "90GM", eatQuantity: 0, packQuantity: 0,},
+            {title: "150GM", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
 ];
 export const noodles = [
@@ -236,43 +430,103 @@ export const noodles = [
         id: 21,
         productImage: hakkaNoodles,
         productName: "Plain Hakka Noodles",
-        price: 50,
-        categories: menuList[3].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Half", price: 50,},
+            {title: "Full", price: 110,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[3].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "Half", eatQuantity: 0, packQuantity: 0,},
+            {title: "Full", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 22,
         productImage: pastaNoodles,
         productName: "Red Sauce Spicy Pasta",
-        price: 50,
-        categories: menuList[3].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Half", price: 50,},
+            {title: "Full", price: 110,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[3].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "Half", eatQuantity: 0, packQuantity: 0,},
+            {title: "Full", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 23,
         productImage: redNoodles,
         productName: "Red Hakka Noodles",
-        price: 40,
-        categories: menuList[3].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Half", price: 40,},
+            {title: "Full", price: 85,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[3].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "Half", eatQuantity: 0, packQuantity: 0,},
+            {title: "Full", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 24,
         productImage: VegMaggiNoodles,
         productName: "Maggi",
-        price: 30,
-        categories: menuList[3].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Half", price: 30,},
+            {title: "Full", price: 65,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[3].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "Half", eatQuantity: 0, packQuantity: 0,},
+            {title: "Full", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 25,
         productImage: VegSpicyNoodles,
         productName: "Veg Hakka Spicy",
-        price: 50,
-        categories: menuList[3].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Half", price: 50,},
+            {title: "Full", price: 110,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[3].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "Half", eatQuantity: 0, packQuantity: 0,},
+            {title: "Full", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 26,
         productImage: warpNoodles,
         productName: "Omelette Maggi Wrap",
-        price: 50,
-        categories: menuList[3].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Half", price: 50,},
+            {title: "Full", price: 110,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[3].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "Half", eatQuantity: 0, packQuantity: 0,},
+            {title: "Full", eatQuantity: 0, packQuantity: 0,},
+        ],
     },
 ];
 export const chai = [
@@ -280,29 +534,69 @@ export const chai = [
         id: 5,
         productImage: greenTea,
         productName: "Green Tea",
-        price: 20,
-        categories: menuList[4].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 100ML", price: 20,},
+            {title: "Large 250ML", price: 45,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[4].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "100ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "250ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 6,
         productImage: lalTea,
         productName: "Lal Chai",
-        price: 10,
-        categories: menuList[4].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 100ML", price: 10,},
+            {title: "Large 250ML", price: 20,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[4].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "100ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "250ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 7,
         productImage: lemonTea,
         productName: "Lemon Tea",
-        price: 20,
-        categories: menuList[4].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 100ML", price: 20,},
+            {title: "Large 250ML", price: 40,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[4].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "100ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "250ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 8,
         productImage: masalaTea,
         productName: "Masala Chai",
-        price: 30,
-        categories: menuList[4].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 100ML", price: 30,},
+            {title: "Large 250ML", price: 65,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[4].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "100ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "250ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
 ];
 export const snacks = [
@@ -310,43 +604,99 @@ export const snacks = [
         id: 27,
         productImage: chipsSnacks,
         productName: "Chips",
-        price: 20,
-        categories: menuList[5].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "1 PACK", price: 20,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[5].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "1 PACK", eatQuantity: 0, packQuantity: 0,},
+        ],
     },
     {
         id: 28,
         productImage: frenchFriesSnacks,
         productName: "French Fries",
-        price: 40,
-        categories: menuList[5].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small", price: 40,},
+            {title: "Double", price: 60,},
+            {title: "Large", price: 80,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[5].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "Small", eatQuantity: 0, packQuantity: 0,},
+            {title: "Double", eatQuantity: 0, packQuantity: 0,},
+            {title: "Large", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 29,
         productImage: cookiesSnacks,
         productName: "Cookies",
-        price: 20,
-        categories: menuList[5].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "1 PACK", price: 20,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[5].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "1 PACK", eatQuantity: 0, packQuantity: 0,},
+        ],
     },
     {
         id: 30,
         productImage: eggToastSnacks,
         productName: "Egg Toast",
-        price: 30,
-        categories: menuList[5].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Half", price: 30,},
+            {title: "Double", price: 65,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[5].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "Half", eatQuantity: 0, packQuantity: 0,},
+            {title: "Double", eatQuantity: 0, packQuantity: 0,},
+        ],
     },
     {
         id: 31,
         productImage: hotChocolateSnacks,
         productName: "Hot Chocolate",
-        price: 30,
-        categories: menuList[5].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "1 CUP 250ML", price: 30,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[5].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "1 CUP 250ML", eatQuantity: 0, packQuantity: 0,},
+        ],
     },
     {
         id: 32,
         productImage: toastAndOmeletteSnacks,
         productName: "Toast and Omelette",
-        price: 30,
-        categories: menuList[5].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Half", price: 30,},
+            {title: "Double", price: 65,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[5].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "Half", eatQuantity: 0, packQuantity: 0,},
+            {title: "Double", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
 ];
 export const sandwich = [
@@ -354,84 +704,196 @@ export const sandwich = [
         id: 33,
         productImage: chickenBugger,
         productName: "Chicken Bugger",
-        price: 40,
-        categories: menuList[6].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "1 BURGER", price: 40,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[6].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "1 BURGER", eatQuantity: 0, packQuantity: 0,},
+        ],
     },
     {
         id: 34,
         productImage: eggSandwich,
         productName: "Egg Sandwich",
-        price: 30,
-        categories: menuList[6].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "1 SANDWICH", price: 30,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[6].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "1 SANDWICH", eatQuantity: 0, packQuantity: 0,},
+        ],
     },
     {
         id: 35,
         productImage: redChillSandwich,
         productName: "Red Chilli Sandwich",
-        price: 35,
-        categories: menuList[6].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "1 SANDWICH", price: 35,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[6].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "1 SANDWICH", eatQuantity: 0, packQuantity: 0,},
+        ],
     },
     {
         id: 36,
         productImage: rotiRoll,
         productName: "Roti Roll",
-        price: 25,
-        categories: menuList[6].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "1 ROLL", price: 25,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[6].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "1 ROLL", eatQuantity: 0, packQuantity: 0,},
+        ],
     },
     {
         id: 37,
         productImage: vegBugger,
         productName: "Veg Burger",
-        price: 35,
-        categories: menuList[6].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "1 ROLL", price: 35,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[6].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "1 ROLL", eatQuantity: 0, packQuantity: 0,},
+        ],
     },
 ];
 export const smoothies = [
     {
         id: 38,
         productImage: blueBerrySmoothies,
-        productName: "Blubbery Smoothies",
-        price: 40,
-        categories: menuList[7].menuHeading,
+        productName: "Blueberry Smoothies",
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 250ML", price: 40,},
+            {title: "Medium 450ML", price: 55,},
+            {title: "Large 750ML", price: 75,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[7].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "250ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "450ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "750ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 39,
         productImage: butterScotchSmoothies,
         productName: "Butterscotch Smoothies",
-        price: 30,
-        categories: menuList[7].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 250ML", price: 40,},
+            {title: "Medium 450ML", price: 55,},
+            {title: "Large 750ML", price: 75,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[7].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "250ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "450ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "750ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 40,
         productImage: dragonFruitSmoothies,
         productName: "Dragon Fruit Smoothies",
-        price: 70,
-        categories: menuList[7].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 250ML", price: 40,},
+            {title: "Medium 450ML", price: 55,},
+            {title: "Large 750ML", price: 75,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[7].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "250ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "450ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "750ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 41,
         productImage: mangoSmoothies,
         productName: "Mango Smoothies",
-        price: 50,
-        categories: menuList[7].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 250ML", price: 40,},
+            {title: "Medium 450ML", price: 55,},
+            {title: "Large 750ML", price: 75,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[7].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "250ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "450ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "750ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 42,
         productImage: strawberrySmoothies,
         productName: "Strawberry Smoothies",
-        price: 60,
-        categories: menuList[7].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 250ML", price: 40,},
+            {title: "Medium 450ML", price: 55,},
+            {title: "Large 750ML", price: 75,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[7].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "250ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "450ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "750ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
     {
         id: 43,
         productImage: watermelonSmoothies,
         productName: "Watermelon Smoothies",
-        price: 40,
-        categories: menuList[7].menuHeading,
+        totalPrice: 0,
+        subCategories: [
+            {title: "Small 250ML", price: 40,},
+            {title: "Medium 450ML", price: 55,},
+            {title: "Large 750ML", price: 75,},
+        ],
+        totalQuantity: 0,
+        categories: menuList[7].url,
+        isCustomizable: true,
+        customizeOptions: [
+            {title: "250ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "450ML", eatQuantity: 0, packQuantity: 0,},
+            {title: "750ML", eatQuantity: 0, packQuantity: 0,},
+        ]
     },
 ];
 
-export const topOrders = [chai[2], iceCream[0], snacks[3], sandwich[1], noodles[3], smoothies[0]];
+export const topOrders = [chai[2], iceCream[3], cake[2], sandwich[2], noodles[2], smoothies[2]];
 
 export const bannerData = [
     {
@@ -461,7 +923,7 @@ export const couponList = [
         discount: 15,
         couponCode: "MRUJB9",
         type: "on-Product",
-        endDate: "2024-01-04-01-00-00",
+        endDate: "2024-01-10-01-00-00",
         validProduct: [17, 18, 15, 28, 30, 27],
         isHide: false,
     },
@@ -470,7 +932,7 @@ export const couponList = [
         discount: 25,
         couponCode: "NGHMQG",
         type: "on-Product",
-        endDate: "2024-01-04-01-00-00",
+        endDate: "2024-01-10-01-00-00",
         validProduct: [9, 10, 12, 14],
         isHide: false,
     },
@@ -479,7 +941,7 @@ export const couponList = [
         discount: 35,
         couponCode: "H4V7TR",
         type: "on-Product",
-        endDate: "2024-01-04-01-00-00",
+        endDate: "2024-01-10-01-00-00",
         validProduct: [0, 2, 4],
         isHide: false,
     },
@@ -488,7 +950,7 @@ export const couponList = [
         discount: 20,
         couponCode: "CVGG8Q",
         type: "on-Product",
-        endDate: "2024-01-04-01-00-00",
+        endDate: "2024-01-10-01-00-00",
         validProduct: [38, 40, 42, 34, 33, 36],
         isHide: false,
     },
@@ -497,7 +959,7 @@ export const couponList = [
         discount: 8,
         couponCode: "Q4R51G",
         type: "on-Product",
-        endDate: "2024-01-04-01-00-00",
+        endDate: "2024-01-10-01-00-00",
         validProduct: [6, 7],
         isHide: false,
     },
@@ -506,7 +968,7 @@ export const couponList = [
         discount: 30,
         couponCode: "3000DC",
         type: "on-Purchase",
-        endDate: "2024-01-04-01-00-00",
+        endDate: "2024-01-10-01-00-00",
         purchaseLimit: 3000,
         isHide: false,
     },

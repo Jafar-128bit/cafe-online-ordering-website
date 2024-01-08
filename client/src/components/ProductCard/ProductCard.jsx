@@ -1,12 +1,26 @@
 import {useDispatch, useSelector} from "react-redux";
-import {addToCart, removeFromCart} from "../../store/slices/cartSlices";
+import {addToCart, removeFromCart, updateCart} from "../../store/slices/cartSlices";
 import {useEffect, useState} from "react";
 
 import GridViewCard from "./GridViewCard/GridViewCard";
 
 import {couponList} from "../../data/data";
+import {cake, chai, cold, iceCream, noodles, sandwich, smoothies, snacks} from "../../data/data";
+import {togglePopUpCard} from "../../store/slices/popCardSlices";
+import {deepClone} from "../../util/utils";
 
-const ProductCard = ({id, productName, productImage, price, type = "", index}) => {
+const allItems = [...cake, ...cold, ...iceCream, ...noodles, ...chai, ...snacks, ...sandwich, ...smoothies,];
+
+const ProductCard = ({
+                         id,
+                         productName,
+                         productImage,
+                         totalPrice,
+                         categoryName,
+                         isCustomizable,
+                         type = "",
+                         index
+                     }) => {
     const [buyBtn, setBuyBtn] = useState(false);
     const [isDiscount, setIsDiscount] = useState(false);
     const [discount, setDiscount] = useState(0);
@@ -31,18 +45,37 @@ const ProductCard = ({id, productName, productImage, price, type = "", index}) =
 
     const handleBuy = () => {
         if (!buyBtn) {
-            dispatch(addToCart({
-                id: id,
-                productImage: productImage,
-                productName: productName,
-                price: price,
-                quantity: 1,
-            }));
+            const addToCartItemData = deepClone(allItems.find(item => item.id === id)); //deep cloning of the objects and arrays
+
+            isDiscount ? addToCartItemData.discount = discount : addToCartItemData.discount = 0;
+            dispatch(addToCart(addToCartItemData));
+
+            if (addToCartItemData.isCustomizable && addToCartItemData.categories !== "cakes") {
+                dispatch(updateCart({
+                    actionType: "UPDATE-EAT-QUANTITY",
+                    actionData: {id: id, data: 1, index: 0},
+                }));
+            } else if (addToCartItemData.isCustomizable && addToCartItemData.categories === "cakes") {
+                dispatch(updateCart({
+                    actionType: "UPDATE-TOTAL-QUANTITY",
+                    actionData: {id: id, data: 1},
+                }));
+            } else {
+                dispatch(updateCart({
+                    actionType: "UPDATE-TOTAL-QUANTITY",
+                    actionData: {id: id, data: 1},
+                }));
+            }
             setBuyBtn(true);
+            if (addToCartItemData.isCustomizable) handleOpenCustomizationMenu();
         } else if (buyBtn) {
             dispatch(removeFromCart(id));
             setBuyBtn(false);
         }
+    }
+
+    const handleOpenCustomizationMenu = () => {
+        dispatch(togglePopUpCard({isPopUpOpen: true, popUpType: "orderCustomizationMenu", itemId: id}));
     }
 
     return <>
@@ -51,9 +84,12 @@ const ProductCard = ({id, productName, productImage, price, type = "", index}) =
             theme={theme}
             productImage={productImage}
             productName={productName}
-            price={price}
+            totalPrice={totalPrice}
+            categoryName={categoryName}
+            isCustomizable={isCustomizable}
             buyBtn={buyBtn}
             handleBuy={handleBuy}
+            handleOpenCustomizationMenu={handleOpenCustomizationMenu}
             index={index}
             isDiscount={isDiscount}
             discount={discount}

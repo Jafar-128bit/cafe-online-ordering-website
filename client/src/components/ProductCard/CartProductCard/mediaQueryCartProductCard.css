@@ -1,45 +1,51 @@
 @media screen and (max-width: 1280px) {
-
+    .cart__productInfo {
+        width: 405px;
+    }
 }
 
 @media screen and (max-width: 900px) {
-    .cart__productInfo {
-        width: 80%;
-        max-width: 450px;
-        height: 90px;
-
-        border-radius: calc(90px / 2) var(--borderRadius2) var(--borderRadius2) calc(90px / 2);
-    }
-
-    .cart__productInfo__section01 {
-        width: 90px;
-        height: 90px;
-    }
-
-    .cart__productInfo__section02 {
-        width: calc(100% - 105px);
-    }
-
-    .cart__productInfo__section02__name {
-        font-size: 14px;
-    }
-
-    .cart__productInfo__section02__price {
-        font-size: 12px;
-    }
-
-    .cart__productInfo__section02__totalPrice {
-        font-size: 18px;
-    }
-
-    .cart__productInfo__section03 {
-        width: 30px;
-        height: 72px;
-        border-radius: calc(30px / 2);
-
-    }
 }
 
 @media screen and (max-width: 590px) {
+    .cart__productInfo {
+        width: 90%;
+    }
+
+    .cart__productInfo__section01__infoContainer__productName {
+        width: 45%;
+    }
+
+    .cart__productInfo__section01__infoContainer__productPrice {
+        width: 45%;
+    }
+
+    .cart__productInfo__section01__infoContainer__productPrice > p > small {
+        font-size: 10px;
+    }
+
+    .cart__productInfo__section02 {
+        height: 86px;
+    }
+
+    .cart__productInfo__section02__optionContainer > p {
+        font-size: 11px;
+        font-weight: 500;
+    }
+
+    .cart__productInfo__section03__btn {
+        width: 45%;
+        height: 28px;
+
+        font-size: 11px;
+    }
+
+    .closeType {
+        background: var(--color03);
+        color: var(--colorWhite);
+    }
+}
+
+@media screen and (max-width: 390px) {
 
 }

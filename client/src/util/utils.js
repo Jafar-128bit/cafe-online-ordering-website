@@ -40,3 +40,12 @@ export const generateUniqueRandomNumbers = (count, min, max) => {
 
     return Array.from(uniqueNumbers);
 }
+
+export const deepClone = (input) => {
+    if (input === null || typeof input !== "object") return input;
+    const initialValue = Array.isArray(input) ? [] : {};
+    return Object.keys(input).reduce((acc, key) => {
+        acc[key] = deepClone(input[key]);
+        return acc;
+    }, initialValue);
+};

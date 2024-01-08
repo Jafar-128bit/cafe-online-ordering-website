@@ -6,7 +6,7 @@
     flex-shrink: 0;
 
     width: 100vw;
-    max-width: 1280px;
+    max-width: 1900px;
 
     height: calc(100vh - 70px);
 
@@ -58,7 +58,7 @@
     margin: 5px 0;
 
     font-size: 42px;
-    font-weight: 100;
+    font-weight: 400;
     text-align: center;
     text-transform: uppercase;
 }
@@ -88,7 +88,7 @@
     flex-shrink: 0;
     gap: 30px;
 
-    width: 1200px;
+    width: 90%;
     max-height: max-content;
 
     padding: 0 0 20px 0;
@@ -104,7 +104,7 @@
     flex-direction: column;
     flex-shrink: 0;
 
-    width: 1000px;
+    width: 80%;
     height: 480px;
 
     position: relative;

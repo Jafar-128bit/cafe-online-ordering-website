@@ -69,7 +69,7 @@ const Navbar = ({theme}) => {
     }
 
     useEffect(() => {
-        setQuantity(cartData.map((value) => value.quantity).reduce((acc, cur) => acc + cur, 0));
+        setQuantity(cartData.map((value) => value.totalQuantity).reduce((acc, cur) => acc + cur, 0));
         setIconAnimate(true);
         setTimeout(() => {
             setIconAnimate(false);
@@ -124,7 +124,7 @@ const Navbar = ({theme}) => {
                     animate={isBackBtnHide ? "show" : "hide"}
                     transition={{ease: "easeIn", duration: 0.25}}
                 >
-                    <ArrowBackIosIcon style={{color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)"}}/>
+                    <ArrowBackIosIcon style={{color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)", fontWeight: 200}}/>
                     <p>Go Back</p>
                 </motion.button>
             </section>
@@ -163,7 +163,8 @@ const Navbar = ({theme}) => {
                 >
                     <MenuOutlinedIcon style={{
                         color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
-                        fontSize: "35px"
+                        fontSize: "35px",
+                        fontWeight: 200
                     }}/>
                 </motion.button>
                 {/* Option 02 */}
@@ -177,7 +178,8 @@ const Navbar = ({theme}) => {
                 >
                     <NotificationsOutlinedIcon style={{
                         color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
-                        fontSize: "35px"
+                        fontSize: "35px",
+                        fontWeight: 200
                     }}/>
                 </motion.button>
                 {/* Option 03 */}
@@ -194,7 +196,8 @@ const Navbar = ({theme}) => {
                     >
                         <ShoppingBasketOutlinedIcon style={{
                             color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
-                            fontSize: "35px"
+                            fontSize: "35px",
+                            fontWeight: 200
                         }}/>
                     </motion.div>
                     <motion.p
