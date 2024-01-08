@@ -6,7 +6,7 @@ import './responsiveHome.css';
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 
-import {topOrders, bannerData} from "../../data/data";
+import {topOrders} from "../../data/data";
 import ProductCard from "../../components/ProductCard/ProductCard";
 
 import {useSelector} from "react-redux";

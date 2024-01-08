@@ -895,27 +895,6 @@ export const smoothies = [
 
 export const topOrders = [chai[2], iceCream[3], cake[2], sandwich[2], noodles[2], smoothies[2]];
 
-export const bannerData = [
-    {
-        id: 0,
-        bannerImage: bannerMediumImage,
-        bannerTitle: "New-Year's Special",
-        discount: 20,
-        bannerEndTime: "2024-01-06-12-00-00",
-        bannerType: "medium",
-        bannerLink: "/menu"
-    },
-    {
-        id: 2,
-        bannerImage: bannerLargeImage,
-        bannerTitle: "Winter-Cafe",
-        discount: 20,
-        bannerEndTime: "2024-01-15-12-00-00",
-        bannerType: "large",
-        bannerLink: "/menu"
-    },
-];
-
 //2023-12-28-16-11-00
 export const couponList = [
     {
