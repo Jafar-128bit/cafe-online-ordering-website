@@ -1,4 +1,6 @@
 .loadingPage {
+    background: var(--backgroundGradient05);
+
     display: flex;
     align-items: center;
     justify-content: center;

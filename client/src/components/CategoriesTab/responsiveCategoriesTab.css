@@ -60,12 +60,22 @@
     }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 415px) {
     .categories__HeadingContainer > h1 {
         font-size: 22px;
     }
 
     .categories__HeadingContainer > p {
         font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .categories__HeadingContainer > h1 {
+        font-size: 18px;
+    }
+
+    .categories__HeadingContainer > p {
+        font-size: 12px;
     }
 }
