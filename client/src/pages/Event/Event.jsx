@@ -7,7 +7,8 @@ const Event = () => {
 
     return (
         <section className="event">
-            <h1>Event page is under construction</h1>
+            <h1>We are working on Event page and soon this will be available! here we are replicating entire google
+                calender and booking app. Stay Tune! 🤞🏻</h1>
         </section>
     );
 }

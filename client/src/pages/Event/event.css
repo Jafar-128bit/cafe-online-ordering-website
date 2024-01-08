@@ -1,0 +1,15 @@
+.event {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 90%;
+    height: 90%;
+}
+
+.event > h1 {
+    font-size: 22px;
+    font-weight: 300;
+    text-align: justify;
+    letter-spacing: 2px;
+}
