@@ -59,9 +59,6 @@ import sandwichSymbol from "../assets/images/symbol/snadwich-Icon.jpg";
 import smoothiesSymbol from "../assets/images/symbol/smoothies-Icon.jpg";
 import snacksSymbol from "../assets/images/symbol/snacks-Icon.jpg";
 import taeSymbol from "../assets/images/symbol/chai-Icon.jpg";
-/* Banner List */
-import bannerLargeImage from "../assets/background/bannerLargeType.jpg";
-import bannerMediumImage from "../assets/background/bannerMediumType.jpg";
 
 export const menuList = [
     {
