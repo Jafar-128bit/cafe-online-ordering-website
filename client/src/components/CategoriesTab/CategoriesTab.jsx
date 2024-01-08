@@ -1,7 +1,7 @@
 import './categoriesTab.css';
 import './darkModeStyle.css';
 import './lightModeStyle.css';
-import './responsiveCategoriesTab.css';
+// import './responsiveCategoriesTab.css';
 
 import allFoodIcon from "../../assets/images/symbol/all-Icon.jpg";
 

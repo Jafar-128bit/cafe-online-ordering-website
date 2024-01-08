@@ -1,5 +1,5 @@
 import './list.css';
-import './responsiveList.css';
+// import './responsiveList.css';
 
 import {toggleNavbar} from '../../store/slices/menuSlice';
 
