@@ -183,7 +183,7 @@
 @media screen and (max-width: 500px) {
     .list__productCardList,
     .list__productCardList__itemsList {
-        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        grid-template-columns: repeat(2, 190px);
         column-gap: 10px;
         row-gap: 10px;
     }
