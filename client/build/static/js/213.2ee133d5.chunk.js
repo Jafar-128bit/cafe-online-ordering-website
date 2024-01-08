@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[213],{6213:function(n,e,t){t.r(e),t.d(e,{default:function(){return s}});var c=t(184),s=function(){return(0,c.jsx)("section",{className:"event",children:(0,c.jsx)("h1",{children:"Event page is under construction"})})}}}]);
+//# sourceMappingURL=213.2ee133d5.chunk.js.map

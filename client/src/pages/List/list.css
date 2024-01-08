@@ -6,7 +6,6 @@
     flex-shrink: 0;
 
     width: 1280px;
-
     height: calc(100vh - 70px);
 
     margin: 0 0 0 0;
@@ -106,9 +105,9 @@
 .list__productCardList,
 .list__productCardList__itemsList {
     display: grid;
-    grid-template-columns: repeat(5, 240px);
-    column-gap: 20px;
-    row-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
     place-items: center;
     place-content: center;
     flex-shrink: 0;

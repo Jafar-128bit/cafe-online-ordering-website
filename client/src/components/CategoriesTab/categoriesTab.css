@@ -138,8 +138,8 @@
 
 .categories__optionContainerItems {
     display: grid;
-    column-gap: 10px;
-    row-gap: 10px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
     place-items: center;
     place-content: flex-start;
 

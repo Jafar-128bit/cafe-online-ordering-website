@@ -5,7 +5,6 @@
     }
 
     .mainProductCard__productImage {
-        width: 200px;
         height: 200px;
     }
 
@@ -18,14 +17,12 @@
         font-size: 14px;
     }
 
-    .price__big {
+    .mainProductCard__productInfo__productPrice > p {
         font-size: 22px;
-        font-weight: 800;
     }
 
-    .price__small {
+    .mainProductCard__productInfo__productPrice > p > small {
         font-size: 12px;
-        font-weight: 500;
     }
 
     .mainProductCard__btnContainer {
@@ -48,7 +45,6 @@
     }
 
     .mainProductCard__productImage {
-        width: 190px;
         height: 190px;
     }
 
@@ -70,14 +66,8 @@
         font-size: 12px;
     }
 
-    .price__big {
+    .mainProductCard__productInfo__productPrice > p {
         font-size: 18px;
-        font-weight: 800;
-    }
-
-    .price__small {
-        font-size: 10px;
-        font-weight: 500;
     }
 
     .mainProductCard__btnContainer {
@@ -95,13 +85,12 @@
 
 @media screen and (max-width: 390px) {
     .mainProductCard {
-        width: 150px;
+        width: 95%;
         height: 240px;
     }
 
     .mainProductCard__productImage {
-        width: 150px;
-        height: 150px;
+        height: 160px;
     }
 
     .mainProductCard__messageContainer {
@@ -115,25 +104,19 @@
 
     .mainProductCard__productInfo {
         width: 100%;
-        height: calc((100% - 150px) / 2);
+        height: calc((100% - 160px) / 2);
     }
 
     .mainProductCard__productInfo > h2 {
         font-size: 12px;
     }
 
-    .price__big {
+    .mainProductCard__productInfo__productPrice > p {
         font-size: 14px;
-        font-weight: 800;
-    }
-
-    .price__small {
-        font-size: 9px;
-        font-weight: 400;
     }
 
     .mainProductCard__btnContainer {
-        height: calc((100% - 150px) / 2);
+        height: calc((100% - 160px) / 2);
     }
 
     .mainProductCard__addToCartBtn {
