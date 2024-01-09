@@ -43,9 +43,15 @@ const OrderCustomizationMenu = ({data}) => {
         switch (type) {
             case "EAT-QUANTITY":
                 let newEatQuantity;
-                if (flag === "dec" && data.totalQuantity > 1) newEatQuantity = data.customizeOptions[index].eatQuantity - 1;
-                else if (flag === "inc") newEatQuantity = data.customizeOptions[index].eatQuantity + 1;
-                else return;
+                if (
+                    flag === "dec"
+                    && data.totalQuantity > 1
+                    && data.customizeOptions[index].eatQuantity > 0
+                ) {
+                    newEatQuantity = data.customizeOptions[index].eatQuantity - 1;
+                } else if (flag === "inc") {
+                    newEatQuantity = data.customizeOptions[index].eatQuantity + 1;
+                } else return;
 
                 dispatch(updateCart({
                     actionType: "UPDATE-EAT-QUANTITY",
@@ -54,9 +60,15 @@ const OrderCustomizationMenu = ({data}) => {
                 break;
             case "PACK-QUANTITY":
                 let newPackQuantity;
-                if (flag === "dec" && data.totalQuantity > 1) newPackQuantity = data.customizeOptions[index].packQuantity - 1;
-                else if (flag === "inc") newPackQuantity = data.customizeOptions[index].packQuantity + 1;
-                else return;
+                if (
+                    flag === "dec"
+                    && data.totalQuantity > 1
+                    && data.customizeOptions[index].packQuantity > 0
+                ) {
+                    newPackQuantity = data.customizeOptions[index].packQuantity - 1;
+                } else if (flag === "inc") {
+                    newPackQuantity = data.customizeOptions[index].packQuantity + 1;
+                } else return;
 
                 dispatch(updateCart({
                     actionType: "UPDATE-PACK-QUANTITY",
@@ -66,8 +78,6 @@ const OrderCustomizationMenu = ({data}) => {
             default:
                 return;
         }
-
-
     };
 
     const handleUpdateCake = (type = "", qtyFlag = "") => {
@@ -84,8 +94,12 @@ const OrderCustomizationMenu = ({data}) => {
                 break;
             case "CANDLE-QUANTITY":
                 let candleQuantity;
-                if (qtyFlag === "dec" && data.customizeOptions[1].candlesQuantity > 1) candleQuantity = data.customizeOptions[1].candlesQuantity - 2;
-                else if (qtyFlag === "inc") candleQuantity = data.customizeOptions[1].candlesQuantity + 2;
+                if (
+                    qtyFlag === "dec"
+                    && data.customizeOptions[1].candlesQuantity > 1
+                ) {
+                    candleQuantity = data.customizeOptions[1].candlesQuantity - 2;
+                } else if (qtyFlag === "inc") candleQuantity = data.customizeOptions[1].candlesQuantity + 2;
                 else return;
                 dispatch(updateCart({
                     actionType: "UPDATE-CANDLE-QUANTITY",

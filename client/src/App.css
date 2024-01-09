@@ -41,7 +41,7 @@
     --backgroundGradient02: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
     --backgroundGradient03: linear-gradient(109.6deg, rgb(43, 1, 91) 13.4%, rgb(122, 2, 54) 100.2%);
     --backgroundGradient04: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-    --backgroundGradient05: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+    --backgroundGradient05: linear-gradient(225deg, #FFCCF1 5.7%, #CBFFF6 79.6%);
     --backgroundGradient06: linear-gradient(to right, #f83600 0%, #f9d423 100%);
     --backgroundGradient07: linear-gradient(to right, #141e30, #243b55);
     --backgroundGradient08: radial-gradient(926px at 2.7% 11%, rgb(17, 29, 94) 0%, rgb(178, 31, 102) 90%);

@@ -79,7 +79,7 @@ const SpecialProductList = ({feedTitle = "", feedData = [{}], theme}) => {
                         id={value.id}
                         productName={value.productName}
                         productImage={value.productImage}
-                        totalPrice={value.subCategories ? value.subCategories[0].price : value.totalPrice}
+                        totalPrice={value.subCategories ? value.subCategories[0].price : value.actualPrice}
                         categoryName={value.categories}
                         isCustomizable={value.isCustomizable}
                         index={index}
