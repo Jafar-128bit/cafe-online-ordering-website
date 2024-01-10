@@ -6,7 +6,7 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import RoofingOutlinedIcon from '@mui/icons-material/RoofingOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
-import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+// import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 
 import {useLocation, useNavigate} from "react-router-dom";
 import {motion} from "framer-motion";
@@ -79,19 +79,19 @@ const Menubar = () => {
                 />,
             goto: "cart"
         },
-        {
-            id: 4,
-            optionName: "Event",
-            optionIcon: location.split("/")[1] === "event"
-                ? <CalendarMonthOutlinedIcon style={{color: "var(--colorWhite)", zIndex: 5, fontSize: "30px"}}/> :
-                <CalendarMonthOutlinedIcon
-                    style={{
-                        color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
-                        fontSize: "32px"
-                    }}
-                />,
-            goto: "event"
-        },
+        // {
+        //     id: 4,
+        //     optionName: "Event",
+        //     optionIcon: location.split("/")[1] === "event"
+        //         ? <CalendarMonthOutlinedIcon style={{color: "var(--colorWhite)", zIndex: 5, fontSize: "30px"}}/> :
+        //         <CalendarMonthOutlinedIcon
+        //             style={{
+        //                 color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
+        //                 fontSize: "32px"
+        //             }}
+        //         />,
+        //     goto: "event"
+        // },
     ];
 
     return (

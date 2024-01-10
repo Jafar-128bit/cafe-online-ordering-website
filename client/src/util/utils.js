@@ -50,31 +50,31 @@ export const deepClone = (input) => {
     }, initialValue);
 };
 
-export const generateCalendarData = (year = 0, month = 0) => {
-    const weekdays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-    const monthName = new Date(year, month - 1, 1).toLocaleString('en-us', { month: 'long' });
-
-    const calendarData = {
-        year: year,
-        month: monthName.toLowerCase(),
-        day: []
-    };
-
-    // Loop through each day of the week
-    for (const day of weekdays) {
-        const dayData = {};
-        const daysInMonth = new Date(year, month, 0).getDate(); // Get the total number of days in the month
-        // Get the dates for the specific day of the week
-        const dates = [];
-        for (let i = 1; i <= daysInMonth; i++) {
-            const currentDate = new Date(year, month - 1, i);
-            if (currentDate.getDay() === weekdays.indexOf(day)) {
-                dates.push(i);
-            }
-        }
-        // Add the day and corresponding dates to the calendar data
-        dayData[day] = dates;
-        calendarData.day.push(dayData);
-    }
-    return calendarData;
-}
+// export const generateCalendarData = (year = 0, month = 0) => {
+//     const weekdays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+//     const monthName = new Date(year, month - 1, 1).toLocaleString('en-us', { month: 'long' });
+//
+//     const calendarData = {
+//         year: year,
+//         month: monthName.toLowerCase(),
+//         day: []
+//     };
+//
+//     // Loop through each day of the week
+//     for (const day of weekdays) {
+//         const dayData = {};
+//         const daysInMonth = new Date(year, month, 0).getDate(); // Get the total number of days in the month
+//         // Get the dates for the specific day of the week
+//         const dates = [];
+//         for (let i = 1; i <= daysInMonth; i++) {
+//             const currentDate = new Date(year, month - 1, i);
+//             if (currentDate.getDay() === weekdays.indexOf(day)) {
+//                 dates.push(i);
+//             }
+//         }
+//         // Add the day and corresponding dates to the calendar data
+//         dayData[day] = dates;
+//         calendarData.day.push(dayData);
+//     }
+//     return calendarData;
+// }

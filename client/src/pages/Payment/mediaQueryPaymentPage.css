@@ -3,26 +3,7 @@
 }
 
 @media screen and (max-width: 900px) {
-    .payment {
-        justify-content: flex-start;
-        flex-direction: column;
 
-        height: calc(100vh - 70px);
-    }
-
-    .payment__processContainer {
-        width: 95%;
-        max-width: 900px;
-
-        height: max-content;
-
-        margin: 20px 0 0 0;
-    }
-
-    .payment__process2__heading {
-        max-height: 10%;
-        min-height: 10%;
-    }
 }
 
 @media screen and (max-width: 590px) {

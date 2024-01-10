@@ -88,8 +88,8 @@ export const menuList = [
     {
         id: 5,
         menuIcon: taeSymbol,
-        menuHeading: "Chai & Coffee",
-        url: "chaiAndCoffee",
+        menuHeading: "Chai",
+        url: "chai",
     },
     {
         id: 6,

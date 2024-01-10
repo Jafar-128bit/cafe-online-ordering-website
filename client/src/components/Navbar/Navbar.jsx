@@ -147,10 +147,10 @@ const Navbar = ({theme}) => {
                     <div className={isLink === 2 ? `navbar__section_02__line` : `navbar__section_02__line__hide`}/>
                 </NavLink>
                 {/* Link 04 */}
-                <NavLink to="/event" style={{...linkStyle}} onClick={() => setIsLink(3)}>
-                    Event
-                    <div className={isLink === 3 ? `navbar__section_02__line` : `navbar__section_02__line__hide`}/>
-                </NavLink>
+                {/*<NavLink to="/event" style={{...linkStyle}} onClick={() => setIsLink(3)}>*/}
+                {/*    Event*/}
+                {/*    <div className={isLink === 3 ? `navbar__section_02__line` : `navbar__section_02__line__hide`}/>*/}
+                {/*</NavLink>*/}
             </section>
             <section
                 className="navbar__section_03"

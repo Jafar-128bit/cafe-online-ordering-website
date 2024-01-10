@@ -12,7 +12,7 @@ import {useSelector} from "react-redux";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
-const Options = ({id, optionName, symbol, goto, theme, locationId}) => {
+const Options = ({id, optionName, symbol, url, goto, theme, locationCategory}) => {
 
     const categoryCard = {
         initial: {opacity: 0, scale: 0.85},
@@ -29,11 +29,11 @@ const Options = ({id, optionName, symbol, goto, theme, locationId}) => {
             variants={categoryCard}
             initial="initial"
             animate="animate"
-            onClick={() => goto(`normalMenu/${id}`)}
+            onClick={() => goto(`normalMenu/${url}`)}
         >
             <div
                 className={`categories__options__imageContainer 
-                ${parseInt(locationId) === id
+                ${parseInt(locationCategory) === url
                     ? "selectedCategory"
                     : "unselectedCategory"}`}
             >
@@ -55,7 +55,7 @@ const Options = ({id, optionName, symbol, goto, theme, locationId}) => {
 
 const CategoriesTab = ({inputValue, handleFilteredData, handleDataClear}) => {
     const goto = useNavigate();
-    const locationId = useLocation().pathname.split("/")[3];
+    const locationCategory = useLocation().pathname.split("/")[3];
     const themeMode = useSelector(state => state.themeSwitchSlices);
     const {theme} = themeMode;
 
@@ -116,7 +116,7 @@ const CategoriesTab = ({inputValue, handleFilteredData, handleDataClear}) => {
                         >
                             <div
                                 className={`categories__options__imageContainer
-                                ${locationId === undefined
+                                ${locationCategory === undefined
                                     ? "selectedCategory"
                                     : "unselectedCategory"}`}
                             >
@@ -140,8 +140,9 @@ const CategoriesTab = ({inputValue, handleFilteredData, handleDataClear}) => {
                                 id={value.id}
                                 symbol={value.menuIcon}
                                 optionName={value.menuHeading}
+                                url={value.url}
                                 goto={goto}
-                                locationId={locationId}
+                                locationCategory={locationCategory}
                                 theme={theme}
                             />
                         )

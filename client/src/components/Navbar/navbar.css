@@ -78,13 +78,13 @@
     justify-content: space-evenly;
     flex-direction: row;
 
-    width: 470px;
+    width: 400px;
     height: 50px;
 
     margin: 0;
 
     position: absolute;
-    left: calc((100% - 470px) / 2);
+    left: calc((100% - 400px) / 2);
 }
 
 .navbar__section_02__line, .navbar__section_02__line__hide {

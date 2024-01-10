@@ -11,15 +11,15 @@ const allItems = [...cake, ...cold, ...iceCream, ...noodles, ...chai, ...snacks,
 
 const renderProductCards = (category) => {
     const dataMap = {
-        0: allItems,
-        1: cake,
-        2: cold,
-        3: iceCream,
-        4: noodles,
-        5: chai,
-        6: snacks,
-        7: sandwich,
-        8: smoothies,
+        all: allItems,
+        cakes: cake,
+        coldDrinks: cold,
+        iceCreams: iceCream,
+        noodles: noodles,
+        chai: chai,
+        snacks: snacks,
+        sandwichAndBurger: sandwich,
+        smoothies: smoothies,
     };
     return dataMap[category];
 };
@@ -41,7 +41,7 @@ const ProductList = ({type}) => {
 
     useEffect(() => {
         if (type === "main") {
-            setItemData(renderProductCards(param.id));
+            setItemData(renderProductCards(param.category));
         } else if (type === "offer") {
             setItemData(couponData);
         } else if (type === "search") {
@@ -49,7 +49,7 @@ const ProductList = ({type}) => {
         } else {
             setItemData(null);
         }
-    }, [dispatch, type, couponData, param.id, productData]);
+    }, [dispatch, type, couponData, param.category, productData]);
 
     return (
         <section className="list__productCardContainer noScroll">
@@ -74,7 +74,7 @@ const ProductList = ({type}) => {
                             <div className="list__productCardList__itemsList" style={{
                                 padding: "0",
                             }}>
-                                {renderProductCards(menu.id).map((value, index) => (
+                                {renderProductCards(menu.url).map((value, index) => (
                                     <ProductCard
                                         key={value.id}
                                         id={value.id}
