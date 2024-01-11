@@ -31,7 +31,7 @@ const useSearchFilterOnChange = (delay = 0) => {
     const handleDataClear = () => {
         dispatch(clearData());
         setInputValue('');
-        navigate(-1);
+        navigate("/menu");
     };
 
     return {

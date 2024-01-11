@@ -18,7 +18,6 @@ const App = lazy(() => import('./App'));
 const Home = lazy(() => import('./pages/Home/Home'));
 const List = lazy(() => import('./pages/List/List'));
 const Cart = lazy(() => import('./pages/Cart/Cart'));
-const SearchPage = lazy(() => import('./pages/SearchPage/SearchPage'));
 const Payment = lazy(() => import('./pages/Payment/Payment'));
 const Pay = lazy(() => import('./pages/Pay/Pay'));
 // const Event = lazy(() => import('./pages/Event/Event'));
@@ -71,11 +70,6 @@ const appRoute = createBrowserRouter([
                         element: <Suspense fallback={<LoadingPage/>}><ProductList type="search"/></Suspense>,
                     },
                 ]
-            },
-            {
-                path: "/search",
-                element: <SearchPage/>,
-
             },
             // {
             //     path: "/event",

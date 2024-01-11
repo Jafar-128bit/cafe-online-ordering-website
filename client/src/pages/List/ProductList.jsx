@@ -1,10 +1,9 @@
 import "./list.css";
 import ProductCard from "../../components/ProductCard/ProductCard";
 
-import {useNavigate, useOutletContext, useParams} from "react-router-dom";
+import {useOutletContext, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {clearData} from "../../store/slices/dataSlices";
 import {cake, chai, cold, iceCream, noodles, sandwich, smoothies, snacks, menuList} from "../../data/data";
 
 const allItems = [...cake, ...cold, ...iceCream, ...noodles, ...chai, ...snacks, ...sandwich, ...smoothies,];
@@ -27,17 +26,11 @@ const renderProductCards = (category) => {
 const ProductList = ({type}) => {
     const dispatch = useDispatch();
     const param = useParams();
-    const navigate = useNavigate();
     const productData = useOutletContext();
     const [itemData, setItemData] = useState(null);
     const couponData = useSelector(state => state.filterDataState);
     const themeMode = useSelector(state => state.themeSwitchSlices);
     const {theme} = themeMode;
-
-    const handleGoBack = () => {
-        dispatch(clearData());
-        navigate(-1);
-    }
 
     useEffect(() => {
         if (type === "main") {

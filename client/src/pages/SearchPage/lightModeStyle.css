@@ -1,7 +1,0 @@
-.searchPage__searchBar__light {
-    border: 1px solid var(--colorBlack);
-}
-
-.searchPage__searchBar__light > button[type="button"] {
-    background: var(--colorWhite);
-}

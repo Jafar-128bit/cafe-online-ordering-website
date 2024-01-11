@@ -120,6 +120,9 @@
     outline: none;
     border-radius: 50%;
 
+    font-size: 14px;
+    font-weight: 400;
+
     cursor: pointer;
 }
 

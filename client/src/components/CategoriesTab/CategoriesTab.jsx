@@ -33,7 +33,7 @@ const Options = ({id, optionName, symbol, url, goto, theme, locationCategory}) =
         >
             <div
                 className={`categories__options__imageContainer 
-                ${parseInt(locationCategory) === url
+                ${locationCategory === url
                     ? "selectedCategory"
                     : "unselectedCategory"}`}
             >
@@ -56,6 +56,7 @@ const Options = ({id, optionName, symbol, url, goto, theme, locationCategory}) =
 const CategoriesTab = ({inputValue, handleFilteredData, handleDataClear}) => {
     const goto = useNavigate();
     const locationCategory = useLocation().pathname.split("/")[3];
+    const isSearch = useLocation().pathname.split("/")[2] === "search";
     const themeMode = useSelector(state => state.themeSwitchSlices);
     const {theme} = themeMode;
 
@@ -89,16 +90,27 @@ const CategoriesTab = ({inputValue, handleFilteredData, handleDataClear}) => {
                         onChange={handleFilteredData}
                         onClick={() => goto("search")}
                     />
-                    <button type="button" onClick={handleDataClear}>
+                    <motion.button
+                        type="button"
+                        onClick={handleDataClear}
+                        animate={
+                            inputValue.length === 0 && !isSearch
+                                ? {width: "40px", height: "40px", borderRadius: "50%"}
+                                : {width: "100px", height: "40px", borderRadius: "calc(40px / 2)"}
+                        }
+                        style={{color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)"}}
+                    >
                         {
-                            inputValue.length === 0 ?
+                            inputValue.length === 0 && !isSearch ?
                                 <SearchOutlinedIcon style={{
                                     color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
-                                }}/> : <CloseOutlinedIcon style={{
+                                }}/> :
+                                <CloseOutlinedIcon style={{
                                     color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
                                 }}/>
                         }
-                    </button>
+                        {inputValue.length === 0 && !isSearch ? "" : "Back"}
+                    </motion.button>
                 </div>
             </div>
 
