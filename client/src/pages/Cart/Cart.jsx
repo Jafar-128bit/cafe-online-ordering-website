@@ -51,6 +51,10 @@ const Cart = () => {
     const [togglePopMessage, setTogglePopMessage] = useState(false);
     const [isCouponValid, setIsCouponValid] = useState("ideal");
 
+    useEffect(() => {
+        dispatch(toggleNavbar({State: true}));
+    }, [dispatch]);
+
     const handleCouponMenuOpen = () => {
         dispatch(toggleNotificationMenu({State: false}));
         navigate("/cart/coupon");
@@ -59,10 +63,6 @@ const Cart = () => {
         type: "ADD",
         appliedCouponData: selfCouponData
     }));
-
-    useEffect(() => {
-        dispatch(toggleNavbar({State: false}));
-    }, [cartData, appliedCouponData, discount, subTotal, dispatch]);
 
     const formikCouponCode = useFormik({
         initialValues: {

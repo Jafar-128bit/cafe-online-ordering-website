@@ -18,8 +18,9 @@ const App = lazy(() => import('./App'));
 const Home = lazy(() => import('./pages/Home/Home'));
 const List = lazy(() => import('./pages/List/List'));
 const Cart = lazy(() => import('./pages/Cart/Cart'));
-const Payment = lazy(() => import('./pages/Payment/Payment'));
 const SearchPage = lazy(() => import('./pages/SearchPage/SearchPage'));
+const Payment = lazy(() => import('./pages/Payment/Payment'));
+const Pay = lazy(() => import('./pages/Pay/Pay'));
 // const Event = lazy(() => import('./pages/Event/Event'));
 const ProductList = lazy(() => import('./pages/List/ProductList'));
 
@@ -40,6 +41,10 @@ const appRoute = createBrowserRouter([
             {
                 path: "payment",
                 element: <Payment/>,
+            },
+            {
+                path: "pay",
+                element: <Pay/>,
             },
             {
                 path: "cart/coupon",

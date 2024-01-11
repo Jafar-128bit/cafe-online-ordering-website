@@ -46,6 +46,7 @@ const Navbar = ({theme}) => {
     const cartData = useSelector((state) => state.cartItems);
     const notificationMenuState = useSelector(state => state.menuState.notificationMenuState);
     const {State} = notificationMenuState;
+    const navbarState = useSelector(state => state.menuState.navbarState);
     const [quantity, setQuantity] = useState(0);
     const [iconAnimate, setIconAnimate] = useState(false);
     const [isLink, setIsLink] = useState(null);
@@ -109,7 +110,7 @@ const Navbar = ({theme}) => {
     }
 
     return (
-        <nav className="navbar">
+        <nav className="navbar" style={{display: navbarState.State ? "flex" : "none"}}>
             <section className="navbar__section_01">
                 <motion.button
                     type="button"

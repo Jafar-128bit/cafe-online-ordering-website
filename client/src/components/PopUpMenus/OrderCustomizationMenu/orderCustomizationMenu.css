@@ -12,8 +12,6 @@
 }
 
 .orderCustomizationMenu__card {
-    background: var(--colorWhite);
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -259,7 +257,7 @@
     margin: 0;
     padding: 0;
 
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 800;
     text-align: left;
     text-transform: capitalize;
@@ -279,8 +277,6 @@
 }
 
 .orderCustomizationMenu__customizationSetting__option > p {
-    color: var(--colorBlack);
-
     display: flex;
     align-items: center;
     justify-content: flex-start;

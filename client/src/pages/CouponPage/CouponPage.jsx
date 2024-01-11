@@ -10,6 +10,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import {couponList} from "../../data/data";
 import CouponCard from "../../components/CouponCard/CouponCard";
 import useValidCoupon from "../../hooks/useValidCoupon";
+
 const CouponPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -28,14 +29,19 @@ const CouponPage = () => {
     return (
         <section className="couponPage">
             <div className="couponPage__title">
-                <button className="couponPage__backBtn" onClick={handleNavigate}>
+                <button
+                    className="couponPage__backBtn"
+                    style={{
+                        color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
+                    }}
+                    onClick={handleNavigate}
+                >
                     <ArrowBackIosIcon style={{
                         color: theme === "dark" ? "var(--colorWhite)" : "var(--colorBlack)",
-                        fontSize: "16px"
+                        fontSize: "14px"
                     }}/>
                     Back
                 </button>
-                <h1 style={{color: theme === "dark" ? "var(--colorWhite)" : "var(--color02)"}}>COUPONS</h1>
             </div>
             <section className="couponPage__couponList noScroll" style={{
                 gridTemplateRows: `repeat(${couponList.length}, auto-fill)`

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[634],{6634:function(e,n,c){c.r(n),c.d(n,{default:function(){return i}});var t=c(184),i=function(){return(0,t.jsx)("section",{className:"pay",children:(0,t.jsx)("h1",{children:"We are working on this checkout page! \ud83e\udd1e\ud83c\udffb"})})}}}]);
+//# sourceMappingURL=634.72914b75.chunk.js.map

@@ -1,0 +1,1 @@
+D:\Projects\Programming\Web Development\ecommerce-web-app\server\helper\qr_code_generator\qrGenerator\x64\Debug\qrGenerator.dll

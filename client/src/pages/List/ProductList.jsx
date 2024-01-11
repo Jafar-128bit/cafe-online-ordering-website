@@ -54,13 +54,6 @@ const ProductList = ({type}) => {
     return (
         <section className="list__productCardContainer noScroll">
             {
-                type === "offer" &&
-                <div className="list__productCardContainer__backBtnContainer">
-                    <button type="button" onClick={handleGoBack}>Back</button>
-                </div>
-            }
-
-            {
                 type === "all" &&
                 menuList.map(
                     menu =>

@@ -1,0 +1,19 @@
+.orderCustomizationMenu__card__light {
+    background: var(--colorWhite);
+}
+.orderCustomizationMenu__customizationSetting__infoContainer__light {
+    color: var(--colorBlack);
+}
+
+.orderCustomizationMenu__customizationSetting__optionsContainer__light {
+    background: var(--backgroundGradient05);
+}
+
+.orderCustomizationMenu__customizationSetting__optionsTitle__light {
+    color: var(--colorBlack);
+}
+
+.orderCustomizationMenu__customizationSetting__option__light {
+    color: var(--colorBlack);
+}
+

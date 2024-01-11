@@ -7,7 +7,7 @@ import GridViewCard from "./GridViewCard/GridViewCard";
 import {couponList} from "../../data/data";
 import {cake, chai, cold, iceCream, noodles, sandwich, smoothies, snacks} from "../../data/data";
 import {togglePopUpCard} from "../../store/slices/popCardSlices";
-import {deepClone} from "../../util/utils";
+import {calculateTimeDifference, deepClone} from "../../util/utils";
 
 const allItems = [...cake, ...cold, ...iceCream, ...noodles, ...chai, ...snacks, ...sandwich, ...smoothies,];
 
@@ -32,7 +32,7 @@ const ProductCard = ({
     useEffect(() => {
         const isItemInCart = cartData.some((item) => item.id === id);
         const isItemInDiscount = couponList
-            .filter(coupon => coupon.type === "on-Product")
+            .filter(coupon => coupon.type === "on-Product" && calculateTimeDifference(coupon.endDate, true))
             .map(coupon => coupon.validProduct)
             .some(itemId => itemId.includes(id));
         const couponDiscountValue = couponList.filter(coupon => coupon.type === "on-Product")

@@ -20,6 +20,9 @@ const OrderCustomizationMenu = ({data}) => {
     const customizeOptions = data.customizeOptions;
     const subCategories = data.subCategories;
 
+    const themeMode = useSelector(state => state.themeSwitchSlices);
+    const {theme} = themeMode;
+
     useEffect(() => {
         setMessage(cartData.find(item => item.id === data.id).customizeOptions[0].message);
     }, [cartData, data.id]);
@@ -32,13 +35,11 @@ const OrderCustomizationMenu = ({data}) => {
         }
         return totalEatCost + totalPackCost;
     }
-
     const handleCloseCustomizationMenu = () => dispatch(togglePopUpCard({
         isPopUpOpen: false,
         popUpType: "",
         itemId: null
     }));
-
     const handleQuantity = (type = "", flag = "", index = 0) => {
         switch (type) {
             case "EAT-QUANTITY":
@@ -79,7 +80,6 @@ const OrderCustomizationMenu = ({data}) => {
                 return;
         }
     };
-
     const handleUpdateCake = (type = "", qtyFlag = "") => {
         switch (type) {
             case "TOTAL-QUANTITY":
@@ -118,8 +118,15 @@ const OrderCustomizationMenu = ({data}) => {
     }
 
     return (
-        <section className="orderCustomizationMenu whiteGlass50">
-            <div className="orderCustomizationMenu__card">
+        <section className={`orderCustomizationMenu ${theme === "dark" ? "darkGlass50" : "whiteGlass50"}`}>
+            <div
+                className={
+                    `orderCustomizationMenu__card
+                    ${theme === "dark"
+                        ? "orderCustomizationMenu__card__dark"
+                        : "orderCustomizationMenu__card__light"}`
+                }
+            >
                 <button
                     type="button"
                     className="orderCustomizationMenu__menuCloseBtn"
@@ -178,7 +185,14 @@ const OrderCustomizationMenu = ({data}) => {
                     </motion.div>
                 </section>
                 <section className="orderCustomizationMenu__customizationSetting">
-                    <p className="orderCustomizationMenu__customizationSetting__infoContainer">
+                    <p
+                        className={
+                            `orderCustomizationMenu__customizationSetting__infoContainer
+                        ${theme === "dark"
+                                ? "orderCustomizationMenu__customizationSetting__infoContainer__dark"
+                                : "orderCustomizationMenu__customizationSetting__infoContainer__light"}`
+                        }
+                    >
                         Total price is ₹{handleCalculateTotalPrice(
                         data.categories === "cakes",
                         data.totalPrice,
@@ -191,15 +205,34 @@ const OrderCustomizationMenu = ({data}) => {
                     {data.categories !== "cakes" && subCategories.map((categories, index) =>
                         <motion.section
                             key={index + 1}
-                            className="orderCustomizationMenu__customizationSetting__optionsContainer"
+                            className={
+                                `orderCustomizationMenu__customizationSetting__optionsContainer
+                                ${theme === "dark"
+                                    ? "orderCustomizationMenu__customizationSetting__optionsContainer__dark"
+                                    : "orderCustomizationMenu__customizationSetting__optionsContainer__light"}`
+                            }
                             initial={{opacity: 0, scale: 0.8}}
                             animate={{opacity: 1, scale: 1}}
                             transition={{delay: 0.25 * (index + 1)}}
                         >
-                            <h4 className="orderCustomizationMenu__customizationSetting__optionsTitle">
+                            <h4
+                                className={
+                                    `orderCustomizationMenu__customizationSetting__optionsTitle
+                                    ${theme === "dark"
+                                        ? "orderCustomizationMenu__customizationSetting__optionsTitle__dark"
+                                        : "orderCustomizationMenu__customizationSetting__optionsTitle__light"}`
+                                }
+                            >
                                 {categories.title}
                             </h4>
-                            <div className="orderCustomizationMenu__customizationSetting__option">
+                            <div
+                                className={
+                                    `orderCustomizationMenu__customizationSetting__option
+                                    ${theme === "dark"
+                                        ? "orderCustomizationMenu__customizationSetting__option__dark"
+                                        : "orderCustomizationMenu__customizationSetting__option__light"}`
+                                }
+                            >
                                 <p>Eat here</p>
                                 <div className="orderCustomizationMenu__customizationSetting__optionQtyBtnContainer">
                                     <button
@@ -220,7 +253,14 @@ const OrderCustomizationMenu = ({data}) => {
                                 </div>
                                 <p>Price ₹{categories.price * data.customizeOptions[index].eatQuantity}</p>
                             </div>
-                            <div className="orderCustomizationMenu__customizationSetting__option">
+                            <div
+                                className={
+                                    `orderCustomizationMenu__customizationSetting__option
+                                    ${theme === "dark"
+                                        ? "orderCustomizationMenu__customizationSetting__option__dark"
+                                        : "orderCustomizationMenu__customizationSetting__option__light"}`
+                                }
+                            >
                                 <p>Pack</p>
                                 <div className="orderCustomizationMenu__customizationSetting__optionQtyBtnContainer">
                                     <button
